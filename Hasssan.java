@@ -9,7 +9,7 @@ Class HasanLbogoss() {
 		//sss
 	}
 	public void modification(){
-		
+		azeaze
 	}
 
 }
