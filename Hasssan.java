@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 bonjour tout le monde
 
 Class HasanLbogoss() {
@@ -7,3 +8,6 @@ Class HasanLbogoss() {
 ffffff
 
 }
+=======
+ana hicham ana daba tanbadal f l fichier
+>>>>>>> a8a53c71eb026baf3db2e583f1bcec6e6ba6d045
