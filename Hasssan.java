@@ -3,6 +3,7 @@ Class HasanLbogoss() {
 
 	int age = 31;
 	string nom = "hassan";
+htfhf
 <<<<<<< HEAD
 	int poid = 75;
 
