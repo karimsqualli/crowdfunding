@@ -8,6 +8,9 @@ Class HasanLbogoss() {
 	public void add(){
 		//sss
 	}
+	public void modification(){
+		
+	}
 
 }
 =======
