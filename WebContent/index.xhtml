@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h:form id="forms">
+	
+		<table>
+		<tr>
+			<td><h:outputText value="nom de l'association"></h:outputText></td> 
+			<td><h:inputText  id="name" required="true" requiredMessage="vous devez remplir le nom" value="#{AssBean.name}"></h:inputText></td>
+			<td> <h:message for="name"></h:message>  </td>
+		</tr>
+		<tr>
+			<td><h:outputText value="description"></h:outputText></td>
+			<td><h:inputText id="description"  required="true" requiredMessage="budget obligatoire" value="#{AssBean.description}"></h:inputText></td>
+			<td> <h:message for="description"></h:message>  </td>
+		</tr>
+		<tr>
+		<td><h:commandButton id="login" value="s'inscrire" actionListener="#{AssBean.saveAss}"></h:commandButton>
+			<h:outputText value="#{AssBean.message}" style="color:green; font-weight:bold;"></h:outputText>
+		</td>
+		</tr>
+		</table>
+	</h:form>
+</body>
+</html>
