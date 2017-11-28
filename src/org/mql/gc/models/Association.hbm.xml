@@ -1,22 +1,20 @@
-<?xml version = "1.0" encoding = "utf-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC 
-"-//Hibernate/Hibernate Mapping DTD//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
 
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-   <class name = "Association" table = "Association">
-      
-      <meta attribute = "class-description">
-		Contain all information about an association
-      </meta>
-      
-      <id name = "id" type = "int" column = "id">
-         <generator class="native"/>
-      </id>
-      
-      <property name = "name" column = "name" type = "string"/>
-      <property name = "password" column = "password" type = "string"/>
-      <property name = "email" column = "email" type = "string"/>
-      
-   </class>
+
+<class name="association.model.Association" table="ASSOCIATION" >
+
+
+	<id name="id_association" column="ID_ASSOCIATION">
+		<generator class="native"></generator>
+	</id>
+	<property name="name" column="NAME"></property>
+	<property name="description" column="DESCRIPTION"></property>
+	
+</class>
+ 
+  
 </hibernate-mapping>
