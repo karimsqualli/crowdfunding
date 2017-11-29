@@ -5,10 +5,12 @@ package org.mql.gc.actions;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
@@ -44,9 +46,11 @@ public class AssociationBean {
 	public void init(){
 		//here initialize of elements that we need 
 		service=new AssociationServiceImpl();
+		listeTable=service.findAll();
 	}
 	
 
+	
 	
 	public void saveAss(ActionEvent e){
 		Association as=new Association();
@@ -57,6 +61,14 @@ public class AssociationBean {
 		System.out.println("description = "+as.getDescription());	
 		service.add(as);
 		message="ajout réussie";
+	}
+	
+	public void deleteAssociation(ActionEvent e){
+		FacesContext fc=FacesContext.getCurrentInstance();
+		Map<String, String> parametre=fc.getExternalContext().getRequestParameterMap();
+		service.delete(new Long(parametre.get("id")));
+		listeTable=service.findAll();
+
 	}
 	
 	
