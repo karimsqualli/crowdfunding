@@ -25,8 +25,8 @@ import org.mql.gc.services.AssociationServiceImpl;
 public class AssociationBean {
 
 	
-	private String name="testName";
-	private String description="testDescription";
+	private String name;
+	private String description;
 	private String message;
 	private boolean showForm; 
 	private AssociationService service;
@@ -42,8 +42,8 @@ public class AssociationBean {
 
 	@PostConstruct
 	public void init(){
-		
-		
+		//here initialize of elements that we need 
+		service=new AssociationServiceImpl();
 	}
 	
 
@@ -52,6 +52,7 @@ public class AssociationBean {
 		Association as=new Association();
 		as.setDescription(description);
 		as.setName(name);
+		as.setId(1L);
 		System.out.println("nom de l'association = "+as.getName());
 		System.out.println("description = "+as.getDescription());	
 		service.add(as);

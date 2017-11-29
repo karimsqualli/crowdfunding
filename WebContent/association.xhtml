@@ -11,7 +11,28 @@ xmlns:f="http://java.sun.com/jsf/core"
 </head>
 <body>
 
-<h:inputText value="sheet"></h:inputText>
+<h:form>
+	<table>
+			<tr>
+				<td><h:outputText value="nom de l'association"></h:outputText></td> 
+				<td><h:inputText  id="name" required="true" requiredMessage="vous devez remplir le nom" value="#{AssBean.name}"></h:inputText></td>
+				<td> <h:message for="name"></h:message>  </td>
+			</tr>
+			
+			<tr>
+				<td><h:outputText value="description"></h:outputText></td>
+				<td><h:inputText id="description"  required="true" requiredMessage="budget obligatoire" value="#{AssBean.description}"></h:inputText></td>
+				<td> <h:message for="description"></h:message>  </td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:commandButton id="login" value="s'inscrire" actionListener="#{AssBean.saveAss}"></h:commandButton>
+				</td>
+			</tr>
+	</table>
+
+</h:form>
 	
 </body>
 </html>
