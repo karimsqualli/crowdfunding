@@ -22,6 +22,7 @@ public class Test {
 		ass.setName("hassan");
 		ass.setDescription("description hassan");
 		dao.add(ass);
+		System.out.println("test");
 	}
 
 }
