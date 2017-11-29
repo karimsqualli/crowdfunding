@@ -5,10 +5,10 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-<class name="association.model.Association" table="ASSOCIATION" >
+<class name="org.mql.gc.models.Association" table="ASSOCIATION" >
 
 
-	<id name="id_association" column="ID_ASSOCIATION">
+	<id name="id" column="ID_ASSOCIATION">
 		<generator class="native"></generator>
 	</id>
 	<property name="name" column="NAME"></property>

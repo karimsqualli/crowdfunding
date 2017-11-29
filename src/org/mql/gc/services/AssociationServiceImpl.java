@@ -2,13 +2,13 @@ package org.mql.gc.services;
 
 import java.util.List;
 
-import org.mql.gc.dao.AssociationDAO;
-import org.mql.gc.dao.AssociationDAOImpl;
+import org.mql.gc.dao.AssociationDao;
+import org.mql.gc.dao.AssociationDaoImpl;
 import org.mql.gc.models.Association;
 
 public class AssociationServiceImpl implements AssociationService {
 
-	private AssociationDAO dao=(AssociationDAO) new AssociationDAOImpl();
+	private AssociationDao dao=(AssociationDao) new AssociationDaoImpl();
 	
 	public void add(Association e) {
 		System.out.println("appelle de service");

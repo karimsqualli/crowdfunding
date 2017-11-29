@@ -7,7 +7,7 @@ import java.util.List;
 import org.mql.gc.models.Association;
 
 
-public class AssociationDaoImpl extends BaseDAO {
+public class AssociationDaoImpl extends BaseDAO implements AssociationDao {
 	
 
 
