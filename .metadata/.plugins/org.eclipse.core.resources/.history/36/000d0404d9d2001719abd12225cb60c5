@@ -1,0 +1,13 @@
+package org.mql.gc.dao;
+
+import org.mql.gc.models.Association;
+
+public class AssociationDaoImp implements AssociationDao {
+
+	@Override
+	public void createAccount(Association association) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

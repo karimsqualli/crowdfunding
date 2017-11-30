@@ -4,7 +4,7 @@
         
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/crow</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/kaisahhh</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
  
@@ -27,9 +27,8 @@
        	  <!-- SQL dialect -->
          <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 
-		<mapping resource="association/model/Association.hbm.xml"></mapping>
-	
-		         
+		<mapping resource="org/mql/gc/models/Association.hbm.xml"></mapping>
+		
           
     </session-factory>
 </hibernate-configuration>

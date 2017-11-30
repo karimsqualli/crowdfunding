@@ -1,0 +1,5 @@
+package org.mql.gc.dao;
+
+public class CaseDaoImp implements CaseDao {
+
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+
+>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>inscription association</title>
+</head>
+<body>
+
+<h:form>
+	<table>
+			<tr>
+				<td><h:outputText value="nom de l'association"></h:outputText></td> 
+				<td><h:inputText  id="name" required="true" requiredMessage="vous devez remplir le nom" value="#{AssBean.name}"></h:inputText></td>
+				<td> <h:message for="name"></h:message>  </td>
+			</tr>
+			
+			<tr>
+				<td><h:outputText value="description"></h:outputText></td>
+				<td><h:inputText id="description"  required="true" requiredMessage="budget obligatoire" value="#{AssBean.description}"></h:inputText></td>
+				<td> <h:message for="description"></h:message>  </td>
+			</tr>
+			
+			<tr>
+				<td>
+					<h:commandButton id="login" value="s'inscrire" actionListener="#{AssBean.saveAss}"></h:commandButton>
+				</td>
+			</tr>
+	</table>
+
+</h:form>
+
+	<h:form>
+	
+		<h:dataTable value="#{AssBean.listeTable}" var="objet" title="liste des association"
+		style="width:30%;border:1px solid green;" border="1">
+			
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{objet.id}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">nom</f:facet>
+				<h:outputText value="#{objet.name}"></h:outputText>
+			</h:column>
+		
+			<h:column>
+				<f:facet name="header">description</f:facet>
+				<h:outputText value="#{objet.description}"></h:outputText>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">supprimer</f:facet>
+				<h:commandButton onclick="return confirmer();" value="supprimer" actionListener="#{AssBean.deleteAssociation}">
+					<f:param name="id" value="#{objet.id}"></f:param>
+				</h:commandButton>
+			</h:column>
+		
+		</h:dataTable>
+		
+	</h:form>
+	<SCRIPT type="text/javascript">
+		function confirmer() {
+			return confirm("êtes vous sûr de vouloir supprimer cette association" );
+		}
+	</SCRIPT>
+</body>
+</html>

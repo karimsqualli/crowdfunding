@@ -1,0 +1,12 @@
+package org.mql.gc.dao;
+
+import org.mql.gc.models.Case;
+
+public class CaseDaoImp implements CaseDao {
+
+	public void saveCase(Case case1) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
