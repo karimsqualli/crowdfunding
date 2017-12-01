@@ -1,6 +1,5 @@
 package org.mql.gc.models;
 
-
 public class Association {
 	private int id;
 	private String name;
