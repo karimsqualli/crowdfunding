@@ -1,0 +1,12 @@
+package org.mql.gc.services;
+
+import org.mql.gc.dao.CaseDao;
+import org.mql.gc.dao.CaseDaoImp;
+
+public class CaseServiceImp implements CaseService {
+	private CaseDao caseDao;
+	
+	public CaseServiceImp() {
+		caseDao = new CaseDaoImp();
+	}
+}

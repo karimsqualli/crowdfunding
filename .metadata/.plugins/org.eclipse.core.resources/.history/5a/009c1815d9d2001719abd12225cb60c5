@@ -1,0 +1,32 @@
+package org.mql.gc.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.mql.gc.models.Association;
+
+public class AssociationDaoImp implements AssociationDao {
+
+	private Session session;
+	
+	
+	private void openSession() {
+		Configuration config = new Configuration();
+		SessionFactory sessionFactory = config.configure().buildSessionFactory();
+		session = sessionFactory.openSession();
+	}
+	
+	private void closeSession() {
+		session.close();
+	}
+	
+	public void createAccount(Association association) {
+		openSession();
+		session.beginTransaction();
+		session.save(user);
+		System.out.println("Save");
+		session.getTransaction().commit();
+		closeSession();
+	}
+	
+}
