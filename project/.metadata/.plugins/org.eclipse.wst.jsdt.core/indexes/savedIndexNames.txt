@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+C:\Users\Hicham\Documents\GitHub\crowdfunding\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2280254874.index
-133926418.index
-3706773254.index
-15843371.index
-1513886410.index
-1505198557.index

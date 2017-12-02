@@ -1,5 +1,0 @@
-package org.mql.gc.services;
-
-public interface CaseService {
-	public void save();
-}
