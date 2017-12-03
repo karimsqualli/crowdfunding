@@ -1,0 +1,21 @@
+	  int    id;
+	  int    idAssociation;  //pour déterminer la relation avec une association
+	  String titre;          //exemple: aidons les enfants de Fès
+	  String slogan;         //(facultatif)exemple : aidez nous pour que allah soit à votre aide (s'affiche sur l'image du cas)
+	  String categorie;      //type du cas 
+	  String autreCategorie;
+	  String ville;
+	  int    duree;         //on va l'exprimer avec le nombre de jours
+	  double cout;          //coût du cas(en DH) 
+	  String description;
+	  String numCompteBank; //ceci doit etre une cas à cocher (afficher num compte banquaire) car il a deja été saisi dans la création de l'association
+	  Part   pdf1;		//provisoire    	
+	  String fileContent1;  //on va stocker juste le chemin du fichier quel qui l'en soit(img, vid, pdf)
+	  Part   pdf2;
+	  String fileContent2;
+	  Part   pdf3;
+	  String fileContent3;
+	  Part   img;
+	  String fileContentI;
+	  Part   video;
+	  String fileContentV;
