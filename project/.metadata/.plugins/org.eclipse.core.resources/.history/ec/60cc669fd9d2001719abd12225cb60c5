@@ -1,0 +1,11 @@
+package org.mql.gc.services;
+
+import org.mql.gc.models.Association;
+
+public class AssociationServiceImp implements AssociationService {
+
+	public void create(Association association) {
+		
+	}
+	
+}

@@ -1,0 +1,5 @@
+package org.mql.gc.services;
+
+public class AssociationServiceImp implements AssociationService {
+
+}
