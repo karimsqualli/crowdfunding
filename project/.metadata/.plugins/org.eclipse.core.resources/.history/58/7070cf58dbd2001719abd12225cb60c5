@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15117223845130" configfile="/CrowdfundingHumanitaire/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" id="pf15117224816471" referenceLink="//@navigationRule.0/@fromViewId|"/>
-</pageflow:Pageflow>
