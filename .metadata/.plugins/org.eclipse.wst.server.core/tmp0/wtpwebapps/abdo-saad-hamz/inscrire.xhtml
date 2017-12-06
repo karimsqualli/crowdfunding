@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+    	<meta charset="UTF-8"/>
+        <title>Insérer le titre ici</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        	<h:outputLabel for="id">ID</h:outputLabel>
+        	<h:inputText id="id" value="#{inscrireUserBean.utilisateur.id}"/>
+        	<br/>
+        	<h:outputLabel for="email">Email</h:outputLabel>
+        	<h:inputText id="email" value="#{inscrireUserBean.utilisateur.email}"/>
+        	<br/>
+        	<h:outputLabel for="password">Mot de pass</h:outputLabel>
+        	<h:inputSecret id="password" value="#{inscrireUserBean.utilisateur.password}"/>
+        	<br/>
+        	<h:outputLabel for="confirmationPassword">Confirmation de mot de pass</h:outputLabel>
+        	<h:inputSecret id="confirmationPassword" value="#{inscrireUserBean.utilisateur.password}"/>
+        	<br/>
+        	<h:commandButton value="Inscription" action="#{inscrireUserBean.inscrire}" /> 
+        </h:form>
+    </h:body>
+</html>

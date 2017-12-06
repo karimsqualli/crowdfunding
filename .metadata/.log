@@ -203,3 +203,58 @@ java.lang.IllegalArgumentException: Version 8.0 of project facet jst.appclient d
 !MESSAGE Save operation warnings.
 !SUBENTRY 1 org.eclipse.core.resources 2 234 2017-12-06 17:36:26.228
 !MESSAGE The project description file (.project) for 'RemoteSystemsTempFiles(1)' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-12-06 17:50:26.779
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-12-06 17:50:26.798
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2017-12-06 17:50:35.820
+!MESSAGE Connection to http://download.oracle.com/otn_software/oepe/oxygen/site.xml failed on Ceci est habituellement une erreur temporaire qui se produit durant la rÃ©solution du nom dâ€™hÃ´te et qui signifie que le serveur local nâ€™a pas reÃ§u de rÃ©ponse dâ€™un serveur faisant autoritÃ© (download.oracle.com). Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: Ceci est habituellement une erreur temporaire qui se produit durant la rÃ©solution du nom dâ€™hÃ´te et qui signifie que le serveur local nâ€™a pas reÃ§u de rÃ©ponse dâ€™un serveur faisant autoritÃ© (download.oracle.com)
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(Unknown Source)
+	at java.net.InetAddress.getAddressesFromNameService(Unknown Source)
+	at java.net.InetAddress.getAllByName0(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at java.net.InetAddress.getAllByName(Unknown Source)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:262)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:161)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:612)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:447)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:884)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1084)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.access$0(HttpClientRetrieveFileTransfer.java:1075)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer$1.performFileTransfer(HttpClientRetrieveFileTransfer.java:1071)
+	at org.eclipse.ecf.filetransfer.FileTransferJob.run(FileTransferJob.java:74)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-12-06 17:50:39.297
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-12-06 17:50:39.325
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-12-06 17:51:26.394
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-12-06 17:51:26.394
+!MESSAGE Multiple Contexts have a path of "/Crowdf".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-12-06 17:51:35.717
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-12-06 17:51:35.717
+!MESSAGE Multiple Contexts have a path of "/Crowdf".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2017-12-06 17:54:28.380
+!MESSAGE Could not publish server configuration for Tomcat v9.0 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2017-12-06 17:54:28.380
+!MESSAGE Multiple Contexts have a path of "/Crowdf".
+
+!ENTRY org.eclipse.wst.server.discovery 1 0 2017-12-06 17:55:25.514
+!MESSAGE already installed: org.eclipse.jst.server.generic.jonas4
