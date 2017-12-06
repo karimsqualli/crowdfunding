@@ -9,13 +9,13 @@
 	  double cout;          //coût du cas(en DH) 
 	  String description;
 	  String numCompteBank; //ceci doit etre une cas à cocher (afficher num compte banquaire) car il a deja été saisi dans la création de l'association
-	  Part   pdf1;		//provisoire    	
+	  UploadedFile  pdf1;		//provisoire    	
 	  String fileContent1;  //on va stocker juste le chemin du fichier quel qui l'en soit(img, vid, pdf)
-	  Part   pdf2;
+	  UploadedFile  pdf2;
 	  String fileContent2;
-	  Part   pdf3;
+	  UploadedFile  pdf3;
 	  String fileContent3;
-	  Part   img;
+	  UploadedFile  img;
 	  String fileContentI;
-	  Part   video;
+	  UploadedFile  video;
 	  String fileContentV;
