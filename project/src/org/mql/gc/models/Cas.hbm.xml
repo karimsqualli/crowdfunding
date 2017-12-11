@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<class name="org.mql.gc.models.Cas" table="cas">
+		
+		<id name="id" column="id" type="int">
+		<generator class="increment"/>
+		</id>
+		
+		<property name="idAssociation" column="idAssociation" type="int"/>
+		<property name="titre" column="titre" type="string"/>
+		<property name="slogan" column="slogan" type="string"/>
+		<property name="ville" column="ville"/>
+		<property name="categorie" column="categorie" type="string"/>
+		<property name="autreCategorie" column="autrecategorie" type="string"/>
+		<property name="duree" column="duree" type="int"/>
+		<property name="cout" column="cout" type="double"/>
+		<property name="description" column="description" type="string"/>
+		<property name="numCompteBank" column="numcomptebank" type="string"/>
+		<property name="fileContent1" column="filecontent1" type="string"/>
+		<property name="fileContent2" column="filecontent2" type="string"/>
+		<property name="fileContent3" column="filecontent3" type="string"/>
+		<property name="fileContentI" column="filecontentI" type="string"/>
+		<property name="fileContentV" column="filecontentV" type="string"/> 
+	</class>
+</hibernate-mapping>

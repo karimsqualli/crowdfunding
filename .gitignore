@@ -1,5 +1,5 @@
-/.metadata/
-<<<<<<< HEAD
-/.recommenders/
-=======
->>>>>>> b15a1ddaf47e3e0b3fe9a20cbe1e6731b4713c94
+.metadata/
+
+.settings/
+.recommenders/
+RemoteSystemsTempFiles/

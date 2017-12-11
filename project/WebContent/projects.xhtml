@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ins�rer le titre ici</title>
+    </h:head>
+    <h:body>
+    
+  <p:dataGrid var="car" value="#{ShowCase.cas.titre}" columns="3" layout="grid"
+                rows="12" paginator="true" style="margin-top:20px">
+ 
+        <f:facet name="header">
+            Tous les projets
+        </f:facet>
+ 
+        <p:panel header="#{ShowCase.cas.slogan}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <p:graphicImage value="#{ShowCase.cas.img}"/> 
+ 
+                <h:outputText value="#{ShowCase.cas.duree} - #{ShowCase.cas.cout}" />
+            </h:panelGrid>
+        </p:panel>
+
+    </p:dataGrid>
+  
+    </h:body>
+</html>
