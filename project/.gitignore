@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+/build/
+/.metadata/
+=======
+build/
+.metadata/
+.settings/
+>>>>>>> d20213200e34019111bc96870b129fecb2b66fc7
