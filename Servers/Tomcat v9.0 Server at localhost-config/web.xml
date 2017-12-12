@@ -43,6 +43,14 @@
   <!--   fileEncoding        Encoding to be used to read static resources   -->
   <!--                       [platform default]                             -->
   <!--                                                                      -->
+<<<<<<< HEAD
+=======
+  <!--   useBomIfPresent     If a static file contains a byte order mark    -->
+  <!--                       (BOM), should this be used to determine the    -->
+  <!--                       file encoding in preference to fileEncoding.   -->
+  <!--                       [true]                                         -->
+  <!--                                                                      -->
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
   <!--   input               Input buffer size (in bytes) when reading      -->
   <!--                       resources to be served.  [2048]                -->
   <!--                                                                      -->
@@ -227,8 +235,19 @@
   <!--   suppressSmap        Should the generation of SMAP info for JSR45   -->
   <!--                       debugging be suppressed?  [false]              -->
   <!--                                                                      -->
+<<<<<<< HEAD
   <!--   trimSpaces          Should white spaces in template text between   -->
   <!--                       actions or directives be trimmed?  [false]     -->
+=======
+  <!--   trimSpaces          Should template text that consists entirely of -->
+  <!--                       whitespace be removed from the output (true),  -->
+  <!--                       replaced with a single space (single) or left  -->
+  <!--                       unchanged (false)? Note that if a JSP page or  -->
+  <!--                       tag file specifies a trimDirectiveWhitespaces  -->
+  <!--                       value of true, that will take precedence over  -->
+  <!--                       this configuration setting for that page/tag.  -->
+  <!--                       [false]                                        -->
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
   <!--                                                                      -->
   <!--   xpoweredBy          Determines whether X-Powered-By response       -->
   <!--                       header is added by generated servlet.  [false] -->
@@ -330,6 +349,14 @@
   <!--                        If not set, then webAppRootDir is used.       -->
   <!--                        Recommended value: WEB-INF/cgi                -->
   <!--                                                                      -->
+<<<<<<< HEAD
+=======
+  <!--   enableCmdLineArguments                                             -->
+  <!--                        Are command line parameters generated from    -->
+  <!--                        the query string as per section 4.4 of 3875   -->
+  <!--                        RFC? [false]                                  -->
+  <!--                                                                      -->
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
   <!--   executable           Name of the executable used to run the        -->
   <!--                        script. [perl]                                -->
   <!--                                                                      -->
@@ -342,6 +369,18 @@
   <!--                        [ACCEPT[-0-9A-Z]*|CACHE-CONTROL|COOKIE|HOST|  -->
   <!--                         IF-[-0-9A-Z]*|REFERER|USER-AGENT]            -->
   <!--                                                                      -->
+<<<<<<< HEAD
+=======
+  <!--  environment-variable- An environment to be set for the execution    -->
+  <!--                        environment of the CGI script. The name of    -->
+  <!--                        variable is taken from the parameter name.    -->
+  <!--                        To configure an environment variable named    -->
+  <!--                        FOO, configure a parameter named              -->
+  <!--                        environment-variable-FOO. The parameter value -->
+  <!--                        is used as the environment variable value.    -->
+  <!--                        The default is no environment variables.      -->
+  <!--                                                                      -->
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
   <!--   parameterEncoding    Name of parameter encoding to be used with    -->
   <!--                        CGI servlet.                                  -->
   <!--                        [System.getProperty("file.encoding","UTF-8")] -->
@@ -4305,6 +4344,13 @@
         <mime-type>application/x-font-woff</mime-type>
     </mime-mapping>
     <mime-mapping>
+<<<<<<< HEAD
+=======
+        <extension>woff2</extension>
+        <mime-type>font/woff2</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
         <extension>wpd</extension>
         <mime-type>application/vnd.wordperfect</mime-type>
     </mime-mapping>

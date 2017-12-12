@@ -13,24 +13,9 @@ public class Association {
 	private String website;
 	private String fixe; 
 	private String gsm ; 
+
+
 	public Association() {
-		super();
-	}
-
-	
-
-	public Association(Long id, String email, String description, String name, String password, Integer pattente,
-			String activityArea, String lowForm, String website) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.description = description;
-		this.name = name;
-		this.password = password;
-		this.pattente = pattente;
-		this.activityArea = activityArea;
-		LowForm = lowForm;
-		this.website = website;
 	}
 
 

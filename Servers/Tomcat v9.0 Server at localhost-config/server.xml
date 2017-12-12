@@ -17,7 +17,11 @@
 --><!-- Note:  A "Server" is not itself a "Container", so you may not
      define subcomponents such as "Valves" at this level.
      Documentation at /docs/config/server.html
+<<<<<<< HEAD
  --><Server port="8003" shutdown="SHUTDOWN">
+=======
+ --><Server port="8004" shutdown="SHUTDOWN">
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -60,7 +64,11 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
+<<<<<<< HEAD
     <Connector connectionTimeout="20000" port="8089" protocol="HTTP/1.1" redirectPort="8443"/>
+=======
+    <Connector connectionTimeout="20000" port="8083" protocol="HTTP/1.1" redirectPort="8443"/>
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -69,8 +77,17 @@
                redirectPort="8443" />
     -->
     <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443
+<<<<<<< HEAD
          This connector uses the NIO implementation with the JSSE engine. When
          using the JSSE engine, the JSSE configuration attributes must be used.
+=======
+         This connector uses the NIO implementation. The default
+         SSLImplementation will depend on the presence of the APR/native
+         library and the useOpenSSL attribute of the
+         AprLifecycleListener.
+         Either JSSE or OpenSSL style configuration may be used regardless of
+         the SSLImplementation selected. JSSE style configuration is used below.
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
     -->
     <!--
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
@@ -82,9 +99,16 @@
     </Connector>
     -->
     <!-- Define a SSL/TLS HTTP/1.1 Connector on port 8443 with HTTP/2
+<<<<<<< HEAD
          This connector uses the APR/native implementation. When using the
          APR/native implementation or the OpenSSL engine with NIO or NIO2 then
          the OpenSSL configuration attributes must be used.
+=======
+         This connector uses the APR/native implementation which always uses
+         OpenSSL for TLS.
+         Either JSSE or OpenSSL style configuration may be used. OpenSSL style
+         configuration is used below.
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
     -->
     <!--
     <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
@@ -100,7 +124,11 @@
     -->
 
     <!-- Define an AJP 1.3 Connector on port 8009 -->
+<<<<<<< HEAD
     <Connector port="8007" protocol="AJP/1.3" redirectPort="8443"/>
+=======
+    <Connector port="8003" protocol="AJP/1.3" redirectPort="8443"/>
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
 
 
     <!-- An Engine represents the entry point (within Catalina) that processes
@@ -144,7 +172,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
+<<<<<<< HEAD
       <Context docBase="project" path="/project" reloadable="true" source="org.eclipse.jst.jee.server:project"/></Host>
+=======
+      <Context docBase="project" path="/Crowdf" reloadable="true" source="org.eclipse.jst.jee.server:project"/></Host>
+>>>>>>> ab1b56e8925df75bc2945c2e1dfaeae9ae49fd14
     </Engine>
   </Service>
 </Server>

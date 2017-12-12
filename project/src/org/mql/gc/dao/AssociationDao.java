@@ -11,4 +11,5 @@ public interface AssociationDao {
 	public List<Association> findAll() ;
 	public Association findById(Long id) ;
 	public Association findByName(String name);
+	public boolean loginAssociation(String email,String password);
 }
