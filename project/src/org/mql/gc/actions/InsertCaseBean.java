@@ -8,10 +8,9 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 import org.mql.gc.models.Cas;
 import org.mql.gc.models.City;
-import org.mql.gc.services.CaseDaoService;
+import org.mql.gc.services.ServiceImpl;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
 
@@ -19,11 +18,11 @@ import org.primefaces.event.FlowEvent;
 public class InsertCaseBean implements Serializable{
 	private Cas cas;
 
-	private CaseDaoService casDaoService;
+	private ServiceImpl casDaoService;
 
 	public InsertCaseBean() {
 		cas = new Cas();
-		casDaoService = new CaseDaoService();
+		casDaoService = new ServiceImpl();
 	}
 
 	public void insertCase() {

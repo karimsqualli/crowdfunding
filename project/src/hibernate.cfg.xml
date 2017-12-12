@@ -18,6 +18,5 @@
  
  		<mapping resource="org/mql/gc/models/Association.hbm.xml"/>
         <mapping resource="org/mql/gc/models/Cas.hbm.xml" />
-        <mapping resource="org/mql/gc/models/User.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

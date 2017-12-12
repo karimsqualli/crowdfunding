@@ -65,4 +65,22 @@ public class AssociationDaoImpl extends BaseDAO implements AssociationDao {
 		return ass;
 	}
 
-}
+	@Override
+	public boolean loginAssociation(String email, String password) {
+		super.openSession();
+		Query query = super.session.createQuery("from Association where email=email and password=password");
+		List list = query.list();
+		super.closeSession();
+
+
+		if (list.size() > 0) {
+			return true;
+		} else {
+
+			return false;
+
+		}
+
+	}
+	}
+
