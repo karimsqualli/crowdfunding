@@ -1,6 +1,1 @@
-.metadata/
-
-.settings/
-.recommenders/
-RemoteSystemsTempFiles/
-.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log
+build/
