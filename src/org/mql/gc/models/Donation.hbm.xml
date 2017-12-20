@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<class name="org.mql.gc.models.Donation" table="donation">
+		<id name="id" column="id" type="int">
+		<generator class="increment"/>
+		</id>
+		<property name="idCas" column="idCas" type="int"/>
+		<property name="idUser" column="idUser" type="int"/>
+		<property name="cout" column="cout" type="java.lang.Double"/>
+		<property name="numCb" column="numCb" type="string"/>
+		<property name="dateExpiration" column="dateExpiration" type="java.util.Date"/>
+		<property name="ccv" column="ccv" type="string"/>
+		<property name="dateAjout" column="dateAjout" type="java.sql.Timestamp"/>
+	</class>
+</hibernate-mapping>
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+<h:head>
+	<title>Crowdfunding</title>
+</h:head>
+<h:body>
+
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
+	<p:commandLink value="deconnecter" action="#{DonBean.logout}" style="float:left" ></p:commandLink>
+    
+    <div id="connexion">
+		<ui:insert name="connexion">
+			<ui:include src="donateur.xhtml" />
+		</ui:insert>
+	</div>
+	
+	<br />
+<h:form>
+	
+    <p:growl id="msgs" showDetail="true" />
+    <p:panel id="basic"  header="#{DetailCase.cas.titre}" footer="#{DetailCase.cas.description}" style="margin-bottom:20px">
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:graphicImage value="#{DetailCase.cas.fileContentI}" width="500px"	height="400px" />
+             <p:button value="Participer" outcome="donation.xhtml" >
+             <f:param name="id" value="#{DetailCase.cas.id}"/>
+             </p:button> 
+	             
+             <h:outputText  value="#{DetailCase.cas.ville}" />
+             <h:outputText  value="#{DetailCase.cas.duree}" />
+             <h:outputText  value="#{DetailCase.cas.cout}" />
+             <h:outputText  value="#{DetailCase.cas.categorie}" />
+             <h:outputText  value="#{DetailCase.cas.autreCategorie}" />
+             <h:outputText  value="#{DetailCase.cas.date_ajout}" />
+             <h:outputText  value="#{DetailCase.cas.slogan}" />
+        </h:panelGrid>
+    </p:panel>
+    <h:outputText  value="telecharger document :" />
+    
+    <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+    <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+</p:dialog>
+
+      <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+        <p:fileDownload value="#{DetailCase.pdf1}" />
+    </p:commandButton>
+ </h:form>
+ 
+<script type="text/javascript">
+function start() {
+    PF('statusDialog').show();
+}
+function stop() {
+    PF('statusDialog').hide();
+}
+</script>
+
+</h:body>
+</html>

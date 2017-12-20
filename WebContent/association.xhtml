@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+	<meta charset="UTF-8" />
+<title>inscription association</title>
+</h:head>
+<h:body bgcolor="black">
+
+<div id="header">
+	<ui:insert name="header">
+		<ui:include src="header.xhtml" />
+	</ui:insert>
+</div>
+
+<h:form>
+	
+	
+	<p:panelGrid columns="2">
+	
+		<f:facet name="header">
+				Inscription de l'association
+		</f:facet>
+			
+			<h:outputLabel for="email" value="Email : "/> 
+			<p:panelGrid>
+				<p:inputText id="email" value="#{AssBean.asso.email}" requiredMessage="email obligatoire" required="true" validatorMessage="email non valide">
+				<f:validator validatorId="org.mql.gc.actions.validators.EmailValidator"/>
+				</p:inputText>
+				<p:message for="email" style="color:white;" />
+			</p:panelGrid>
+			
+			<h:outputLabel for="password" value="Mot de passe : "/>
+			<p:panelGrid>
+				<p:password id="password" binding="#{passwordComponent}" value="#{AssBean.asso.password}" requiredMessage="password  obligatoire" required="true" validatorMessage="mot de passe non valide">
+				<f:validator validatorId="org.mql.gc.actions.validators.PasswordValidator"/>
+				</p:password>
+				<p:message style="color:white;" for="password"/>
+			</p:panelGrid>
+			
+			<h:outputLabel for="confirmPassword" value="Confirmer votre mot de passe : "/>
+			<p:panelGrid>
+				<p:password id="confirmPassword"  required="true" requiredMessage="veuillez verifier votre mot de passe ">
+				    <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
+				    <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+				</p:password>
+				<p:message  style="color:white;"  for="confirmPassword" />
+			</p:panelGrid>
+			
+					
+			<h:outputLabel for="name" value="Nom de l'association : "  />
+			<p:panelGrid>
+				<p:inputText id="name" value="#{AssBean.asso.name}"   maxlength="40" required="true" requiredMessage="nom obligatoire" validatorMessage="nom non valide" >
+					<f:validator validatorId="org.mql.gc.actions.validators.NameValidator"/>
+				</p:inputText>
+				<p:message style="color:white;"  for="name"/>
+			</p:panelGrid>
+			
+			<h:outputLabel for="activity" value="Secteur d'activité "/>
+			<p:panelGrid>
+				<p:selectOneMenu id="activity" value="#{AssBean.asso.activityArea}" required="true" requiredMessage="selectionner votre secteur d'activité">
+					<f:selectItem itemValue="" itemLabel="selctionnez une catégorie" />
+					<f:selectItems value="#{AssBean.sectorActivities}"  var="act" itemLabel="#{act}"  itemValue="#{act}" />
+				</p:selectOneMenu>
+				<p:message style="color:white;"  for="activity"/>
+			</p:panelGrid>
+			
+			<h:outputLabel for="description" value="Description de l'association "/>
+			<p:panelGrid>	
+				<p:inputTextarea id="description" value="#{AssBean.asso.description}" autoResize="true" maxlength="150" required="true" requiredMessage="description obligatoire "/>
+				<p:message style="color:white;"  for="description"/>
+			</p:panelGrid>
+			
+
+			<h:outputLabel for="LowForm" value="Forme juridique"/>
+			<p:panelGrid>
+					<p:selectOneMenu id="LowForm" value="#{AssBean.asso.lowForm}" required="true" requiredMessage="selectionner votre forme juridique">
+						<f:selectItem itemValue="" itemLabel="selectionner forme juridique" />
+						<f:selectItems value="#{AssBean.lowForms}"  var="lwf" itemLabel="#{lwf}"  itemValue="#{lwf}" />
+					</p:selectOneMenu>
+				<p:message style="color:white;"  for="LowForm"/>
+			</p:panelGrid>
+		
+			<h:outputLabel for="pattente" value="Numéro de pattente : "  />
+			<p:panelGrid>	
+				<p:inputText id="pattente" value="#{AssBean.asso.pattente}"  maxlength="40" required="false" validatorMessage="pattente non valide" >
+					<f:validator validatorId="org.mql.gc.actions.validators.PattenteValidator" />
+				</p:inputText>	
+				<p:message  style="color:white;"  for="pattente"/>
+			</p:panelGrid>		
+			
+			<h:outputLabel for="website" value="Site web : "  />
+			<p:panelGrid>	
+				<p:inputText id="website" value="#{AssBean.asso.website}"  maxlength="40" required="false" validatorMessage="site web non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.WebSiteValidator" />
+				</p:inputText>	
+				<p:message  style="color:white;font-size:14px;"  for="website"/>
+			</p:panelGrid>	
+			
+			<h:outputLabel for="fixe" value="Numéro de téléphone fixe : "  />
+			<p:panelGrid>	
+				<p:inputText id="fixe"  value="#{AssBean.asso.fixe}"  maxlength="40" required="false" validatorMessage="fixe non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.PhoneValidator" />				
+				</p:inputText>	
+				<p:message  style="color:white;font-size:14px;"  for="fixe"/>
+			</p:panelGrid>		
+			
+			
+			<h:outputLabel for="gsm" value="Numéro  de téléphone mobile : "  />
+			<p:panelGrid>	
+				<p:inputText requiredMessage="gsm obligatoire" id="gsm"  value="#{AssBean.asso.gsm}"  maxlength="40" required="true" validatorMessage="gsm non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.GSMValidator" />				
+				</p:inputText>	
+				<p:message  style="color:white;font-size:14px;"  for="gsm"  />
+			</p:panelGrid>
+		
+		<f:facet name="footer" >
+			<p:commandButton style="width:100%;" value="s'inscrire" action="#{AssBean.createAss}" process="@form" update="@form"  />
+			<p:messages  globalOnly="true"/>
+		</f:facet>
+	
+	</p:panelGrid>
+
+
+		
+	
+</h:form>
+
+
+</h:body>
+</html>

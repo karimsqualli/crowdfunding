@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Faire Une Donation</title>
+	
+	<script type="text/javascript"
+		src="http://127.0.0.1:8081/static/js/case.js"></script>
+	<link href="http://127.0.0.1:8081/static/css/case.css" type="text/css"
+		rel="stylesheet" />
+</h:head>
+<h:body>
+<f:metadata>
+		<f:viewParam name="id" value="#{DonAction.donation.idCas}">
+		</f:viewParam>
+	</f:metadata>
+
+
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
+
+	<h:form>
+		
+		
+
+		<p:panel id="panel" header="Effectuer un don"
+			style="margin-bottom:10px;">
+			
+
+			<h2>Entrer le montant de votre contribution:</h2>
+			<h:panelGrid columns="10" cellpadding="8" styleClass="ui-grid">
+				<h:outputLabel for="montant" value="Montant (DH) " />
+
+				<p:spinner id="montant" value="#{DonAction.donation.cout}"
+					required="true" requiredMessage="Ce champ est requis" />
+				<p:message for="montant" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:outputLabel for="numCartePaiment"
+					value="Numéro de carte de paiement :" />
+				<p:inputText id="numCartePaiment" placeholder="XXXX XXXX XXXX XXXX"
+					value="#{DonAction.donation.numCb}" required="true"
+					label="Firstname" validatorMessage="Entrez un numero de carte valide" >
+					<f:validateRegex pattern="^[a-zA-Z0-9]{16}+$" />
+				</p:inputText>
+				<p:message for="numCartePaiment" />
+			</h:panelGrid>
+
+
+			<p:outputLabel for="dateExpiration" value="Date d'expiration: " />
+			<p:calendar id="dateExpiration"
+				value="#{DonAction.donation.dateExpiration}" />
+			<p:message for="dateExpiration" />
+
+
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="ccv" value="CCV :" />
+				<p:inputText id="ccv" placeholder="XXX"
+					value="#{DonAction.donation.ccv}" required="true" label="Surname" />
+				<p:message for="ccv" />
+			</h:panelGrid>
+
+
+			<p:commandButton value="Valider" ajax="true" update="panel"
+			action="#{DonAction.createDonnation}" icon="ui-icon-check" validateClient="true"> </p:commandButton>
+
+		</p:panel>
+
+	</h:form>
+</h:body>
+</html>

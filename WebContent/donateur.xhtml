@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>inscription Donateur</title>
+
+	<script type="text/javascript"
+		src="http://127.0.0.1:8081/static/js/case.js"></script>
+	<link href="http://127.0.0.1:8081/static/css/case.css" type="text/css"
+		rel="stylesheet" />
+</h:head>
+<h:body bgcolor="black">
+
+	<h:form>
+		<p:growl id="growl55" sticky="true" showDetail="false" life="3" />
+		<p:dialog header="Login" widgetVar="dlg" resizable="false">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="username" value="Email @ : " />
+				<p:inputText id="username" value="#{DonBean.don.email}"
+					required="true" label="Email"
+					requiredMessage="veuillez saisir votre email !">
+				</p:inputText>
+
+				<h:outputLabel for="password" value="Password:" />
+				<p:password id="password" value="#{DonBean.don.password}"
+					required="true" label="password"
+					requiredMessage="veuillez saisir votre mot de passe !" />
+
+				<f:facet name="footer">
+					<p:commandButton value="Login" update="growl55"
+						action="#{DonBean.validateDonator}"
+						oncomplete="handleLoginRequest(xhr, status, args)" />
+					<p:spacer></p:spacer>
+					<p:commandLink value="vous n'êtes pas inscrit ? "
+						onclick="PF('dlg3').show();PF('dlg').hide();"></p:commandLink>
+				</f:facet>
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
+
+
+
+	<h:form>
+		<p:growl id="growl2" showDetail="false" life="3000" escape="true" />
+		<p:dialog header="Inscription" widgetVar="dlg3" showEffect="explode"
+			hideEffect="Fold">
+			<p:panelGrid columns="2" onHide="PF('dlg').show();">
+				<f:facet name="header">
+					Inscription du donateur 
+			</f:facet>
+
+				<h:outputLabel for="email" value="Email : " />
+				<p:panelGrid>
+					<p:inputText id="email" value="#{DonBean.don.email}"
+						requiredMessage="email obligatoire" required="true"
+						validatorMessage="email non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.EmailValidator" />
+					</p:inputText>
+					<p:message for="email" style="color:white;" />
+				</p:panelGrid>
+
+				<h:outputLabel for="password" value="Mot de passe : " />
+				<p:panelGrid>
+					<p:password id="password" binding="#{passwordComponent}"
+						value="#{DonBean.don.password}"
+						requiredMessage="password  obligatoire" required="true"
+						validatorMessage="mot de passe non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.PasswordValidator" />
+					</p:password>
+					<p:message style="color:white;" for="password" />
+				</p:panelGrid>
+
+				<h:outputLabel for="confirmPassword"
+					value="Confirmer votre mot de passe : " />
+				<p:panelGrid>
+					<p:password id="confirmPassword" required="true"
+						requiredMessage="veuillez verifier votre mot de passe ">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
+						<f:attribute name="passwordComponent" value="#{passwordComponent}" />
+					</p:password>
+					<p:message style="color:white;" for="confirmPassword" />
+				</p:panelGrid>
+
+
+				<h:outputLabel for="nom" value="Nom  : " />
+				<p:panelGrid>
+					<p:inputText id="nom" value="#{DonBean.don.fName}" maxlength="20"
+						required="true" requiredMessage="nom obligatoire"
+						validatorMessage="nom non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.NameValidator" />
+					</p:inputText>
+					<p:message style="color:white;" for="nom" />
+				</p:panelGrid>
+
+				<h:outputLabel for="prenom" value="Prenom  : " />
+				<p:panelGrid>
+					<p:inputText id="prenom" value="#{DonBean.don.lName}"
+						maxlength="20" required="true" requiredMessage="nom obligatoire"
+						validatorMessage="nom non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.NameValidator" />
+					</p:inputText>
+					<p:message style="color:white;" for="prenom" />
+				</p:panelGrid>
+
+				<h:outputLabel for="adresse" value="adresse : " />
+				<p:panelGrid>
+					<p:inputTextarea id="adresse" value="#{DonBean.don.adresse}"
+						autoResize="true" maxlength="150" required="true"
+						requiredMessage="adresse obligatoire " />
+					<p:message style="color:white;" for="adresse" />
+				</p:panelGrid>
+
+				<f:facet name="footer">
+					<p:commandButton style="width:100%;background:green;"
+						value="s'inscrire" actionListener="#{DonBean.createDonator}"
+						update="growl2"
+						oncomplete="handlesigninRequest(xhr, status, args)" />
+					<p:messages globalOnly="true" />
+				</f:facet>
+			</p:panelGrid>
+		</p:dialog>
+	</h:form>
+
+	<script type="text/javascript">
+		function handleLoginRequest(xhr, status, args) {
+			if (args.validationFailed || !args.loggedIn) {
+				PF('dlg').jq.effect("shake", {
+					times : 5
+				}, 100);
+			}
+
+			else {
+				PF('dlg').hide();
+				$('#loginLink').fadeOut();
+			}
+		}
+
+		function handlesigninRequest(xhr, status, args) {
+			if (args.sign_in) {
+				PF('dlg3').hide();
+				PF('dlg').show();
+			}
+		}
+	</script>
+
+</h:body>
+</html>
