@@ -1,14 +1,13 @@
 package org.mql.gc.models;
 
 public class Donnateur {
-	private int id;
+	private Long id;
 	private String email ; 
 	private String fName;
 	private String lName; 
 	private String adresse; 
 	private String ville ;
 	private String password ; 
-	
 	
 	public String getPassword() {
 		return password;
@@ -46,13 +45,13 @@ public class Donnateur {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
-	} 
-	
+	}
+
 	
 	
 }
