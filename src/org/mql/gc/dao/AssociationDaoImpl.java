@@ -9,74 +9,73 @@ public class AssociationDaoImpl  implements AssociationDao {
 	private BaseDAO dao;
 	
 	public AssociationDaoImpl() {
-		dao=new BaseDAO();
+		dao = BaseDAO.getInstance();
 	}
 	
 	public void add(Association a) {
-		System.out.println("appelle de dao");
-		
-		dao.openSession();
-		dao.getSession().save(a);
-		dao.closeSession();
+		Session session = dao.getSession();
+		session.save(a);
+		dao.closeSession(session);
 	}
 
 
 	public Association edite(Association e) {
-		dao.openSession();
-		Association p=(Association)dao.getSession().merge(e);
-		dao.closeSession();
+		Session session = dao.getSession();
+		Association p = (Association)session.merge(e);
+		dao.closeSession(session);
 		return p;
 	}
 
 	public void delete(Long id) {
-		Association Association=this.findById(id);
-		dao.openSession();
-		dao.getSession().delete(Association);
-		dao.closeSession();
+		Association Association = this.findById(id);
+		
+		Session session = dao.getSession();
+		session.delete(Association);
+		
+		dao.closeSession(session);
 	}
 
 
 	public List<Association> findAll() {
-		System.out.println("recuperation de la liste des associations ");
-		dao.openSession();
-		Query query = dao.getSession().createQuery("from Association");
+		Session session = dao.getSession();
+		
+		Query query = session.createQuery("from Association");
 		List liste = query.list() ; 
-		dao.closeSession();
+		dao.closeSession(session);
+		
 		return liste;
 	}
 
 	
 	public Association findById(Long id) {
-		dao.openSession();
-		Association p=(Association)dao.getSession().get(Association.class, id);
-		dao.closeSession();
+		Session session = dao.getSession();
+		Association p=(Association)session.get(Association.class, id);
+		dao.closeSession(session);
 		return p;
 	}
 	
 	public Association findByEmail(String email) {
-		System.out.println("find by name function ");
-		dao.openSession();
+		Session session = dao.getSession();
 		
 		String hql = "FROM Association E WHERE E.email = :email";
-		Query<Association> query = dao.getSession().createQuery(hql);
+		Query<Association> query = session.createQuery(hql);
 		query.setParameter("email", email);
 		Association ass = (Association)query.uniqueResult();
 
-		dao.closeSession();
+		dao.closeSession(session);
 		
 		return ass;
 	}
 	
 	public Association findByName(String name) {
-		System.out.println("find by name function ");
-		dao.openSession();
+		Session session = dao.getSession();
 		
 		String hql = "FROM Association E WHERE E.name = :name";
-		Query<Association> query = (Query<Association>) dao.getSession().createQuery(hql);
+		Query<Association> query = (Query<Association>) session.createQuery(hql);
 		query.setParameter("name", name);
 		Association ass = (Association)query.uniqueResult();
 
-		dao.closeSession();
+		dao.closeSession(session);
 		
 		return ass;
 	}
@@ -84,23 +83,21 @@ public class AssociationDaoImpl  implements AssociationDao {
 	
 	public boolean loginAssociation(String em, String password) {
 
-		dao.openSession();	
+		Session session = dao.getSession();
+		
 		String s = "from Association where email='" + em + "' and password='" + password + "'";
-		System.out.println(s);
-		Query query = dao.getSession().createQuery(s);
+		Query query = session.createQuery(s);
 		List list = query.list();
-		System.out.println(list.size());
-		dao.closeSession();
+		
+		dao.closeSession(session);
 
 
 		if (list.size() > 0) {
-			System.out.println("true");
 			return true;
 		} else {
-			System.out.println("false");
 			return false;
 		}
 
 	}
-	}
+}
 

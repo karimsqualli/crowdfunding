@@ -3,6 +3,7 @@ package org.mql.gc.dao;
 import java.util.List;
 
 import org.hibernate.query.Query;
+import org.hibernate.Session;
 import org.hibernate.annotations.NamedQuery;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.Donation;
@@ -12,139 +13,133 @@ public class DonateurDaoImpl implements DonateurDao {
 	private BaseDAO dao;
 
 	public DonateurDaoImpl() {
-		dao = new BaseDAO();
+		dao = dao.getInstance();
 	}
 
 	public void add(Donnateur a) {
-		System.out.println("appelle de dao");
-		dao.openSession();
-		dao.getSession().beginTransaction();
-		dao.getSession().save(a);
-		dao.getSession().getTransaction().commit();
-		dao.closeSession();
+		Session session = dao.getSession();
+		session.beginTransaction();
+		session.save(a);
+		session.getTransaction().commit();
+		dao.closeSession(session);
 	}
 
 	public Donnateur edite(Donnateur e) {
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
-		Donnateur p = (Donnateur) dao.getSession().merge(e);
-		dao.getSession().getTransaction().commit();
+		Donnateur p = (Donnateur) session.merge(e);
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 		return p;
 	}
 
 	public void delete(Long id) {
 		Donnateur Donnateur = this.findById(id);
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
-		dao.getSession().delete(Donnateur);
-		dao.getSession().getTransaction().commit();
+		session.delete(Donnateur);
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 	}
 
 	public List<Donnateur> findAll() {
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
-		List liste = dao.getSession().createQuery("from Donnateur").list();
-		dao.getSession().getTransaction().commit();
+		List liste = session.createQuery("from Donnateur").list();
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 		return liste;
 	}
 
 	public Donnateur findById(Long id) {
-		dao.openSession();
-		dao.getSession().beginTransaction();
-		Donnateur p = (Donnateur) dao.getSession().get(Donnateur.class, id);
-		dao.getSession().getTransaction().commit();
-		dao.closeSession();
+		Session session = dao.getSession();
+		session.beginTransaction();
+		Donnateur p = (Donnateur) session.get(Donnateur.class, id);
+		session.getTransaction().commit();
+		dao.closeSession(session);
 		return p;
 	}
 
 	@SuppressWarnings("unchecked")
 	public Donnateur findByName(String name) {
 		System.out.println("find by name function ");
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
 		String hql = "FROM Donnateur E WHERE E.name = :name";
-		Query<Donnateur> query = (Query<Donnateur>) dao.getSession().createQuery(hql);
+		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
 		query.setParameter("name", name);
 		Donnateur ass = (Donnateur) query.uniqueResult();
-		dao.getSession().getTransaction().commit();
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 
 		return ass;
 	}
 
 	@SuppressWarnings("unchecked")
 	public Donnateur loginDonator(String email, String password) {
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
-		System.out.println("email => " + email + "passsword => " + password);
 		String hql = "FROM Donnateur E WHERE E.email = :email and E.password = :password";
-		Query<Donnateur> query = (Query<Donnateur>) dao.getSession().createQuery(hql);
+		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
 		query.setParameter("email", email);
 		query.setParameter("password", password);
 
 		Donnateur don = (Donnateur) query.uniqueResult();
-		dao.getSession().getTransaction().commit();
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 
 		return don;
 	}
 
 	@SuppressWarnings("unchecked")
 	public Donnateur findByEmail(String email) {
-		System.out.println("find by email function ");
-		System.out.println(email);
-
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
 		String hql = "FROM Donnateur E WHERE E.email = :email";
-		Query<Donnateur> query = (Query<Donnateur>) dao.getSession().createQuery(hql);
+		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
 		query.setParameter("email", email);
 
 		Donnateur don = (Donnateur) query.uniqueResult();
-		dao.getSession().getTransaction().commit();
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 
 		return don;
 	}
 
 	@SuppressWarnings("unchecked")
 	public Donnateur findByPassword(String password) {
-		System.out.println("find by name function ");
-		dao.openSession();
-		dao.getSession().beginTransaction();
+		Session session = dao.getSession();
+		session.beginTransaction();
 
 		String hql = "FROM Donnateur E WHERE E.password = :password";
-		Query<Donnateur> query = (Query<Donnateur>) dao.getSession().createQuery(hql);
+		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
 
 		Donnateur don = (Donnateur) query.uniqueResult();
-		dao.getSession().getTransaction().commit();
+		session.getTransaction().commit();
 
-		dao.closeSession();
+		dao.closeSession(session);
 
 		return don;
 	}
 	
 	public void saveDonn(Donation donn) {
-		dao.openSession();
-		dao.getSession().beginTransaction();
-		dao.getSession().save(donn);
-		dao.getSession().getTransaction().commit();
-		dao.closeSession();
+		Session session = dao.getSession();
+		session.beginTransaction();
+		session.save(donn);
+		session.getTransaction().commit();
+		dao.closeSession(session);
 	}
 
 }

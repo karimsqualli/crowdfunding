@@ -3,6 +3,8 @@ package org.mql.gc.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.mql.gc.models.Cas;
 
@@ -10,34 +12,28 @@ public class CaseDaoImpl implements CaseDao {
 	private BaseDAO dao;
 
 	public CaseDaoImpl() {
-		dao = new BaseDAO();
+		dao = BaseDAO.getInstance();
 	}
-	// ha dao li mat2akad mna shiha 100% okay
 
 	@Override
 	public void insererCas(Cas cas) {
-		System.out.println(cas);
-		System.out.println("DAO AVANT OUVERTURE SESSION");
-		dao.openSession();// session tathal
-		System.out.println("Open");
-		dao.getSession().beginTransaction();// transaction
-		dao.getSession().save(cas);// ha lmohim
-		System.out.println("Save");
-		dao.getSession().getTransaction().commit();// ha l commit
-		System.out.println("APRES transaction");
-		dao.closeSession();// hanta bash t2akad ila hadashi khadam
+		
+		Session session = dao.getSession();
+		session.beginTransaction();
+		session.save(cas);
+		session.getTransaction().commit();
+		dao.closeSession(session);
 	}
 
 	@Override
 	public List<Cas> afficherListcas() {
-		// Cas cas= new Cas();
+
 		List<Cas> liste = new ArrayList<Cas>();
 		try {
-			System.out.println("dao afficher liste de cas");
-			dao.openSession();
-			Query query = dao.getSession().createQuery("from Cas");
+			Session session = dao.getSession();
+			Query query = session.createQuery("from Cas");
 			liste = query.list();
-			dao.closeSession();
+			dao.closeSession(session);
 
 		} catch (Exception e) {
 			System.out.println("ne recupere pas les cas::" + e.getMessage());
@@ -47,13 +43,9 @@ public class CaseDaoImpl implements CaseDao {
 	
 	
 	public List<Cas> afficherListcas(String nom, String category) {
-		// Cas cas= new Cas();
 		List<Cas> liste = new ArrayList<Cas>();
 		try {
-			System.out.println("dao afficher liste de cas");
-			dao.openSession();
-			// dao.getSession().beginTransaction();
-			
+			Session session = dao.getSession();
 			
 			// building query
 			String squery = "from Cas C";
@@ -71,34 +63,33 @@ public class CaseDaoImpl implements CaseDao {
 				}
 				
 			}
-			System.out.println("test case dao");
-			System.out.println(squery);
 
-			Query query = dao.getSession().createQuery(squery);
+			Query query = session.createQuery(squery);
 			liste = query.list();
-			// dao.getSession().getTransaction().commit();
-			dao.closeSession();
+			// session.getTransaction().commit();
+			dao.closeSession(session);
 
 		} catch (Exception e) {
 			System.out.println("ne recupere pas les cas::" + e.getMessage());
 		}
+		
 		return liste;
 
 	}
 	
 	public double calc(int id) {
-		dao.openSession();
-		dao.getSession().beginTransaction();
-		//Cas cas = session.load(Cas.class, id);
+		Session session = dao.getSession();
+		
+		session.beginTransaction();
 		String s = "select sum(cout) from Donation where idCas='" + id +"'";
-		Double res = (Double)dao.getSession().createQuery(s).uniqueResult();
-		System.out.println("rs :"+res);
-		//session.refresh(cas);
-		dao.getSession().getTransaction().commit();
-		dao.closeSession();
+		Double res = (Double)session.createQuery(s).uniqueResult();
+		session.getTransaction().commit();
+		dao.closeSession(session);
+		
 		if(res==null) {
-				res=(double) 0;
-				}
+			res=(double) 0;
+		}
+		
 		return res;
 	}
 	

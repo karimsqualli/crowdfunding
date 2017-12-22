@@ -1,3 +1,7 @@
+/*
+ * Modifie Par Karim le 22/11/17
+ */
+
 package org.mql.gc.dao;
 
 import java.io.File;
@@ -7,29 +11,40 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.identity.SybaseAnywhereIdentityColumnSupport;
 
+
+/*
+ * 
+ * Cette classe est la classe de base pour acceder a la base de donner
+ * Cette classe utilise le pattern singleton [ https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)] ]
+ * pour initializer une seule fois la `session_factory` qui est un objet lours et prend beacoup de temp a cree
+ * 
+ * 
+ * -- Utilisation --
+ * 
+ * `BaseDao.getInstance()` au lieu de new `New BaseDao()`
+ * 
+ * `Session s = dao.getSession()` pour recuperer une nouvelle session
+ * `closeSession(s)` pour fermer la session 
+ */
 public class BaseDAO {
-	protected Session session;
-	public BaseDAO() {
-	}
-
-	public void openSession() {
-		System.out.println("OPENNING SESSION");
+	private static BaseDAO INSTANCE = new BaseDAO();
+	private SessionFactory session_factory;
+	
+	private BaseDAO() {
 		Configuration config = new Configuration();
-		SessionFactory sessionFactory = config.configure().buildSessionFactory();//.configure("config/hibernate.cfg.xml")
-		session = sessionFactory.openSession();// hna tanhal session ahah
+		session_factory = config.configure().buildSessionFactory();
+	}
+	
+	public static BaseDAO getInstance() {
+		return INSTANCE;
+	}
+	
+	public Session getSession() {
+		return session_factory.openSession();
 	}
 
-	public void closeSession() {
+	public void closeSession(Session session) {
 		session.close();
 	}
-
-	public Session getSession() {
-		return session;
-	}
-
-	public void setSession(Session session) {
-		this.session = session;
-	}
-
 	
 }
