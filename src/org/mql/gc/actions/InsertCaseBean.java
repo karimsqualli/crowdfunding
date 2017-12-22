@@ -23,11 +23,11 @@ import org.primefaces.event.FlowEvent;
 //@ManagedBean
 public class InsertCaseBean implements Serializable{
 	private Cas cas;
-	private Service casDaoService;
+	private Service service;
 
 	public InsertCaseBean() {
 		cas = new Cas();
-		casDaoService = new ServiceImpl();
+		service = new ServiceImpl();
 	}
 
 	public String insertCase() {
@@ -36,7 +36,7 @@ public class InsertCaseBean implements Serializable{
 		System.out.println("azzeazeaeazeaezaezaeazea"+ida);
 		cas.setDate_ajout(new Timestamp( System.currentTimeMillis() ));
 		cas.setIdAssociation(ida);
-		casDaoService.create(cas);
+		service.create(cas);
 		return "index?faces-redirect=true";
 	}
 
@@ -59,13 +59,13 @@ public class InsertCaseBean implements Serializable{
 			try {
 				cas.setImg(event.getFile());
 				InputStream inputStream = cas.getImg().getInputstream();
-				casDaoService.savePhoto(inputStream, cas);
+				service.savePhoto(inputStream, cas);
 				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre image ", cas.getImg().getFileName() + "a été enregistrer.");
+				FacesMessage message = new FacesMessage("Votre image ", cas.getImg().getFileName() + "a ï¿½tï¿½ enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
 				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre image n'a pas été enregistrer, veuillez réessayer !");
+				FacesMessage message = new FacesMessage("Votre image n'a pas ï¿½tï¿½ enregistrer, veuillez rï¿½essayer !");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			}
 		}
@@ -75,13 +75,13 @@ public class InsertCaseBean implements Serializable{
 			try {
 				cas.setVideo(event.getFile());
 				InputStream inputStream = cas.getVideo().getInputstream();
-				casDaoService.saveVideo(inputStream, cas);
+				service.saveVideo(inputStream, cas);
 				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre video ", cas.getImg().getFileName() + "a été enregistrer.");
+				FacesMessage message = new FacesMessage("Votre video ", cas.getImg().getFileName() + "a ï¿½tï¿½ enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
 				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre video n'a pas été enregistrer, veuillez réessayer !");
+				FacesMessage message = new FacesMessage("Votre video n'a pas ï¿½tï¿½ enregistrer, veuillez rï¿½essayer !");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			}
 		}
@@ -92,13 +92,13 @@ public class InsertCaseBean implements Serializable{
 				System.out.println("pdf1******************");
 				cas.setPdf1(event.getFile());
 				InputStream inputStream = cas.getPdf1().getInputstream();
-				casDaoService.savePdf1(inputStream, cas);
+				service.savePdf1(inputStream, cas);
 				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf1().getFileName() + "a été enregistrer.");
+				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf1().getFileName() + "a ï¿½tï¿½ enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
 				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre document n'a pas été enregistrer, veuillez réessayer !");
+				FacesMessage message = new FacesMessage("Votre document n'a pas ï¿½tï¿½ enregistrer, veuillez rï¿½essayer !");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			}
 		}
@@ -108,13 +108,13 @@ public class InsertCaseBean implements Serializable{
 			try {
 				cas.setPdf2(event.getFile());
 				InputStream inputStream = cas.getPdf2().getInputstream();
-				casDaoService.savePdf2(inputStream, cas);
+				service.savePdf2(inputStream, cas);
 				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf2().getFileName() + "a été enregistrer.");
+				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf2().getFileName() + "a ï¿½tï¿½ enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
 				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre document n'a pas été enregistrer, veuillez réessayer !");
+				FacesMessage message = new FacesMessage("Votre document n'a pas ï¿½tï¿½ enregistrer, veuillez rï¿½essayer !");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			}
 		}
@@ -124,13 +124,13 @@ public class InsertCaseBean implements Serializable{
 			try {
 				cas.setPdf3(event.getFile());
 				InputStream inputStream = cas.getPdf3().getInputstream();
-				casDaoService.savePdf3(inputStream, cas);
+				service.savePdf3(inputStream, cas);
 				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf3().getFileName() + "a été enregistrer.");
+				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf3().getFileName() + "a ï¿½tï¿½ enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
 				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre document n'a pas été enregistrer, veuillez réessayer !");
+				FacesMessage message = new FacesMessage("Votre document n'a pas ï¿½tï¿½ enregistrer, veuillez rï¿½essayer !");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			}
 		}
