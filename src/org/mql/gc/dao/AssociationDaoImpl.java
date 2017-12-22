@@ -59,7 +59,6 @@ public class AssociationDaoImpl implements AssociationDao {
 			tx = session.beginTransaction();
 		
 			Association association = findById(id);
-			System.out.println(association.getName());
 			session.delete(association);
 			
 			tx.commit();
@@ -75,8 +74,8 @@ public class AssociationDaoImpl implements AssociationDao {
 	public List<Association> findAll() {
 		Session session = dao.getSession();
 
-		Query query = session.createQuery("from Association");
-		List liste = query.list();
+		Query<Association> query = (Query<Association>) session.createQuery("from Association");
+		List<Association> liste = query.list();
 		dao.closeSession(session);
 
 		return liste;

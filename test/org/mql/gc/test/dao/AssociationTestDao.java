@@ -67,6 +67,29 @@ class AssociationTestDao  {
 		assertNull(a);
 	}
 	
+	@Test
+	public void findById() {
+		Association a = new Association();
+		dao.create(a);
+
+		Association b = dao.findById(a.getId());
+		
+		assertEquals(b.getId(), a.getId());
+	}
+	
+	
+	@Test
+	public void findByEmail() {
+		Association a = new Association();
+		a.setEmail("uniqueMail@live.fr");
+		dao.create(a);
+
+		Association b = dao.findByEmail(a.getEmail());
+		
+		assertEquals(b.getId(), a.getId());
+		assertEquals(b.getEmail(), a.getEmail());
+	}
+	
 
 
 }
