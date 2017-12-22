@@ -48,18 +48,17 @@ public class ServiceImpl implements Service {
 //******************************Association************************	
 
 	public void add(Association e) {
-		System.out.println("service");
 						
 		if(nameExist(e.getName()))
 			System.out.println("association existe deja ");
 		else {
-			dao.add(e);
+			dao.create(e);
 			System.out.println("association ajout�e : "+e.getName());
 		}
 	}
 	
 	public Association edite(Association e) {
-		return dao.edite(e);
+		return dao.update(e);
 	}
 
 	public void delete(Long id) {

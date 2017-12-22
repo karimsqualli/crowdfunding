@@ -28,13 +28,12 @@ public class AssociationBean  implements Serializable{
 	}
 	
 	public String createAss() {
-		System.out.println("create account");
 		service.add(asso);
 		HttpSession session = SessionUtils.getSession();
 		session.setAttribute("email", asso.getEmail());
 		Long idAsso=service.findByEmail(asso.getEmail()).getId();
 		session.setAttribute("idAssociation", idAsso);
-		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription réussi"));
+		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription rï¿½ussi"));
 		return "LoadCase";
 	}
 	

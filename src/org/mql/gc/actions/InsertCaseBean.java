@@ -20,7 +20,6 @@ import org.mql.gc.utils.SessionUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
 
-//@ManagedBean
 public class InsertCaseBean implements Serializable{
 	private Cas cas;
 	private Service service;

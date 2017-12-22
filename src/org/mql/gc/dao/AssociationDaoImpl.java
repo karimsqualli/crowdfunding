@@ -12,14 +12,14 @@ public class AssociationDaoImpl  implements AssociationDao {
 		dao = BaseDAO.getInstance();
 	}
 	
-	public void add(Association a) {
+	public void create(Association a) {
 		Session session = dao.getSession();
 		session.save(a);
 		dao.closeSession(session);
 	}
 
 
-	public Association edite(Association e) {
+	public Association update(Association e) {
 		Session session = dao.getSession();
 		Association p = (Association)session.merge(e);
 		dao.closeSession(session);
