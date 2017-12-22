@@ -92,6 +92,17 @@ public class CaseDaoImpl implements CaseDao {
 		
 		return res;
 	}
+
+	//ELMORABET Hicham (sprint 3 -- 22/10/2017)
+	//La liste des cas supportés par un donateur ( donné par son id )
+	public List<Cas> getAllCases(int idDonor) {
+		Session session = dao.getSession();
+		String s = "from Cas as cs where cs.id in (select don.idCas from Donation as don where don.idUser='" + idDonor + "')";
+		Query<Cas> query = session.createQuery(s, Cas.class);
+		List<Cas> list = query.list();
+		dao.closeSession(session);
+		return list;
+	}
 	
 	
 	
