@@ -3,41 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
-	<managed-bean>
-		<managed-bean-name>InsertCaseBean</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.InsertCaseBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
-	
-	<managed-bean>
-		<managed-bean-name>AssBean</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.AssociationBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
-	
-	<managed-bean>
-		<managed-bean-name>validateAssociationBean</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.validateAssociationBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
 
-	<managed-bean>
-		<managed-bean-name>ShowCase</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.ShowCase</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
-	</managed-bean>	
-	
-	<managed-bean>
-		<managed-bean-name>DetailCase</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.DetailCase</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
-	
-		<managed-bean>
-		<managed-bean-name>DonAction</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.DonAction</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
-		
 
 </faces-config>
