@@ -13,10 +13,10 @@ public class DonateurDaoImpl implements DonateurDao {
 	private BaseDAO dao;
 
 	public DonateurDaoImpl() {
-		dao = dao.getInstance();
+		dao = BaseDAO.getInstance();
 	}
 
-	public void add(Donnateur a) {
+	public void create(Donnateur a) {
 		Session session = dao.getSession();
 		session.beginTransaction();
 		session.save(a);
@@ -24,7 +24,7 @@ public class DonateurDaoImpl implements DonateurDao {
 		dao.closeSession(session);
 	}
 
-	public Donnateur edite(Donnateur e) {
+	public Donnateur update(Donnateur e) {
 		Session session = dao.getSession();
 		session.beginTransaction();
 

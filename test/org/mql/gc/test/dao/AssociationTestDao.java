@@ -68,7 +68,7 @@ class AssociationTestDao  {
 	}
 	
 	@Test
-	public void findById() {
+	public void testFindById() {
 		Association a = new Association();
 		dao.create(a);
 
@@ -79,7 +79,7 @@ class AssociationTestDao  {
 	
 	
 	@Test
-	public void findByEmail() {
+	public void testFindByEmail() {
 		Association a = new Association();
 		a.setEmail("uniqueMail@live.fr");
 		dao.create(a);

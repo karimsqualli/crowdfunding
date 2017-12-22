@@ -6,9 +6,10 @@ import org.mql.gc.models.Donation;
 import org.mql.gc.models.Donnateur;
 
 public interface DonateurDao {
-	public void add(Donnateur a) ;
-	public Donnateur edite(Donnateur e) ;
+	public void create(Donnateur a) ;
+	public Donnateur update(Donnateur e) ;
 	public void delete(Long id) ;
+	
 	public List<Donnateur> findAll() ;
 	public Donnateur findById(Long id) ;
 	public Donnateur findByName(String name);

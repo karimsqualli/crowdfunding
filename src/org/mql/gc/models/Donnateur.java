@@ -45,9 +45,11 @@ public class Donnateur {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+	
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}

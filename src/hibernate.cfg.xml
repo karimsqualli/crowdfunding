@@ -12,13 +12,14 @@
         <!-- afficher le SQL dans le stdout -->
         <property name="hibernate.show_sql">true</property>
         
-        <!-- create the database schema on startup -->  
-		<property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- create the database schema on startup // create-drop -->  
+		<property name="hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
  
  		<mapping resource="org/mql/gc/models/Association.hbm.xml"/>
         <mapping resource="org/mql/gc/models/Cas.hbm.xml" />
         <mapping resource="org/mql/gc/models/Donation.hbm.xml" />
+        <mapping resource="org/mql/gc/models/Donnateur.hbm.xml" />
 <!--          <mapping resource="org/mql/gc/models/Operation.hbm.xml" /> -->
     </session-factory>
 </hibernate-configuration>

@@ -169,13 +169,13 @@ public class ServiceImpl implements Service {
 				return false;
 			}
 			else {
-				DonatorDao.add(e);
+				DonatorDao.create(e);
 				return true ; 
 			}	
 		}
 		
 		public Donnateur editeDonator(Donnateur e) {
-			return DonatorDao.edite(e);
+			return DonatorDao.update(e);
 		}
 
 		

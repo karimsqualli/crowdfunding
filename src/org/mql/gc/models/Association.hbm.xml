@@ -22,30 +22,8 @@
 	<property name="website" column="WEBSITE"></property>
 	<property name="fixe" column="FIXE"></property>
 	<property name="gsm" column="GSM"></property>
-	
 </class>
 
 
-<!-- hbm donateur -->
-<class name="org.mql.gc.models.Donnateur" table="DONNATEUR" >
-
-
-	<id name="id" column="ID" type="int" >
-		<generator class="native"></generator>
-	</id>
-	
-	<property name="fName" column="FNAME"></property>
-	
-	<property name="lName" column="LNAME"></property>
-	<property name="email" column="EMAIL" ></property>
-	<property name="adresse" column="ADRESSE" ></property>
-	<property name="ville" column="VILLE"></property>
-	<property name="password" column="PASSWORD"></property>
-	
-	
-
-</class>
-
- 
   
 </hibernate-mapping>

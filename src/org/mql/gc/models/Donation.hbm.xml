@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 	<class name="org.mql.gc.models.Donation" table="donation">
-		<id name="id" column="id" type="int">
+		<id name="id" column="id" type="java.lang.Long">
 		<generator class="increment"/>
 		</id>
 		<property name="idCas" column="idCas" type="int"/>
