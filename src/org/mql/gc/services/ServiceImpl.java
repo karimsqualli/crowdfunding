@@ -20,8 +20,8 @@ import org.mql.gc.models.Donnateur;
 public class ServiceImpl implements Service {
 	
 	
-	private static final String BASE_STATIC_PATH = "/home/karim/Bureau/toTheLast4/www/static/";
-	private static final String BASE_SERVER_STATIC_PATH = "http://127.0.0.1:8081/static/";
+	private static final String BASE_STATIC_PATH = "/home/karim/Project/crowdfunding/WebContent/static/";
+	private static final String BASE_SERVER_STATIC_PATH = "./static/";
 	
 	
 	private static final String IMAGE_DIR = "images";
@@ -153,7 +153,6 @@ public class ServiceImpl implements Service {
 	}
 	
 	public List<Cas> afficherListcas() {
-		System.out.println("service");
 		return casDao.afficherListcas();
 	}
 	
