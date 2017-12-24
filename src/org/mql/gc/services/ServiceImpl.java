@@ -157,7 +157,7 @@ public class ServiceImpl implements Service {
 	
 	
 	public List<Cas> afficherListcas(String nom, String category) {
-		return casDao.findByNameAndCategory(nom ,category);
+		return casDao.findByTitleAndCategory(nom ,category);
 	}
 	
 	

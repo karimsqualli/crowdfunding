@@ -57,7 +57,7 @@ public class CaseDaoImpl implements CaseDao {
 	}
 	
 	
-	public List<Cas> findByNameAndCategory(String nom, String category) {
+	public List<Cas> findByTitleAndCategory(String nom, String category) {
 		List<Cas> liste = new ArrayList<Cas>();
 		try {
 			Session session = dao.getSession();
