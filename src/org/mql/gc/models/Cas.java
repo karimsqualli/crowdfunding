@@ -2,6 +2,8 @@ package org.mql.gc.models;
 
 import java.sql.Timestamp;
 import java.util.Date;
+
+import org.hamcrest.core.IsInstanceOf;
 import org.primefaces.model.UploadedFile;
 
 public class Cas {
@@ -309,6 +311,16 @@ public class Cas {
 				+ ", fileContent1=" + fileContent1 + ", pdf2=" + pdf2 + ", fileContent2=" + fileContent2 + ", pdf3="
 				+ pdf3 + ", fileContent3=" + fileContent3 + ", img=" + img + ", fileContentI=" + fileContentI
 				+ ", video=" + video + ", fileContentV=" + fileContentV + "]";
+	}
+	
+	/*
+	 * Karim Squalli
+	 * fonction utilise pour comparer les cas par id
+	 */
+	@Override
+	public boolean equals(Object o) {
+		Cas c = (Cas)o;
+		return this.id == c.id;
 	}
 
 }

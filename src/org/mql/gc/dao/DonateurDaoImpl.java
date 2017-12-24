@@ -168,7 +168,10 @@ public class DonateurDaoImpl implements DonateurDao {
 
 		return don;
 	}
-	
+	/*
+	 * TODO: function duplique, a supprimer(remplacer par create)
+	 * @see org.mql.gc.dao.DonateurDao#saveDonn(org.mql.gc.models.Donation)
+	 */
 	public void saveDonn(Donation donn) {
 		Session session = dao.getSession();
 		session.beginTransaction();

@@ -90,7 +90,7 @@ public class ServiceImpl implements Service {
 	
 	public void create(Cas cas) {
 		System.out.println("service");
-		casDao.insererCas(cas); 
+		casDao.create(cas); 
 		System.out.println(cas);
 	}
 	//FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/exportFiles/file.pdf");
@@ -152,12 +152,12 @@ public class ServiceImpl implements Service {
 	}
 	
 	public List<Cas> afficherListcas() {
-		return casDao.afficherListcas();
+		return casDao.findAll();
 	}
 	
 	
 	public List<Cas> afficherListcas(String nom, String category) {
-		return casDao.afficherListcas(nom ,category);
+		return casDao.findByNameAndCategory(nom ,category);
 	}
 	
 	
@@ -220,6 +220,6 @@ public class ServiceImpl implements Service {
 		}
 		
 		public double calc(int id) {
-			return casDao.calc(id);
+			return casDao.getDonatorCasCount(id);
 		}
 }
