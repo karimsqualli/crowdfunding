@@ -54,6 +54,15 @@ public class CasTestDao {
 	}
 	
 	
-	public void testFind
+	public void testFindByNameAndCategory() {
+		Cas a = new Cas();
+		Cas b = new Cas();
+		
+		a.setCategorie("1");
+		dao.create(a);
+		
+		b.setCategorie("0");
+		dao.create(a);
+	}
 	
 }
