@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.query.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.annotations.NamedQuery;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.Donation;
@@ -17,33 +18,67 @@ public class DonateurDaoImpl implements DonateurDao {
 	}
 
 	public void create(Donnateur a) {
+		
 		Session session = dao.getSession();
-		session.beginTransaction();
-		session.save(a);
-		session.getTransaction().commit();
-		dao.closeSession(session);
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+
+			session.save(a);
+
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			dao.closeSession(session);
+		}
 	}
 
-	public Donnateur update(Donnateur e) {
+	public Donnateur update(Donnateur a) {
+		
 		Session session = dao.getSession();
-		session.beginTransaction();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
 
-		Donnateur p = (Donnateur) session.merge(e);
-		session.getTransaction().commit();
+			session.save(a);
 
-		dao.closeSession(session);
-		return p;
+			tx.commit();
+			
+			return a;
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			dao.closeSession(session);
+		}
 	}
 
 	public void delete(Long id) {
-		Donnateur Donnateur = this.findById(id);
+
 		Session session = dao.getSession();
-		session.beginTransaction();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			
+			Donnateur donnateur = new Donnateur();
+			donnateur.setId(id);
 
-		session.delete(Donnateur);
-		session.getTransaction().commit();
+			session.delete(donnateur);
 
-		dao.closeSession(session);
+			tx.commit();
+			
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			dao.closeSession(session);
+		}
 	}
 
 	public List<Donnateur> findAll() {
