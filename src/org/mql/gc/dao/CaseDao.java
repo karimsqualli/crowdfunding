@@ -6,8 +6,10 @@ import org.mql.gc.models.Cas;
 import org.mql.gc.models.Donation;
 
 public interface CaseDao {
-	void insererCas(Cas cas);
-	List<Cas> afficherListcas();
-	List<Cas> afficherListcas(String nom, String category) ;
+	public void insererCas(Cas cas);
+	public List<Cas> afficherListcas();
+	public List<Cas> afficherListcas(String nom, String category) ;
+	public List<Cas> getAllCases(int idDonor);
 	public double calc(int id);
+	
 }
