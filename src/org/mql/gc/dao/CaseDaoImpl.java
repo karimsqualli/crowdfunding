@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.mql.gc.models.Cas;
 
@@ -16,17 +17,28 @@ public class CaseDaoImpl implements CaseDao {
 	}
 
 	@Override
-	public void insererCas(Cas cas) {
+	public void create(Cas cas) {
+		
 		
 		Session session = dao.getSession();
-		session.beginTransaction();
-		session.save(cas);
-		session.getTransaction().commit();
-		dao.closeSession(session);
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+
+			session.save(cas);
+
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			dao.closeSession(session);
+		}
 	}
 
 	@Override
-	public List<Cas> afficherListcas() {
+	public List<Cas> findAll() {
 
 		List<Cas> liste = new ArrayList<Cas>();
 		try {
@@ -34,15 +46,18 @@ public class CaseDaoImpl implements CaseDao {
 			Query query = session.createQuery("from Cas");
 			liste = query.list();
 			dao.closeSession(session);
+			
+			return liste;
 
 		} catch (Exception e) {
 			System.out.println("ne recupere pas les cas::" + e.getMessage());
+			throw e;
 		}
-		return liste;
+		
 	}
 	
 	
-	public List<Cas> afficherListcas(String nom, String category) {
+	public List<Cas> findByTitleAndCategory(String nom, String category) {
 		List<Cas> liste = new ArrayList<Cas>();
 		try {
 			Session session = dao.getSession();
@@ -66,20 +81,24 @@ public class CaseDaoImpl implements CaseDao {
 
 			Query query = session.createQuery(squery);
 			liste = query.list();
-			// session.getTransaction().commit();
 			dao.closeSession(session);
+			
+			return liste;
 
 		} catch (Exception e) {
 			System.out.println("ne recupere pas les cas::" + e.getMessage());
+			throw e;
 		}
-		
-		return liste;
-
+	
 	}
 	
+<<<<<<< HEAD
 	//ELMORABET Hicham (sprint 2 -- 15/12/2017)
 	//La liste des cas supportés par un donateur ( donné par son id )
 	public double calc(int id) {
+=======
+	public double getDonatorCasCount(int id) {
+>>>>>>> d0d40a0b9871331f360462a5bc76b10d78e99fc4
 		Session session = dao.getSession();
 		session.beginTransaction();
 		String s = "select sum(cout) from Donation where idCas='" + id +"'";
@@ -92,9 +111,15 @@ public class CaseDaoImpl implements CaseDao {
 		return res;
 	}
 
+<<<<<<< HEAD
 	//ELMORABET Hicham (sprint 3 -- 22/12/2017)
 	//La liste des cas supportés par un donateur ( donné par son id )
 	public List<Cas> getAllCases(int idDonor) {
+=======
+	//ELMORABET Hicham (sprint 3 -- 22/10/2017)
+	//La liste des cas supportes par un donateur ( donne par son id )
+	public List<Cas> findByIdDonor(int idDonor) {
+>>>>>>> d0d40a0b9871331f360462a5bc76b10d78e99fc4
 		Session session = dao.getSession();
 		String s = "from Cas as cs where cs.id in (select don.idCas from Donation as don where don.idUser='" + idDonor + "')";
 		Query<Cas> query = session.createQuery(s, Cas.class);
