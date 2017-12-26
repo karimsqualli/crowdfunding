@@ -7,7 +7,7 @@ import org.hamcrest.core.IsInstanceOf;
 import org.primefaces.model.UploadedFile;
 
 public class Cas {
-
+	//hhhhh abdellah l bba toutes options l ffsser
 	private int id;
 	private Long idAssociation;
 	private String titre;
