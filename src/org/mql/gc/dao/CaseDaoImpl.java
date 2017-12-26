@@ -92,13 +92,10 @@ public class CaseDaoImpl implements CaseDao {
 	
 	}
 	
-<<<<<<< HEAD
 	//ELMORABET Hicham (sprint 2 -- 15/12/2017)
 	//La liste des cas supportés par un donateur ( donné par son id )
 	public double calc(int id) {
-=======
 	public double getDonatorCasCount(int id) {
->>>>>>> d0d40a0b9871331f360462a5bc76b10d78e99fc4
 		Session session = dao.getSession();
 		session.beginTransaction();
 		String s = "select sum(cout) from Donation where idCas='" + id +"'";
@@ -111,15 +108,12 @@ public class CaseDaoImpl implements CaseDao {
 		return res;
 	}
 
-<<<<<<< HEAD
 	//ELMORABET Hicham (sprint 3 -- 22/12/2017)
 	//La liste des cas supportés par un donateur ( donné par son id )
 	public List<Cas> getAllCases(int idDonor) {
-=======
 	//ELMORABET Hicham (sprint 3 -- 22/10/2017)
 	//La liste des cas supportes par un donateur ( donne par son id )
 	public List<Cas> findByIdDonor(int idDonor) {
->>>>>>> d0d40a0b9871331f360462a5bc76b10d78e99fc4
 		Session session = dao.getSession();
 		String s = "from Cas as cs where cs.id in (select don.idCas from Donation as don where don.idUser='" + idDonor + "')";
 		Query<Cas> query = session.createQuery(s, Cas.class);
