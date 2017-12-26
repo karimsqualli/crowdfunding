@@ -77,23 +77,22 @@ public class CaseDaoImpl implements CaseDao {
 
 	}
 	
+	//ELMORABET Hicham (sprint 2 -- 15/12/2017)
+	//La liste des cas supportés par un donateur ( donné par son id )
 	public double calc(int id) {
 		Session session = dao.getSession();
-		
 		session.beginTransaction();
 		String s = "select sum(cout) from Donation where idCas='" + id +"'";
 		Double res = (Double)session.createQuery(s).uniqueResult();
 		session.getTransaction().commit();
 		dao.closeSession(session);
-		
-		if(res==null) {
+		if(res == null) {
 			res=(double) 0;
 		}
-		
 		return res;
 	}
 
-	//ELMORABET Hicham (sprint 3 -- 22/10/2017)
+	//ELMORABET Hicham (sprint 3 -- 22/12/2017)
 	//La liste des cas supportés par un donateur ( donné par son id )
 	public List<Cas> getAllCases(int idDonor) {
 		Session session = dao.getSession();
