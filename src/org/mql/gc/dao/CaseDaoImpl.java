@@ -14,6 +14,7 @@ public class CaseDaoImpl implements CaseDao {
 
 	public CaseDaoImpl() {
 		dao = BaseDAO.getInstance();
+		findByIdDonor(2);
 	}
 
 	@Override
@@ -94,7 +95,6 @@ public class CaseDaoImpl implements CaseDao {
 	
 	//ELMORABET Hicham (sprint 2 -- 15/12/2017)
 	//La liste des cas supportés par un donateur ( donné par son id )
-	public double calc(int id) {
 	public double getDonatorCasCount(int id) {
 		Session session = dao.getSession();
 		session.beginTransaction();
@@ -106,11 +106,7 @@ public class CaseDaoImpl implements CaseDao {
 			res=(double) 0;
 		}
 		return res;
-	}
-
-	//ELMORABET Hicham (sprint 3 -- 22/12/2017)
-	//La liste des cas supportés par un donateur ( donné par son id )
-	public List<Cas> getAllCases(int idDonor) {
+}
 	//ELMORABET Hicham (sprint 3 -- 22/10/2017)
 	//La liste des cas supportes par un donateur ( donne par son id )
 	public List<Cas> findByIdDonor(int idDonor) {
@@ -118,9 +114,13 @@ public class CaseDaoImpl implements CaseDao {
 		String s = "from Cas as cs where cs.id in (select don.idCas from Donation as don where don.idUser='" + idDonor + "')";
 		Query<Cas> query = session.createQuery(s, Cas.class);
 		List<Cas> list = query.list();
+		for (Cas cas : list) {
+			System.out.println(cas.getId());
+		}
 		dao.closeSession(session);
 		return list;
 	}
+	
 	
 	
 	

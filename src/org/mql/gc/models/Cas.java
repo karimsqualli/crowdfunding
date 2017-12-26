@@ -1,24 +1,21 @@
 package org.mql.gc.models;
 
 import java.sql.Timestamp;
-import java.util.Date;
-
-import org.hamcrest.core.IsInstanceOf;
 import org.primefaces.model.UploadedFile;
 
 public class Cas {
 
 	private int id;
-	private Long idAssociation;
+	private Long idAssociation;// Long ?? ( prk ps int )
 	private String titre;
 	private String slogan;
 	private String categorie;
-	private String autreCategorie;
+	private String autreCategorie;// Prkk ???
 	private String ville;
-	private int duree;
+	private int duree; //plutot Date
 	private double cout;
 	private String description;
-	private String numCompteBank;
+	private String numCompteBank; // ???
 	private Timestamp date_ajout;
 	private UploadedFile pdf1;
 	private String fileContent1;
