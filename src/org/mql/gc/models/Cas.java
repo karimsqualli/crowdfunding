@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import org.primefaces.model.UploadedFile;
 
 public class Cas {
-
+	//hhhhh abdellah l bba toutes options l ffsser
 	private int id;
 	private Long idAssociation;// Long ?? ( prk ps int )
 	private String titre;
