@@ -34,6 +34,11 @@
             org.springframework.web.context.request.RequestContextListener
         </listener-class>
  </listener>
+ 
+ <context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>/WEB-INF/springIOC.xml</param-value>
+</context-param>
   
   
 
