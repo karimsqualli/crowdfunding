@@ -179,7 +179,7 @@ public class ServiceImpl implements Service {
 		}
 
 		
-		public void deleteDonator(Long id) {
+		public void deleteDonator(int id) {
 			DonatorDao.delete(id);
 		}
 
@@ -188,7 +188,7 @@ public class ServiceImpl implements Service {
 			return DonatorDao.findAll();
 		}
 		
-		public Donnateur findDonatorById(Long id) {
+		public Donnateur findDonatorById(int id) {
 			return DonatorDao.findById(id);
 		}
 

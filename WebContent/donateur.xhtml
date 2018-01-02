@@ -5,152 +5,136 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>inscription Donateur</title>
-
-	<script type="text/javascript"
-		src="http://127.0.0.1:8081/static/js/case.js"></script>
-	<link href="http://127.0.0.1:8081/static/css/case.css" type="text/css"
-		rel="stylesheet" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
-<h:body bgcolor="black">
-
-	<h:form>
-		<p:growl id="growl55" sticky="true" showDetail="false" life="3" />
-		<p:dialog header="Login" widgetVar="dlg" resizable="false">
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel for="username" value="Email @ : " />
+<h:body >
+<!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
+<div class="modal fade c-content-login-form" id="login-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Bonjour BuenosDias GoodMorning !</h3>
+                <p>Collaborons tous pour un avenir meilleur !</p>
+            	 <h:form>
+                    <div class="form-group">
+                    <h:outputLabel for="username" value="Email @ : "  styleClass="hide"/>
 				<p:inputText id="username" value="#{DonBean.don.email}"
 					required="true" label="Email"
-					requiredMessage="veuillez saisir votre email !">
+					requiredMessage="veuillez saisir votre email !"  styleClass="form-control input-lg c-square" placeholder="Email">
 				</p:inputText>
-
-				<h:outputLabel for="password" value="Password:" />
-				<p:password id="password" value="#{DonBean.don.password}"
-					required="true" label="password"
+                   
+                    </div>
+                    <div class="form-group">
+					<p:password id="password1" value="#{DonBean.don.password}"
+					required="true" styleClass="form-control input-lg c-square"  placeholder="Password" 
 					requiredMessage="veuillez saisir votre mot de passe !" />
-
-				<f:facet name="footer">
-					<p:commandButton value="Login" update="growl55"
+                    </div>
+                
+                    <div class="form-group">
+                    <p:commandButton value="Se connecter" styleClass="btn btn-default"
 						action="#{DonBean.validateDonator}"
 						oncomplete="handleLoginRequest(xhr, status, args)" />
-					<p:spacer></p:spacer>
-					<p:commandLink value="vous n'êtes pas inscrit ? "
-						onclick="PF('dlg3').show();PF('dlg').hide();"></p:commandLink>
-				</f:facet>
-			</h:panelGrid>
-		</p:dialog>
-	</h:form>
-
-
-
-	<h:form>
-		<p:growl id="growl2" showDetail="false" life="3000" escape="true" />
-		<p:dialog header="Inscription" widgetVar="dlg3" showEffect="explode"
-			hideEffect="Fold">
-			<p:panelGrid columns="2" onHide="PF('dlg').show();">
-				<f:facet name="header">
-					Inscription du donateur 
-			</f:facet>
-
-				<h:outputLabel for="email" value="Email : " />
-				<p:panelGrid>
-					<p:inputText id="email" value="#{DonBean.don.email}"
-						requiredMessage="email obligatoire" required="true"
+					</div>
+                </h:form>
+            </div>
+            <div class="modal-footer c-no-border">                
+                <span class="c-text-account">Vous n'êtes pas inscrit ?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">créer un compte!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: CONTENT/USER/LOGIN-FORM -->
+<!-- BEGIN: CONTENT/USER/SIGNUP-FORM -->
+<div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Créer un compte</h3>
+                <h:form>
+                    <div class="form-group">
+                        <label for="signup-email" class="hide">Email</label>
+                        <p:inputText id="email" value="#{DonBean.don.email}" styleClass="form-control input-lg c-square"
+						requiredMessage="email obligatoire" required="true" placeholder="Email"
 						validatorMessage="email non valide">
 						<f:validator
 							validatorId="org.mql.gc.actions.validators.EmailValidator" />
-					</p:inputText>
-					<p:message for="email" style="color:white;" />
-				</p:panelGrid>
-
-				<h:outputLabel for="password" value="Mot de passe : " />
-				<p:panelGrid>
-					<p:password id="password" binding="#{passwordComponent}"
-						value="#{DonBean.don.password}"
+						</p:inputText>
+							<p:message for="email" style="color:white;" />
+                    </div>
+                    <div class="form-group">
+                    <label for="password" class="hide">pass</label>
+                    	<p:password id="password" binding="#{passwordComponent}" placeholder="Password"
+						value="#{DonBean.don.password}" styleClass="form-control input-lg c-square"
 						requiredMessage="password  obligatoire" required="true"
 						validatorMessage="mot de passe non valide">
 						<f:validator
-							validatorId="org.mql.gc.actions.validators.PasswordValidator" />
+						validatorId="org.mql.gc.actions.validators.PasswordValidator" />
 					</p:password>
 					<p:message style="color:white;" for="password" />
-				</p:panelGrid>
-
-				<h:outputLabel for="confirmPassword"
-					value="Confirmer votre mot de passe : " />
-				<p:panelGrid>
-					<p:password id="confirmPassword" required="true"
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-fullname" class="hide">RepeatPass</label>
+                        
+					<p:password id="confirmPassword" required="true" styleClass="form-control input-lg c-square" placeholder="Repéter le password"
 						requiredMessage="veuillez verifier votre mot de passe ">
 						<f:validator
 							validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
 						<f:attribute name="passwordComponent" value="#{passwordComponent}" />
 					</p:password>
 					<p:message style="color:white;" for="confirmPassword" />
-				</p:panelGrid>
-
-
-				<h:outputLabel for="nom" value="Nom  : " />
-				<p:panelGrid>
-					<p:inputText id="nom" value="#{DonBean.don.fName}" maxlength="20"
+                    </div>
+                    <div class="form-group">
+                       <p:inputText id="nom" value="#{DonBean.don.fName}" maxlength="20"  styleClass="form-control input-lg c-square" placeholder="Nom"
 						required="true" requiredMessage="nom obligatoire"
 						validatorMessage="nom non valide">
 						<f:validator
 							validatorId="org.mql.gc.actions.validators.NameValidator" />
 					</p:inputText>
 					<p:message style="color:white;" for="nom" />
-				</p:panelGrid>
-
-				<h:outputLabel for="prenom" value="Prenom  : " />
-				<p:panelGrid>
-					<p:inputText id="prenom" value="#{DonBean.don.lName}"
+                    </div>
+                    <div class="form-group">
+                      <p:inputText id="prenom" value="#{DonBean.don.lName}" styleClass="form-control input-lg c-square" placeholder="Prenom"
 						maxlength="20" required="true" requiredMessage="nom obligatoire"
 						validatorMessage="nom non valide">
 						<f:validator
 							validatorId="org.mql.gc.actions.validators.NameValidator" />
 					</p:inputText>
-					<p:message style="color:white;" for="prenom" />
-				</p:panelGrid>
-
-				<h:outputLabel for="adresse" value="adresse : " />
-				<p:panelGrid>
-					<p:inputTextarea id="adresse" value="#{DonBean.don.adresse}"
+					<p:message style="color:white;" for="prenom" /> 
+                    </div>
+                     <div class="form-group">
+                     <p:inputText id="adresse" value="#{DonBean.don.adresse}" styleClass="form-control input-lg c-square" placeholder="Adresse"
 						autoResize="true" maxlength="150" required="true"
 						requiredMessage="adresse obligatoire " />
-					<p:message style="color:white;" for="adresse" />
-				</p:panelGrid>
-
-				<f:facet name="footer">
-					<p:commandButton style="width:100%;background:green;"
-						value="s'inscrire" actionListener="#{DonBean.createDonator}"
-						update="growl2"
-						oncomplete="handlesigninRequest(xhr, status, args)" />
-					<p:messages globalOnly="true" />
-				</f:facet>
-			</p:panelGrid>
-		</p:dialog>
-	</h:form>
-
-	<script type="text/javascript">
-		function handleLoginRequest(xhr, status, args) {
-			if (args.validationFailed || !args.loggedIn) {
-				PF('dlg').jq.effect("shake", {
-					times : 5
-				}, 100);
-			}
-
-			else {
-				PF('dlg').hide();
-				$('#loginLink').fadeOut();
-			}
-		}
-
-		function handlesigninRequest(xhr, status, args) {
-			if (args.sign_in) {
-				PF('dlg3').hide();
-				PF('dlg').show();
-			}
-		}
-	</script>
-
+					<p:message style="color:white;" for="adresse" />  
+                    </div>
+                    <div class="form-group">
+                    
+                    <p:commandButton value="s'inscrire" action="#{DonBean.createDonator}"
+						 styleClass="btn btn-default" />
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Retour à la connexion</a>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: CONTENT/USER/SIGNUP-FORM -->        
 </h:body>
 </html>

@@ -21,7 +21,7 @@ public class validateAssociationBean {
 		if (exist) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("email", association.getEmail());
-			Long idAsso=service.findByEmail(association.getEmail()).getId();
+			int idAsso=service.findByEmail(association.getEmail()).getId();
 			System.out.println("idAssociation :"+idAsso); 
 			session.setAttribute("idAssociation", idAsso);
 			return "LoadCase?faces-redirect=true";

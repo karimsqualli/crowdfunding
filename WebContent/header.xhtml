@@ -4,40 +4,73 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Crowdfunding</title>
-</h:head>
-<h:body>
-
-	<ui:composition>
-
-		<h:form style="margin-bottom: 30px">
-			<p:tabMenu activeIndex="0">
-				<p:menuitem value="Explorer les cas" url="projects.xhtml"
-					icon="ui-icon-document" />
-				<p:menuitem value="Ajouter un cas" url="LoadCase.xhtml"
-					icon="ui-icon-document" />
-					
-				<p:menuitem  rendered="#{!DonBean.connected}" value="Connexion"
-					icon="ui-icon-extlink" onclick="PF('dlg').show();" />
-				
-				
-				<p:menuitem rendered="#{DonBean.connected}" value="Deconnexion"
-					icon="ui-icon-extlink"
-					action="#{DonBean.logout}"/>
-	
-				<p:menuitem value="
-					#{donnateur}" rendered="#{DonBean.connected}" style="background:blue;color:white">
-					
-					</p:menuitem>
-			</p:tabMenu>
-		</h:form>
-	</ui:composition>
 
 
-	<br />
-	<br />
-
-
-</h:body>
+<body>
+<ui:composition>
+   <div id="humanity-preloader-wrapper">
+        <div class="preloader-wave-effect"></div>
+    </div>
+    <!-- theme preloader area end -->
+    <!-- Main wrapper start -->
+    <div class="wrapper">
+        <!-- Header area start -->
+        <header class="header-area header-style-2" id="sticky-header">
+            <div id="sticky-header" class="main-header-area transparent-header color">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-6 col-xs-6">
+                            <div class="logo-wrapper">
+                                <a class="logo" href="index.xhtml">Kaisahhh</a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 hidden-xs hidden-sm">
+                            <div class="menu-area">
+                                <nav class="template-menu">
+                                    <ul class="main-menu">
+                                        <li><a href="projects.xhtml">Voir les cas</a></li>
+                                		<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
+                                        <li><a href="volunteer.xhtml">Associations</a></li>
+                                        <li><a href="about.xhtml">Comment ça marche</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- Mobile menu area start -->
+                        <div class="mobile-menu-area clearfix hidden-md">
+                            <nav class="mobile-menu">
+                                <ul class="mobile-menu-nav">
+                                	  <li><a href="projects.xhtml">Voir les cas</a></li>
+                                	  <li><a href="LoadCase.xhtml">Proposer un cas</a></li>
+                                      <li><a href="volunteer.xhtml">Associations</a></li>
+                                      <li><a href="about.xhtml">Comment ça marche</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Mobile menu area end -->
+                        <div class="col-md-3 hidden-sm hidden-xs">
+                            <div class="header-btn">
+                                <ul class="header-action">
+                                <li><a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">CONNEXION</a></li>
+                                <li> <p:link rendered="#{DonBean.connected}" value="#{donnateur}" styleClass="btn btn-default" /> </li> 
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+           <div class="theme-section breadcrumb-area"></div> <!-- Image sous menu -->
+        <!-- Header area end -->
+     	    <ui:insert name="con">
+			<ui:include src="donateur.xhtml" />
+		    </ui:insert>
+  
+           </div>
+    <!-- Main wrapper end -->
+    <!-- All JavaScript files included -->
+    <script src="js/plugins.js"></script>
+    <script src="js/scripts.js"></script>
+ </ui:composition>   	
+</body>
 </html>

@@ -8,7 +8,7 @@
 	<class name="org.mql.gc.models.Donnateur" table="DONNATEUR">
 
 
-		<id name="id" column="ID" type="java.lang.Long">
+		<id name="id" column="ID" type="int" >
 			<generator class="native"></generator>
 		</id>
 

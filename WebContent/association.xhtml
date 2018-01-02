@@ -5,17 +5,21 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
-    <h:head>
-	<meta charset="UTF-8" />
-<title>inscription association</title>
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
 <h:body bgcolor="black">
 
-<div id="header">
-	<ui:insert name="header">
-		<ui:include src="header.xhtml" />
-	</ui:insert>
-</div>
 
 <h:form>
 	
@@ -36,7 +40,7 @@
 			
 			<h:outputLabel for="password" value="Mot de passe : "/>
 			<p:panelGrid>
-				<p:password id="password" binding="#{passwordComponent}" value="#{AssBean.asso.password}" requiredMessage="password  obligatoire" required="true" validatorMessage="mot de passe non valide">
+				<p:password id="password" binding="#{passwordComp}" value="#{AssBean.asso.password}" requiredMessage="password  obligatoire" required="true" validatorMessage="mot de passe non valide">
 				<f:validator validatorId="org.mql.gc.actions.validators.PasswordValidator"/>
 				</p:password>
 				<p:message style="color:white;" for="password"/>
@@ -46,7 +50,7 @@
 			<p:panelGrid>
 				<p:password id="confirmPassword"  required="true" requiredMessage="veuillez verifier votre mot de passe ">
 				    <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
-				    <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+				    <f:attribute name="passwordComp" value="#{passwordComp}" />
 				</p:password>
 				<p:message  style="color:white;"  for="confirmPassword" />
 			</p:panelGrid>
@@ -78,7 +82,7 @@
 
 			<h:outputLabel for="LowForm" value="Forme juridique"/>
 			<p:panelGrid>
-					<p:selectOneMenu id="LowForm" value="#{AssBean.asso.lowForm}" required="true" requiredMessage="selectionner votre forme juridique">
+					<p:selectOneMenu  id="LowForm" value="#{AssBean.asso.lowForm}"  required="true" requiredMessage="selectionner votre forme juridique">
 						<f:selectItem itemValue="" itemLabel="selectionner forme juridique" />
 						<f:selectItems value="#{AssBean.lowForms}"  var="lwf" itemLabel="#{lwf}"  itemValue="#{lwf}" />
 					</p:selectOneMenu>

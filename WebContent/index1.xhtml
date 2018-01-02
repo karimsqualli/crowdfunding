@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<script type="text/javascript"
+		src="static/js/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="static/js/case.js"></script>
+	<link href="static/css/case.css" type="text/css"
+		rel="stylesheet" />
+
+</h:head>
+<h:body>
+
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
+
+  
+	<div id="connexion">
+		<ui:insert name="connexion">
+			<ui:include src="donateur.xhtml" />
+		</ui:insert>
+	</div>
+
+	<br />
+
+	<h:form id="search-form" style="margin-bottom: 20px;">
+		<p:panelGrid columns="2">
+			<h:outputLabel for="na" value="Nom du cas : " />
+			<p:panelGrid>
+				<p:inputText id="na" value="#{ShowCase.nom}" maxlength="40">
+				</p:inputText>
+			</p:panelGrid>
+
+			<h:outputLabel for="ac" value="Secteur d'activité " />
+			<p:panelGrid>
+				<p:selectOneMenu id="ac" value="#{ShowCase.category}"
+					style="width:125px" lazy="true">
+					<f:selectItem itemLabel="Artisanat" itemValue="artisanat" />
+					<f:selectItem itemLabel="Collectivités territoriales"
+						itemValue="Collectivités territoriales" />
+					<f:selectItem itemLabel="Education" itemValue="education" />
+					<f:selectItem itemLabel="Agriculture" itemValue="agriculture" />
+					<f:selectItem itemLabel="enfants démuni" itemValue="enf dem" />
+					<f:selectItem itemLabel="Santé" itemValue="santé" />
+					<f:selectItem itemLabel="Médicament" itemValue="médicament" />
+					<f:selectItem itemLabel="enfants handicapés"
+						itemValue="enfants handicapés" />
+				</p:selectOneMenu>
+			</p:panelGrid>
+			<p:panelGrid>
+				<p:commandButton value="Rechercher" process="@this"
+					action="#{ShowCase.searchCas}" icon="ui-icon-check"
+					style="margin-left:30px; " />
+			</p:panelGrid>
+		</p:panelGrid>
+	</h:form>
+
+
+	<h:form id="form">
+		<p:carousel value="#{ShowCase.liste}" headerText="Notre selection"
+			var="cas" responsive="true">
+			<p:panelGrid columns="1" style="width:100%;margin:10px 0px"
+				columnClasses="value" layout="grid" styleClass="ui-panelgrid-blank">
+				<f:facet name="header">
+
+					<p:commandLink value="#{cas.titre}"
+						action="detailCase.xhtml?faces-redirect=true"
+						style="height:200px;margin-top:-10%;color:blue; text-transform: uppercase;font-variant: small-caps;">
+						<f:setPropertyActionListener value="#{cas}"
+							target="#{DetailCase.cas}" />
+					</p:commandLink>
+
+				</f:facet>
+
+				<p:graphicImage value="#{cas.fileContentI}" width="300px"
+					height="240px" style="margin: 0 auto;display:block" />
+				<h:outputText value="#{cas.slogan}"
+					style="margin-left:10px; margin-right:10px;font-family: Verdana, sans-serif;font-style: oblique;font-weight: 600" />
+			</p:panelGrid>
+
+			<p:panel columns="1" style="margin-left:20px;">
+				<hr />
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+				<h:outputText value="#{cas.ville}" style="margin-left:2%" />
+				<hr />
+				<i class="fa fa-money" aria-hidden="true"></i>
+				<h:outputText value="#{cas.cout} DH" style="margin-left:2%" />
+				<hr />
+				<i class="fa fa-hourglass-half" aria-hidden="true"></i>
+				<h:outputText value="#{cas.duree} Jours" style="margin-left:2%" />
+				<div id="hi#{cas.id}" class="progress-wrap progress"
+					data-progress-test="hello"
+					data-progress-percent="#{ShowCase.getRes(cas.id)}">
+					<span id="hii#{cas.id}"
+						style="text-align: center; line-height: 50px; display: block; position: relative; z-index: 20;"></span>
+					<div class="progress-bar progress"></div>
+				</div>
+
+				<script type="text/javascript">moveProgressBar("#{cas.id}", #{cas.cout});</script>
+			</p:panel>
+			<f:facet name="footer">
+				<p:link outcome="projects.xhtml" value="Afficher tous les cas >>>"
+					style="color:blue" />
+			</f:facet>
+		</p:carousel>
+	</h:form>
+	<script type="text/javascript">
+function start() {
+    PF('statusDialog').show();
+}
+function stop() {
+    PF('statusDialog').hide();
+}
+</script>
+
+</h:body>
+</html>

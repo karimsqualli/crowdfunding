@@ -6,7 +6,17 @@
 	xmlns:p="http://primefaces.org/ui">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 <h:head>
-	<title>Crowdfunding</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
 <h:body>
 
@@ -15,53 +25,82 @@
 			<ui:include src="header.xhtml" />
 		</ui:insert>
 	</div>
-	<p:commandLink value="deconnecter" action="#{DonBean.logout}" style="float:left" ></p:commandLink>
-    
-    <div id="connexion">
-		<ui:insert name="connexion">
-			<ui:include src="donateur.xhtml" />
-		</ui:insert>
-	</div>
-	
-	<br />
-<h:form>
-	
-    <p:growl id="msgs" showDetail="true" />
-    <p:panel id="basic"  header="#{DetailCase.cas.titre}" footer="#{DetailCase.cas.description}" style="margin-bottom:20px">
-        <h:panelGrid columns="2" cellpadding="10">
-            <p:graphicImage value="#{DetailCase.cas.fileContentI}" width="500px"	height="400px" />
-             <p:button value="Participer" outcome="donation.xhtml" >
-             <f:param name="id" value="#{DetailCase.cas.id}"/>
-             </p:button> 
-	             
-             <h:outputText  value="#{DetailCase.cas.ville}" />
-             <h:outputText  value="#{DetailCase.cas.duree}" />
-             <h:outputText  value="#{DetailCase.cas.cout}" />
-             <h:outputText  value="#{DetailCase.cas.categorie}" />
-             <h:outputText  value="#{DetailCase.cas.autreCategorie}" />
-             <h:outputText  value="#{DetailCase.cas.date_ajout}" />
-             <h:outputText  value="#{DetailCase.cas.slogan}" />
-        </h:panelGrid>
-    </p:panel>
-    <h:outputText  value="telecharger document :" />
-    
-    <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
-    <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
-</p:dialog>
 
-      <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
-        <p:fileDownload value="#{DetailCase.pdf1}" />
-    </p:commandButton>
- </h:form>
- 
-<script type="text/javascript">
-function start() {
-    PF('statusDialog').show();
-}
-function stop() {
-    PF('statusDialog').hide();
-}
-</script>
+	 
+  <!-- Donet section start -->
+            <div class="donet-section theme-section theme-section-ex-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="area-heading text-center">
+                                <h3 class="area-title"><h:outputText  value="#{DetailCase.cas.titre}" /></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="donate-feature-list navigation-style-1">
+                                <div class="single-donet">
+                                    <div class="donet-thumbnail">
+                                        <img src="imgs/event/1.jpg" alt="" />
+                                    </div>
+                                    <div class="donet-content">
+                                        <div class="donet-content-heading">
+                                            <h3><h:outputText  value="#{DetailCase.cas.titre}" /></h3>
+                                            <ul class="event-meta">
+           										<li><i class="fa fa-tag"></i><h:outputText  value="#{DetailCase.cas.categorie}" style="margin-left:5px;"/></li>
+                                               	<li><i class="fa fa-map-marker"></i><h:outputText value="#{DetailCase.cas.ville}" style="margin-left:5px;"/></li>
+									            <li><i class="fa fa-calendar"></i><h:outputText value="#{DetailCase.cas.duree} Jours" style="margin-left:5px;"/></li>
+                                            </ul>
+                                            <p><h:outputText value="#{DetailCase.cas.slogan}" /></p>
+                                        </div>
+                                        <div class="donet-bar">
+												<p>Collecté : <h:outputText value="#{ShowCase.getRes(DetailCase.cas.id)}" >
+												<f:convertNumber minFractionDigits="0" />
+												</h:outputText> DH<span class="project-goal">
+                                                Objectif : <h:outputText value="#{DetailCase.cas.cout}">	<f:convertNumber minFractionDigits="0" /></h:outputText> DH</span></p>
+                                            <div class="progress-bar-area">
+                                                <div class="single-progress-bar">
+                                                    <div class="progress ">
+                                                         <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="#{ShowCase.getRes(DetailCase.cas.id)}" aria-valuemin="0" aria-valuemax="200" style="width: #{ShowCase.getRes(DetailCase.cas.id)*100/DetailCase.cas.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+                                                         <span><h:outputText value="#{ShowCase.getRes(DetailCase.cas.id)/DetailCase.cas.cout}">
+												         <f:convertNumber type="percent" />
+														 </h:outputText>
+                                                         </span>   
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       <h:form>
+                                        <p:button value="Participer" outcome="donation.xhtml" styleClass="btn btn-default" >
+             							<f:param name="id" value="#{DetailCase.cas.id}"/>
+           				  				</p:button> 
+                                        </h:form>
+                                        
+                                
+                                    </div>
+                                </div>
+                                </div>
+                                <BR/>
+                                <h4>Description du cas :</h4><BR/>
+                                <h6><h:outputText  value="#{DetailCase.cas.description}" /></h6>
+                                </div>
+                                </div><BR/><BR/><BR/>
+								 <h6>Telecharger le document :</h6><BR/>                                
+                                <h:form>
+							      <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" styleClass="btn btn-default" icon="ui-icon-arrowthick-1-s">
+							        <p:fileDownload value="#{DetailCase.pdf1}" />
+							      </p:commandButton>
+							    </h:form>
+                                </div>
+                                
+                                </div>	
+	
 
+<ui:insert name="footer">
+   <ui:include src="footer.xhtml" />
+</ui:insert>
+	
 </h:body>
 </html>

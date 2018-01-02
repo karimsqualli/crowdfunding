@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Crowdfunding</title>
+</h:head>
+<h:body>
+
+	<ui:composition>
+
+		<h:form style="margin-bottom: 30px">
+			<p:tabMenu activeIndex="0">
+				<p:menuitem value="Explorer les cas" url="projects.xhtml"
+					icon="ui-icon-document" />
+				<p:menuitem value="Ajouter un cas" url="LoadCase.xhtml"
+					icon="ui-icon-document" />
+					
+				<p:menuitem  rendered="#{!DonBean.connected}" value="Connexion"
+					icon="ui-icon-extlink" onclick="PF('dlg').show();" />
+				
+				
+				<p:menuitem rendered="#{DonBean.connected}" value="Deconnexion"
+					icon="ui-icon-extlink"
+					action="#{DonBean.logout}"/>
+	
+				<p:menuitem value="
+					#{donnateur}" rendered="#{DonBean.connected}" style="background:blue;color:white">
+					
+					</p:menuitem>
+			</p:tabMenu>
+		</h:form>
+	</ui:composition>
+ <p:link rendered="#{!DonBean.connected}" value="connexion" onclick="PF('dlg').show();" styleClass="btn btn-default btn-border" />
+                                  <p:link rendered="#{DonBean.connected}" value="deconnexion" outcome="#{DonBean.logout}" styleClass="btn btn-default btn-border" />
+                           		  <p:link rendered="#{DonBean.connected}" value="#{donnateur}" styleClass="btn btn-default btn-border" />
+                               
+
+	<br />
+	<br />
+
+
+</h:body>
+</html>

@@ -5,7 +5,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Ins�rer le titre ici</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
 <h:body>
 
@@ -14,31 +24,152 @@
 			<ui:include src="header.xhtml" />
 		</ui:insert>
 	</div>
-	<h:form>
-		<p:panelGrid columns="2">
-			<f:facet name="header">Login</f:facet>
-			<p:outputLabel for="email" value="Email" />
-			<p:inputText id="email"
-				value="#{validateAssociationBean.association.email}" />
-			<p:outputLabel for="password" value="Password" />
-			<p:password id="password"
-				value="#{validateAssociationBean.association.password}">
 
-			</p:password>
+		<!-- Donor area starts -->
+		<div class="donor-section theme-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="donor-section-wrapper">
+							<div class="single-donor-info">
+								<div class="donor-information-wrapper">
+									<h5>Alerte : Pour pouvoir déposer un cas vous devez vous
+										connecter avec un compte association !</h5>
+									<br />
+									<h2 class="donor-title">Connexion :</h2>
+									<div class="donor-information">
+										<h:form id="bb">
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+												<p:inputText id="email1" placeholder="Email"
+													styleClass="form-control input-lg c-square"
+													value="#{validateAssociationBean.association.email}" />
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+											<p:password id="passw" placeholder="Password"
+												styleClass="form-control input-lg c-square"
+												value="#{validateAssociationBean.association.password}" />
+												</div>
+											<div class="form-group">
+												<br/>
 
-			<p:commandButton value="Valider"
-				action="#{validateAssociationBean.validateAssociation}" />
+												<p:commandButton value="Se connecter"
+													styleClass="btn btn-default"
+													action="#{validateAssociationBean.validateAssociation}" />
+												
+											</div>
+										</h:form>
+									</div>
+								</div>
+							</div>
+							<div class="single-donor-info">
+								<div class="donor-information-wrapper">
+									<h2 class="donor-title">Inscription de l'association :</h2>
+									<div class="donor-information">
+										<h:form id="aa">
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+													<p:inputText id="email" placeholder="Email" value="#{AssBean.asso.email}"  styleClass="form-control input-lg c-square"
+														requiredMessage="email obligatoire" required="true"
+														validatorMessage="email non valide">
+														<f:validator
+															validatorId="org.mql.gc.actions.validators.EmailValidator" />
+													</p:inputText>
+													<p:message for="email" style="color:white;" />
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:password id="confpasswordd" binding="#{passwordComp}" placeholder="Password" styleClass="form-control input-lg c-square" value="#{AssBean.asso.password}" requiredMessage="password  obligatoire" required="true" validatorMessage="mot de passe non valide">
+				<f:validator validatorId="org.mql.gc.actions.validators.PasswordValidator"/>
+				</p:password>
+				<p:message style="color:white;" for="confpasswordd"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:password id="confirmPasswordd" styleClass="form-control input-lg c-square" placeholder="Confirmer password" required="true" requiredMessage="veuillez verifier votre mot de passe ">
+				    <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
+				    <f:attribute name="passwordComp" value="#{passwordComp}" />
+				</p:password>
+				<p:message  style="color:white;"  for="confirmPasswordd" />
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="name" value="#{AssBean.asso.name}" placeholder="Nom de l'association" styleClass="form-control input-lg c-square"  maxlength="40" required="true" requiredMessage="nom obligatoire" validatorMessage="nom non valide" >
+					<f:validator validatorId="org.mql.gc.actions.validators.NameValidator"/>
+				</p:inputText>
+				<p:message style="color:white;"  for="name"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:selectOneMenu  id="activity" value="#{AssBean.asso.activityArea}" placeholder="Secteur d'activité" styleClass="form-control input-lg c-square"  required="true" requiredMessage="selectionner votre secteur d'activité">
+					<f:selectItem itemValue="" itemLabel="selctionnez une catégorie" />
+					<f:selectItems value="#{AssBean.sectorActivities}"  var="act" itemLabel="#{act}"  itemValue="#{act}" />
+				</p:selectOneMenu>
+				<p:message style="color:white;"  for="activity"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputTextarea id="description" value="#{AssBean.asso.description}" placeholder="Description" styleClass="form-control input-lg c-square" autoResize="true" maxlength="150" required="true" requiredMessage="description obligatoire "/>
+				<p:message style="color:white;"  for="description"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+					<p:selectOneMenu id="LowForm" value="#{AssBean.asso.lowForm}" placeholder="Forme juridique" styleClass="form-control input-lg c-square"  required="true" requiredMessage="selectionner votre forme juridique">
+						<f:selectItem itemValue="" itemLabel="selectionner forme juridique" />
+						<f:selectItems value="#{AssBean.lowForms}"  var="lwf" itemLabel="#{lwf}"  itemValue="#{lwf}" />
+					</p:selectOneMenu>
+				<p:message style="color:white;"  for="LowForm"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="pattente" value="#{AssBean.asso.pattente}" placeholder="Pattente" styleClass="form-control input-lg c-square"  maxlength="40" required="false" validatorMessage="pattente non valide" >
+					<f:validator validatorId="org.mql.gc.actions.validators.PattenteValidator" />
+				</p:inputText>	
+				<p:message  style="color:white;"  for="pattente"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="website" value="#{AssBean.asso.website}" placeholder="Site web" styleClass="form-control input-lg c-square"  maxlength="40" required="false" validatorMessage="site web non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.WebSiteValidator" />
+				</p:inputText>	
+				<p:message  style="color:white;font-size:14px;"  for="website"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="fixe"  value="#{AssBean.asso.fixe}" placeholder="Fixe" styleClass="form-control input-lg c-square" maxlength="40" required="false" validatorMessage="fixe non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.PhoneValidator" />				
+				</p:inputText>	
+				<p:message  style="color:white;font-size:14px;"  for="fixe"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText requiredMessage="gsm obligatoire" id="gsm" placeholder="Numéro GSM" styleClass="form-control input-lg c-square" value="#{AssBean.asso.gsm}"  maxlength="40" required="true" validatorMessage="gsm non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.GSMValidator" />				
+				</p:inputText>	
+				<p:message  style="color:white;font-size:14px;"  for="gsm"  />
+											</div><br/>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+											<p:commandButton style="width:100%;" value="s'inscrire" styleClass="btn btn-default"
+											action="#{AssBean.createAss}" process="@form" update="@form"  />
+			<p:messages  globalOnly="true"/>
+											</div>
+										</h:form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	<!-- donor area end -->
+                                
 
-		</p:panelGrid>
-		<p:messages autoUpdate="true" showDetail="true"></p:messages>
-
-	</h:form>
-	<br />
-
-	<p:commandLink action="association.xhtml?faces-redirect=true"
-		icon="ui-icon-document">
-		<h:outputText value="S'inscrire"></h:outputText>
-	</p:commandLink>
-
+	<ui:insert name="footer">
+	<ui:include src="footer.xhtml" />
+	</ui:insert>
 </h:body>
 </html>

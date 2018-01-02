@@ -2,12 +2,9 @@ package org.mql.gc.actions;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpSession;
-
 import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
@@ -44,20 +41,20 @@ public class DonBean {
 		this.don = don;
 	} 
 
-	public void createDonator(ActionEvent e){
+	public String createDonator(){
         FacesMessage message =null;
         boolean subscribe=false;
 		RequestContext context = RequestContext.getCurrentInstance();
-		System.out.println("create don");
 		if(service.addDonator(don)){
-	        message= new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a �t� effectu� avec succ�s", "");
+	        message= new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a ete effectue avec succee", "");
 	        subscribe=true; 
 		}
 		else{
-	        message= new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite d�ja", "");
+	        message= new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite deja", "");
 		}
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("sign_in", subscribe);
+        return "index-4?faces-redirect=true";
 	}
 	
 
@@ -99,7 +96,7 @@ public class DonBean {
 	}
 
 
-	public String logout() {
+	public String logoutt() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
 		return "index?faces-redirect=true";

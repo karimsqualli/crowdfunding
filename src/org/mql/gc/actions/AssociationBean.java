@@ -31,10 +31,10 @@ public class AssociationBean  implements Serializable{
 		service.add(asso);
 		HttpSession session = SessionUtils.getSession();
 		session.setAttribute("email", asso.getEmail());
-		Long idAsso=service.findByEmail(asso.getEmail()).getId();
+		int idAsso=service.findByEmail(asso.getEmail()).getId();
 		session.setAttribute("idAssociation", idAsso);
 		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription r�ussi"));
-		return "LoadCase";
+		return "LoadCase?faces-redirect=true";
 	}
 	
 	public Association getAsso() {

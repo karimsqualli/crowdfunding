@@ -32,9 +32,9 @@ public interface Service {
 	//************************************Donateur**************************************
 		public boolean addDonator(Donnateur e) ;
 		public Donnateur editeDonator(Donnateur e) ;
-		public void deleteDonator(Long id) ;
+		public void deleteDonator(int id) ;
 		public List<Donnateur> findAllDonator() ;
-		public Donnateur findDonatorById(Long id) ;
+		public Donnateur findDonatorById(int id) ;
 		public boolean nameDonatorExist(String name);
 		public Donnateur connectDonator(String email, String password);
 		public boolean emailDonatorExist(String email);

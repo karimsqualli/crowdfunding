@@ -31,7 +31,7 @@ public class InsertCaseBean implements Serializable{
 
 	public String insertCase() {
 		HttpSession session = SessionUtils.getSession();
-		Long ida =(Long)session.getAttribute("idAssociation");
+		int ida =(int)session.getAttribute("idAssociation");
 		System.out.println("azzeazeaeazeaezaezaeazea"+ida);
 		cas.setDate_ajout(new Timestamp( System.currentTimeMillis() ));
 		cas.setIdAssociation(ida);

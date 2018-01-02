@@ -6,7 +6,7 @@ import org.primefaces.model.UploadedFile;
 public class Cas {
 	//hhhhh abdellah l bba toutes options l ffsser
 	private int id;
-	private Long idAssociation;// Long ?? ( prk ps int )
+	private int idAssociation;// Long ?? ( prk ps int )
 	private String titre;
 	private String slogan;
 	private String categorie;
@@ -45,13 +45,13 @@ public class Cas {
 
 
 
-	public Long getIdAssociation() {
+	public int getIdAssociation() {
 		return idAssociation;
 	}
 
 
 
-	public void setIdAssociation(Long idAssociation) {
+	public void setIdAssociation(int idAssociation) {
 		this.idAssociation = idAssociation;
 	}
 

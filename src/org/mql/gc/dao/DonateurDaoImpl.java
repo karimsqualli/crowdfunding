@@ -57,7 +57,7 @@ public class DonateurDaoImpl implements DonateurDao {
 		}
 	}
 
-	public void delete(Long id) {
+	public void delete(int id) {
 
 		Session session = dao.getSession();
 		Transaction tx = null;
@@ -92,7 +92,7 @@ public class DonateurDaoImpl implements DonateurDao {
 		return liste;
 	}
 
-	public Donnateur findById(Long id) {
+	public Donnateur findById(int id) {
 		Session session = dao.getSession();
 		session.beginTransaction();
 		Donnateur p = (Donnateur) session.get(Donnateur.class, id);
