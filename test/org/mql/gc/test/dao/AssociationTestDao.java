@@ -1,9 +1,7 @@
 package org.mql.gc.test.dao;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
 import org.mql.gc.dao.AssociationDao;
 import org.mql.gc.dao.AssociationDaoImpl;

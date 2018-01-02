@@ -4,6 +4,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+<<<<<<< HEAD
+=======
+import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> 8f932d35182e3dfac6f9b107469ee9dd222ee1a4
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
@@ -11,7 +16,7 @@ import org.mql.gc.utils.SessionUtils;
 import org.primefaces.context.RequestContext;
 
 @ManagedBean(name="DonBean")
-@SessionScoped
+@RequestScoped
 public class DonBean {
 	private ServiceImpl service ;
 	private Donnateur don;
@@ -31,8 +36,21 @@ public class DonBean {
 		don=new Donnateur() ;
 		System.out.println("post con");
 		service=new ServiceImpl();
+
+		//===============check if donator try to participate in a case without logIn
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		String message = (String) request.getAttribute("logDon");
+		System.out.println(message);
+		if(message != null && message.equals("notIn")){
+			FacesMessage message2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "connectez vous pour participer ! ","");
+			RequestContext.getCurrentInstance().execute("PF('dlg').show();");
+			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
+		}
+		//==========================================
+		
 	}
 	
+
 	public Donnateur getDon() {
 		return don;
 	}

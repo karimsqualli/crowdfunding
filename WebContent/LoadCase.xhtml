@@ -46,44 +46,46 @@
 							<div class="donor-information-wrapper">
 								<h2 class="donor-title">Charger un cas :</h2>
 								<div class="donor-information">
-										
-										<h:form>
-											<p:growl id="msgs" showDetail="true" />
-	<p:messages />
-	<div class="form-group">
-											
+
+									<h:form>
+										<p:growl id="msgs" showDetail="true" />
+										<p:messages />
+										<div class="form-group">
+
 											<p:outputLabel for="titre">Titre du projet : </p:outputLabel>
 											<br />
 											<p:inputText id="titre" value="#{InsertCaseBean.cas.titre}"
 												maxlength="70" size="60"
 												placeholder="Ex:Famille sans abri à Fqih Ben Saleh"
 												required="true" />
-											</div>
-											<br />
-											<div class="form-group">
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="slogan">Slogan : </p:outputLabel>
 											<br />
 											<p:inputText id="slogan" value="#{InsertCaseBean.cas.slogan}"
 												placeholder="Ex:Nous pouvons ensemble changer la vie des malades !"
-												size="60" /></div>
-											<br />
-											<div class="form-group">
+												size="60" />
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="ville">Ville : </p:outputLabel>
 											<br />
 											<p:autoComplete id="ville" dropdown="true"
 												value="#{InsertCaseBean.cas.ville}"
 												completeMethod="#{InsertCaseBean.completeVille}">
-											</p:autoComplete></div>
-											<br />
-											<div class="form-group">
+											</p:autoComplete>
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="description">Déscription : </p:outputLabel>
 											<br />
 											<p:inputTextarea rows="4" cols="40"
 												value="#{InsertCaseBean.cas.description}" id="description"
 												queryDelay="750" minQueryLength="4" maxlength="200" />
-												</div>
-											<br />
-<div class="form-group">
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="categorie" value="Catégorie :" />
 											<br />
 											<p:selectOneMenu id="categorie"
@@ -101,81 +103,97 @@
 												<f:selectItem itemLabel="enfants handicapés"
 													itemValue="enf hand" />
 											</p:selectOneMenu>
-</div>
-											<br /><div class="form-group">
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="autre">Autre Catégorie : </p:outputLabel>
 											<br />
 											<p:inputText id="autre"
-												value="#{InsertCaseBean.cas.autreCategorie}" /></div>
-											<br />
-											<div class="form-group">
+												value="#{InsertCaseBean.cas.autreCategorie}" />
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="duree">Durée(Jour) : </p:outputLabel>
 											<br />
 											<p:spinner id="duree" value="#{InsertCaseBean.cas.duree}"
-												min="0" max="100" /></div>
-											<br /><div class="form-group">
+												min="0" max="100" />
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel for="cout">Coût : </p:outputLabel>
 											<br />
 											<p:spinner id="cout" value="#{InsertCaseBean.cas.cout}"
-												suffix=" DH " min="100" stepFactor="100" /></div>
-											<br />
-<div class="form-group">
+												suffix=" DH " min="100" stepFactor="100" />
+										</div>
+										<br />
+										<div class="form-group">
 											<h:outputLabel>Ajouter une image :  </h:outputLabel>
 											<p:fileUpload
 												fileUploadListener="#{InsertCaseBean.uploadFileI}"
 												mode="advanced" dragDropSupport="false" multiple="true"
-												 sizeLimit="4000000" fileLimit="1"
+												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(jpg|jpeg|png)$/" />
-											</div>
-											<br />
-<div class="form-group">
+										</div>
+										<br />
+										<div class="form-group">
 											<p:outputLabel>Ajouter une video (optionnel) :  </p:outputLabel>
 											<p:fileUpload
 												fileUploadListener="#{InsertCaseBean.uploadFileV}"
 												mode="advanced" dragDropSupport="false" multiple="true"
-												 sizeLimit="4000000" fileLimit="1"
+												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(mp4|mpeg)$/" />
-											</div>
-											<br /> <br /> <br />
-<div class="form-group">
+										</div>
+										<br />
+										<br />
+										<br />
+										<div class="form-group">
 											<p:outputLabel>(1) Ajouter un document* :  </p:outputLabel>
 											<p:fileUpload
 												fileUploadListener="#{InsertCaseBean.uploadFile1}"
 												mode="advanced" dragDropSupport="false" multiple="true"
-												 sizeLimit="4000000" fileLimit="1"
-												allowTypes="/(\.|\/)(pdf|docx)$/" /></div>
-											<br /> <br /> <br />
-<div class="form-group">
+												sizeLimit="4000000" fileLimit="1"
+												allowTypes="/(\.|\/)(pdf|docx)$/" />
+										</div>
+										<br />
+										<br />
+										<br />
+										<div class="form-group">
 											<p:outputLabel>(2) Ajouter un document (optionnel) :  </p:outputLabel>
 											<p:fileUpload
 												fileUploadListener="#{InsertCaseBean.uploadFile2}"
 												mode="advanced" dragDropSupport="false" multiple="true"
-												 sizeLimit="4000000" fileLimit="1"
-												allowTypes="/(\.|\/)(pdf|docx)$/" /></div>
-											<br /> <br /> <br />
-<div class="form-group">
+												sizeLimit="4000000" fileLimit="1"
+												allowTypes="/(\.|\/)(pdf|docx)$/" />
+										</div>
+										<br />
+										<br />
+										<br />
+										<div class="form-group">
 											<p:outputLabel>(3) Ajouter un document (optionnel) :  </p:outputLabel>
 											<p:fileUpload
 												fileUploadListener="#{InsertCaseBean.uploadFile3}"
 												mode="advanced" dragDropSupport="false" multiple="true"
-												 sizeLimit="4000000" fileLimit="1"
-												allowTypes="/(\.|\/)(pdf|docx)$/" /></div>
-											<br /> <br />
+												sizeLimit="4000000" fileLimit="1"
+												allowTypes="/(\.|\/)(pdf|docx)$/" />
+										</div>
+										<br />
+										<br />
 
-											<p:commandButton value="Ajouter le cas" process="@this"
-												styleClass="btn-default btn"
-												action="#{InsertCaseBean.insertCase}" icon="ui-icon-check"
-												style="margin-left:430px; " />
-											</h:form>	</div>
-									
+										<p:commandButton value="Ajouter le cas" process="@this"
+											styleClass="btn-default btn"
+											action="#{InsertCaseBean.insertCase}" icon="ui-icon-check"
+											style="margin-left:430px; " />
+									</h:form>
 								</div>
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
+	</div>
+
 
 
 
