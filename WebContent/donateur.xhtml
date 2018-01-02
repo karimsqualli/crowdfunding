@@ -80,7 +80,7 @@
                     </div>
                     <div class="form-group">
                     <label for="password" class="hide">pass</label>
-                    	<p:password id="password" binding="#{passwordComponent}" placeholder="Password"
+                    	<p:password id="password" binding="#{passwordComp2}" placeholder="Password"
 						value="#{DonBean.don.password}" styleClass="form-control input-lg c-square"
 						requiredMessage="password  obligatoire" required="true"
 						validatorMessage="mot de passe non valide">
@@ -96,7 +96,7 @@
 						requiredMessage="veuillez verifier votre mot de passe ">
 						<f:validator
 							validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
-						<f:attribute name="passwordComponent" value="#{passwordComponent}" />
+						<f:attribute name="passwordComp2" value="#{passwordComp2}" />
 					</p:password>
 					<p:message style="color:white;" for="confirmPassword" />
                     </div>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="form-group">
                     
-                    <p:commandButton value="s'inscrire" action="#{DonBean.createDonator}"
+                    <p:commandButton value="s'inscrire" process="@form" update="@form"  action="#{DonBean.createDonator}"
 						 styleClass="btn btn-default" />
                         <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Retour à la connexion</a>
                     </div>

@@ -45,7 +45,7 @@ class AssociationTestDao  {
 		
 		dao.update(a);
 		
-		a = dao.findById(a.getId());
+		a = dao.findById((long)a.getId());
 
 		assertEquals(a.getName(), "testname");
 		assertEquals(a.getEmail(), "karim@live.fr");
@@ -59,9 +59,9 @@ class AssociationTestDao  {
 		
 		assertNotNull(a.getId());
 		
-		dao.delete(a.getId());
+		dao.delete((long)a.getId());
 		
-		a = dao.findById(a.getId());
+		a = dao.findById((long)a.getId());
 		assertNull(a);
 	}
 	
@@ -70,7 +70,7 @@ class AssociationTestDao  {
 		Association a = new Association();
 		dao.create(a);
 
-		Association b = dao.findById(a.getId());
+		Association b = dao.findById((long)a.getId());
 		
 		assertEquals(b.getId(), a.getId());
 	}

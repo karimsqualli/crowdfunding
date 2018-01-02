@@ -2,13 +2,10 @@ package org.mql.gc.actions;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-<<<<<<< HEAD
-=======
-import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
->>>>>>> 8f932d35182e3dfac6f9b107469ee9dd222ee1a4
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
@@ -63,6 +60,8 @@ public class DonBean {
         FacesMessage message =null;
         boolean subscribe=false;
 		RequestContext context = RequestContext.getCurrentInstance();
+		
+		System.out.println("adresse ====> " +  don.getAdresse());
 		if(service.addDonator(don)){
 	        message= new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a ete effectue avec succee", "");
 	        subscribe=true; 
@@ -72,7 +71,7 @@ public class DonBean {
 		}
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("sign_in", subscribe);
-        return "index-4?faces-redirect=true";
+        return "index.xhtml?faces-redirect=true";
 	}
 	
 
@@ -117,6 +116,6 @@ public class DonBean {
 	public String logoutt() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
-		return "index?faces-redirect=true";
+		return "index.xhtml?faces-redirect=true";
 	}
 }

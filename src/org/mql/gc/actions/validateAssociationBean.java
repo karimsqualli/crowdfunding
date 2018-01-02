@@ -40,7 +40,7 @@ public class validateAssociationBean {
 		System.out.println("Log out");
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
-		return "login";
+		return "login.xhtml?faces-redirect=true";
 	}
 
 	public Association getAssociation() {
