@@ -40,7 +40,6 @@ public class FilterForAll implements Filter{
 		}	
 		else if(ida==null && uri.indexOf("/LoadCase.xhtml")>=0){
 			rep.sendRedirect(req.getContextPath()+"/login.xhtml");
-			
 		}
 		chain.doFilter(request,response);
 	}

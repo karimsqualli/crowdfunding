@@ -8,6 +8,7 @@ import org.mql.gc.models.Donation;
 public interface CaseDao {
 	public void create(Cas cas);
 	public List<Cas> findAll();
+	public List<Cas> findAllUrgent();
 	public List<Cas> findByTitleAndCategory(String nom, String category) ;
 	public List<Cas> findByIdDonor(int idDonor);
 	public double getDonatorCasCount(int id);

@@ -5,8 +5,6 @@ import java.util.List;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.annotations.NamedQuery;
-import org.mql.gc.models.Association;
 import org.mql.gc.models.Donation;
 import org.mql.gc.models.Donnateur;
 

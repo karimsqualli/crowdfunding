@@ -28,6 +28,7 @@ public interface Service {
 	public void savePdf3(InputStream inputStream, Cas cas) throws IOException ;
 	public String getUniquePdfName();
 	public List<Cas> afficherListcas();
+	public List<Cas> findAllUrgent();
 	public List<Cas> afficherListcas(String nom, String category);
 	//************************************Donateur**************************************
 		public boolean addDonator(Donnateur e) ;

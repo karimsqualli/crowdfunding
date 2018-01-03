@@ -18,6 +18,7 @@ public class ShowCase implements Serializable{
 	
 	private Cas cas;
 	private List<Cas> liste;
+	private List<Cas> listUrgent;
 	private Service service;
 	
 	public ShowCase() {
@@ -41,6 +42,14 @@ public class ShowCase implements Serializable{
 	public void list() {
 		liste=service.afficherListcas();
 		for (Cas cas : liste) {
+			System.out.println(cas);
+		}
+		System.out.println("list");
+	}
+	
+	public void listUrgent() {
+		listUrgent=service.findAllUrgent();
+		for (Cas cas : listUrgent) {
 			System.out.println(cas);
 		}
 		System.out.println("list");
@@ -80,6 +89,16 @@ public class ShowCase implements Serializable{
 
 	public void setListe(List<Cas> liste) {
 		this.liste = liste;
+	}
+
+
+	public List<Cas> getListUrgent() {
+		return listUrgent;
+	}
+
+
+	public void setListUrgent(List<Cas> listUrgent) {
+		this.listUrgent = listUrgent;
 	}
 	
 }

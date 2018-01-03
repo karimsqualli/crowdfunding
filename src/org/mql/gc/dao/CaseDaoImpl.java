@@ -56,6 +56,23 @@ public class CaseDaoImpl implements CaseDao {
 		}
 		
 	}
+	public List<Cas> findAllUrgent() {
+
+		List<Cas> liste = new ArrayList<Cas>();
+		try {
+			Session session = dao.getSession();
+			Query query = session.createQuery("from Cas C order by id desc");
+			liste = query.list();
+			dao.closeSession(session);
+			
+			return liste;
+
+		} catch (Exception e) {
+			System.out.println("ne recupere pas les cas::" + e.getMessage());
+			throw e;
+		}
+		
+	}
 	
 	
 	public List<Cas> findByTitleAndCategory(String nom, String category) {
