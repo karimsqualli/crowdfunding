@@ -35,9 +35,21 @@ public class BaseDAO {
 		session_factory = config.configure().buildSessionFactory();
 	}
 	
-	public static BaseDAO getInstance() {
+	
+	
+	public static BaseDAO getINSTANCE() {
 		return INSTANCE;
 	}
+
+
+
+	public static void setINSTANCE(BaseDAO iNSTANCE) {
+		INSTANCE = iNSTANCE;
+	}
+
+
+
+
 	
 	public Session getSession() {
 		return session_factory.openSession();

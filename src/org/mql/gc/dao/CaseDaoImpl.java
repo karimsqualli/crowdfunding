@@ -11,9 +11,17 @@ import org.mql.gc.models.Cas;
 
 public class CaseDaoImpl implements CaseDao {
 	private BaseDAO dao;
+	
+	public BaseDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(BaseDAO dao) {
+		this.dao = dao;
+	}
 
 	public CaseDaoImpl() {
-		dao = BaseDAO.getInstance();
+		dao = BaseDAO.getINSTANCE();
 		findByIdDonor(2);
 	}
 

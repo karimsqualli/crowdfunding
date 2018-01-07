@@ -80,7 +80,7 @@
 											</div>
 											<div class="form-group">
 											<p:outputLabel styleClasse="hide"/>
-				<p:password id="confpasswordd" binding="#{passwordComp}" placeholder="Password" styleClass="form-control input-lg c-square" value="#{AssBean.asso.password}" requiredMessage="password  obligatoire" required="true" validatorMessage="mot de passe non valide">
+				<p:password id="confpasswordd" binding="#{passwordComp55}" placeholder="Password" styleClass="form-control input-lg c-square" value="#{AssBean.asso.password}" requiredMessage="password  obligatoire" required="true" validatorMessage="mot de passe non valide">
 				<f:validator validatorId="org.mql.gc.actions.validators.PasswordValidator"/>
 				</p:password>
 				<p:message style="color:white;" for="confpasswordd"/>
@@ -89,7 +89,7 @@
 											<p:outputLabel styleClasse="hide"/>
 				<p:password id="confirmPasswordd" styleClass="form-control input-lg c-square" placeholder="Confirmer password" required="true" requiredMessage="veuillez verifier votre mot de passe ">
 				    <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
-				    <f:attribute name="passwordComp" value="#{passwordComp}" />
+				    <f:attribute name="passwordComp" value="#{passwordComp55}" />
 				</p:password>
 				<p:message  style="color:white;"  for="confirmPasswordd" />
 											</div>

@@ -11,15 +11,18 @@ import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.context.RequestContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@ManagedBean(name="DonBean")
-@RequestScoped
+
 public class DonBean {
+
 	private ServiceImpl service ;
 	private Donnateur don;
 	private boolean connected = false;
 	
-
+	
 	public boolean isConnected() {
 		return connected;
 	}
@@ -30,9 +33,9 @@ public class DonBean {
 
 	@PostConstruct
 	public void init(){
+		service.sayTest();
 		don=new Donnateur() ;
-		System.out.println("post con");
-		service=new ServiceImpl();
+		System.out.println("post con donBean");
 
 		//===============check if donator try to participate in a case without logIn
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
@@ -44,6 +47,7 @@ public class DonBean {
 			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
 		}
 		//==========================================
+		
 		
 	}
 	
@@ -80,6 +84,8 @@ public class DonBean {
         boolean loggedIn = false;
 		RequestContext context = RequestContext.getCurrentInstance();
 		System.out.println("password ===> "+don.getPassword());
+		
+		
 		if (service.connectDonator(don.getEmail(), don.getPassword()) != null) {
             loggedIn = true;
             connected = true;

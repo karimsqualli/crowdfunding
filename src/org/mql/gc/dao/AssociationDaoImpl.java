@@ -8,9 +8,17 @@ import org.mql.gc.models.Association;
 
 public class AssociationDaoImpl implements AssociationDao {
 	private BaseDAO dao;
+	
+	public BaseDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(BaseDAO dao) {
+		this.dao = dao;
+	}
 
 	public AssociationDaoImpl() {
-		dao = BaseDAO.getInstance();
+		dao = BaseDAO.getINSTANCE();
 	}
 
 	public void create(Association a) {

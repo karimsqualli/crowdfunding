@@ -12,47 +12,49 @@ import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
 
 public class ShowCase implements Serializable{
-	
+
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String category;
-	
 	private Cas cas;
 	private List<Cas> liste;
 	private List<Cas> listUrgent;
-	private Service service;
+	private ServiceImpl service;
 	
+
+
+
+	public ServiceImpl getService() {
+		return service;
+	}
+
+
+	public void setService(ServiceImpl service) {
+		this.service = service;
+	}
+
+
 	public ShowCase() {
-		service=new ServiceImpl();
-		list();
-		System.out.println("AA");
+	}
+	
+	
+	@PostConstruct
+	public void test(){
+		service.sayTest();
 	}
 	
 
 	public void searchCas() {
-		
-		System.out.println("test");
-		System.out.println(nom);
-		System.out.println(category);
-
-		
 		this.liste = this.service.afficherListcas("htr", "artisanat");
 	}
 
-	
-	public void list() {
-		liste=service.afficherListcas();
-		for (Cas cas : liste) {
-			System.out.println(cas);
-		}
-		System.out.println("list");
-	}
+
 	
 	public void listUrgent() {
 		listUrgent=service.findAllUrgent();
 		for (Cas cas : listUrgent) {
 			System.out.println(cas);
 		}
-		System.out.println("list");
 	}
 
 	public Cas getCas() {
@@ -65,7 +67,6 @@ public class ShowCase implements Serializable{
 
 	public double getRes(int id) {
 		double ret = service.calc(id);
-		System.out.println("ret is " + ret);
 		return ret;
 	}
 	

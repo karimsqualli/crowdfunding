@@ -35,15 +35,44 @@ public class ServiceImpl implements Service {
 	private DonateurDaoImpl DonatorDao;
 
 	
-	
-	
-	
 	public ServiceImpl() {
-	DonatorDao=new DonateurDaoImpl();
-	dao	= new AssociationDaoImpl();
-	casDao=new CaseDaoImpl();
-	fileSaver=new FileSaver(); 
+		
 	}
+	
+	
+	public CaseDao getCasDao() {
+		return casDao;
+	}
+
+	public void setCasDao(CaseDao casDao) {
+		this.casDao = casDao;
+	}
+
+	public FileSaver getFileSaver() {
+		return fileSaver;
+	}
+
+	public void setFileSaver(FileSaver fileSaver) {
+		this.fileSaver = fileSaver;
+	}
+
+	public AssociationDao getDao() {
+		return dao;
+	}
+
+	public void setDao(AssociationDao dao) {
+		this.dao = dao;
+	}
+
+	public DonateurDaoImpl getDonatorDao() {
+		return DonatorDao;
+	}
+
+	public void setDonatorDao(DonateurDaoImpl donatorDao) {
+		DonatorDao = donatorDao;
+	}
+
+
 	
 //******************************Association************************	
 
@@ -226,4 +255,10 @@ public class ServiceImpl implements Service {
 		public double calc(int id) {
 			return casDao.getDonatorCasCount(id);
 		}
+		
+//*********************************test for spring*****************************************
+		public void sayTest(){
+			System.out.println("§§§ test setvice §§§");
+		}
+
 }
