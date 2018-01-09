@@ -14,31 +14,42 @@
   </bean>
   
   
-  <bean id="CaseDaoImpl" class="org.mql.gc.dao.CaseDaoImpl">
-  		 <property name="dao" ref="BaseDAO"></property> 
-  </bean>
-  
-  <bean id="FileSaver" class="org.mql.gc.actions.FileSaver"></bean>
-  <bean id="AssociationDaoImpl" class="org.mql.gc.dao.AssociationDaoImpl">
-    	<property name="dao" ref="BaseDAO"></property>
-  </bean>
-  <bean id="DonateurDaoImpl" class="org.mql.gc.dao.DonateurDaoImpl">
-      	<property name="dao" ref="BaseDAO"></property>
-  </bean>
-  
-  <!-- je demande à karim de réaliser ce bean ... : hassan / 07/01/2018  -->
-  <bean id="BaseDAO" class="org.mql.gc.dao.BaseDAO">
-  </bean>
+	  <bean id="CaseDaoImpl" class="org.mql.gc.dao.CaseDaoImpl">
+	  		 <property name="dao" ref="BaseDAO"></property> 
+	  </bean>
+	  
+	  <bean id="FileSaver" class="org.mql.gc.actions.FileSaver"></bean>
+	  <bean id="AssociationDaoImpl" class="org.mql.gc.dao.AssociationDaoImpl">
+	    	<property name="dao" ref="BaseDAO"></property>
+	  </bean>
+	  <bean id="DonateurDaoImpl" class="org.mql.gc.dao.DonateurDaoImpl">
+	      	<property name="dao" ref="BaseDAO"></property>
+	  </bean>
+	  
+	  <!-- je demande à karim de réaliser ce bean ... : hassan / 07/01/2018  -->
+	  <bean id="BaseDAO" class="org.mql.gc.dao.BaseDAO">
+	  </bean>
 
- <bean id="showCase" class="org.mql.gc.actions.ShowCase">
-  		<property name="service" ref="ServiceImpl"></property>
- </bean>
+
 
     <!-- les beans action  -->
+    <bean id="showCase" class="org.mql.gc.actions.ShowCase">
+	  		<property name="service" ref="ServiceImpl"></property>
+	 </bean> 
     <bean id="donBean" class="org.mql.gc.actions.DonBean">
   		<property name="service" ref="ServiceImpl"></property>
     </bean>
-    
- 
+    <bean id="assBean" class="org.mql.gc.actions.AssociationBean">
+      	<property name="service" ref="ServiceImpl"></property>
+    </bean>
+    <bean id="donAction" class="org.mql.gc.actions.DonAction">
+		<property name="service" ref="ServiceImpl"></property>
+    </bean>
+    <bean id="InsertCaseBean" class="org.mql.gc.actions.InsertCaseBean">
+		<property name="service" ref="ServiceImpl"></property>
+    </bean>
+ 	<bean id="validateAssBean" class="org.mql.gc.actions.validateAssociationBean">
+ 		<property name="service" ref="ServiceImpl"></property>
+ 	</bean>
     
 </beans>

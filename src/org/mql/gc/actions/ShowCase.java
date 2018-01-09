@@ -21,29 +21,21 @@ public class ShowCase implements Serializable{
 	private List<Cas> listUrgent;
 	private ServiceImpl service;
 	
-
-
-
+	@PostConstruct
+	public void innit(){
+		liste=service.afficherListcas();
+	}
+	
 	public ServiceImpl getService() {
 		return service;
 	}
-
+	
 
 	public void setService(ServiceImpl service) {
 		this.service = service;
 	}
-
-
-	public ShowCase() {
-	}
 	
 	
-	@PostConstruct
-	public void test(){
-		service.sayTest();
-	}
-	
-
 	public void searchCas() {
 		this.liste = this.service.afficherListcas("htr", "artisanat");
 	}

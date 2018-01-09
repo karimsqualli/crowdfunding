@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -21,18 +22,27 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
 
 public class InsertCaseBean implements Serializable{
-	private Cas cas;
-	private Service service;
 
+	private static final long serialVersionUID = 1L;
+	private Cas cas;
+	private ServiceImpl service;
+
+	
 	public InsertCaseBean() {
-		cas = new Cas();
-		service = new ServiceImpl();
+		cas=new Cas();
 	}
 
+
+	@PostConstruct
+	public void innit(){
+		System.out.println("$$ post construct InsertCaseBean $$ ");
+	}
+	
+	
 	public String insertCase() {
 		HttpSession session = SessionUtils.getSession();
 		int ida =(int)session.getAttribute("idAssociation");
-		System.out.println("azzeazeaeazeaezaezaeazea"+ida);
+		System.out.println("id association = "+ida);
 		cas.setDate_ajout(new Timestamp( System.currentTimeMillis() ));
 		cas.setIdAssociation(ida);
 		service.create(cas);
@@ -142,5 +152,15 @@ public class InsertCaseBean implements Serializable{
 	public void setCas(Cas cas) {
 		this.cas = cas;
 	}
+
+	public ServiceImpl getService() {
+		return service;
+	}
+
+	public void setService(ServiceImpl service) {
+		this.service = service;
+	}
+	
+	
 
 }

@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Donnateur;
@@ -31,24 +32,22 @@ public class DonBean {
 		this.connected = connected;
 	}
 
+	public DonBean(){
+		System.out.println("$$ constructeur donBean $$ ");
+		don=new Donnateur();
+	}
+	
 	@PostConstruct
 	public void init(){
-		service.sayTest();
-		don=new Donnateur() ;
-		System.out.println("post con donBean");
-
 		//===============check if donator try to participate in a case without logIn
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		String message = (String) request.getAttribute("logDon");
-		System.out.println(message);
 		if(message != null && message.equals("notIn")){
 			FacesMessage message2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "connectez vous pour participer ! ","");
 			RequestContext.getCurrentInstance().execute("PF('dlg').show();");
 			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
 		}
 		//==========================================
-		
-		
 	}
 	
 
@@ -61,6 +60,7 @@ public class DonBean {
 	} 
 
 	public String createDonator(){
+		
         FacesMessage message =null;
         boolean subscribe=false;
 		RequestContext context = RequestContext.getCurrentInstance();
@@ -80,7 +80,7 @@ public class DonBean {
 	
 
 
-	public String validateDonator() {
+	public String validateDonator(ActionEvent E) {
         boolean loggedIn = false;
 		RequestContext context = RequestContext.getCurrentInstance();
 		System.out.println("password ===> "+don.getPassword());
@@ -98,7 +98,7 @@ public class DonBean {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Welcome "+don.getfName(),"");
 	        RequestContext.getCurrentInstance().showMessageInDialog(message);
 	        context.addCallbackParam("loggedIn", loggedIn);
-			return "index?faces-redirect=true";
+			return "index.xhtml?faces-redirect=true";
 		}
 
 		else {
@@ -107,7 +107,7 @@ public class DonBean {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email ou Password incorect","");
 			RequestContext.getCurrentInstance().showMessageInDialog(message);
 		     context.addCallbackParam("loggedIn", loggedIn);
-		     return "index";
+		     return null;
 		}
 	}
 	public ServiceImpl getService() {

@@ -1,19 +1,21 @@
 package org.mql.gc.actions;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Association;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
-
+//hassan : est ce que on utiliser cette classe dans notre projet ?  
 public class validateAssociationBean {
 	private Association association;
 	private ServiceImpl service;
-
-	public validateAssociationBean() {
+	
+	@PostConstruct
+	public void innit(){
+		System.out.println("$$ post construct validateAssociationBean");
 		association=new Association();
-		service = new ServiceImpl();
 	}
 	
 	public String validateAssociation() {
@@ -49,6 +51,14 @@ public class validateAssociationBean {
 
 	public void setAssociation(Association association) {
 		this.association = association;
+	}
+
+	public ServiceImpl getService() {
+		return service;
+	}
+
+	public void setService(ServiceImpl service) {
+		this.service = service;
 	}
 
 	

@@ -9,26 +9,6 @@
     		    org.springframework.web.jsf.el.SpringBeanFacesELResolver
 		</el-resolver>
   	</application> 
-  	
-  	
-	<managed-bean>
-		<managed-bean-name>InsertCaseBean</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.InsertCaseBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
-	
-	<managed-bean>
-		<managed-bean-name>AssBean</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.AssociationBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
-	
-	<managed-bean>
-		<managed-bean-name>validateAssociationBean</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.validateAssociationBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
-
 	
 	<managed-bean>
 		<managed-bean-name>DetailCase</managed-bean-name>
@@ -36,13 +16,9 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>	
 	
-	<managed-bean>
-		<managed-bean-name>DonAction</managed-bean-name>
-		<managed-bean-class>org.mql.gc.actions.DonAction</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>	
+
 	
-		<!-- added by hassan after adding configuring sprion ioc 7/01/2018 -->
+<!-- added by hassan after adding configuring sprion ioc 7/01/2018 -->
 	<managed-bean>
 		<managed-bean-name>DonBean</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.DonBean</managed-bean-class>
@@ -52,8 +28,51 @@
 			<value>#{ServiceImpl}</value>
 		</managed-property>
 	</managed-bean>	
+	
 		
-	<!-- updated by hassan 07/01/2018  -->	
+	<!-- updated by hassan 07/01/2018 : injecting attributes  -->	
+	
+	<managed-bean>
+		<managed-bean-name>validateAssociationBean</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.validateAssociationBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
+	</managed-bean>	
+	
+	<managed-bean>
+		<managed-bean-name>InsertCaseBean</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.InsertCaseBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>DonAction</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.DonAction</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
+	</managed-bean>	
+	
+	<managed-bean>
+		<managed-bean-name>AssBean</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.AssociationBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
+	</managed-bean>	
+	
+	
 	<managed-bean>
 		<managed-bean-name>ShowCase</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.ShowCase</managed-bean-class>

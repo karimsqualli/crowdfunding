@@ -3,6 +3,7 @@ package org.mql.gc.actions;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -21,11 +22,17 @@ public class AssociationBean  implements Serializable{
 	private SelectItem[] SectorActivities; 
 	private SelectItem[] lowForms;
 	private ServiceImpl service ;	
+		
 	
-	public AssociationBean(){
+	
+	//added by hassan 09/01/2018
+	public  AssociationBean(){
+		System.out.println("$$  constructeur AssociationBean $$");
 		asso = new Association();
-		service = new ServiceImpl(); 
+		SectorActivities = new SelectItem[ActivitySector.values().length];
+		lowForms = new SelectItem[LowFormEnum.values().length];
 	}
+
 	
 	public String createAss() {
 		service.add(asso);
@@ -46,7 +53,6 @@ public class AssociationBean  implements Serializable{
 	}
 
 	public SelectItem[] getLowForms() {
-		lowForms = new SelectItem[LowFormEnum.values().length];
 	    int i = 0;
 	    for(LowFormEnum g: LowFormEnum.values()) {
 	    	lowForms[i++] = new SelectItem(g.name(), g.name());
@@ -58,7 +64,6 @@ public class AssociationBean  implements Serializable{
 	
 
 	public SelectItem[] getSectorActivities() {
-		SectorActivities = new SelectItem[ActivitySector.values().length];
 	    int i = 0;
 	    for(ActivitySector g: ActivitySector.values()) {
 	    	SectorActivities[i++] = new SelectItem(g.name(), g.name());
@@ -68,6 +73,16 @@ public class AssociationBean  implements Serializable{
 
 	public void setLowForms(SelectItem[] lowForms) {
 		this.lowForms = lowForms;
+	}
+
+
+	public ServiceImpl getService() {
+		return service;
+	}
+
+
+	public void setService(ServiceImpl service) {
+		this.service = service;
 	}
 
 	

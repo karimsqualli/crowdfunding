@@ -3,6 +3,9 @@ package org.mql.gc.actions;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+
+import javax.annotation.PostConstruct;
+
 import org.mql.gc.models.Donation;
 import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
@@ -10,15 +13,17 @@ import org.mql.gc.utils.SessionUtils;
 
 
 public class DonAction implements Serializable {
+	
+
+	private static final long serialVersionUID = 1L;
 	private Donation donation;
-	private Service service;
+	private ServiceImpl service;
 	
-	
-	public DonAction() {
-		System.out.println("in Action");
+	public  DonAction(){
+		System.out.println("$$ constructeur DonAction $$");
 		donation = new Donation();
-		service = new ServiceImpl();
 	}
+
 	
 	public String createDonnation() {
 		donation.setIdUser(SessionUtils.getUserId());
@@ -40,6 +45,16 @@ public class DonAction implements Serializable {
 	public void setDonation(Donation donation) {
 		this.donation = donation;
 	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(ServiceImpl service) {
+		this.service = service;
+	}
+
+
 
 
 	
