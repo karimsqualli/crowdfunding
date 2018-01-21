@@ -1,22 +1,16 @@
 package org.mql.gc.actions;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Association;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
-//hassan : est ce que on utiliser cette classe dans notre projet ?  
+
+//hassan : est ce que on utilise cette classe dans notre projet ?  
 public class validateAssociationBean {
 	private Association association;
 	private ServiceImpl service;
-	
-	@PostConstruct
-	public void innit(){
-		System.out.println("$$ post construct validateAssociationBean");
-		association=new Association();
-	}
 	
 	public String validateAssociation() {
 		boolean exist= service.connectAssociation(association.getEmail(), association.getPassword());
@@ -28,7 +22,6 @@ public class validateAssociationBean {
 			session.setAttribute("idAssociation", idAsso);
 			return "LoadCase?faces-redirect=true";
 		}
-
 		else {
 			System.out.println("Else");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -36,7 +29,6 @@ public class validateAssociationBean {
 			return "login";
 		}
 	}
-
 
 	public String logout() {
 		System.out.println("Log out");
@@ -60,7 +52,4 @@ public class validateAssociationBean {
 	public void setService(ServiceImpl service) {
 		this.service = service;
 	}
-
-	
-
 }

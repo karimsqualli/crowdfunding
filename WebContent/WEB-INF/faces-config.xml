@@ -27,6 +27,10 @@
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>don</property-name>
+			<value>#{Donnateur}</value>
+		</managed-property>
 	</managed-bean>	
 	
 		
@@ -40,6 +44,10 @@
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>
 		</managed-property>
+			<managed-property>
+			<property-name>association</property-name>
+			<value>#{Association}</value>
+		</managed-property>
 	</managed-bean>	
 	
 	<managed-bean>
@@ -49,6 +57,10 @@
 		<managed-property>
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>cas</property-name>
+			<value>#{Cas}</value>
 		</managed-property>
 	</managed-bean>
 	
@@ -60,6 +72,10 @@
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>donation</property-name>
+			<value>#{Donation}</value>
+		</managed-property>
 	</managed-bean>	
 	
 	<managed-bean>
@@ -69,6 +85,10 @@
 		<managed-property>
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>asso</property-name>
+			<value>#{Association}</value>
 		</managed-property>
 	</managed-bean>	
 	

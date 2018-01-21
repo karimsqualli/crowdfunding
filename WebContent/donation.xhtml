@@ -70,7 +70,7 @@
 												<p:message for="dateExpiration" />
                                                 </div><br/>
                                                 <p:commandButton value="Valider" ajax="true" styleClass="btn-default btn"
-												action="#{DonAction.createDonnation}" icon="ui-icon-check" validateClient="true"> </p:commandButton>
+												action="#{DonAction.createDonnation}" update="@form" process="@form" icon="ui-icon-check" validateClient="true"> </p:commandButton>
                                             	</h:form>
                                             </div>
                                         </div>

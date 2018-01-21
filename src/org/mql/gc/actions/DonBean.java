@@ -1,9 +1,6 @@
 package org.mql.gc.actions;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
@@ -12,31 +9,13 @@ import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.context.RequestContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 
 public class DonBean {
 
 	private ServiceImpl service ;
 	private Donnateur don;
 	private boolean connected = false;
-	
-	
-	public boolean isConnected() {
-		return connected;
-	}
 
-	public void setConnected(boolean connected) {
-		this.connected = connected;
-	}
-
-	public DonBean(){
-		System.out.println("$$ constructeur donBean $$ ");
-		don=new Donnateur();
-	}
-	
 	@PostConstruct
 	public void init(){
 		//===============check if donator try to participate in a case without logIn
@@ -50,7 +29,6 @@ public class DonBean {
 		//==========================================
 	}
 	
-
 	public Donnateur getDon() {
 		return don;
 	}
@@ -60,12 +38,9 @@ public class DonBean {
 	} 
 
 	public String createDonator(){
-		
         FacesMessage message =null;
         boolean subscribe=false;
 		RequestContext context = RequestContext.getCurrentInstance();
-		
-		System.out.println("adresse ====> " +  don.getAdresse());
 		if(service.addDonator(don)){
 	        message= new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a ete effectue avec succee", "");
 	        subscribe=true; 
@@ -77,15 +52,10 @@ public class DonBean {
         context.addCallbackParam("sign_in", subscribe);
         return "index.xhtml?faces-redirect=true";
 	}
-	
-
 
 	public String validateDonator(ActionEvent E) {
         boolean loggedIn = false;
 		RequestContext context = RequestContext.getCurrentInstance();
-		System.out.println("password ===> "+don.getPassword());
-		
-		
 		if (service.connectDonator(don.getEmail(), don.getPassword()) != null) {
             loggedIn = true;
             connected = true;
@@ -100,7 +70,6 @@ public class DonBean {
 	        context.addCallbackParam("loggedIn", loggedIn);
 			return "index.xhtml?faces-redirect=true";
 		}
-
 		else {
             loggedIn = false;
 			System.out.println("Else");
@@ -110,6 +79,7 @@ public class DonBean {
 		     return null;
 		}
 	}
+	
 	public ServiceImpl getService() {
 		return service;
 	}
@@ -118,10 +88,17 @@ public class DonBean {
 		this.service = service;
 	}
 
-
 	public String logoutt() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
 		return "index.xhtml?faces-redirect=true";
+	}
+
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
 	}
 }

@@ -6,38 +6,20 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-
-import org.mql.gc.models.Association;
 import org.mql.gc.models.Cas;
 import org.mql.gc.models.City;
-import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
 
 public class InsertCaseBean implements Serializable{
-
 	private static final long serialVersionUID = 1L;
 	private Cas cas;
 	private ServiceImpl service;
-
-	
-	public InsertCaseBean() {
-		cas=new Cas();
-	}
-
-
-	@PostConstruct
-	public void innit(){
-		System.out.println("$$ post construct InsertCaseBean $$ ");
-	}
-	
 	
 	public String insertCase() {
 		HttpSession session = SessionUtils.getSession();
@@ -55,14 +37,15 @@ public class InsertCaseBean implements Serializable{
         	if (ville.name().toLowerCase().startsWith(lettres)) {
 				System.out.println(ville);
         	results.add(ville.name());
-			}
-        		
+			}		
         }
         return results;
     }
+	
 	public String onFlowProcess(FlowEvent event) {
             return event.getNewStep();
     }
+	
 	public void uploadFileI(FileUploadEvent event) {
 		if (event.getFile() != null) {
 			try {
@@ -79,6 +62,7 @@ public class InsertCaseBean implements Serializable{
 			}
 		}
 	}
+	
 	public void uploadFileV(FileUploadEvent event) {
 		if (event.getFile() != null) {
 			try {
@@ -95,14 +79,13 @@ public class InsertCaseBean implements Serializable{
 			}
 		}
 	}
+	
 	public void uploadFile1(FileUploadEvent event) {
 		if (event.getFile()  != null) {
 			try {
-				System.out.println("pdf1******************");
 				cas.setPdf1(event.getFile());
 				InputStream inputStream = cas.getPdf1().getInputstream();
 				service.savePdf1(inputStream, cas);
-				System.out.println(cas);
 				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf1().getFileName() + "a �t� enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
@@ -112,13 +95,13 @@ public class InsertCaseBean implements Serializable{
 			}
 		}
 	}
+	
 	public void uploadFile2(FileUploadEvent event) {
 		if (event.getFile() != null) {
 			try {
 				cas.setPdf2(event.getFile());
 				InputStream inputStream = cas.getPdf2().getInputstream();
 				service.savePdf2(inputStream, cas);
-				System.out.println(cas);
 				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf2().getFileName() + "a �t� enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
@@ -128,13 +111,13 @@ public class InsertCaseBean implements Serializable{
 			}
 		}
 	}
+	
 	public void uploadFile3(FileUploadEvent event) {
 		if (event.getFile() != null) {
 			try {
 				cas.setPdf3(event.getFile());
 				InputStream inputStream = cas.getPdf3().getInputstream();
 				service.savePdf3(inputStream, cas);
-				System.out.println(cas);
 				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf3().getFileName() + "a �t� enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 			} catch (IOException e) {
@@ -160,7 +143,4 @@ public class InsertCaseBean implements Serializable{
 	public void setService(ServiceImpl service) {
 		this.service = service;
 	}
-	
-	
-
 }
