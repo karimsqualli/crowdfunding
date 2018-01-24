@@ -24,7 +24,7 @@ public class EmailValidator implements Validator {
 		boolean matches = EMAIL_PATTERN.matcher(email).matches();
 
 		if (!matches) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email is invalid", null);
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email non valide", null);
 			throw new ValidatorException(msg);
 		}
 

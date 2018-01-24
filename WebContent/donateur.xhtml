@@ -1,15 +1,12 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-		xmlns:ui="http://java.sun.com/jsf/facelets"
-	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Kaisahhh</title>
-	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="img/icons/favicon.png" />
 	<link rel="stylesheet" href="css/elements.css" />
@@ -20,57 +17,59 @@
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
 <h:body >
-
+<ui:composition>
 <!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
 <div class="modal fade c-content-login-form" id="login-form" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content c-square">
+    <div class="modal-dialog" >
+        <div class="modal-content c-square"  >
             <div class="modal-header c-no-border">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
             </div>
             <div class="modal-body">
-                <h3 class="c-font-24 c-font-sbold">Bonjour BuenosDias GoodMorning !</h3>
+                <h3 class="c-font-24 c-font-sbold">Bienvenue !</h3>
                 <p>Collaborons tous pour un avenir meilleur !</p>
-            	 <h:form>
+            	 <h:form >
+            	 
                     <div class="form-group">
-                    <h:outputLabel for="username" value="Email @ : "  styleClass="hide"/>
-				<p:inputText id="username" value="#{DonBean.don.email}"
+                    <h:outputLabel for="username1" value="Email @ : "  styleClass="hide"/>
+				<p:inputText id="username1" value="#{DonBean.don.email}"
 					required="true" label="Email"
-					requiredMessage="veuillez saisir votre email !"  styleClass="form-control input-lg c-square" placeholder="Email">
+					requiredMessage="veuillez saisir un email correcte !"  styleClass="form-control input-lg c-square" placeholder="Email">
 				</p:inputText>
-                   
+                   <p:messages for="username1" autoUpdate="true" />
                     </div>
                     <div class="form-group">
 					<p:password id="password1" value="#{DonBean.don.password}"
 					required="true" styleClass="form-control input-lg c-square"  placeholder="Password" 
-					requiredMessage="veuillez saisir votre mot de passe !" />
+					requiredMessage="veuillez saisir un mot de passe correcte !" />
+                    <p:messages for="password1" autoUpdate="true" />
                     </div>
                 
                     <div class="form-group">
                     <p:commandButton value="Se connecter" styleClass="btn btn-default"
-						action="#{DonBean.validateDonator}"
-						oncomplete="handleLoginRequest(xhr, status, args)" />
+						action="#{DonBean.validateDonator}" />
 					</div>
                 </h:form>
             </div>
             <div class="modal-footer c-no-border">                
-                <span class="c-text-account">Vous n'êtes pas inscrit ?</span>
-                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">créer un compte!</a>
+                <span class="c-text-account">Vous n'Ãªtes pas inscrit ?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">crÃ©er un compte!</a>
             </div>
         </div>
     </div>
 </div>
 <!-- END: CONTENT/USER/LOGIN-FORM -->
 <!-- BEGIN: CONTENT/USER/SIGNUP-FORM -->
-<div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+<div class="modal fade c-content-login-form" id="signup-form" role="dialog" style="overflow:scroll;">
     <div class="modal-dialog">
         <div class="modal-content c-square">
             <div class="modal-header c-no-border">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
             </div>
             <div class="modal-body">
-                <h3 class="c-font-24 c-font-sbold">Créer un compte</h3>
+                <h3 class="c-font-24 c-font-sbold">CrÃ©er un compte</h3>
                 <h:form>
+                <p:messages showDetail="true" autoUpdate="true" />
                     <div class="form-group">
                         <label for="signup-email" class="hide">Email</label>
                         <p:inputText id="email" value="#{DonBean.don.email}" styleClass="form-control input-lg c-square"
@@ -90,18 +89,17 @@
 						<f:validator
 						validatorId="org.mql.gc.actions.validators.PasswordValidator" />
 					</p:password>
-					<p:message style="color:white;" for="password" />
+					<p:message for="password" />
                     </div>
                     <div class="form-group">
                         <label for="signup-fullname" class="hide">RepeatPass</label>
                         
-					<p:password id="confirmPassword" required="true" styleClass="form-control input-lg c-square" placeholder="Repéter le password"
-						requiredMessage="veuillez verifier votre mot de passe ">
-						<f:validator
-							validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
-						<f:attribute name="passwordComp2" value="#{passwordComp2}" />
+					<p:password id="confirmPassword2"  required="true" styleClass="form-control input-lg c-square" 
+					placeholder="RepÃ©ter le password"	requiredMessage="veuillez verifier votre mot de passe ">
+						<!-- <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
+						<f:attribute name="passwordComp2" value="#{passwordComp2}" /> -->
 					</p:password>
-					<p:message style="color:white;" for="confirmPassword" />
+					<p:message for="confirmPassword2" />
                     </div>
                     <div class="form-group">
                        <p:inputText id="nom" value="#{DonBean.don.fName}" maxlength="20"  styleClass="form-control input-lg c-square" placeholder="Nom"
@@ -131,13 +129,14 @@
                     
                     <p:commandButton value="s'inscrire" process="@form" update="@form"  action="#{DonBean.createDonator}"
 						 styleClass="btn btn-default" />
-                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Retour à la connexion</a>
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Retour Ã  la connexion</a>
                     </div>
                 </h:form>
             </div>
         </div>
     </div>
 </div>
-<!-- END: CONTENT/USER/SIGNUP-FORM -->        
+<!-- END: CONTENT/USER/SIGNUP-FORM -->  
+</ui:composition>      
 </h:body>
 </html>

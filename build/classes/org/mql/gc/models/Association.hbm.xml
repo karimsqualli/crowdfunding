@@ -8,7 +8,7 @@
 <class name="org.mql.gc.models.Association" table="ASSOCIATION" >
 
 
-	<id name="id" column="ID_ASSOCIATION" type="java.lang.Long" >
+	<id name="id" column="ID_ASSOCIATION" type="int" >
 		<generator class="native"></generator>
 	</id>
 	<property name="name" column="NAME"></property>

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<!-- Thu, 28 Dec 2017 01:24:26 GMT -->
-<head>
+<h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Kaisahhh</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,8 +15,7 @@
 	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
 	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-
+</h:head>
 
 <body>
 
@@ -167,9 +164,11 @@
             </div>
         </div>
         <!-- Slider area end -->
-        	<ui:insert >
+        	<div id="donateurConn">
+        	<ui:insert name="donateurConn">
 			<ui:include src="donateur.xhtml" />
 		    </ui:insert>
+		    </div>
         <!-- Page content area start -->
         <section class="content">
             <!-- Donet section start -->
