@@ -7,7 +7,6 @@
 
 <class name="org.mql.gc.models.Association" table="ASSOCIATION" >
 
-
 	<id name="id" column="ID_ASSOCIATION" type="int" >
 		<generator class="native"></generator>
 	</id>
@@ -22,6 +21,8 @@
 	<property name="website" column="WEBSITE"></property>
 	<property name="fixe" column="FIXE"></property>
 	<property name="gsm" column="GSM"></property>
+	
+	
 </class>
 
 

@@ -28,21 +28,7 @@
             <div class="modal-body">
                 <h3 class="c-font-24 c-font-sbold">Bienvenue !</h3>
                 <p>Collaborons tous pour un avenir meilleur !</p>
-            	 <h:form >
-                    <div class="form-group">
-                    <h:outputLabel for="username1" value="Email @ : "  styleClass="hide"/>
-				<p:inputText id="username1" value="#{DonBean.don.email}"
-					required="true" label="Email"
-					requiredMessage="veuillez saisir un email correcte !"  styleClass="form-control input-lg c-square" placeholder="Email">
-				</p:inputText>
-                   <p:messages for="username1" autoUpdate="true" />
-                    </div>
-                    <div class="form-group">
-					<p:password id="password1" value="#{DonBean.don.password}"
-					required="true" styleClass="form-control input-lg c-square"  placeholder="Password" 
-					requiredMessage="veuillez saisir un mot de passe correcte !" />
-                    <p:messages for="password1" autoUpdate="true" />
-                    </div>
+            	
         <h:form>
         
 			<div class="form-group">
@@ -57,11 +43,11 @@
 				<p:password id="password1" value="#{DonBean.don.password}"
 					required="true" styleClass="form-control input-lg c-square"  placeholder="Password" 
 					requiredMessage="veuillez saisir votre mot de passe !" />
-				</div>
-				<div class="form-group">
+			</div>
+			<div class="form-group">
                     <p:commandButton value="Se connecter" styleClass="btn btn-default"
 						action="#{DonBean.validateDonator}" update="@form" process="@form" />
-				</div>
+			</div>
         </h:form>
         
             </div>
@@ -96,7 +82,7 @@
                     </div>
                     <div class="form-group">
                     <label for="password" class="hide">pass</label>
-                    	<p:password id="password" binding="#{XXX}" placeholder="Password"
+                    <p:password id="password" binding="#{XXX}" placeholder="Password"
 						value="#{DonBean.don.password}" styleClass="form-control input-lg c-square"
 						requiredMessage="password  obligatoire" required="true"
 						validatorMessage="mot de passe non valide">
