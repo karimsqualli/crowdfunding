@@ -20,6 +20,130 @@
 	<!-- button -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
+<<<<<<< HEAD
+<h:body >
+<ui:composition>
+<!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
+<div class="modal fade c-content-login-form" id="login-form" role="dialog">
+    <div class="modal-dialog" >
+        <div class="modal-content c-square"  >
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Bienvenue !</h3>
+                <p>Collaborons tous pour un avenir meilleur !</p>
+            	
+        <h:form>
+        
+			<div class="form-group">
+				<h:outputLabel for="username" value="Email @ : "  styleClass="hide"/>
+				<p:inputText id="username" value="#{DonBean.don.email}"
+					required="true" label="Email"
+					requiredMessage="veuillez saisir votre email !"  styleClass="form-control input-lg c-square" placeholder="Email">
+				</p:inputText>   
+			</div>
+            
+            <div class="form-group">
+				<p:password id="password1" value="#{DonBean.don.password}"
+					required="true" styleClass="form-control input-lg c-square"  placeholder="Password" 
+					requiredMessage="veuillez saisir votre mot de passe !" />
+			</div>
+			<div class="form-group">
+                    <p:commandButton value="Se connecter" styleClass="btn btn-default"
+						action="#{DonBean.validateDonator}" update="@form" process="@form" />
+			</div>
+        </h:form>
+        
+            </div>
+            <div class="modal-footer c-no-border">                
+                <span class="c-text-account">Vous n'êtes pas inscrit ?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">créer un compte!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: CONTENT/USER/LOGIN-FORM -->
+<!-- BEGIN: CONTENT/USER/SIGNUP-FORM -->
+<div class="modal fade c-content-login-form" id="signup-form" role="dialog" style="overflow:scroll;">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Créer un compte</h3>
+                <h:form>
+                <p:messages showDetail="true" autoUpdate="true" />
+                    <div class="form-group">
+                        <label for="signup-email" class="hide">Email</label>
+                        <p:inputText id="email" value="#{DonBean.don.email}" styleClass="form-control input-lg c-square"
+						requiredMessage="email obligatoire" required="true" placeholder="Email"
+						validatorMessage="email non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.EmailValidator" />
+						</p:inputText>
+							<p:message for="email" style="color:white;" />
+                    </div>
+                    <div class="form-group">
+                    <label for="password" class="hide">pass</label>
+                    <p:password id="password" binding="#{XXX}" placeholder="Password"
+						value="#{DonBean.don.password}" styleClass="form-control input-lg c-square"
+						requiredMessage="password  obligatoire" required="true"
+						validatorMessage="mot de passe non valide">
+						<f:validator
+						validatorId="org.mql.gc.actions.validators.PasswordValidator" />
+					</p:password>
+					<p:message for="password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-fullname" class="hide">RepeatPass</label>
+					<p:password id="confirmPassword" required="true" styleClass="form-control input-lg c-square" placeholder="Rep�ter le password"
+						requiredMessage="veuillez verifier votre mot de passe ">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
+						<f:attribute name="XXX" value="#{XXX}" />
+					</p:password>
+					<p:message for="confirmPassword2" />
+                    </div>
+                    <div class="form-group">
+                       <p:inputText id="nom" value="#{DonBean.don.fName}" maxlength="20"  styleClass="form-control input-lg c-square" placeholder="Nom"
+						required="true" requiredMessage="nom obligatoire"
+						validatorMessage="nom non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.NameValidator" />
+					</p:inputText>
+					<p:message style="color:white;" for="nom" />
+                    </div>
+                    <div class="form-group">
+                      <p:inputText id="prenom" value="#{DonBean.don.lName}" styleClass="form-control input-lg c-square" placeholder="Prenom"
+						maxlength="20" required="true" requiredMessage="nom obligatoire"
+						validatorMessage="nom non valide">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.NameValidator" />
+					</p:inputText>
+					<p:message style="color:white;" for="prenom" /> 
+                    </div>
+                     <div class="form-group">
+                     <p:inputText id="adresse" value="#{DonBean.don.adresse}" styleClass="form-control input-lg c-square" placeholder="Adresse"
+						autoResize="true" maxlength="150" required="true"
+						requiredMessage="adresse obligatoire " />
+					<p:message style="color:white;" for="adresse" />  
+                    </div>
+                    <div class="form-group">
+                    
+                    <p:commandButton value="s'inscrire" process="@form" update="@form"  action="#{DonBean.createDonator}"
+						 styleClass="btn btn-default" />
+                        <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Retour à la connexion</a>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: CONTENT/USER/SIGNUP-FORM -->  
+</ui:composition>      
+=======
 <h:body>
 	<ui:composition>
 		<!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
@@ -170,5 +294,6 @@
 		</div>
 		<!-- END: CONTENT/USER/SIGNUP-FORM -->
 	</ui:composition>
+>>>>>>> 375537486c2ddc9fd7df8b589802b3dd9bfae582
 </h:body>
 </html>
