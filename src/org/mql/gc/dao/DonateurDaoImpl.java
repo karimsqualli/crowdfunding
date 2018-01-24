@@ -129,11 +129,10 @@ public class DonateurDaoImpl implements DonateurDao {
 		Session session = dao.getSession();
 		session.beginTransaction();
 
-		String hql = "FROM Donnateur E WHERE E.email = :email and E.password = :password and E.keyActive = :keyActiva";
+		String hql = "FROM Donnateur E WHERE E.email = :email and E.password = :password";
 		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
 		query.setParameter("email", email);
 		query.setParameter("password", password);
-		query.setParameter("keyActiva", "active");
 
 		Donnateur don = (Donnateur) query.uniqueResult();
 		session.getTransaction().commit();
@@ -175,50 +174,6 @@ public class DonateurDaoImpl implements DonateurDao {
 
 		return don;
 	}
-	
-	@SuppressWarnings("unchecked")
-	public Donnateur findByActiveKey(String key) {
-		Session session = dao.getSession();
-		session.beginTransaction();
-		String hql = "FROM Donnateur E WHERE E.keyActive = :keyActive";
-		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
-		query.setParameter("keyActive", key);
-		Donnateur don = (Donnateur) query.uniqueResult();
-		session.getTransaction().commit();
-		dao.closeSession(session);
-		return don;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Donnateur findBykeyAndEmail(String email , String key) {
-		Session session = dao.getSession();
-		session.beginTransaction();
-		String hql = "FROM Donnateur E WHERE E.keyActive = :keyActive and E.email= :Emaila";
-		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
-		query.setParameter("keyActive", key);
-		query.setParameter("Emaila", email);
-		Donnateur don = (Donnateur) query.uniqueResult();
-		session.getTransaction().commit();
-		dao.closeSession(session);
-		return don;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Donnateur activeAccount(String email , String key) {
-		Session session = dao.getSession();
-		session.beginTransaction();
-		String hql = "FROM Donnateur E WHERE E.keyActive = :keyActive and E.email= :Emaila";
-		Query<Donnateur> query = (Query<Donnateur>) session.createQuery(hql);
-		query.setParameter("keyActive", key);
-		query.setParameter("Emaila", email);
-		Donnateur don = (Donnateur) query.uniqueResult();
-		don.setKeyActive("active");
-		session.getTransaction().commit();
-		dao.closeSession(session);
-		return don;
-	}
-	
-	
 	/*
 	 * TODO: function duplique, a supprimer(remplacer par create)
 	 * @see org.mql.gc.dao.DonateurDao#saveDonn(org.mql.gc.models.Donation)

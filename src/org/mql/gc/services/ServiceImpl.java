@@ -206,6 +206,7 @@ public class ServiceImpl implements Service {
 				return true ; 
 			}	
 		}
+		
 		public Donnateur editeDonator(Donnateur e) {
 			return DonatorDao.update(e);
 		}
@@ -255,19 +256,6 @@ public class ServiceImpl implements Service {
 			return casDao.getDonatorCasCount(id);
 		}
 		
-		public boolean checkAccountStatus(String email,String key){
-			DonatorDao=new DonateurDaoImpl();
-			if((DonatorDao.findBykeyAndEmail(email, key)) != null ) {
-				return true ; 
-			}
-			return false ;
-		}
-		
-		public void activeAccount(String email,String key){
-			DonatorDao=new DonateurDaoImpl();
-			DonatorDao.activeAccount(email, key);
-		
-		}
 //*********************************test for spring*****************************************
 		public void sayTest(){
 			System.out.println("§§§ test setvice §§§");

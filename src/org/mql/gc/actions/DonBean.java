@@ -1,14 +1,10 @@
 package org.mql.gc.actions;
-import java.util.UUID;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.mail.HtmlEmail;
-import org.apache.commons.mail.EmailException;
 import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
@@ -19,8 +15,7 @@ public class DonBean {
 	private ServiceImpl service ;
 	private Donnateur don;
 	private boolean connected = false;
-	
-	//for activing account by link 	
+
 	@PostConstruct
 	public void init(){
 		//===============check if donator try to participate in a case without logIn
@@ -32,8 +27,6 @@ public class DonBean {
 			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
 		}
 		//==========================================
-				
-		
 	}
 	
 	public Donnateur getDon() {
@@ -47,13 +40,10 @@ public class DonBean {
 	public String createDonator(){
         FacesMessage message =null;
         boolean subscribe=false;
-		String key=UUID.randomUUID().toString() ; 
-		don.setKeyActive(key);
 		RequestContext context = RequestContext.getCurrentInstance();
 		if(service.addDonator(don)){
 	        message= new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a ete effectue avec succee", "");
 	        subscribe=true; 
-	        sendEmail(key);
 		}
 		else{
 	        message= new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite deja", "");
@@ -103,33 +93,7 @@ public class DonBean {
 		session.invalidate();
 		return "index.xhtml?faces-redirect=true";
 	}
-	
-	public void sendEmail(String key){
-		HtmlEmail email = new HtmlEmail();
-		System.err.println("key ===> " + key );
-		String link="<a href=\"http://localhost:9085/Crowdf/activationLink.xhtml?key="+key+""
-				+ "&email="
-				+ don.getEmail()
-				+ "\">"; 
-		email.setHostName("smtp.gmail.com");
-		email.setSmtpPort(587);
-		email.setSSLOnConnect(true);
-		email.setAuthentication("ici votre gmail ", "ici votre code");
-		try {
-			email.setFrom(don.getEmail());
-			email.addTo(don.getEmail());
-			email.setHtmlMsg("<html><body>"
-					+ "<h1>hello fuckers ! how are you ?</h1> "+link
-					+ "<br><em>PROJECT KAISSAHH SENT BY HASSAN TO THE FUCKER AHMED</em>"
-					+ "</h1>"
-					+ "</body></html>");
-			email.setSubject("activate ur account");
-			email.send();
-		} catch (EmailException e) {
-			System.out.println("error seting form"+e.getMessage());
-		}
-	
-	}
+
 	public boolean isConnected() {
 		return connected;
 	}
