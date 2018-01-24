@@ -8,9 +8,17 @@ public class Donnateur {
 	private String adresse; 
 	private String ville ;
 	private String password ; 
+	private String keyActive ; 
 	
 	public String getPassword() {
 		return password;
+	}
+
+	public String getKeyActive() {
+		return keyActive;
+	}
+	public void setKeyActive(String keyActive) {
+		this.keyActive = keyActive;
 	}
 	public void setPassword(String password) {
 		this.password = password;

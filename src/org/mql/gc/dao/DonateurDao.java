@@ -17,5 +17,5 @@ public interface DonateurDao {
 	public Donnateur findByEmail(String email);
 	public Donnateur findByPassword(String password);
 	public void saveDonn(Donation donn);
-
+	public Donnateur findBykeyAndEmail(String email,String key);
 }
