@@ -103,6 +103,10 @@
 		</managed-property>
 	</managed-bean>	
 	
-	
+	<managed-bean>
+		<managed-bean-name>Activation</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.Activation</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>	
 		
 </faces-config>
