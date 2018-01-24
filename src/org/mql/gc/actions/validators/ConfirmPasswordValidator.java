@@ -16,7 +16,6 @@ public class ConfirmPasswordValidator implements Validator {
         UIInput passwordComponent = (UIInput) component.getAttributes().get("XXX");
         String password = (String) passwordComponent.getValue();
         String confirmPassword = (String) value;
-        
         if (confirmPassword != null && !confirmPassword.equals(password)) {
             throw new ValidatorException(new FacesMessage(
                 FacesMessage.SEVERITY_ERROR, "Confirm password is not the same as password", null));

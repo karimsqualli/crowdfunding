@@ -15,7 +15,6 @@
 		<property name="adresse" column="ADRESSE"></property>
 		<property name="ville" column="VILLE"></property>
 		<property name="password" column="PASSWORD"></property>
-		<property name="keyActive" column="KEYACTIVE"></property>
 	</class>
 
 </hibernate-mapping>
