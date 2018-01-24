@@ -28,6 +28,7 @@
             <div class="modal-body">
                 <h3 class="c-font-24 c-font-sbold">Bienvenue !</h3>
                 <p>Collaborons tous pour un avenir meilleur !</p>
+<<<<<<< HEAD
             	 <h:form >
             	 
                     <div class="form-group">
@@ -44,12 +45,28 @@
 					requiredMessage="veuillez saisir un mot de passe correcte !" />
                     <p:messages for="password1" autoUpdate="true" />
                     </div>
-                
-                    <div class="form-group">
+=======
+        <h:form>
+        
+			<div class="form-group">
+				<h:outputLabel for="username" value="Email @ : "  styleClass="hide"/>
+				<p:inputText id="username" value="#{DonBean.don.email}"
+					required="true" label="Email"
+					requiredMessage="veuillez saisir votre email !"  styleClass="form-control input-lg c-square" placeholder="Email">
+				</p:inputText>   
+			</div>
+            
+            <div class="form-group">
+				<p:password id="password1" value="#{DonBean.don.password}"
+					required="true" styleClass="form-control input-lg c-square"  placeholder="Password" 
+					requiredMessage="veuillez saisir votre mot de passe !" />
+				</div>
+				<div class="form-group">
                     <p:commandButton value="Se connecter" styleClass="btn btn-default"
-						action="#{DonBean.validateDonator}" />
-					</div>
-                </h:form>
+						action="#{DonBean.validateDonator}" update="@form" process="@form" />
+				</div>
+        </h:form>
+        
             </div>
             <div class="modal-footer c-no-border">                
                 <span class="c-text-account">Vous n'êtes pas inscrit ?</span>
@@ -82,7 +99,7 @@
                     </div>
                     <div class="form-group">
                     <label for="password" class="hide">pass</label>
-                    	<p:password id="password" binding="#{passwordComp2}" placeholder="Password"
+                    	<p:password id="password" binding="#{XXX}" placeholder="Password"
 						value="#{DonBean.don.password}" styleClass="form-control input-lg c-square"
 						requiredMessage="password  obligatoire" required="true"
 						validatorMessage="mot de passe non valide">
@@ -93,11 +110,11 @@
                     </div>
                     <div class="form-group">
                         <label for="signup-fullname" class="hide">RepeatPass</label>
-                        
-					<p:password id="confirmPassword2"  required="true" styleClass="form-control input-lg c-square" 
-					placeholder="Repéter le password"	requiredMessage="veuillez verifier votre mot de passe ">
-						<!-- <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
-						<f:attribute name="passwordComp2" value="#{passwordComp2}" /> -->
+					<p:password id="confirmPassword" required="true" styleClass="form-control input-lg c-square" placeholder="Rep�ter le password"
+						requiredMessage="veuillez verifier votre mot de passe ">
+						<f:validator
+							validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
+						<f:attribute name="XXX" value="#{XXX}" />
 					</p:password>
 					<p:message for="confirmPassword2" />
                     </div>

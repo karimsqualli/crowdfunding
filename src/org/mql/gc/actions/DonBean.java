@@ -1,20 +1,18 @@
 package org.mql.gc.actions;
+import java.util.UUID;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.mail.HtmlEmail;
+import org.apache.commons.mail.EmailException;
 import org.mql.gc.models.Donnateur;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.context.RequestContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 
 public class DonBean {
 
@@ -22,36 +20,22 @@ public class DonBean {
 	private Donnateur don;
 	private boolean connected = false;
 	
-	
-	public boolean isConnected() {
-		return connected;
-	}
-
-	public void setConnected(boolean connected) {
-		this.connected = connected;
-	}
-
+	//for activing account by link 	
 	@PostConstruct
 	public void init(){
-		service.sayTest();
-		don=new Donnateur() ;
-		System.out.println("post con donBean");
-
 		//===============check if donator try to participate in a case without logIn
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		String message = (String) request.getAttribute("logDon");
-		System.out.println(message);
 		if(message != null && message.equals("notIn")){
 			FacesMessage message2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "connectez vous pour participer ! ","");
 			RequestContext.getCurrentInstance().execute("PF('dlg').show();");
 			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
 		}
 		//==========================================
-		
+				
 		
 	}
 	
-
 	public Donnateur getDon() {
 		return don;
 	}
@@ -63,12 +47,13 @@ public class DonBean {
 	public String createDonator(){
         FacesMessage message =null;
         boolean subscribe=false;
+		String key=UUID.randomUUID().toString() ; 
+		don.setKeyActive(key);
 		RequestContext context = RequestContext.getCurrentInstance();
-		
-		System.out.println("adresse ====> " +  don.getAdresse());
 		if(service.addDonator(don)){
 	        message= new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a ete effectue avec succee", "");
 	        subscribe=true; 
+	        sendEmail(key);
 		}
 		else{
 	        message= new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite deja", "");
@@ -77,15 +62,10 @@ public class DonBean {
         context.addCallbackParam("sign_in", subscribe);
         return "index.xhtml?faces-redirect=true";
 	}
-	
-
 
 	public String validateDonator() {
         boolean loggedIn = false;
 		RequestContext context = RequestContext.getCurrentInstance();
-		System.out.println("password ===> "+don.getPassword());
-		
-		
 		if (service.connectDonator(don.getEmail(), don.getPassword()) != null) {
             loggedIn = true;
             connected = true;
@@ -98,18 +78,18 @@ public class DonBean {
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Welcome "+don.getfName(),"");
 	        RequestContext.getCurrentInstance().showMessageInDialog(message);
 	        context.addCallbackParam("loggedIn", loggedIn);
-			return "index?faces-redirect=true";
+			return "index.xhtml?faces-redirect=true";
 		}
-
 		else {
             loggedIn = false;
 			System.out.println("Else");
 			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email ou Password incorect","");
 			RequestContext.getCurrentInstance().showMessageInDialog(message);
 		     context.addCallbackParam("loggedIn", loggedIn);
-		     return "index";
+		     return null;
 		}
 	}
+	
 	public ServiceImpl getService() {
 		return service;
 	}
@@ -118,10 +98,43 @@ public class DonBean {
 		this.service = service;
 	}
 
-
 	public String logoutt() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
 		return "index.xhtml?faces-redirect=true";
+	}
+	
+	public void sendEmail(String key){
+		HtmlEmail email = new HtmlEmail();
+		System.err.println("key ===> " + key );
+		String link="<a href=\"http://localhost:9085/Crowdf/activationLink.xhtml?key="+key+""
+				+ "&email="
+				+ don.getEmail()
+				+ "\">"; 
+		email.setHostName("smtp.gmail.com");
+		email.setSmtpPort(587);
+		email.setSSLOnConnect(true);
+		email.setAuthentication("ici votre gmail ", "ici votre code");
+		try {
+			email.setFrom(don.getEmail());
+			email.addTo(don.getEmail());
+			email.setHtmlMsg("<html><body>"
+					+ "<h1>hello fuckers ! how are you ?</h1> "+link
+					+ "<br><em>PROJECT KAISSAHH SENT BY HASSAN TO THE FUCKER AHMED</em>"
+					+ "</h1>"
+					+ "</body></html>");
+			email.setSubject("activate ur account");
+			email.send();
+		} catch (EmailException e) {
+			System.out.println("error seting form"+e.getMessage());
+		}
+	
+	}
+	public boolean isConnected() {
+		return connected;
+	}
+
+	public void setConnected(boolean connected) {
+		this.connected = connected;
 	}
 }

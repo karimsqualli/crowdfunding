@@ -8,17 +8,11 @@ import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 
-
 public class DonAction implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private Donation donation;
-	private Service service;
-	
-	
-	public DonAction() {
-		System.out.println("in Action");
-		donation = new Donation();
-		service = new ServiceImpl();
-	}
+	private ServiceImpl service;
 	
 	public String createDonnation() {
 		donation.setIdUser(SessionUtils.getUserId());
@@ -32,7 +26,6 @@ public class DonAction implements Serializable {
         donation.setDateAjout(date);
     }
 	
-
 	public Donation getDonation() {
 		return donation;
 	}
@@ -41,7 +34,11 @@ public class DonAction implements Serializable {
 		this.donation = donation;
 	}
 
+	public Service getService() {
+		return service;
+	}
 
-	
-	
+	public void setService(ServiceImpl service) {
+		this.service = service;
+	}
 }

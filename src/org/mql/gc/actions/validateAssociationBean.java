@@ -7,14 +7,10 @@ import org.mql.gc.models.Association;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 
+//hassan : est ce que on utilise cette classe dans notre projet ?  
 public class validateAssociationBean {
 	private Association association;
 	private ServiceImpl service;
-
-	public validateAssociationBean() {
-		association=new Association();
-		service = new ServiceImpl();
-	}
 	
 	public String validateAssociation() {
 		boolean exist= service.connectAssociation(association.getEmail(), association.getPassword());
@@ -26,7 +22,6 @@ public class validateAssociationBean {
 			session.setAttribute("idAssociation", idAsso);
 			return "LoadCase?faces-redirect=true";
 		}
-
 		else {
 			System.out.println("Else");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -34,7 +29,6 @@ public class validateAssociationBean {
 			return "login";
 		}
 	}
-
 
 	public String logout() {
 		System.out.println("Log out");
@@ -51,6 +45,11 @@ public class validateAssociationBean {
 		this.association = association;
 	}
 
-	
+	public ServiceImpl getService() {
+		return service;
+	}
 
+	public void setService(ServiceImpl service) {
+		this.service = service;
+	}
 }

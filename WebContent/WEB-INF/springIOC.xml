@@ -12,33 +12,75 @@
 	  	<property name="dao" ref="AssociationDaoImpl"></property>
 	  	<property name="DonatorDao" ref="DonateurDaoImpl"></property>
   </bean>
-  
-  
-  <bean id="CaseDaoImpl" class="org.mql.gc.dao.CaseDaoImpl">
-  		 <property name="dao" ref="BaseDAO"></property> 
-  </bean>
-  
-  <bean id="FileSaver" class="org.mql.gc.actions.FileSaver"></bean>
-  <bean id="AssociationDaoImpl" class="org.mql.gc.dao.AssociationDaoImpl">
-    	<property name="dao" ref="BaseDAO"></property>
-  </bean>
-  <bean id="DonateurDaoImpl" class="org.mql.gc.dao.DonateurDaoImpl">
-      	<property name="dao" ref="BaseDAO"></property>
-  </bean>
-  
-  <!-- je demande à karim de réaliser ce bean ... : hassan / 07/01/2018  -->
-  <bean id="BaseDAO" class="org.mql.gc.dao.BaseDAO">
-  </bean>
 
- <bean id="showCase" class="org.mql.gc.actions.ShowCase">
-  		<property name="service" ref="ServiceImpl"></property>
- </bean>
+	  <bean id="CaseDaoImpl" class="org.mql.gc.dao.CaseDaoImpl">
+	  		 <property name="dao" ref="BaseDAO"></property> 
+	  </bean>
+	  
+	  <bean id="FileSaver" class="org.mql.gc.actions.FileSaver"></bean>
+	  <bean id="AssociationDaoImpl" class="org.mql.gc.dao.AssociationDaoImpl">
+	    	<property name="dao" ref="BaseDAO"></property>
+	  </bean>
+	  <bean id="DonateurDaoImpl" class="org.mql.gc.dao.DonateurDaoImpl">
+	      	<property name="dao" ref="BaseDAO"></property>
+	  </bean>
+	  
+	  <!-- je demande à karim de réaliser ce bean ... : hassan / 07/01/2018  -->
+	  <bean id="BaseDAO" class="org.mql.gc.dao.BaseDAO">
+	  </bean>
 
     <!-- les beans action  -->
+    <bean id="showCase" class="org.mql.gc.actions.ShowCase">
+	  		<property name="service" ref="ServiceImpl"></property>
+	 </bean> 
     <bean id="donBean" class="org.mql.gc.actions.DonBean">
   		<property name="service" ref="ServiceImpl"></property>
+  		<property name="don" ref="Donnateur"></property>
     </bean>
-    
+    <bean id="assBean" class="org.mql.gc.actions.AssociationBean">
+      	<property name="service" ref="ServiceImpl"></property>
+      	<property name="asso" ref="Association"></property>
+    </bean>
+    <bean id="donAction" class="org.mql.gc.actions.DonAction">
+		<property name="service" ref="ServiceImpl"></property>
+		<property name="donation" ref="Donation"></property>
+		
+    </bean>
+    <bean id="InsertCaseBean" class="org.mql.gc.actions.InsertCaseBean">
+		<property name="service" ref="ServiceImpl"></property>
+		<property name="cas" ref="Cas"></property>
+    </bean>
+ 	<bean id="validateAssBean" class="org.mql.gc.actions.validateAssociationBean">
+ 		<property name="service" ref="ServiceImpl"></property>
+ 		<property name="association" ref="Association"></property>
+ 	</bean>
+	
+ 	<!-- les models  -->
+ 	<bean id="Donnateur" class="org.mql.gc.models.Donnateur"/>
+ 	<bean id="Donation" class="org.mql.gc.models.Donation"/>
+ 	<bean id="Association" class="org.mql.gc.models.Association"/>
+ 	<bean id="Cas" class="org.mql.gc.models.Cas"/>
+ 	
+ 	
  
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
     
 </beans>

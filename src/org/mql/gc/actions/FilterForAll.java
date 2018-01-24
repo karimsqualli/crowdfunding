@@ -13,23 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 
 //added by Ahmed and Hassan
 public class FilterForAll implements Filter{
-	public void destroy() {		
-	}
-
+	public void destroy() {}
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest) request;
 		HttpServletResponse rep=(HttpServletResponse) response; 
 		//check if sessions are available 
-		
 		Integer donnateurID =  (Integer) req.getSession().getAttribute("userid");
-		
 		Integer ida =  (Integer)req.getSession().getAttribute("idAssociation");
 		
- 
-		String uri = req.getRequestURI();
-		//trace route to apear it in console 
-		System.out.println(req.getRemoteHost() + "try to acces on "+req.getRequestURL());
-		
+		String uri = req.getRequestURI();		
 		if( donnateurID == null && uri.indexOf("/donation.xhtml")>=0  ){
 			/*
 			 * this call the index.xhtml page but it save the URL of request 
@@ -43,8 +36,6 @@ public class FilterForAll implements Filter{
 		}
 		chain.doFilter(request,response);
 	}
-
-	public void init(FilterConfig arg0) throws ServletException {		
-	}
-
+	
+	public void init(FilterConfig arg0) throws ServletException {}
 }

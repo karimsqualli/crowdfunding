@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <ui:fragment rendered="#{activation.valid}">
+        <meta http-equiv="refresh" content="3;url=http://localhost:9085/Crowdf/index.xhtml" />
+    </ui:fragment>
+</h:head>
+<h:body>
+    <h:panelGroup layout="block" rendered="#{Activation.valid}">
+        <p>Your account is successfully activated!</p>
+        <p>You will in 3 seconds be redirected to <h:link outcome="index">home page</h:link></p>
+    </h:panelGroup>
+    <h:panelGroup layout="block" rendered="#{!Activation.valid}">
+        <p>Activation failed! Please enter your email address to try once again.</p> 
+    </h:panelGroup>
+</h:body>
+</html>
