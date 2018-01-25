@@ -56,14 +56,15 @@ public class DonBean {
 	        sendEmail(key);
 		}
 		else{
-	        message= new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite deja", "");
+	    message= new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite deja", "");
 		}
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("sign_in", subscribe);
         return "index.xhtml?faces-redirect=true";
 	}
 
-	public String validateDonator(ActionEvent E) {
+	public String validateDonator() {
+		System.out.println("********");
         boolean loggedIn = false;
 		RequestContext context = RequestContext.getCurrentInstance();
 		if (service.connectDonator(don.getEmail(), don.getPassword()) != null) {
@@ -75,18 +76,14 @@ public class DonBean {
 			session.setAttribute("userid", don.getId());
 			session.setAttribute("username", don.getEmail());
 			session.setAttribute("donnateur",don.getfName());
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Welcome "+don.getfName(),"");
-	        RequestContext.getCurrentInstance().showMessageInDialog(message);
-	        context.addCallbackParam("loggedIn", loggedIn);
+			//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Email valide", ""));
 			return "index.xhtml?faces-redirect=true";
 		}
 		else {
             loggedIn = false;
 			System.out.println("Else");
-			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email ou Password incorect","");
-			RequestContext.getCurrentInstance().showMessageInDialog(message);
-		     context.addCallbackParam("loggedIn", loggedIn);
-		     return null;
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email ou mot de passe invalide", ""));
+		    return null;
 		}
 	}
 	
@@ -107,14 +104,14 @@ public class DonBean {
 	public void sendEmail(String key){
 		HtmlEmail email = new HtmlEmail();
 		System.err.println("key ===> " + key );
-		String link="<a href=\"http://localhost:9085/Crowdf/activationLink.xhtml?key="+key+""
+		String link="<a href=\"http://localhost:8083/Crowdf/activationLink.xhtml?key="+key+""
 				+ "&email="
 				+ don.getEmail()
 				+ "\">"; 
 		email.setHostName("smtp.gmail.com");
-		email.setSmtpPort(587);
+		email.setSmtpPort(465);
 		email.setSSLOnConnect(true);
-		email.setAuthentication("hassounnambz@gmail.com","me*feight=>elmzabi");
+		email.setAuthentication("hamza.berrada@usmba.ac.ma","1210754635");
 		try {
 			email.setFrom(don.getEmail());
 			email.addTo(don.getEmail());
