@@ -1,10 +1,8 @@
 package org.mql.gc.actions;
 import java.util.UUID;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.mail.HtmlEmail;
@@ -18,7 +16,7 @@ public class DonBean {
 
 	private ServiceImpl service ;
 	private Donnateur don;
-	private boolean connected = false;
+	static boolean connected=false;
 	
 	//for activing account by link 	
 	@PostConstruct
@@ -64,12 +62,13 @@ public class DonBean {
 	}
 
 	public String validateDonator() {
-		System.out.println("********");
+		
         boolean loggedIn = false;
 		RequestContext context = RequestContext.getCurrentInstance();
 		if (service.connectDonator(don.getEmail(), don.getPassword()) != null) {
             loggedIn = true;
             connected = true;
+            System.out.println(connected);
 			don=service.connectDonator(don.getEmail(), don.getPassword());
 			System.out.println(don.getfName());
 			HttpSession session = SessionUtils.getSession();
@@ -95,9 +94,12 @@ public class DonBean {
 		this.service = service;
 	}
 
-	public String logoutt() {
+	public String logout() {
+		System.out.println("deconnecté******");
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
+		connected=false;
+		System.out.println("deconnecté******");
 		return "index.xhtml?faces-redirect=true";
 	}
 	
@@ -134,4 +136,5 @@ public class DonBean {
 	public void setConnected(boolean connected) {
 		this.connected = connected;
 	}
+	
 }

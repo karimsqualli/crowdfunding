@@ -13,7 +13,7 @@
         <property name="hibernate.show_sql">true</property>
         
         <!-- create the database schema on startup // create-drop -->  
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
  		<mapping resource="org/mql/gc/models/Association.hbm.xml"/>
         <mapping resource="org/mql/gc/models/Cas.hbm.xml" />

@@ -51,9 +51,16 @@
                         <div class="col-md-3 hidden-sm hidden-xs">
                             <div class="header-btn">
                                 <ul class="header-action">
-                                <li><a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">CONNEXION</a></li>
-                                <li> <p:link rendered="#{DonBean.connected}" value="#{donnateur}" styleClass="btn btn-default" /> </li> 
-                                </ul>
+								  <li>
+                                    <h:form>
+									<p:commandLink rendered="#{!DonBean.connected}" value="Se connecter" styleClass="btn btn-default">
+										<a href="javascript:;" data-toggle="modal" data-target="#login-form"></a>
+									</p:commandLink>
+									<p:commandLink rendered="#{DonBean.connected}"	action="#{DonBean.logout()}" styleClass="btn btn-default"
+										value="Se deconnecter" />
+									</h:form>
+								 </li>
+                               </ul>
                             </div>
                         </div>
                     </div>
@@ -62,15 +69,16 @@
         </header>
            <div class="theme-section breadcrumb-area"></div> <!-- Image sous menu -->
         <!-- Header area end -->
-     	    <ui:insert name="con">
-			<ui:include src="donateur.xhtml" />
-		    </ui:insert>
-  
-           </div>
+            <!-- Header area end -->
+     		<div id="donateurConn">
+        	  <ui:insert name="donateurConn">
+			   <ui:include src="donateur.xhtml" />
+		      </ui:insert>
+		    </div>
+            </div>
+            <!-- Header area end -->
     <!-- Main wrapper end -->
-    <!-- All JavaScript files included -->
-    <script src="js/plugins.js"></script>
-    <script src="js/scripts.js"></script>
+
  </ui:composition>   	
 </body>
 </html>
