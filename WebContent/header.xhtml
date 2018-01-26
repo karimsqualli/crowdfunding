@@ -52,9 +52,9 @@
                             <div class="header-btn">
                                 <ul class="header-action">
 								  <li>
-                                    <h:form>
-									<p:commandLink rendered="#{!DonBean.connected}" value="Se connecter" styleClass="btn btn-default">
-										<a href="javascript:;" data-toggle="modal" data-target="#login-form"></a>
+                                <h:form>
+									<p:commandLink rendered="#{!DonBean.connected}">
+										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">Se connecter</a>
 									</p:commandLink>
 									<p:commandLink rendered="#{DonBean.connected}"	action="#{DonBean.logout()}" styleClass="btn btn-default"
 										value="Se deconnecter" />

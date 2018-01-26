@@ -72,10 +72,10 @@
 									<li>
 									<h:form>
 									<p:commandLink rendered="#{!DonBean.connected}">
-										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">CONNEXION</a>
+										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">Se connecter</a>
 									</p:commandLink>
 									<p:commandLink rendered="#{DonBean.connected}"	action="#{DonBean.logout()}" styleClass="btn btn-default"
-										value="Deconnexion" />
+										value="Se deconnecter" />
 									</h:form>
 									</li>
 							   </ul>
