@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet"
+		type="text/css" />
+	<!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme"
+		type="text/css" />
+	<!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
+
+<body>
+
+	<!-- theme preloader area start -->
+	<div id="humanity-preloader-wrapper">
+		<div class="preloader-wave-effect"></div>
+	</div>
+	<!-- theme preloader area end -->
+	<!-- Main wrapper start -->
+	<div class="wrapper">
+		<!-- Header area start -->
+		<header class="header-area header-style-2" id="sticky-header">
+			<div id="sticky-header"
+				class="main-header-area transparent-header color">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2 col-sm-6 col-xs-6">
+							<div class="logo-wrapper">
+								<a class="logo" href="index.xhtml">Crowdy</a>
+							</div>
+						</div>
+						<div class="col-md-7 hidden-xs hidden-sm">
+							<div class="menu-area">
+								<nav class="template-menu">
+									<ul class="main-menu">
+										<li><a href="projects.xhtml">Voir les cas</a></li>
+										<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
+										<li><a href="volunteer.xhtml">Associations</a></li>
+										<li><a href="about.xhtml">Comment ça marche</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!-- Mobile menu area start -->
+						<div class="mobile-menu-area clearfix hidden-md">
+							<nav class="mobile-menu">
+								<ul class="mobile-menu-nav">
+									<li><a href="projects.xhtml">Voir les cas</a></li>
+									<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
+									<li><a href="volunteer.xhtml">Associations</a></li>
+									<li><a href="about.xhtml">Comment ça marche</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- Mobile menu area end -->
+
+						<div class="col-md-3 hidden-sm hidden-xs">
+							<div class="header-btn">
+								<ul class="header-action">
+									<li><h:form>
+											<p:commandLink rendered="#{!DonBean.connected}">
+												<a href="javascript:;" data-toggle="modal"
+													data-target="#login-form" class="btn btn-default">Se
+													connecter</a>
+											</p:commandLink>
+											<p:commandLink rendered="#{DonBean.connected}"
+												action="#{DonBean.logout()}" styleClass="btn btn-default"
+												value="Se deconnecter" />
+										</h:form></li>
+								</ul>
+
+
+							</div>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Header area end -->
+
+		<!-- Slider area start -->
+
+		<section class="content">
+			<!-- Donet section start -->
+			<div class="donet-section theme-section theme-section-ex-padding">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="area-heading text-center">
+								<h3 class="area-title">Cas en Attente de Validation</h3>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+
+							<div class="donate-feature-list navigation-style-1">
+								<article class="single-event">
+
+									<p:dataTable var="case" value="#{CaseValidation.cases}">
+										<p:column headerText="Id">
+											<h:outputText value="#{case.id}" />
+										</p:column>
+
+										<p:column headerText="Year">
+											<h:outputText value="#{case.titre}" />
+										</p:column>
+
+						
+									</p:dataTable>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</section>
+		<!-- Page content area end -->
+		<!-- Footer section start -->
+		<ui:insert name="footer">
+			<ui:include src="footer.xhtml" />
+		</ui:insert>
+		<!-- Footer section end -->
+	</div>
+
+</body>
+</html>

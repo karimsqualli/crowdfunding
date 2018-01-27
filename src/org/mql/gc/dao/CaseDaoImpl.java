@@ -119,7 +119,7 @@ public class CaseDaoImpl implements CaseDao {
 	}
 	
 	//ELMORABET Hicham (sprint 2 -- 15/12/2017)
-	//La liste des cas supportés par un donateur ( donné par son id )
+	//La liste des cas supportï¿½s par un donateur ( donnï¿½ par son id )
 	public double getDonatorCasCount(int id) {
 		Session session = dao.getSession();
 		session.beginTransaction();
@@ -146,6 +146,10 @@ public class CaseDaoImpl implements CaseDao {
 		return list;
 	}
 	
+	
+	public List<Cas> findPending() {
+		return null;
+	}
 	
 	
 	

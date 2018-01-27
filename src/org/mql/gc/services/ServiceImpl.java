@@ -109,6 +109,10 @@ public class ServiceImpl implements Service {
 		return casDao.findByTitleAndCategory(nom ,category);
 	}
 	
+	public List<Cas> getPendingCases() {
+		return casDao.findPending();
+	}
+	
 	
 	
 	//********************************Donnateur*********************************************	
@@ -186,7 +190,7 @@ public class ServiceImpl implements Service {
 		}
 //*********************************test for spring*****************************************
 		public void sayTest(){
-			System.out.println("§§§ test setvice §§§");
+			System.out.println("ï¿½ï¿½ï¿½ test setvice ï¿½ï¿½ï¿½");
 		}
 
 }

@@ -12,4 +12,5 @@ public interface CaseDao {
 	public List<Cas> findByTitleAndCategory(String nom, String category) ;
 	public List<Cas> findByIdDonor(int idDonor);
 	public double getDonatorCasCount(int id);
+	public List<Cas> findPending();
 }
