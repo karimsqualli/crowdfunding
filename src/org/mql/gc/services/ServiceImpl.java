@@ -6,6 +6,7 @@ import org.mql.gc.dao.DonationDao;
 import org.mql.gc.dao.DonorDao;
 import org.mql.gc.dao.DonorDaoImp;
 import org.mql.gc.dao.CaseDao;
+import org.mql.gc.dao.CaseDaoImp;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.Case;
 import org.mql.gc.models.Donation;
