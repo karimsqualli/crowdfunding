@@ -1,10 +1,12 @@
 package org.mql.gc.actions;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -15,11 +17,22 @@ import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
+import org.primefaces.model.UploadedFile;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.apache.commons.io.IOUtils;
 
 public class InsertCaseBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Cas cas;
 	private ServiceImpl service;
+	private static final String BASE_STATIC_PATH = "C:/Users/SALAM/workspace/CrowdFunding/repoGit/WebContent/static/";
+	private static final String BASE_SERVER_STATIC_PATH = "./static/";
+	private static final String IMAGE_DIR = "images";
+	private static final String VIDEO_DIR = "videos";
+	private static final String PDF_DIR = "pdf";
+
 	
 	public String insertCase() {
 		HttpSession session = SessionUtils.getSession();
@@ -47,87 +60,130 @@ public class InsertCaseBean implements Serializable{
     }
 	
 	public void uploadFileI(FileUploadEvent event) {
-		if (event.getFile() != null) {
-			try {
-				cas.setImg(event.getFile());
-				InputStream inputStream = cas.getImg().getInputstream();
-				service.savePhoto(inputStream, cas);
-				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre image ", cas.getImg().getFileName() + "a �t� enregistrer.");
+        UploadedFile uploadedPhoto=event.getFile();
+            if (uploadedPhoto!=null) {
+            	try {
+            		File chemin=new File(BASE_STATIC_PATH + IMAGE_DIR);
+            		File file=new File(chemin,getUniqueImageName());
+            		InputStream inputStream = uploadedPhoto.getInputstream();
+            		save(inputStream, file);
+            	cas.setFileContentI(BASE_SERVER_STATIC_PATH + IMAGE_DIR + "/" + getUniqueImageName());
+		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedPhoto.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
-			} catch (IOException e) {
-				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre image n'a pas �t� enregistrer, veuillez r�essayer !");
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}
-		}
+				} catch (Exception e) {
+					e.printStackTrace();
+					FacesMessage message = new FacesMessage("Votre fichier n'a pas ete enregistrer, veuillez reessayer !");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+				}
+                }
 	}
 	
 	public void uploadFileV(FileUploadEvent event) {
-		if (event.getFile() != null) {
-			try {
-				cas.setVideo(event.getFile());
-				InputStream inputStream = cas.getVideo().getInputstream();
-				service.saveVideo(inputStream, cas);
-				System.out.println(cas);
-				FacesMessage message = new FacesMessage("Votre video ", cas.getImg().getFileName() + "a �t� enregistrer.");
+        UploadedFile uploadedVideo=event.getFile();
+            if (uploadedVideo!=null) {
+            	try {
+            		File chemin=new File(BASE_STATIC_PATH + VIDEO_DIR);
+            		File file=new File(chemin,getUniqueVideoName());
+            		InputStream inputStream = uploadedVideo.getInputstream();
+            		save(inputStream, file);
+            	cas.setFileContentV(BASE_SERVER_STATIC_PATH + VIDEO_DIR + "/" + getUniqueVideoName());
+		        FacesMessage message = new FacesMessage("Votre video ", uploadedVideo.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
-			} catch (IOException e) {
-				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre video n'a pas �t� enregistrer, veuillez r�essayer !");
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}
-		}
+				} catch (Exception e) {
+					e.printStackTrace();
+					FacesMessage message = new FacesMessage("Votre video n'a pas ete enregistrer, veuillez reessayer !");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+				}
+                }
 	}
 	
 	public void uploadFile1(FileUploadEvent event) {
-		if (event.getFile()  != null) {
-			try {
-				cas.setPdf1(event.getFile());
-				InputStream inputStream = cas.getPdf1().getInputstream();
-				service.savePdf1(inputStream, cas);
-				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf1().getFileName() + "a �t� enregistrer.");
+        UploadedFile uploadedFile=event.getFile();
+            if (uploadedFile!=null) {
+            	try {
+            		File chemin=new File(BASE_STATIC_PATH + PDF_DIR);
+            		File file=new File(chemin,getUniquePdfName());
+            		InputStream inputStream = uploadedFile.getInputstream();
+            		save(inputStream, file);
+            	cas.setFileContent1(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
+		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedFile.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
-			} catch (IOException e) {
-				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre document n'a pas �t� enregistrer, veuillez r�essayer !");
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}
-		}
+				} catch (Exception e) {
+					e.printStackTrace();
+					FacesMessage message = new FacesMessage("Votre fichier n'a pas ete enregistrer, veuillez reessayer !");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+				}
+                }
 	}
 	
 	public void uploadFile2(FileUploadEvent event) {
-		if (event.getFile() != null) {
-			try {
-				cas.setPdf2(event.getFile());
-				InputStream inputStream = cas.getPdf2().getInputstream();
-				service.savePdf2(inputStream, cas);
-				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf2().getFileName() + "a �t� enregistrer.");
+        UploadedFile uploadedFile=event.getFile();
+            if (uploadedFile!=null) {
+            	try {
+            		File chemin=new File(BASE_STATIC_PATH + PDF_DIR);
+            		File file=new File(chemin,getUniquePdfName());
+            		InputStream inputStream = uploadedFile.getInputstream();
+            		save(inputStream, file);
+            	cas.setFileContent2(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
+		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedFile.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
-			} catch (IOException e) {
-				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre document n'a pas �t� enregistrer, veuillez r�essayer !");
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}
-		}
-	}
+				} catch (Exception e) {
+					e.printStackTrace();
+					FacesMessage message = new FacesMessage("Votre fichier n'a pas ete enregistrer, veuillez reessayer !");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+				}
+                }
+            }
 	
 	public void uploadFile3(FileUploadEvent event) {
-		if (event.getFile() != null) {
-			try {
-				cas.setPdf3(event.getFile());
-				InputStream inputStream = cas.getPdf3().getInputstream();
-				service.savePdf3(inputStream, cas);
-				FacesMessage message = new FacesMessage("Votre document ", cas.getPdf3().getFileName() + "a �t� enregistrer.");
+        UploadedFile uploadedFile=event.getFile();
+            if (uploadedFile!=null) {
+            	try {
+            		File chemin=new File(BASE_STATIC_PATH + PDF_DIR);
+            		File file=new File(chemin,getUniquePdfName());
+            		InputStream inputStream = uploadedFile.getInputstream();
+            		save(inputStream, file);
+            	cas.setFileContent3(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
+		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedFile.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
-			} catch (IOException e) {
-				e.printStackTrace();
-				FacesMessage message = new FacesMessage("Votre document n'a pas �t� enregistrer, veuillez r�essayer !");
-				FacesContext.getCurrentInstance().addMessage(null, message);
-			}
-		}
+				} catch (Exception e) {
+					e.printStackTrace();
+					FacesMessage message = new FacesMessage("Votre fichier n'a pas ete enregistrer, veuillez reessayer !");
+					FacesContext.getCurrentInstance().addMessage(null, message);
+				}
+                }
 	}
-
+	public String getUniqueImageName() {
+		String imgPrefix = "img";
+		String imgSufix = ".jpg";
+		String milieu ="";
+		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
+		milieu=sdf.format(new Date());
+		return imgPrefix+milieu+imgSufix;
+	}
+	public String getUniqueVideoName() {
+		String imgPrefix = "vid";
+		String imgSufix = ".mp4";
+		String milieu ="";
+		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
+		milieu=sdf.format(new Date());
+		return imgPrefix+milieu+imgSufix;
+	}
+	public String getUniquePdfName() {
+		String imgPrefix = "doc";
+		String imgSufix = ".pdf";
+		String milieu ="";
+		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
+		milieu=sdf.format(new Date());
+		return imgPrefix+milieu+imgSufix;
+	}
+	public void save(InputStream inputStream, File file) throws IOException {
+		// we are preparing an output stream so that we can write data to the specified file.
+		OutputStream output = new FileOutputStream(file);
+		// copy the input stream to the output location.
+		IOUtils.copy(inputStream, output);
+}
+	
 	public Cas getCas() {
 		return cas;
 	}

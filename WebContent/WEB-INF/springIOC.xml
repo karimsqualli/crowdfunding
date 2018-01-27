@@ -8,7 +8,6 @@
 
   <bean id="ServiceImpl" class="org.mql.gc.services.ServiceImpl" autowire-candidate="true">
 	  	<property name="casDao" ref="CaseDaoImpl"></property>
-	  	<property name="fileSaver" ref="FileSaver"></property>
 	  	<property name="dao" ref="AssociationDaoImpl"></property>
 	  	<property name="DonatorDao" ref="DonateurDaoImpl"></property>
   </bean>
@@ -17,7 +16,6 @@
 	  		 <property name="dao" ref="BaseDAO"></property> 
 	  </bean>
 	  
-	  <bean id="FileSaver" class="org.mql.gc.actions.FileSaver"></bean>
 	  <bean id="AssociationDaoImpl" class="org.mql.gc.dao.AssociationDaoImpl">
 	    	<property name="dao" ref="BaseDAO"></property>
 	  </bean>

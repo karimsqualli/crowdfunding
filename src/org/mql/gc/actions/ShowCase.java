@@ -18,6 +18,7 @@ public class ShowCase implements Serializable{
 	@PostConstruct
 	public void innit(){
 		liste=service.afficherListcas();
+		listUrgent=service.findAllUrgent();
 	}
 	
 	public ServiceImpl getService() {
@@ -33,9 +34,9 @@ public class ShowCase implements Serializable{
 	}
 
 	public void listUrgent() {
-		listUrgent=service.findAllUrgent();
+		listUrgent=this.service.findAllUrgent();
 		for (Cas cas : listUrgent) {
-			System.out.println(cas);
+			System.out.println("************ Les cas urg*********"+cas);
 		}
 	}
 

@@ -1,15 +1,7 @@
 package org.mql.gc.services;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import org.mql.gc.actions.FileSaver;
 import org.mql.gc.dao.AssociationDao;
-import org.mql.gc.dao.AssociationDaoImpl;
-import org.mql.gc.dao.CaseDaoImpl;
 import org.mql.gc.dao.DonateurDaoImpl;
 import org.mql.gc.dao.CaseDao;
 import org.mql.gc.models.Association;
@@ -19,18 +11,7 @@ import org.mql.gc.models.Donnateur;
 
 public class ServiceImpl implements Service {
 	
-	
-	private static final String BASE_STATIC_PATH = "D:/ProjetGL3/WebContent/static/";
-	private static final String BASE_SERVER_STATIC_PATH = "./static/";
-	
-	
-	private static final String IMAGE_DIR = "images";
-	private static final String VIDEO_DIR = "videos";
-	private static final String PDF_DIR = "pdf";
-
-	
 	private CaseDao casDao;
-	private FileSaver fileSaver;
 	private AssociationDao dao;
 	private DonateurDaoImpl DonatorDao;
 
@@ -46,14 +27,6 @@ public class ServiceImpl implements Service {
 
 	public void setCasDao(CaseDao casDao) {
 		this.casDao = casDao;
-	}
-
-	public FileSaver getFileSaver() {
-		return fileSaver;
-	}
-
-	public void setFileSaver(FileSaver fileSaver) {
-		this.fileSaver = fileSaver;
 	}
 
 	public AssociationDao getDao() {
@@ -121,63 +94,6 @@ public class ServiceImpl implements Service {
 		System.out.println("service");
 		casDao.create(cas); 
 		System.out.println(cas);
-	}
-	//FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/exportFiles/file.pdf");
-	public void savePhoto(InputStream inputStream, Cas cas) throws IOException {
-		File chemin=new File(BASE_STATIC_PATH + IMAGE_DIR);
-		File file=new File(chemin,getUniqueImageName());
-		fileSaver.save(inputStream, file);
-		cas.setFileContentI(BASE_SERVER_STATIC_PATH + IMAGE_DIR + "/" + getUniqueImageName());
-	}
-	
-	public String getUniqueImageName() {
-		String imgPrefix = "img";
-		String imgSufix = ".jpg";
-		String milieu ="";
-		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
-		milieu=sdf.format(new Date());
-		return imgPrefix+milieu+imgSufix;
-	}
-	public void saveVideo(InputStream inputStream, Cas cas) throws IOException {
-		File chemin=new File(BASE_STATIC_PATH + VIDEO_DIR);
-		File file=new File(chemin,getUniqueVideoName());
-		fileSaver.save(inputStream, file);
-		cas.setFileContentV(BASE_SERVER_STATIC_PATH + IMAGE_DIR + "/" + getUniqueVideoName());
-	}
-	public String getUniqueVideoName() {
-		String imgPrefix = "vid";
-		String imgSufix = ".mp4";
-		String milieu ="";
-		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
-		milieu=sdf.format(new Date());
-		return imgPrefix+milieu+imgSufix;
-	}
-	public void savePdf1(InputStream inputStream, Cas cas) throws IOException {
-		File chemin=new File(BASE_STATIC_PATH + PDF_DIR);
-		File file=new File(chemin,getUniquePdfName());
-		fileSaver.save(inputStream, file);
-		cas.setFileContent1(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
-	}
-	public void savePdf2(InputStream inputStream, Cas cas) throws IOException {
-		File chemin=new File("C:\\Users\\SALAM\\workspace\\CrowdFunding\\crowdfunding\\project\\uploadedFiles\\Pdf");
-		File file=new File(chemin,getUniquePdfName());
-		System.out.println(file);
-		fileSaver.save(inputStream, file);
-		cas.setFileContent2("uploadedFiles/Pdf/" + getUniquePdfName());
-	}
-	public void savePdf3(InputStream inputStream, Cas cas) throws IOException {
-		File chemin=new File("C:\\Users\\SALAM\\workspace\\CrowdFunding\\crowdfunding\\toTheLast4\\WebContent\\uploadedFiles\\Pdf");
-		File file=new File(chemin,getUniquePdfName());
-		fileSaver.save(inputStream, file);
-		cas.setFileContent3("uploadedFiles/Pdf/" + getUniquePdfName());
-	}
-	public String getUniquePdfName() {
-		String imgPrefix = "doc";
-		String imgSufix = ".pdf";
-		String milieu ="";
-		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
-		milieu=sdf.format(new Date());
-		return imgPrefix+milieu+imgSufix;
 	}
 	
 	public List<Cas> afficherListcas() {

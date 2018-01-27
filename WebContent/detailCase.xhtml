@@ -42,7 +42,7 @@
                             <div class="donate-feature-list navigation-style-1">
                                 <div class="single-donet">
                                     <div class="donet-thumbnail">
-                                        <img src="imgs/event/1.jpg" alt="" />
+                                        <img src="#{DetailCase.cas.fileContentI}" alt="" />
                                     </div>
                                     <div class="donet-content">
                                         <div class="donet-content-heading">
@@ -87,12 +87,17 @@
                                 <h6><h:outputText  value="#{DetailCase.cas.description}" /></h6>
                                 </div>
                                 </div><BR/><BR/><BR/>
-								 <h6>Telecharger le document :</h6><BR/>                                
-                                <h:form>
-							      <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" styleClass="btn btn-default" icon="ui-icon-arrowthick-1-s">
-							        <p:fileDownload value="#{DetailCase.pdf1}" />
-							      </p:commandButton>
-							    </h:form>
+								 <h6>pour visualiser les documents :</h6>    	
+     					         <h:form>
+     							 <p:commandButton action="pdfViewer.xhtml?faces-redirect=true"	value="cliquez ici" 
+     							 styleClass="btn btn-default">
+								 <f:setPropertyActionListener value="#{DetailCase.cas}"	target="#{DetailCase.cas}" />
+								</p:commandButton>
+                                </h:form>
+                               
+                               
+                                
+                        
                                 </div>
                                 
                                 </div>	

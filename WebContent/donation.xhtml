@@ -45,14 +45,14 @@
                                                 <div class="form-group">
 												<p:outputLabel for="montant" value="Montant" /><br/>
 												<p:spinner id="montant"  value="#{DonAction.donation.cout}" placeholder="Montant (DH)" min="100" stepFactor="100"
-													required="true" requiredMessage="Ce champ est requis"  />
+													required="true" requiredMessage="Veuillez saisir un montant pour votre don !"  />
 												<p:message for="montant" />
                                                 </div><br/>
                                                 <div class="form-group">
                                                 <p:outputLabel for="numCartePaiment" value="Numéro de carte de paiement" styleClass="hide"/>
 												<p:inputText styleClass="form-control input-lg c-square" id="numCartePaiment" placeholder="Numéro de carte de paiement" 
-													value="#{DonAction.donation.numCb}" required="true"
-													validatorMessage="Entrez un numero de carte valide" >
+													value="#{DonAction.donation.numCb}" required="true" maxlength="16"
+													validatorMessage="Veuillez saisir un numero de carte valide !" >
 													<f:validateRegex pattern="^[a-zA-Z0-9]{16}+$" />
 												</p:inputText>
 												<p:message for="numCartePaiment" />
@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                <p:outputLabel for="dateExpiration" value="Date d'expiration" styleClass="hide"/><br/>
-												<p:calendar id="dateExpiration" placeholder="Date d'expiration" 
+												<p:calendar id="dateExpiration" placeholder="Date d'expiration" required="true" requiredMessage="Veuillez indiquer la date d'expiration de votre carte !"
 													value="#{DonAction.donation.dateExpiration}" />
 												<p:message for="dateExpiration" />
                                                 </div><br/>

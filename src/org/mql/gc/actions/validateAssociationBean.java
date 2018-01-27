@@ -25,7 +25,7 @@ public class validateAssociationBean {
 		else {
 			System.out.println("Else");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Incorrect Username and Passowrd", "Please enter correct username and Password"));
+					"Votre email ou mot de passe est incorrecte !", ""));
 			return "login";
 		}
 	}

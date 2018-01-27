@@ -69,7 +69,7 @@ public class CaseDaoImpl implements CaseDao {
 		List<Cas> liste = new ArrayList<Cas>();
 		try {
 			Session session = dao.getSession();
-			Query query = session.createQuery("from Cas C order by id desc");
+			Query query = session.createQuery("from Cas order by duree asc, cout asc");
 			liste = query.list();
 			dao.closeSession(session);
 			

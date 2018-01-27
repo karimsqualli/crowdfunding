@@ -233,10 +233,10 @@
 								<article class="single-event">
 
 
-									<p:dataGrid var="urg" value="#{ShowCase.liste}" columns="1"
+									<p:dataGrid var="urg" value="#{ShowCase.listUrgent[1]}" columns="1"
 										layout="grid" rows="1" paginator="false" id="urg"
-										paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
-										rowsPerPageTemplate="4,8,12">
+										paginatorTemplate=" {PreviousPageLink} {NextPageLink}"
+										>
 
 										<div class="single-donet">
 											<div class="donet-thumbnail">
@@ -245,7 +245,11 @@
 											<div class="donet-content">
 												<div class="donet-content-heading">
 													<h3>
-														<a href="#">special cause Right Now</a>
+														<p:commandLink value="#{urg.titre}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{urg}"
+													target="#{DetailCase.cas}" />
+											</p:commandLink>
 													</h3>
 													<ul class="event-meta">
 														<li><i class="fa fa-map-marker"></i>
@@ -256,7 +260,6 @@
 																style="margin-left:5px;" /></li>
 													</ul>
 													<p>
-														L
 														<h:outputText value="#{urg.description}"
 															style="margin-left:5px;" />
 													</p>
@@ -280,7 +283,7 @@
 																	role="progressbar"
 																	aria-valuenow="#{ShowCase.getRes(urg.id)}"
 																	aria-valuemin="0" aria-valuemax="200"
-																	style="width:50 ">
+																	style="width: #{ShowCase.getRes(urg.id)*100/urg.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
 																	<span> <h:outputText
 																			value="#{ShowCase.getRes(urg.id)/urg.cout}">
 																			<f:convertNumber type="percent" />
@@ -295,7 +298,81 @@
 													<p:commandButton
 														action="detailCase.xhtml?faces-redirect=true"
 														value="voir plus" styleClass="btn btn-default">
-														<f:setPropertyActionListener value="#{cas}"
+														<f:setPropertyActionListener value="#{urg}"
+															target="#{DetailCase.cas}" />
+													</p:commandButton>
+												</h:form>
+											</div>
+										</div>
+									</p:dataGrid>
+								</article>
+								<article class="single-event">
+									<p:dataGrid var="urg1" value="#{ShowCase.listUrgent[2]}" columns="1"
+										layout="grid" rows="1" paginator="false" id="urg1"
+										paginatorTemplate=" {PreviousPageLink} {NextPageLink}"
+										>
+
+										<div class="single-donet">
+											<div class="donet-thumbnail">
+												<p:graphicImage value="#{urg1.fileContentI}" />
+											</div>
+											<div class="donet-content">
+												<div class="donet-content-heading">
+													<h3>
+											<p:commandLink value="#{urg1.titre}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{urg1}"
+													target="#{DetailCase.cas}" />
+											</p:commandLink>
+													</h3>
+													<ul class="event-meta">
+														<li><i class="fa fa-map-marker"></i>
+														<h:outputText value="#{urg1.ville}"
+																style="margin-left:5px;" /></li>
+														<li><i class="fa fa-calendar"></i>
+														<h:outputText value="#{urg1.duree} Jours"
+																style="margin-left:5px;" /></li>
+													</ul>
+													<p>
+														<h:outputText value="#{urg1.description}"
+															style="margin-left:5px;" />
+													</p>
+												</div>
+												<div class="donet-bar">
+													<p>
+														Collecté :
+														<h:outputText value="#{ShowCase.getRes(urg1.id)}">
+															<f:convertNumber minFractionDigits="0" />
+														</h:outputText>
+														DH<span class="project-goal"> Objectif : <h:outputText
+																value="#{urg1.cout}">
+																<f:convertNumber minFractionDigits="0" />
+															</h:outputText> DH
+														</span>
+													</p>
+													<div class="progress-bar-area">
+														<div class="single-progress-bar">
+															<div class="progress ">
+																<div class="progress-bar wow fadeInLeft"
+																	role="progressbar"
+																	aria-valuenow="#{ShowCase.getRes(urg1.id)}"
+																	aria-valuemin="0" aria-valuemax="200"
+																	style="width: #{ShowCase.getRes(urg1.id)*100/urg1.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+																	<span> <h:outputText
+																			value="#{ShowCase.getRes(urg1.id)/urg1.cout}">
+																			<f:convertNumber type="percent" />
+																		</h:outputText>
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<h:form>
+													<p:commandButton
+														action="detailCase.xhtml?faces-redirect=true"
+														value="voir plus" styleClass="btn btn-default">
+														<f:setPropertyActionListener value="#{urg1}"
 															target="#{DetailCase.cas}" />
 													</p:commandButton>
 												</h:form>
@@ -373,7 +450,7 @@
 															role="progressbar"
 															aria-valuenow="#{ShowCase.getRes(cas.id)}"
 															aria-valuemin="0" aria-valuemax="200"
-															style="width: 50">
+															style="width: #{ShowCase.getRes(cas.id)*100/cas.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
 															<span> <h:outputText
 																	value="#{ShowCase.getRes(cas.id)/cas.cout}">
 																	<f:convertNumber type="percent" />

@@ -49,15 +49,15 @@
 
 									<h:form>
 										<p:growl id="msgs" showDetail="true" />
-										<p:messages />
 										<div class="form-group">
 
-											<p:outputLabel for="titre">Titre du projet : </p:outputLabel>
+											<p:outputLabel for="titre">Titre du Cas : </p:outputLabel>
 											<br />
 											<p:inputText id="titre" value="#{InsertCaseBean.cas.titre}"
 												maxlength="70" size="60"
 												placeholder="Ex:Famille sans abri à Fqih Ben Saleh"
-												required="true" />
+												required="true" requiredMessage="Veuillez saisir un titre pour votre cas !"/>
+												<p:message for="titre" />
 										</div>
 										<br />
 										<div class="form-group">
@@ -72,17 +72,19 @@
 											<p:outputLabel for="ville">Ville : </p:outputLabel>
 											<br />
 											<p:autoComplete id="ville" dropdown="true"
-												value="#{InsertCaseBean.cas.ville}"
+												value="#{InsertCaseBean.cas.ville}" required="true" requiredMessage="Veuillez indiquer la ville"
 												completeMethod="#{InsertCaseBean.completeVille}">
 											</p:autoComplete>
+											<p:message for="ville" />
 										</div>
 										<br />
 										<div class="form-group">
 											<p:outputLabel for="description">Déscription : </p:outputLabel>
 											<br />
-											<p:inputTextarea rows="4" cols="40"
+											<p:inputTextarea rows="4" cols="40" required="true" requiredMessage="Veuillez saisir une déscription pour votre cas (Taille max:200)"
 												value="#{InsertCaseBean.cas.description}" id="description"
 												queryDelay="750" minQueryLength="4" maxlength="200" />
+												<p:message for="description" />
 										</div>
 										<br />
 										<div class="form-group">
@@ -106,7 +108,7 @@
 										</div>
 										<br />
 										<div class="form-group">
-											<p:outputLabel for="autre">Autre Catégorie : </p:outputLabel>
+											<p:outputLabel for="autre">Sous Catégorie : </p:outputLabel>
 											<br />
 											<p:inputText id="autre"
 												value="#{InsertCaseBean.cas.autreCategorie}" />
@@ -114,67 +116,78 @@
 										<br />
 										<div class="form-group">
 											<p:outputLabel for="duree">Durée(Jour) : </p:outputLabel>
-											<br />
-											<p:spinner id="duree" value="#{InsertCaseBean.cas.duree}"
+											<br /> 
+											<p:spinner id="duree" value="#{InsertCaseBean.cas.duree}" required="true" requiredMessage="Veuillez préciser la durée de votre annonce"
 												min="0" max="100" />
+												<p:message for="duree" />
 										</div>
 										<br />
 										<div class="form-group">
 											<p:outputLabel for="cout">Coût : </p:outputLabel>
 											<br />
-											<p:spinner id="cout" value="#{InsertCaseBean.cas.cout}"
+											<p:spinner id="cout" value="#{InsertCaseBean.cas.cout}" required="true" requiredMessage="Veuillez préciser le coût correspondant à votre cas "
 												suffix=" DH " min="100" stepFactor="100" />
+												<p:message for="cout" />
 										</div>
-										<br />
+										<br /><br />
 										<div class="form-group">
-											<h:outputLabel>Ajouter une image :  </h:outputLabel>
-											<p:fileUpload
+											<h:outputLabel for="imgUp">Ajouter une image :  </h:outputLabel>
+											<p:fileUpload id="imgUp" requiredMessage="Veuillez ajouter une image à votre cas"
 												fileUploadListener="#{InsertCaseBean.uploadFileI}"
-												mode="advanced" dragDropSupport="false" multiple="true"
+												mode="advanced" dragDropSupport="false" multiple="true" required="true"
 												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(jpg|jpeg|png)$/" />
+												<p:message for="imgUp" />
 										</div>
 										<br />
+										<br />
 										<div class="form-group">
-											<p:outputLabel>Ajouter une video (optionnel) :  </p:outputLabel>
-											<p:fileUpload
+											<p:outputLabel>Ajouter une video :  </p:outputLabel>
+											<p:fileUpload id="vidUp"
 												fileUploadListener="#{InsertCaseBean.uploadFileV}"
 												mode="advanced" dragDropSupport="false" multiple="true"
 												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(mp4|mpeg)$/" />
+												<p:message for="vidUp" />
 										</div>
 										<br />
 										<br />
-										<br />
 										<div class="form-group">
-											<p:outputLabel>(1) Ajouter un document* :  </p:outputLabel>
-											<p:fileUpload
+											<p:outputLabel>(1) Ajouter un document : *</p:outputLabel><h:outputText value="&#160;&#160;" />
+											<p:inputText id="fn1" placeholder=" Intitulé du document"
+												value="#{InsertCaseBean.cas.fileName1}" /><br /><br />
+											<p:fileUpload id="pdf1Up"
 												fileUploadListener="#{InsertCaseBean.uploadFile1}"
 												mode="advanced" dragDropSupport="false" multiple="true"
 												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(pdf|docx)$/" />
+												<p:message for="pdf1Up" />
 										</div>
 										<br />
 										<br />
-										<br />
 										<div class="form-group">
-											<p:outputLabel>(2) Ajouter un document (optionnel) :  </p:outputLabel>
-											<p:fileUpload
+											<p:outputLabel>(2) Ajouter un document :  </p:outputLabel><h:outputText value="&#160;&#160;&#160;" />
+											<p:inputText id="fn2" placeholder=" Intitulé du document"
+												value="#{InsertCaseBean.cas.fileName2}" /><br /><br />
+											<p:fileUpload id="pdf2Up"
 												fileUploadListener="#{InsertCaseBean.uploadFile2}"
 												mode="advanced" dragDropSupport="false" multiple="true"
 												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(pdf|docx)$/" />
+												<p:message for="pdf2Up" />
 										</div>
 										<br />
 										<br />
-										<br />
 										<div class="form-group">
-											<p:outputLabel>(3) Ajouter un document (optionnel) :  </p:outputLabel>
-											<p:fileUpload
+											<p:outputLabel>(3) Ajouter un document :  </p:outputLabel><h:outputText value="&#160;&#160;&#160;" />
+											<p:inputText id="fn3" placeholder=" Intitulé du document"
+												value="#{InsertCaseBean.cas.fileName3}" /><br /><br />
+											<p:fileUpload id="pdf3Up"
 												fileUploadListener="#{InsertCaseBean.uploadFile3}"
 												mode="advanced" dragDropSupport="false" multiple="true"
 												sizeLimit="4000000" fileLimit="1"
 												allowTypes="/(\.|\/)(pdf|docx)$/" />
+												<p:message for="pdf3Up" />
 										</div>
 										<br />
 										<br />

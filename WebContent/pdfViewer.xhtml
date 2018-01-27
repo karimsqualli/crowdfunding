@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Documents</title>
+</h:head>
+<h:body>
+
+	<h3>Intitulé du document : <h:outputText  value="#{DetailCase.cas.fileName1}" /></h3>
+	<object type="application/pdf"	data="#{DetailCase.cas.fileContent1}" height="700px"	width="100%">
+		<p>	Vous n'avez pas de plugin PDF mais vous pouvez <a href="#{DetailCase.cas.fileContent1}">télécharger	le fichier.</a></p>
+	</object>
+	<h3>Intitulé du document : <h:outputText  value="#{DetailCase.cas.fileName2}" /></h3>
+	<object type="application/pdf"	data="#{DetailCase.cas.fileContent2}" height="700px"	width="100%">
+		<p>	Vous n'avez pas de plugin PDF mais vous pouvez <a href="#{DetailCase.cas.fileContent2}">télécharger	le fichier.</a></p>
+	</object>
+	<h3>Intitulé du document : <h:outputText  value="#{DetailCase.cas.fileName3}" /></h3>
+	<object type="application/pdf"	data="#{DetailCase.cas.fileContent3}" height="700px"	width="100%">
+		<p>	Vous n'avez pas de plugin PDF mais vous pouvez <a href="#{DetailCase.cas.fileContent3}">télécharger	le fichier.</a></p>
+	</object>
+
+</h:body>
+</html>
