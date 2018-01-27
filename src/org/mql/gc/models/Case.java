@@ -3,8 +3,6 @@ package org.mql.gc.models;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import org.primefaces.model.UploadedFile;
-
 public class Case {
 	private int id;
 	private int idAssociation;
@@ -24,6 +22,8 @@ public class Case {
 	private String fileName1;
 	private String fileName2;
 	private String fileName3;
+	private boolean pending;
+
 	
 	public Case() {
 	
@@ -172,5 +172,14 @@ public class Case {
 	public void setFileName3(String fileName3) {
 		this.fileName3 = fileName3;
 	}
+
+	public boolean isPending() {
+		return pending;
+	}
+
+	public void setPending(boolean pending) {
+		this.pending = pending;
+	}
+
 	
 }

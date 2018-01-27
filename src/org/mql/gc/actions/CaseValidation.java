@@ -2,35 +2,53 @@ package org.mql.gc.actions;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
-import org.mql.gc.models.Cas;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.mql.gc.models.Case;
+import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
 
+@ManagedBean
+@ViewScoped
 public class CaseValidation implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private ServiceImpl service = new ServiceImpl();
-	private List<Cas> cas;
-
+	private Service service ;
+	private List<Case> zmorixa;
 
 	@PostConstruct
 	public void init(){
-		cas = service.getPendingCases();
+		service = new ServiceImpl();
+		System.out.println("&& post contruct caseValidation &&");
+		zmorixa = service.getPendingCases();
+		System.out.println("cette liste : " + zmorixa);
 	}
+
 	
-	public List<Cas> getCas() {
-		return cas;
+	
+	public List<Case> getZmorixa() {
+		return zmorixa;
 	}
 
-	public void setCas(List<Cas> cas) {
-		this.cas = cas;
+	public void setZmorixa(List<Case> zmorixa) {
+		this.zmorixa = zmorixa;
 	}
 
-	public ServiceImpl getService() {
+
+
+	public Service getService() {
 		return service;
 	}
-	
-	public void setService(ServiceImpl service) {
+
+
+
+	public void setService(Service service) {
 		this.service = service;
 	}
+
+
+	
 	
 }

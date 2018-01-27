@@ -58,7 +58,11 @@
  		<property name="service" ref="ServiceImp"></property>
  		<property name="association" ref="Association"></property>
  	</bean>
-	
+ 	
+ 	<!-- <bean id="CaseValidation" class="org.mql.gc.actions.CaseValidation">
+ 		 	<property name="service" ref="ServiceImp"></property>
+ 	</bean>
+	 -->
  	<!-- les models  -->
  	<bean id="Donor" class="org.mql.gc.models.Donor"/>
  	<bean id="Donation" class="org.mql.gc.models.Donation"/>

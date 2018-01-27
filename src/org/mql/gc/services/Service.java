@@ -25,6 +25,7 @@ public interface Service {
 	public List<Case> getCases();
 	public List<Case> getCasesUrgent();
 	public List<Case> getAssociations(String nom, String category);
+	public List<Case> getPendingCases();
 	//************************************Donateur**************************************
 	public void addDonor(Donor donor) ;
 	public void updateDonor(int id) ;

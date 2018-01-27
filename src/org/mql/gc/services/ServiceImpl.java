@@ -84,6 +84,9 @@ public class ServiceImpl implements Service {
 	public List<Case> getCases(String title, String category) {
 		return caseDao.select(title, category);
 	}
+	public List<Case> getPendingCases() {
+		return caseDao.findPending();
+	}
 	
 	//********************************Donnateur*********************************************	
 		public void addDonor(Donor donor) {

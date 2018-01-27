@@ -21,11 +21,8 @@ public class ShowCase implements Serializable{
 		listUrgent = service.getCasesUrgent();
 	}
 	
-	
 	public void searchCas() {
 	}
-
-	
 
 	public Case getCas() {
 		return cas;
@@ -72,11 +69,9 @@ public class ShowCase implements Serializable{
 		this.listUrgent = listUrgent;
 	}
 
-
 	public Service getService() {
 		return service;
 	}
-
 
 	public void setService(Service service) {
 		this.service = service;

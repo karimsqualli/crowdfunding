@@ -1,7 +1,9 @@
 
 package org.mql.gc.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -28,6 +30,7 @@ public class CaseDaoImp implements CaseDao {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
+			caseObject.setPending(true);
 			session.save(caseObject);
 			tx.commit();
 		} catch (RuntimeException e) {
@@ -90,4 +93,14 @@ public class CaseDaoImp implements CaseDao {
 		return list;
 	}
 	
+	public List<Case> findPending() {
+		List<Case> liste = new Vector<Case>();		
+			Session session = dao.getSession();
+			Query<Case> query = session.createQuery("FROM Case",Case.class);
+			liste = query.list();
+			dao.closeSession(session);			
+
+		return liste;
+
+	}
 }

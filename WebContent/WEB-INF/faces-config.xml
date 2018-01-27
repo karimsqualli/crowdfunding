@@ -106,7 +106,16 @@
 			<value>#{ServiceImp}</value>
 		</managed-property>
 	</managed-bean>	
+	<managed-bean>
 	
+	<managed-bean-name>CaseValidation</managed-bean-name>
+ 		<managed-bean-class>org.mql.gc.actions.CaseValidation</managed-bean-class>
+ 		<managed-bean-scope>view</managed-bean-scope>
+ 		<managed-property>
+			<property-name>service</property-name>
+ 	    	<value>#{ServiceImp}</value>
+ 		</managed-property>
+ 	</managed-bean>
 	
 		
 </faces-config>

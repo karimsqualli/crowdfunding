@@ -10,4 +10,5 @@ public interface CaseDao {
 	public List<Case> selectUrgent();
 	public List<Case> select(String title, String category) ;
 	public List<Case> select(int id);
+	public List<Case> findPending();
 }

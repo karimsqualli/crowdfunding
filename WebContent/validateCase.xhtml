@@ -22,78 +22,11 @@
 </h:head>
 
 <body>
+<ui:insert name="header">
+   <ui:include src="header.xhtml" />
+</ui:insert>
 
-	<!-- theme preloader area start -->
-	<div id="humanity-preloader-wrapper">
-		<div class="preloader-wave-effect"></div>
-	</div>
-	<!-- theme preloader area end -->
-	<!-- Main wrapper start -->
-	<div class="wrapper">
-		<!-- Header area start -->
-		<header class="header-area header-style-2" id="sticky-header">
-			<div id="sticky-header"
-				class="main-header-area transparent-header color">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2 col-sm-6 col-xs-6">
-							<div class="logo-wrapper">
-								<a class="logo" href="index.xhtml">Crowdy</a>
-							</div>
-						</div>
-						<div class="col-md-7 hidden-xs hidden-sm">
-							<div class="menu-area">
-								<nav class="template-menu">
-									<ul class="main-menu">
-										<li><a href="projects.xhtml">Voir les cas</a></li>
-										<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
-										<li><a href="volunteer.xhtml">Associations</a></li>
-										<li><a href="about.xhtml">Comment ça marche</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-						<!-- Mobile menu area start -->
-						<div class="mobile-menu-area clearfix hidden-md">
-							<nav class="mobile-menu">
-								<ul class="mobile-menu-nav">
-									<li><a href="projects.xhtml">Voir les cas</a></li>
-									<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
-									<li><a href="volunteer.xhtml">Associations</a></li>
-									<li><a href="about.xhtml">Comment ça marche</a></li>
-								</ul>
-							</nav>
-						</div>
-						<!-- Mobile menu area end -->
-
-						<div class="col-md-3 hidden-sm hidden-xs">
-							<div class="header-btn">
-								<ul class="header-action">
-									<li><h:form>
-											<p:commandLink rendered="#{!DonBean.connected}">
-												<a href="javascript:;" data-toggle="modal"
-													data-target="#login-form" class="btn btn-default">Se
-													connecter</a>
-											</p:commandLink>
-											<p:commandLink rendered="#{DonBean.connected}"
-												action="#{DonBean.logout()}" styleClass="btn btn-default"
-												value="Se deconnecter" />
-										</h:form></li>
-								</ul>
-
-
-							</div>
-						</div>
-
-
-
-					</div>
-				</div>
-			</div>
-		</header>
-		<!-- Header area end -->
-
-		<!-- Slider area start -->
+		<!-- Table start -->
 
 		<section class="content">
 			<!-- Donet section start -->
@@ -112,13 +45,13 @@
 							<div class="donate-feature-list navigation-style-1">
 								<article class="single-event">
 
-									<p:dataTable var="cas" value="#{CaseValidation.cas}">
+									<p:dataTable var="cas" value="#{caseValidation.zmorixa}">
 										<p:column headerText="Id">
 											<h:outputText value="#{cas.id}" />
 										</p:column>
 
 										<p:column headerText="Year">
-											<h:outputText value="#{cas.titre}" />
+											<h:outputText value="#{cas.title}" />
 										</p:column>
 
 						
@@ -132,13 +65,13 @@
 
 
 		</section>
-		<!-- Page content area end -->
+		<!-- Table end -->
+		
 		<!-- Footer section start -->
 		<ui:insert name="footer">
 			<ui:include src="footer.xhtml" />
 		</ui:insert>
 		<!-- Footer section end -->
-	</div>
 
 </body>
 </html>

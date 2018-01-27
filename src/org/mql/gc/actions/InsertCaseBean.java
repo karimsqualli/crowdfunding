@@ -12,7 +12,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Case;
-import org.mql.gc.models.Cities;
+import org.mql.gc.models.City;
 import org.mql.gc.services.Service;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.event.FileUploadEvent;
@@ -27,7 +27,7 @@ public class InsertCaseBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Case caseObject;
 	private Service service;
-	private static final String BASE_STATIC_PATH = "D:/JEE WORKSPACE/Project_4/WebContent/static/";
+	private static final String BASE_STATIC_PATH = "D:/ProjetGL3/WebContent/static/";
 	private static final String BASE_SERVER_STATIC_PATH = "./static/";
 	private static final String IMAGE_DIR = "images";
 	private static final String VIDEO_DIR = "videos";
@@ -61,7 +61,7 @@ public class InsertCaseBean implements Serializable{
 
 	public List<String> completeVille(String lettres) {
         List<String> results = new ArrayList<String>();
-        for(Cities ville : Cities.values()) {
+        for(City ville : City.values()) {
         	if (ville.name().toLowerCase().startsWith(lettres)) {
 				System.out.println(ville);
         	results.add(ville.name());
