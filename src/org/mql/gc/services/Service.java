@@ -1,58 +1,40 @@
 package org.mql.gc.services;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+
+
 import org.mql.gc.models.Association;
-import org.mql.gc.models.Cas;
+import org.mql.gc.models.Case;
 import org.mql.gc.models.Donation;
-import org.mql.gc.models.Donnateur;
+import org.mql.gc.models.Donor;
 
 public interface Service {
-	// **********************************Association**********************************
-	public void add(Association e);
-
-	public Association edite(Association e);
-
-	public void delete(Long id);
-
-	public List<Association> findAll();
-
-	public Association findById(Long id);
-
-	public boolean nameExist(String name);
-
-	public boolean connectAssociation(String email, String password);
-
-	// ************************************Case**************************************
-	public void create(Cas cas);
-
-	public List<Cas> afficherListcas();
-	
-	public List<Cas> findAllUrgent();
-
-	public List<Cas> afficherListcas(String nom, String category);
-	
-	public List<Cas> getPendingCases();
-
-	// ************************************Donateur**************************************
-	public boolean addDonator(Donnateur e);
-
-	public Donnateur editeDonator(Donnateur e);
-
-	public void deleteDonator(int id);
-
-	public List<Donnateur> findAllDonator();
-
-	public Donnateur findDonatorById(int id);
-
-	public boolean nameDonatorExist(String name);
-
-	public Donnateur connectDonator(String email, String password);
-
-	public boolean emailDonatorExist(String email);
-
-	public boolean passwordDonatorExist(String password);
-
-	public void saveDonn(Donation donn);
-
-	public double calc(int id);
+    //**********************************Association**********************************
+	public void addAssociation(Association association);
+	public void updateAssosiaction(int id);
+	public void deleteAssociation(int id);
+	public List<Association> getAssociations();
+	public Association getAssociationById(int id);
+	public Association getAssociationByEmail(String email);
+	public boolean associationNameExist(String name);//?
+	public boolean loginAssociation(String email,String password);
+	//************************************Case**************************************
+	public void addCase(Case caseObject);
+	public List<Case> getCases();
+	public List<Case> getCasesUrgent();
+	public List<Case> getAssociations(String nom, String category);
+	//************************************Donateur**************************************
+	public void addDonor(Donor donor) ;
+	public void updateDonor(int id) ;
+	public void deleteDonor(int id) ;
+	public List<Donor> getDonors() ;
+	public Donor getDonorById(int id) ;
+	public boolean donorNameExist(String name);
+	public boolean donorEmailExist(String email);
+	public boolean loginDonor(String email, String password);
+	public double getCostDonor(int id);
+	//***********************************Donation****************************************
+	public void addDonation(Donation donation);
 }

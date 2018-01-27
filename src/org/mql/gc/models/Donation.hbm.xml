@@ -6,15 +6,15 @@
 <hibernate-mapping>
 	<class name="org.mql.gc.models.Donation" table="donation">
 		<id name="id" column="id" type="int">
-		<generator class="increment"/>
+			<generator class="increment"/>
 		</id>
-		<property name="idCas" column="idCas" type="int"/>
+		<property name="idCase" column="idCase" type="int"/>
 		<property name="idUser" column="idUser" type="int"/>
-		<property name="cout" column="cout" type="java.lang.Double"/>
-		<property name="numCb" column="numCb" type="string"/>
-		<property name="dateExpiration" column="dateExpiration" type="java.util.Date"/>
+		<property name="cost" column="cost" type="double"/>
+		<property name="numBC" column="numBC" type="string"/>
+		<property name="expirationDate" column="expirationDate" type="date"/>
 		<property name="ccv" column="ccv" type="string"/>
-		<property name="dateAjout" column="dateAjout" type="java.sql.Timestamp"/>
+		<property name="addedDate" column="addedDate" type="timestamp"/>
 	</class>
 </hibernate-mapping>
 

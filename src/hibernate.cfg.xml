@@ -16,8 +16,8 @@
 		<property name="hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
  		<mapping resource="org/mql/gc/models/Association.hbm.xml"/>
-        <mapping resource="org/mql/gc/models/Cas.hbm.xml" />
+        <mapping resource="org/mql/gc/models/Case.hbm.xml" />
         <mapping resource="org/mql/gc/models/Donation.hbm.xml" />
-        <mapping resource="org/mql/gc/models/Donnateur.hbm.xml" />
+        <mapping resource="org/mql/gc/models/Donor.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

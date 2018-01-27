@@ -11,9 +11,9 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.mql.gc.models.Cas;
-import org.mql.gc.models.City;
-import org.mql.gc.services.ServiceImpl;
+import org.mql.gc.models.Case;
+import org.mql.gc.models.Cities;
+import org.mql.gc.services.Service;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
@@ -25,28 +25,43 @@ import org.apache.commons.io.IOUtils;
 
 public class InsertCaseBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private Cas cas;
-	private ServiceImpl service;
-	private static final String BASE_STATIC_PATH = "C:/Users/SALAM/workspace/CrowdFunding/repoGit/WebContent/static/";
+	private Case caseObject;
+	private Service service;
+	private static final String BASE_STATIC_PATH = "D:/JEE WORKSPACE/Project_4/WebContent/static/";
 	private static final String BASE_SERVER_STATIC_PATH = "./static/";
 	private static final String IMAGE_DIR = "images";
 	private static final String VIDEO_DIR = "videos";
 	private static final String PDF_DIR = "pdf";
-
 	
 	public String insertCase() {
+		System.out.println("$$$$$$$$$$$");
 		HttpSession session = SessionUtils.getSession();
-		int ida =(int)session.getAttribute("idAssociation");
-		System.out.println("id association = "+ida);
-		cas.setDate_ajout(new Timestamp( System.currentTimeMillis() ));
-		cas.setIdAssociation(ida);
-		service.create(cas);
+		int id =(int)session.getAttribute("idAssociation");
+		initialiserDateInscription();
+		caseObject.setIdAssociation(id);
+		service.addCase(caseObject);
 		return "index?faces-redirect=true";
+	}
+
+	public Case getCaseObject() {
+		return caseObject;
+	}
+
+	public void setCaseObject(Case caseObject) {
+		this.caseObject = caseObject;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
 	}
 
 	public List<String> completeVille(String lettres) {
         List<String> results = new ArrayList<String>();
-        for(City ville : City.values()) {
+        for(Cities ville : Cities.values()) {
         	if (ville.name().toLowerCase().startsWith(lettres)) {
 				System.out.println(ville);
         	results.add(ville.name());
@@ -55,6 +70,7 @@ public class InsertCaseBean implements Serializable{
         return results;
     }
 	
+
 	public String onFlowProcess(FlowEvent event) {
             return event.getNewStep();
     }
@@ -67,7 +83,7 @@ public class InsertCaseBean implements Serializable{
             		File file=new File(chemin,getUniqueImageName());
             		InputStream inputStream = uploadedPhoto.getInputstream();
             		save(inputStream, file);
-            	cas.setFileContentI(BASE_SERVER_STATIC_PATH + IMAGE_DIR + "/" + getUniqueImageName());
+            	caseObject.setFileContentI(BASE_SERVER_STATIC_PATH + IMAGE_DIR + "/" + getUniqueImageName());
 		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedPhoto.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				} catch (Exception e) {
@@ -86,7 +102,7 @@ public class InsertCaseBean implements Serializable{
             		File file=new File(chemin,getUniqueVideoName());
             		InputStream inputStream = uploadedVideo.getInputstream();
             		save(inputStream, file);
-            	cas.setFileContentV(BASE_SERVER_STATIC_PATH + VIDEO_DIR + "/" + getUniqueVideoName());
+            	caseObject.setFileContentV(BASE_SERVER_STATIC_PATH + VIDEO_DIR + "/" + getUniqueVideoName());
 		        FacesMessage message = new FacesMessage("Votre video ", uploadedVideo.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				} catch (Exception e) {
@@ -105,7 +121,7 @@ public class InsertCaseBean implements Serializable{
             		File file=new File(chemin,getUniquePdfName());
             		InputStream inputStream = uploadedFile.getInputstream();
             		save(inputStream, file);
-            	cas.setFileContent1(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
+            	caseObject.setFileContent1(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
 		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedFile.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				} catch (Exception e) {
@@ -124,7 +140,7 @@ public class InsertCaseBean implements Serializable{
             		File file=new File(chemin,getUniquePdfName());
             		InputStream inputStream = uploadedFile.getInputstream();
             		save(inputStream, file);
-            	cas.setFileContent2(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
+            	caseObject.setFileContent2(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
 		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedFile.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				} catch (Exception e) {
@@ -143,7 +159,7 @@ public class InsertCaseBean implements Serializable{
             		File file=new File(chemin,getUniquePdfName());
             		InputStream inputStream = uploadedFile.getInputstream();
             		save(inputStream, file);
-            	cas.setFileContent3(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
+            	caseObject.setFileContent3(BASE_SERVER_STATIC_PATH + PDF_DIR + "/" + getUniquePdfName());
 		        FacesMessage message = new FacesMessage("Votre fichier ", uploadedFile.getFileName() + "a ete enregistrer.");
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				} catch (Exception e) {
@@ -165,7 +181,7 @@ public class InsertCaseBean implements Serializable{
 		String imgPrefix = "vid";
 		String imgSufix = ".mp4";
 		String milieu ="";
-		SimpleDateFormat sdf=new SimpleDateFormat("yyMMddHHmmss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
 		milieu=sdf.format(new Date());
 		return imgPrefix+milieu+imgSufix;
 	}
@@ -184,19 +200,17 @@ public class InsertCaseBean implements Serializable{
 		IOUtils.copy(inputStream, output);
 }
 	
-	public Cas getCas() {
-		return cas;
+	private void initialiserDateInscription() {
+        Timestamp date = new Timestamp( System.currentTimeMillis() );
+        caseObject.setAddedDate(date);
+    }
+
+	public Case getCas() {
+		return caseObject;
 	}
 
-	public void setCas(Cas cas) {
-		this.cas = cas;
+	public void setCas(Case cas) {
+		this.caseObject = cas;
 	}
 
-	public ServiceImpl getService() {
-		return service;
-	}
-
-	public void setService(ServiceImpl service) {
-		this.service = service;
-	}
 }

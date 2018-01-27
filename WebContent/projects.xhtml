@@ -48,15 +48,15 @@
 
 							<div class="event-content event-content-2">
 								<h5 class="single-event-title">
-									<p:commandLink value="#{cas.titre}"
+									<p:commandLink value="#{cas.title}"
 										action="detailCase.xhtml?faces-redirect=true">
 										<f:setPropertyActionListener value="#{cas}"
-											target="#{DetailCase.cas}" />
+											target="#{DetailCase.caseObject}" />
 									</p:commandLink>
 								</h5>
 								<ul class="event-meta">
-									<li><i class="fa fa-map-marker"></i><h:outputText value="#{cas.ville}" style="margin-left:5px;"/></li>
-									<li><i class="fa fa-calendar"></i><h:outputText value="#{cas.duree} Jours" style="margin-left:5px;"/></li>
+									<li><i class="fa fa-map-marker"></i><h:outputText value="#{cas.city}" style="margin-left:5px;"/></li>
+									<li><i class="fa fa-calendar"></i><h:outputText value="#{cas.endDate} Jours" style="margin-left:5px;"/></li>
 								</ul>
 
 								<h:outputText value="#{cas.slogan}" /><br/>
@@ -66,12 +66,12 @@
                                         <p>Col: <h:outputText value="#{ShowCase.getRes(cas.id)}" >
 												<f:convertNumber minFractionDigits="0" />
 														</h:outputText> DH<span class="project-goal">
-                                        Obj: <h:outputText value="#{cas.cout}">	<f:convertNumber minFractionDigits="0" /></h:outputText> DH</span></p>
+                                        Obj: <h:outputText value="#{cas.cost}">	<f:convertNumber minFractionDigits="0" /></h:outputText> DH</span></p>
                                         <div class="progress-bar-area">
                                             <div class="single-progress-bar">
                                                 <div class="progress ">
-                                                    <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="#{ShowCase.getRes(cas.id)}" aria-valuemin="0" aria-valuemax="200" style="width: #{ShowCase.getRes(cas.id)*100/cas.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
-                                                 <span>     <h:outputText value="#{ShowCase.getRes(cas.id)/cas.cout}" >
+                                                    <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="#{ShowCase.getRes(cas.id)}" aria-valuemin="0" aria-valuemax="200" style="width: #{ShowCase.getRes(cas.id)*100/cas.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+                                                 <span>     <h:outputText value="#{ShowCase.getRes(cas.id)/cas.cost}" >
 												<f:convertNumber type="percent" />
 														</h:outputText>
                                                    </span>   
@@ -83,7 +83,7 @@
                                 <h:form>    
 								<p:commandButton action="detailCase.xhtml?faces-redirect=true" value="voir plus" styleClass="btn btn-default" >
 									<f:setPropertyActionListener value="#{cas}"
-											target="#{DetailCase.cas}" />
+											target="#{DetailCase.caseObject}" />
 								</p:commandButton>
 					</h:form>
 						 </div>

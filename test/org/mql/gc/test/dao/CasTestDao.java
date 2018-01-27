@@ -11,28 +11,28 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mql.gc.dao.AssociationDao;
-import org.mql.gc.dao.AssociationDaoImpl;
+import org.mql.gc.dao.AssociationDaoImp;
 import org.mql.gc.dao.CaseDao;
-import org.mql.gc.dao.CaseDaoImpl;
-import org.mql.gc.dao.DonateurDao;
-import org.mql.gc.dao.DonateurDaoImpl;
+import org.mql.gc.dao.CaseDaoImp;
+import org.mql.gc.dao.DonorDao;
+import org.mql.gc.dao.DonorDaoImp;
 import org.mql.gc.models.Association;
-import org.mql.gc.models.Cas;
-import org.mql.gc.models.Donnateur;
+import org.mql.gc.models.Case;
+import org.mql.gc.models.Donor;
 
 public class CasTestDao {
 	
 	private static CaseDao dao;
-	private static DonateurDao donDao;
-	private static Cas cas;
+	private static DonorDao donDao;
+	private static Case cas;
 
 	
 	@BeforeAll
 	public static void setUpSuite() {
-		dao = new CaseDaoImpl();
-		donDao = new DonateurDaoImpl();
+		dao = new CaseDaoImp();
+		donDao = new DonorDaoImp();
 		
-		cas = new Cas();
+		cas = new Case();
 		cas.setDescription("test description");
 		dao.create(cas);
 	}
@@ -40,7 +40,7 @@ public class CasTestDao {
 	
 	@Test
 	public void testCreateCase() {
-		Cas a = new Cas();
+		Case a = new Case();
 
 		a.setDescription("karim");
 		dao.create(a);
@@ -51,18 +51,18 @@ public class CasTestDao {
 	
 	@Test
 	public void testFindAll() {
-		Cas a = new Cas();
+		Case a = new Case();
 		dao.create(a);
 
-		List<Cas> cas_list = dao.findAll();
+		List<Case> cas_list = dao.findAll();
 		
 		assertTrue(cas_list.contains(a));
 	}
 	
 	@Test
 	public void testFindByNameAndCategory() {
-		Cas a = new Cas();
-		Cas b = new Cas();
+		Case a = new Case();
+		Case b = new Case();
 		
 		a.setCategorie("1");
 		dao.create(a);
@@ -70,7 +70,7 @@ public class CasTestDao {
 		b.setCategorie("0");
 		dao.create(a);
 		
-		List<Cas> cas_list = dao.findByTitleAndCategory("", "1");
+		List<Case> cas_list = dao.findByTitleAndCategory("", "1");
 		
 		assertTrue(cas_list.contains(a));
 		assertFalse(cas_list.contains(b));
@@ -78,7 +78,7 @@ public class CasTestDao {
 	
 	@Test
 	public void testFindByNameAndCategoryVoid() {
-		List<Cas> cas_list = dao.findByTitleAndCategory("", "55555");
+		List<Case> cas_list = dao.findByTitleAndCategory("", "55555");
 		
 		assertEquals(cas_list.size(), 0);
 	}

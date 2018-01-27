@@ -3,53 +3,40 @@ package org.mql.gc.actions;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import org.mql.gc.models.Cas;
-import org.mql.gc.services.ServiceImpl;
+import org.mql.gc.models.Case;
+import org.mql.gc.services.Service;
 
 public class ShowCase implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String category;
-	private Cas cas;
-	private List<Cas> liste;
-	private List<Cas> listUrgent;
-	private ServiceImpl service;
+	private Case cas;
+	private List<Case> liste;
+	private List<Case> listUrgent;
+	private Service service;
 	
 	@PostConstruct
-	public void innit(){
-		liste=service.afficherListcas();
-		listUrgent=service.findAllUrgent();
+	public void init(){
+		liste = service.getCases();
+		listUrgent = service.getCasesUrgent();
 	}
 	
-	public ServiceImpl getService() {
-		return service;
-	}
-	
-	public void setService(ServiceImpl service) {
-		this.service = service;
-	}
 	
 	public void searchCas() {
-		this.liste = this.service.afficherListcas("htr", "artisanat");
 	}
 
-	public void listUrgent() {
-		listUrgent=this.service.findAllUrgent();
-		for (Cas cas : listUrgent) {
-			System.out.println("************ Les cas urg*********"+cas);
-		}
-	}
+	
 
-	public Cas getCas() {
+	public Case getCas() {
 		return cas;
 	}
 	
-	public void setCas(Cas cas) {
+	public void setCas(Case cas) {
 		this.cas = cas;
 	}
 
 	public double getRes(int id) {
-		double ret = service.calc(id);
+		double ret = service.getCostDonor(id);
 		return ret;
 	}
 	
@@ -69,19 +56,30 @@ public class ShowCase implements Serializable{
 		this.category = category;
 	}
 	
-	public List<Cas> getListe() {
+	public List<Case> getListe() {
 		return liste;
 	}
 
-	public void setListe(List<Cas> liste) {
+	public void setListe(List<Case> liste) {
 		this.liste = liste;
 	}
 
-	public List<Cas> getListUrgent() {
+	public List<Case> getListUrgent() {
 		return listUrgent;
 	}
 
-	public void setListUrgent(List<Cas> listUrgent) {
+	public void setListUrgent(List<Case> listUrgent) {
 		this.listUrgent = listUrgent;
 	}
+
+
+	public Service getService() {
+		return service;
+	}
+
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+	
 }

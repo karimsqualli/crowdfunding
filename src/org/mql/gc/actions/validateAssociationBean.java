@@ -4,30 +4,35 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.mql.gc.models.Association;
-import org.mql.gc.services.ServiceImpl;
+import org.mql.gc.services.Service;
 import org.mql.gc.utils.SessionUtils;
 
-//hassan : est ce que on utilise cette classe dans notre projet ?  
 public class validateAssociationBean {
 	private Association association;
-	private ServiceImpl service;
+	private Service service;
 	
 	public String validateAssociation() {
-		boolean exist= service.connectAssociation(association.getEmail(), association.getPassword());
-		if (exist) {
+		if (service.loginAssociation(association.getEmail(), association.getPassword())) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("email", association.getEmail());
-			int idAsso=service.findByEmail(association.getEmail()).getId();
-			System.out.println("idAssociation :"+idAsso); 
-			session.setAttribute("idAssociation", idAsso);
+			session.setAttribute("idAssociation", association.getId());
 			return "LoadCase?faces-redirect=true";
 		}
+		
 		else {
 			System.out.println("Else");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Votre email ou mot de passe est incorrecte !", ""));
+					"Incorrect Username and Passowrd", "Please enter correct username and Password"));
 			return "login";
 		}
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
 	}
 
 	public String logout() {
@@ -43,13 +48,5 @@ public class validateAssociationBean {
 
 	public void setAssociation(Association association) {
 		this.association = association;
-	}
-
-	public ServiceImpl getService() {
-		return service;
-	}
-
-	public void setService(ServiceImpl service) {
-		this.service = service;
 	}
 }

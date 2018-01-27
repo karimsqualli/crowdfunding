@@ -10,72 +10,86 @@ import javax.servlet.http.HttpSession;
 
 import org.mql.gc.models.ActivitySector;
 import org.mql.gc.models.Association;
-import org.mql.gc.models.LowFormEnum;
+import org.mql.gc.models.LegalForm;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 
 public class AssociationBean  implements Serializable{
-	private static final long serialVersionUID = 1L;
-	private Association asso;
-	private SelectItem[] SectorActivities; 
-	private SelectItem[] lowForms;
+	private Association association;
+	private SelectItem[] sectorActivities; 
+	private SelectItem[] legalForm;
 	private ServiceImpl service ;	
 
 	//added by hassan 09/01/2018
 	public  AssociationBean(){
 		System.out.println("$$  constructeur AssociationBean $$");
-		SectorActivities = new SelectItem[ActivitySector.values().length];
-		lowForms = new SelectItem[LowFormEnum.values().length];
+		sectorActivities = new SelectItem[ActivitySector.values().length];
+		legalForm= new SelectItem[LegalForm.values().length];
 	}
 
-	
-	public String createAss() {
-		System.out.println("creating association ");
-		service.add(asso);
+	//???
+	public String createAccount() {
+		System.out.println("creating association");
+		service.addAssociation(association);
 		HttpSession session = SessionUtils.getSession();
-		session.setAttribute("email", asso.getEmail());
-		int idAsso=service.findByEmail(asso.getEmail()).getId();
-		session.setAttribute("idAssociation", idAsso);
-		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription rï¿½ussi"));
+		session.setAttribute("email", association.getEmail());
+		session.setAttribute("idAssociation", association.getId());
+		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription réussi"));
 		return "LoadCase?faces-redirect=true";
-	}
-	
-	public Association getAsso() {
-		return asso;
-	}
-
-	public void setAsso(Association asso) {
-		this.asso = asso;
 	}
 
 	public SelectItem[] getLowForms() {
 	    int i = 0;
-	    for(LowFormEnum g: LowFormEnum.values()) {
-	    	lowForms[i++] = new SelectItem(g.name(), g.name());
+	    for(LegalForm g: LegalForm.values()) {
+	    	legalForm[i++] = new SelectItem(g.name(), g.name());
 	    }
-	    return lowForms;
+	    return legalForm;
 	}
 
 	public SelectItem[] getSectorActivities() {
 	    int i = 0;
 	    for(ActivitySector g: ActivitySector.values()) {
-	    	SectorActivities[i++] = new SelectItem(g.name(), g.name());
+	    	sectorActivities[i++] = new SelectItem(g.name(), g.name());
 	    }
-	    return SectorActivities;
+	    return sectorActivities;
 	}
 
-	public void setLowForms(SelectItem[] lowForms) {
-		this.lowForms = lowForms;
+
+	public Association getAssociation() {
+		return association;
 	}
+
+
+	public void setAssociation(Association association) {
+		this.association = association;
+	}
+
+
+	public SelectItem[] getLegalForm() {
+		return legalForm;
+	}
+
+
+	public void setLegalForm(SelectItem[] legalForm) {
+		this.legalForm = legalForm;
+	}
+
 
 	public ServiceImpl getService() {
 		return service;
 	}
 
+
 	public void setService(ServiceImpl service) {
 		this.service = service;
 	}
 
+
+	public void setSectorActivities(SelectItem[] sectorActivities) {
+		this.sectorActivities = sectorActivities;
+	}
+
+	
 	
 
 }

@@ -53,7 +53,7 @@
 
 											<p:outputLabel for="titre">Titre du Cas : </p:outputLabel>
 											<br />
-											<p:inputText id="titre" value="#{InsertCaseBean.cas.titre}"
+											<p:inputText id="titre" value="#{InsertCaseBean.caseObject.title}"
 												maxlength="70" size="60"
 												placeholder="Ex:Famille sans abri à Fqih Ben Saleh"
 												required="true" requiredMessage="Veuillez saisir un titre pour votre cas !"/>
@@ -63,7 +63,7 @@
 										<div class="form-group">
 											<p:outputLabel for="slogan">Slogan : </p:outputLabel>
 											<br />
-											<p:inputText id="slogan" value="#{InsertCaseBean.cas.slogan}"
+											<p:inputText id="slogan" value="#{InsertCaseBean.caseObject.slogan}"
 												placeholder="Ex:Nous pouvons ensemble changer la vie des malades !"
 												size="60" />
 										</div>
@@ -72,7 +72,7 @@
 											<p:outputLabel for="ville">Ville : </p:outputLabel>
 											<br />
 											<p:autoComplete id="ville" dropdown="true"
-												value="#{InsertCaseBean.cas.ville}" required="true" requiredMessage="Veuillez indiquer la ville"
+												value="#{InsertCaseBean.caseObject.city}" required="true" requiredMessage="Veuillez indiquer la ville"
 												completeMethod="#{InsertCaseBean.completeVille}">
 											</p:autoComplete>
 											<p:message for="ville" />
@@ -82,7 +82,7 @@
 											<p:outputLabel for="description">Déscription : </p:outputLabel>
 											<br />
 											<p:inputTextarea rows="4" cols="40" required="true" requiredMessage="Veuillez saisir une déscription pour votre cas (Taille max:200)"
-												value="#{InsertCaseBean.cas.description}" id="description"
+												value="#{InsertCaseBean.caseObject.description}" id="description"
 												queryDelay="750" minQueryLength="4" maxlength="200" />
 												<p:message for="description" />
 										</div>
@@ -91,7 +91,7 @@
 											<p:outputLabel for="categorie" value="Catégorie :" />
 											<br />
 											<p:selectOneMenu id="categorie"
-												value="#{InsertCaseBean.cas.categorie}" style="width:125px"
+												value="#{InsertCaseBean.caseObject.category}" style="width:125px"
 												lazy="true">
 												<f:selectItem itemLabel="Artisanat" itemValue="artisanat" />
 												<f:selectItem itemLabel="Collectivités territoriales"
@@ -107,25 +107,17 @@
 											</p:selectOneMenu>
 										</div>
 										<br />
-										<div class="form-group">
-											<p:outputLabel for="autre">Sous Catégorie : </p:outputLabel>
-											<br />
-											<p:inputText id="autre"
-												value="#{InsertCaseBean.cas.autreCategorie}" />
-										</div>
-										<br />
-										<div class="form-group">
-											<p:outputLabel for="duree">Durée(Jour) : </p:outputLabel>
-											<br /> 
-											<p:spinner id="duree" value="#{InsertCaseBean.cas.duree}" required="true" requiredMessage="Veuillez préciser la durée de votre annonce"
-												min="0" max="100" />
-												<p:message for="duree" />
-										</div>
+										  <div class="form-group">
+                                               <p:outputLabel for="Durée" value="Durée :" /><br/>
+												<p:calendar id="Durée" placeholder="Date correspondante au cas" required="true" requiredMessage="Veuillez saisir la durée de votre correspondante à votre cas !"
+													value="#{InsertCaseBean.caseObject.endDate}" />
+												<p:message for="Durée" />
+                                          </div>
 										<br />
 										<div class="form-group">
 											<p:outputLabel for="cout">Coût : </p:outputLabel>
 											<br />
-											<p:spinner id="cout" value="#{InsertCaseBean.cas.cout}" required="true" requiredMessage="Veuillez préciser le coût correspondant à votre cas "
+											<p:spinner id="cout" value="#{InsertCaseBean.caseObject.cost}" required="true" requiredMessage="Veuillez préciser le coût correspondant à votre cas "
 												suffix=" DH " min="100" stepFactor="100" />
 												<p:message for="cout" />
 										</div>
@@ -155,7 +147,7 @@
 										<div class="form-group">
 											<p:outputLabel>(1) Ajouter un document : *</p:outputLabel><h:outputText value="&#160;&#160;" />
 											<p:inputText id="fn1" placeholder=" Intitulé du document"
-												value="#{InsertCaseBean.cas.fileName1}" /><br /><br />
+												value="#{InsertCaseBean.caseObject.fileName1}" /><br /><br />
 											<p:fileUpload id="pdf1Up"
 												fileUploadListener="#{InsertCaseBean.uploadFile1}"
 												mode="advanced" dragDropSupport="false" multiple="true"
@@ -168,7 +160,7 @@
 										<div class="form-group">
 											<p:outputLabel>(2) Ajouter un document :  </p:outputLabel><h:outputText value="&#160;&#160;&#160;" />
 											<p:inputText id="fn2" placeholder=" Intitulé du document"
-												value="#{InsertCaseBean.cas.fileName2}" /><br /><br />
+												value="#{InsertCaseBean.caseObject.fileName2}" /><br /><br />
 											<p:fileUpload id="pdf2Up"
 												fileUploadListener="#{InsertCaseBean.uploadFile2}"
 												mode="advanced" dragDropSupport="false" multiple="true"
@@ -181,7 +173,7 @@
 										<div class="form-group">
 											<p:outputLabel>(3) Ajouter un document :  </p:outputLabel><h:outputText value="&#160;&#160;&#160;" />
 											<p:inputText id="fn3" placeholder=" Intitulé du document"
-												value="#{InsertCaseBean.cas.fileName3}" /><br /><br />
+												value="#{InsertCaseBean.caseObject.fileName3}" /><br /><br />
 											<p:fileUpload id="pdf3Up"
 												fileUploadListener="#{InsertCaseBean.uploadFile3}"
 												mode="advanced" dragDropSupport="false" multiple="true"

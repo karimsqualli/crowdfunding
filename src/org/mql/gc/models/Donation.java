@@ -5,38 +5,15 @@ import java.util.Date;
 
 public class Donation {
 	private int id;
-	private int idCas;
+	private int idCase;
 	private int idUser;
-	private double cout;
-	private String numCb;
-	private Date dateExpiration;
+	private double cost;
+	private String numBC;
+	private Date expirationDate;
 	private String ccv;
-	private Timestamp dateAjout;	
+	private Timestamp addedDate;	
 	
-		
 	public Donation() {
-	}
-
-	public int getIdCas() {
-		return idCas;
-	}
-	
-	public void setIdCas(int idCas) {
-		this.idCas = idCas;
-	}
-	public int getIdUser() {
-		return idUser;
-	}
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
-	}
-	
-	public double getCout() {
-		return cout;
-	}
-	
-	public void setCout(double cout) {
-		this.cout = cout;
 	}
 
 	public int getId() {
@@ -44,28 +21,48 @@ public class Donation {
 	}
 
 	public void setId(int id) {
-		System.out.println("id="+id);
 		this.id = id;
 	}
 
-	public Date getDateExpiration() {
-		return dateExpiration;
+	public int getIdCase() {
+		return idCase;
 	}
 
-	public void setDateExpiration(Date dateExpiration) {
-		this.dateExpiration = dateExpiration;
+	public void setIdCase(int idCase) {
+		this.idCase = idCase;
 	}
 
-
-	public Timestamp getDateAjout() {
-		return dateAjout;
+	public int getIdUser() {
+		return idUser;
 	}
 
-	public void setDateAjout(Timestamp dateAjout) {
-		this.dateAjout = dateAjout;
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 
+	public double getCost() {
+		return cost;
+	}
 
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+
+	public String getNumBC() {
+		return numBC;
+	}
+
+	public void setNumBC(String numBC) {
+		this.numBC = numBC;
+	}
+
+	public Date getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
+	}
 
 	public String getCcv() {
 		return ccv;
@@ -75,14 +72,13 @@ public class Donation {
 		this.ccv = ccv;
 	}
 
-	public String getNumCb() {
-		return numCb;
+	public Timestamp getAddedDate() {
+		return addedDate;
 	}
 
-	public void setNumCb(String numCb) {
-		this.numCb = numCb;
+	public void setAddedDate(Timestamp addedDate) {
+		this.addedDate = addedDate;
 	}
-
-
+	
 	
 }

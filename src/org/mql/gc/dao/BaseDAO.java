@@ -4,12 +4,10 @@
 
 package org.mql.gc.dao;
 
-import java.io.File;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.dialect.identity.SybaseAnywhereIdentityColumnSupport;
 
 
 /*
@@ -35,22 +33,14 @@ public class BaseDAO {
 		session_factory = config.configure().buildSessionFactory();
 	}
 	
-	
-	
 	public static BaseDAO getINSTANCE() {
 		return INSTANCE;
 	}
-
-
 
 	public static void setINSTANCE(BaseDAO iNSTANCE) {
 		INSTANCE = iNSTANCE;
 	}
 
-
-
-
-	
 	public Session getSession() {
 		return session_factory.openSession();
 	}

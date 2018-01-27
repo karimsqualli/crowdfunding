@@ -2,195 +2,219 @@ package org.mql.gc.services;
 
 import java.util.List;
 import org.mql.gc.dao.AssociationDao;
-import org.mql.gc.dao.DonateurDaoImpl;
+import org.mql.gc.dao.DonationDao;
+import org.mql.gc.dao.DonorDao;
+import org.mql.gc.dao.DonorDaoImp;
 import org.mql.gc.dao.CaseDao;
 import org.mql.gc.models.Association;
-import org.mql.gc.models.Cas;
+import org.mql.gc.models.Case;
 import org.mql.gc.models.Donation;
-import org.mql.gc.models.Donnateur;
+import org.mql.gc.models.Donor;
 
 public class ServiceImpl implements Service {
 	
-	private CaseDao casDao;
-	private AssociationDao dao;
-	private DonateurDaoImpl DonatorDao;
+	
+	private CaseDao caseDao;
+	private AssociationDao associationDao;
+	private DonorDao donorDao;
+	private DonationDao donationDao;
 
 	
 	public ServiceImpl() {
 		
 	}
 	
-	
-	public CaseDao getCasDao() {
-		return casDao;
-	}
-
-	public void setCasDao(CaseDao casDao) {
-		this.casDao = casDao;
-	}
-
-	public AssociationDao getDao() {
-		return dao;
-	}
-
-	public void setDao(AssociationDao dao) {
-		this.dao = dao;
-	}
-
-	public DonateurDaoImpl getDonatorDao() {
-		return DonatorDao;
-	}
-
-	public void setDonatorDao(DonateurDaoImpl donatorDao) {
-		DonatorDao = donatorDao;
-	}
-
-
-	
 //******************************Association************************	
 
-	public void add(Association e) {
-						
-		if(nameExist(e.getName()))
+	public void addAssociation(Association association) {
+		if(nameExist(association.getName()))
 			System.out.println("association existe deja ");
 		else {
-			dao.create(e);
-			System.out.println("association ajoutï¿½e : "+e.getName());
+			associationDao.create(association);
+			System.out.println("association ajoutée : " + association.getName());
 		}
 	}
 	
-	public Association edite(Association e) {
-		return dao.update(e);
+	public void updateAssociation(int id) {
+		associationDao.update(id);
 	}
 
-	public void delete(Long id) {
-		dao.delete(id);
+	public void delete(int id) {
+		associationDao.delete(id);
 	}
 
-	public List<Association> findAll() {
-		return dao.findAll();
+	public List<Association> getAssociations() {
+		return associationDao.select();
 	}
 	
-	public Association findById(Long id) {
-		return dao.findById(id);
+	public Association getAssociationById(int id) {
+		return associationDao.selectById(id);
 	}
-	public Association findByEmail(String email) {
-		return dao.findByEmail(email);
+	
+	public Association getAssociationByEmail(String email) {
+		return associationDao.selectByEmail(email);
 	}
 
 	public boolean nameExist(String name) {
-		if(dao.findByName(name)!= null) 
+		if(associationDao.selectByName(name)!= null) 
 			return true ; 	
 		return false;
 	}
 
-	public boolean connectAssociation(String email, String password) {	
-		return dao.loginAssociation(email, password);
+	public boolean loginAssociation(String email, String password) {	
+		return associationDao.login(email, password);
 	}
 
 //*********************************Cas*****************************************
 	
-	public void create(Cas cas) {
+	public void addCase(Case caseObject) {
 		System.out.println("service");
-		casDao.create(cas); 
-		System.out.println(cas);
+		caseDao.create(caseObject); 
+		System.out.println(caseObject);
+	}
+
+	public List<Case> getCases() {
+		return caseDao.select();
 	}
 	
-	public List<Cas> afficherListcas() {
-		return casDao.findAll();
+	public List<Case> getCasesUrgent() {
+		return caseDao.selectUrgent();
 	}
 	
-	public List<Cas> findAllUrgent() {
-		return casDao.findAllUrgent();
+	public List<Case> getCases(String title, String category) {
+		return caseDao.select(title, category);
 	}
-	
-	
-	public List<Cas> afficherListcas(String nom, String category) {
-		return casDao.findByTitleAndCategory(nom ,category);
-	}
-	
-	public List<Cas> getPendingCases() {
-		return casDao.findPending();
-	}
-	
-	
 	
 	//********************************Donnateur*********************************************	
-		public boolean addDonator(Donnateur e) {
+		public void addDonor(Donor donor) {
 			System.out.println("service");
-			if(emailDonatorExist(e.getEmail())){
-				return false;
+			if(!donorEmailExist(donor.getEmail())){
+				donorDao.create(donor);
 			}
-			else {
-				DonatorDao.create(e);
-				return true ; 
-			}	
 		}
-		public Donnateur editeDonator(Donnateur e) {
-			return DonatorDao.update(e);
+		
+		public void updateDonor(int id) {
+			donorDao.update(id);
 		}
 
 		
 		public void deleteDonator(int id) {
-			DonatorDao.delete(id);
+			donorDao.delete(id);
 		}
 
-		
-		public List<Donnateur> findAllDonator() {
-			return DonatorDao.findAll();
+		public List<Donor> getDonors() {
+			return donorDao.select();
 		}
 		
-		public Donnateur findDonatorById(int id) {
-			return DonatorDao.findById(id);
+		public Donor getDonorById(int id) {
+			return donorDao.selectById(id);
 		}
 
-		public boolean nameDonatorExist(String name) {
-			if(DonatorDao.findByName(name)!= null) 
+		public boolean donorNameExist(String name) {
+			if(donorDao.selectByName(name) != null) 
 				return true ; 
 			return false;
 		}
 		
-		public boolean emailDonatorExist(String email) {
-			if(DonatorDao.findByEmail(email)!= null) 
+		public boolean donorEmailExist(String email) {
+			if(donorDao.selectByEmail(email) != null) 
 				return true ; 
 			return false;
 		}
 		
-		public boolean passwordDonatorExist(String password) {
-			if(DonatorDao.findByPassword(password)!= null) 
-				return true ; 
-			return false;
-		}
-		
-		public Donnateur connectDonator(String email, String password) {
-			return DonatorDao.loginDonator(email, password);
+		public boolean loginDonor(String email, String password) {
+			return donorDao.login(email, password);
 			
 		}
 		
-		public void saveDonn(Donation donn) {
-			DonatorDao.saveDonn(donn);
-		}
-		
-		public double calc(int id) {
-			return casDao.getDonatorCasCount(id);
-		}
 		
 		public boolean checkAccountStatus(String email,String key){
-			DonatorDao=new DonateurDaoImpl();
-			if((DonatorDao.findBykeyAndEmail(email, key)) != null ) {
+			donorDao = new DonorDaoImp();
+			if(donorDao.select(email, key) != null ) {
 				return true ; 
 			}
 			return false ;
 		}
 		
 		public void activeAccount(String email,String key){
-			DonatorDao=new DonateurDaoImpl();
-			DonatorDao.activeAccount(email, key);
+			donorDao =new DonorDaoImp();
+//			donorDao.(email, key);
 		
 		}
 //*********************************test for spring*****************************************
 		public void sayTest(){
-			System.out.println("ï¿½ï¿½ï¿½ test setvice ï¿½ï¿½ï¿½");
+			System.out.println("§§§ test setvice §§§");
+		}
+
+
+
+
+		public void updateAssosiaction(int id) {
+			associationDao.update(id);
+		}
+
+		@Override
+		public void deleteAssociation(int id) {
+			associationDao.delete(id);
+		}
+
+
+
+
+		@Override
+		public boolean associationNameExist(String name) {
+			return false;
+		}
+
+
+
+
+		public List<Case> getAssociations(String nom, String category) {			
+			return null;
+		}
+
+		public void deleteDonor(int id) {
+			donorDao.delete(id);
+		}
+
+		public double getCostDonor(int id) {
+			return donationDao.selectCost(id);
+		}
+		
+		public void addDonation(Donation donation) {
+			donationDao.create(donation);
+		}
+
+		public CaseDao getCaseDao() {
+			return caseDao;
+		}
+
+		public void setCaseDao(CaseDao caseDao) {
+			this.caseDao = caseDao;
+		}
+
+		public AssociationDao getAssociationDao() {
+			return associationDao;
+		}
+
+		public void setAssociationDao(AssociationDao associationDao) {
+			this.associationDao = associationDao;
+		}
+
+		public DonorDao getDonorDao() {
+			return donorDao;
+		}
+
+		public void setDonorDao(DonorDao donorDao) {
+			this.donorDao = donorDao;
+		}
+
+		public DonationDao getDonationDao() {
+			return donationDao;
+		}
+
+		public void setDonationDao(DonationDao donationDao) {
+			this.donationDao = donationDao;
 		}
 
 }

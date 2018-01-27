@@ -6,20 +6,26 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
   	 
 
-  <bean id="ServiceImpl" class="org.mql.gc.services.ServiceImpl" autowire-candidate="true">
-	  	<property name="casDao" ref="CaseDaoImpl"></property>
-	  	<property name="dao" ref="AssociationDaoImpl"></property>
-	  	<property name="DonatorDao" ref="DonateurDaoImpl"></property>
+  <bean id="ServiceImp" class="org.mql.gc.services.ServiceImpl" autowire-candidate="true">
+	  	<property name="caseDao" ref="CaseDaoImp"></property>
+	  	<property name="associationDao" ref="AssociationDaoImp"></property>
+	  	<property name="donorDao" ref="DonorDaoImp"></property>
+	  <property name="donationDao" ref="DonationDaoImp"></property>
+	  	
   </bean>
 
-	  <bean id="CaseDaoImpl" class="org.mql.gc.dao.CaseDaoImpl">
+	  <bean id="CaseDaoImp" class="org.mql.gc.dao.CaseDaoImp">
 	  		 <property name="dao" ref="BaseDAO"></property> 
 	  </bean>
 	  
-	  <bean id="AssociationDaoImpl" class="org.mql.gc.dao.AssociationDaoImpl">
+	  <bean id="DonationDaoImp" class="org.mql.gc.dao.DonationDaoImp">
+	  		 <property name="dao" ref="BaseDAO"></property> 
+	  </bean>
+	  
+	  <bean id="AssociationDaoImp" class="org.mql.gc.dao.AssociationDaoImp">
 	    	<property name="dao" ref="BaseDAO"></property>
 	  </bean>
-	  <bean id="DonateurDaoImpl" class="org.mql.gc.dao.DonateurDaoImpl">
+	  <bean id="DonorDaoImp" class="org.mql.gc.dao.DonorDaoImp">
 	      	<property name="dao" ref="BaseDAO"></property>
 	  </bean>
 	  
@@ -29,35 +35,35 @@
 
     <!-- les beans action  -->
     <bean id="showCase" class="org.mql.gc.actions.ShowCase">
-	  		<property name="service" ref="ServiceImpl"></property>
+	  		<property name="service" ref="ServiceImp"></property>
 	 </bean> 
-    <bean id="donBean" class="org.mql.gc.actions.DonBean">
-  		<property name="service" ref="ServiceImpl"></property>
-  		<property name="don" ref="Donnateur"></property>
+    <bean id="donBean" class="org.mql.gc.actions.DonorBean">
+  		<property name="service" ref="ServiceImp"></property>
+  		<property name="donor" ref="Donor"></property>
     </bean>
     <bean id="assBean" class="org.mql.gc.actions.AssociationBean">
-      	<property name="service" ref="ServiceImpl"></property>
-      	<property name="asso" ref="Association"></property>
+      	<property name="service" ref="ServiceImp"></property>
+      	<property name="association" ref="Association"></property>
     </bean>
-    <bean id="donAction" class="org.mql.gc.actions.DonAction">
-		<property name="service" ref="ServiceImpl"></property>
+    <bean id="donAction" class="org.mql.gc.actions.DonationBean">
+		<property name="service" ref="ServiceImp"></property>
 		<property name="donation" ref="Donation"></property>
 		
     </bean>
     <bean id="InsertCaseBean" class="org.mql.gc.actions.InsertCaseBean">
-		<property name="service" ref="ServiceImpl"></property>
-		<property name="cas" ref="Cas"></property>
+		<property name="service" ref="ServiceImp"></property>
+		<property name="cas" ref="Case"></property>
     </bean>
  	<bean id="validateAssBean" class="org.mql.gc.actions.validateAssociationBean">
- 		<property name="service" ref="ServiceImpl"></property>
+ 		<property name="service" ref="ServiceImp"></property>
  		<property name="association" ref="Association"></property>
  	</bean>
 	
  	<!-- les models  -->
- 	<bean id="Donnateur" class="org.mql.gc.models.Donnateur"/>
+ 	<bean id="Donor" class="org.mql.gc.models.Donor"/>
  	<bean id="Donation" class="org.mql.gc.models.Donation"/>
  	<bean id="Association" class="org.mql.gc.models.Association"/>
- 	<bean id="Cas" class="org.mql.gc.models.Cas"/>
+ 	<bean id="Case" class="org.mql.gc.models.Case"/>
  	
  	
  

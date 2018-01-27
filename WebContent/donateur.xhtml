@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<h:outputLabel for="username" value="Email @ : "
 									styleClass="hide" />
-								<p:inputText id="username" value="#{DonBean.don.email}"
+								<p:inputText id="username" value="#{DonorBean.donor.email}"
 									required="true" label="Email"
 									requiredMessage="Veuillez saisir un email correcte !"
 									styleClass="form-control input-lg c-square" placeholder="Email">
@@ -50,10 +50,10 @@
 								<p:messages for="username" />
 							</div>
 							<div>
-								<h:outputText value="email invalide ! "  rendered="#{DonBean.connected}" style="color:red;"/>
+								<h:outputText value="email invalide ! "  rendered="#{DonorBean.connected}" style="color:red;"/>
 							</div>
 							<div class="form-group">
-								<p:password id="password1" value="#{DonBean.don.password}"
+								<p:password id="password1" value="#{DonorBean.donor.password}"
 									required="true" styleClass="form-control input-lg c-square"
 									placeholder="Password"
 									requiredMessage="veuillez saisir un mot de passe correcte !" />
@@ -62,7 +62,7 @@
 							<div class="form-group">
 								<p:commandButton value="Se connecter"
 									styleClass="btn btn-default"
-									action="#{DonBean.validateDonator}" update="messages"
+									action="#{DonorBean.validateDonor}" update="messages"
 									process="@form" />
 							</div>
 						</h:form>
@@ -95,7 +95,7 @@
 						<h:form>
 							<div class="form-group">
 								<label for="signup-email" class="hide">Email</label>
-								<p:inputText id="email" value="#{DonBean.don.email}"
+								<p:inputText id="email" value="#{DonorBean.donor.email}"
 									styleClass="form-control input-lg c-square"
 									requiredMessage="email obligatoire" required="true"
 									placeholder="Email" validatorMessage="email non valide">
@@ -107,7 +107,7 @@
 							<div class="form-group">
 								<label for="password" class="hide">pass</label>
 								<p:password id="password" binding="#{XXX}"
-									placeholder="Password" value="#{DonBean.don.password}"
+									placeholder="Password" value="#{DonorBean.donor.password}"
 									styleClass="form-control input-lg c-square"
 									requiredMessage="password  obligatoire" required="true"
 									validatorMessage="mot de passe non valide">
@@ -120,7 +120,7 @@
 								<label for="signup-fullname" class="hide">RepeatPass</label>
 								<p:password id="confirmPassword" required="true"
 									styleClass="form-control input-lg c-square"
-									placeholder="Rep�ter le password"
+									placeholder="Repeter le password"
 									requiredMessage="veuillez verifier votre mot de passe ">
 									<f:validator
 										validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
@@ -129,7 +129,7 @@
 								<p:message for="confirmPassword" />
 							</div>
 							<div class="form-group">
-								<p:inputText id="nom" value="#{DonBean.don.fName}"
+								<p:inputText id="nom" value="#{DonorBean.donor.firstName}"
 									maxlength="20" styleClass="form-control input-lg c-square"
 									placeholder="Nom" required="true"
 									requiredMessage="nom obligatoire"
@@ -140,7 +140,7 @@
 								<p:message style="color:white;" for="nom" />
 							</div>
 							<div class="form-group">
-								<p:inputText id="prenom" value="#{DonBean.don.lName}"
+								<p:inputText id="prenom" value="#{DonorBean.donor.lastName}"
 									styleClass="form-control input-lg c-square"
 									placeholder="Prenom" maxlength="20" required="true"
 									requiredMessage="nom obligatoire"
@@ -151,7 +151,7 @@
 								<p:message for="prenom" />
 							</div>
 							<div class="form-group">
-								<p:inputText id="adresse" value="#{DonBean.don.adresse}"
+								<p:inputText id="adresse" value="#{DonorBean.donor.address}"
 									styleClass="form-control input-lg c-square"
 									placeholder="Adresse" autoResize="true" maxlength="150"
 									required="true" requiredMessage="adresse obligatoire " />
@@ -160,7 +160,7 @@
 							<div class="form-group">
 
 								<p:commandButton value="s'inscrire" process="@form"
-									update="@form" action="#{DonBean.createDonator}"
+									update="@form" action="#{DonorBean.createAccount}"
 									styleClass="btn btn-default" />
 								<a href="javascript:;" class="c-btn-forgot" data-toggle="modal"
 									data-target="#login-form" data-dismiss="modal">Retour à la

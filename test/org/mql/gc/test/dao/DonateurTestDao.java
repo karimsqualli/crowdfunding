@@ -7,25 +7,25 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mql.gc.dao.AssociationDao;
-import org.mql.gc.dao.AssociationDaoImpl;
-import org.mql.gc.dao.DonateurDao;
-import org.mql.gc.dao.DonateurDaoImpl;
+import org.mql.gc.dao.AssociationDaoImp;
+import org.mql.gc.dao.DonorDao;
+import org.mql.gc.dao.DonorDaoImp;
 import org.mql.gc.models.Association;
-import org.mql.gc.models.Donnateur;
+import org.mql.gc.models.Donor;
 
 public class DonateurTestDao {
 	
-	private static DonateurDao dao;
-	private static Donnateur donnateur;
+	private static DonorDao dao;
+	private static DonorDaoImp donnateur;
 	
 	@BeforeAll
 	public static void setUpSuite() {
-		dao = new DonateurDaoImpl();
+		dao = new DonorDaoImp();
 	}
 	
 	@Test
 	public void testCreateDonnateur() {
-		Donnateur d = new Donnateur();
+		DonorDaoImp d = new DonorDaoImp();
 
 		d.setfName("karim");
 		dao.create(d);
@@ -36,7 +36,7 @@ public class DonateurTestDao {
 	
 	@Test
 	public void testUpdateDonnateur() {
-		Donnateur d = new Donnateur();
+		DonorDaoImp d = new DonorDaoImp();
 
 		d.setfName("karim");
 		dao.create(d);
@@ -55,7 +55,7 @@ public class DonateurTestDao {
 	
 	@Test
 	public void testDeleteDonnateur() {
-		Donnateur d = new Donnateur();
+		DonorDaoImp d = new DonorDaoImp();
 
 		d.setfName("karim");
 		dao.create(d);
@@ -71,17 +71,17 @@ public class DonateurTestDao {
 	
 	@Test
 	public void testFindById() {
-		Donnateur d = new Donnateur();
+		DonorDaoImp d = new DonorDaoImp();
 		dao.create(d);
 
-		Donnateur b = dao.findById(d.getId());
+		DonorDaoImp b = dao.findById(d.getId());
 		
 		assertEquals(b.getId(), d.getId());
 	}
 	
 	@Test
 	public void testFindByEmail() {
-		Donnateur d = new Donnateur();
+		DonorDaoImp d = new DonorDaoImp();
 
 	}
 

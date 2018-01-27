@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.mql.gc.dao.AssociationDao;
-import org.mql.gc.dao.AssociationDaoImpl;
+import org.mql.gc.dao.AssociationDaoImp;
 import org.mql.gc.models.Association;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -15,7 +15,7 @@ class AssociationTestDao  {
 
 	@BeforeAll
 	public static void setUpSuite() {
-		dao = new AssociationDaoImpl();
+		dao = new AssociationDaoImp();
 		
 		Association association = new Association();
 

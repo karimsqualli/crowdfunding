@@ -71,11 +71,11 @@
 								<ul class="header-action">
 									<li>
 									<h:form>
-									<p:commandLink rendered="#{!DonBean.connected}">
-										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">Se connecter</a>
+									<p:commandLink rendered="#{!DonorBean.connected}">
+										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">Connexion</a>
 									</p:commandLink>
-									<p:commandLink rendered="#{DonBean.connected}"	action="#{DonBean.logout()}" styleClass="btn btn-default"
-										value="Se deconnecter" />
+									<p:commandLink rendered="#{DonorBean.connected}"	action="#{DonorBean.logout()}" styleClass="btn btn-default"
+										value="Deconnexion" />
 									</h:form>
 									</li>
 							   </ul>
@@ -245,18 +245,18 @@
 											<div class="donet-content">
 												<div class="donet-content-heading">
 													<h3>
-														<p:commandLink value="#{urg.titre}"
+														<p:commandLink value="#{urg.title}"
 												action="detailCase.xhtml?faces-redirect=true">
 												<f:setPropertyActionListener value="#{urg}"
-													target="#{DetailCase.cas}" />
+													target="#{DetailCase.caseObject}" />
 											</p:commandLink>
 													</h3>
 													<ul class="event-meta">
 														<li><i class="fa fa-map-marker"></i>
-														<h:outputText value="#{urg.ville}"
+														<h:outputText value="#{urg.city}"
 																style="margin-left:5px;" /></li>
 														<li><i class="fa fa-calendar"></i>
-														<h:outputText value="#{urg.duree} Jours"
+														<h:outputText value="#{urg.endDate} Jours"
 																style="margin-left:5px;" /></li>
 													</ul>
 													<p>
@@ -271,7 +271,7 @@
 															<f:convertNumber minFractionDigits="0" />
 														</h:outputText>
 														DH<span class="project-goal"> Objectif : <h:outputText
-																value="#{urg.cout}">
+																value="#{urg.cost}">
 																<f:convertNumber minFractionDigits="0" />
 															</h:outputText> DH
 														</span>
@@ -283,9 +283,9 @@
 																	role="progressbar"
 																	aria-valuenow="#{ShowCase.getRes(urg.id)}"
 																	aria-valuemin="0" aria-valuemax="200"
-																	style="width: #{ShowCase.getRes(urg.id)*100/urg.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+																	style="width: #{ShowCase.getRes(urg.id)*100/urg.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
 																	<span> <h:outputText
-																			value="#{ShowCase.getRes(urg.id)/urg.cout}">
+																			value="#{ShowCase.getRes(urg.id)/urg.cost}">
 																			<f:convertNumber type="percent" />
 																		</h:outputText>
 																	</span>
@@ -299,7 +299,7 @@
 														action="detailCase.xhtml?faces-redirect=true"
 														value="voir plus" styleClass="btn btn-default">
 														<f:setPropertyActionListener value="#{urg}"
-															target="#{DetailCase.cas}" />
+															target="#{DetailCase.caseObject}" />
 													</p:commandButton>
 												</h:form>
 											</div>
@@ -319,18 +319,18 @@
 											<div class="donet-content">
 												<div class="donet-content-heading">
 													<h3>
-											<p:commandLink value="#{urg1.titre}"
+											<p:commandLink value="#{urg1.title}"
 												action="detailCase.xhtml?faces-redirect=true">
 												<f:setPropertyActionListener value="#{urg1}"
-													target="#{DetailCase.cas}" />
+													target="#{DetailCase.caseObject}" />
 											</p:commandLink>
 													</h3>
 													<ul class="event-meta">
 														<li><i class="fa fa-map-marker"></i>
-														<h:outputText value="#{urg1.ville}"
+														<h:outputText value="#{urg1.city}"
 																style="margin-left:5px;" /></li>
 														<li><i class="fa fa-calendar"></i>
-														<h:outputText value="#{urg1.duree} Jours"
+														<h:outputText value="#{urg1.endDate} Jours"
 																style="margin-left:5px;" /></li>
 													</ul>
 													<p>
@@ -345,7 +345,7 @@
 															<f:convertNumber minFractionDigits="0" />
 														</h:outputText>
 														DH<span class="project-goal"> Objectif : <h:outputText
-																value="#{urg1.cout}">
+																value="#{urg1.cost}">
 																<f:convertNumber minFractionDigits="0" />
 															</h:outputText> DH
 														</span>
@@ -357,9 +357,9 @@
 																	role="progressbar"
 																	aria-valuenow="#{ShowCase.getRes(urg1.id)}"
 																	aria-valuemin="0" aria-valuemax="200"
-																	style="width: #{ShowCase.getRes(urg1.id)*100/urg1.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+																	style="width: #{ShowCase.getRes(urg1.id)*100/urg1.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
 																	<span> <h:outputText
-																			value="#{ShowCase.getRes(urg1.id)/urg1.cout}">
+																			value="#{ShowCase.getRes(urg1.id)/urg1.cost}">
 																			<f:convertNumber type="percent" />
 																		</h:outputText>
 																	</span>
@@ -373,7 +373,7 @@
 														action="detailCase.xhtml?faces-redirect=true"
 														value="voir plus" styleClass="btn btn-default">
 														<f:setPropertyActionListener value="#{urg1}"
-															target="#{DetailCase.cas}" />
+															target="#{DetailCase.caseObject}" />
 													</p:commandButton>
 												</h:form>
 											</div>
@@ -413,7 +413,7 @@
 
 									<div class="event-content event-content-2">
 										<h5 class="single-event-title">
-											<p:commandLink value="#{cas.titre}"
+											<p:commandLink value="#{cas.title}"
 												action="detailCase.xhtml?faces-redirect=true">
 												<f:setPropertyActionListener value="#{cas}"
 													target="#{DetailCase.cas}" />
@@ -421,9 +421,9 @@
 										</h5>
 										<ul class="event-meta">
 											<li><i class="fa fa-map-marker"></i>
-											<h:outputText value="#{cas.ville}" style="margin-left:5px;" /></li>
+											<h:outputText value="#{cas.city}" style="margin-left:5px;" /></li>
 											<li><i class="fa fa-calendar"></i>
-											<h:outputText value="#{cas.duree} Jours"
+											<h:outputText value="#{cas.endDate} Jours"
 													style="margin-left:5px;" /></li>
 										</ul>
 
@@ -438,7 +438,7 @@
 													<f:convertNumber minFractionDigits="0" />
 												</h:outputText>
 												DH<span class="project-goal"> Obj: <h:outputText
-														value="#{cas.cout}">
+														value="#{cas.cost}">
 														<f:convertNumber minFractionDigits="0" />
 													</h:outputText> DH
 												</span>
@@ -450,9 +450,9 @@
 															role="progressbar"
 															aria-valuenow="#{ShowCase.getRes(cas.id)}"
 															aria-valuemin="0" aria-valuemax="200"
-															style="width: #{ShowCase.getRes(cas.id)*100/cas.cout}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															style="width: #{ShowCase.getRes(cas.id)*100/cas.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
 															<span> <h:outputText
-																	value="#{ShowCase.getRes(cas.id)/cas.cout}">
+																	value="#{ShowCase.getRes(cas.id)/cas.cost}">
 																	<f:convertNumber type="percent" />
 																</h:outputText>
 															</span>
@@ -466,7 +466,7 @@
 												action="detailCase.xhtml?faces-redirect=true"
 												value="voir plus" styleClass="btn btn-default">
 												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.cas}" />
+													target="#{DetailCase.caseObject}" />
 											</p:commandButton>
 										</h:form>
 									</div>
