@@ -148,7 +148,21 @@ public class CaseDaoImpl implements CaseDao {
 	
 	
 	public List<Cas> findPending() {
-		return null;
+		List<Cas> liste = new ArrayList<Cas>();
+		
+		try {
+			Session session = dao.getSession();
+			Query<?> query = session.createQuery("FROM Cas WHERE pending = true");
+			liste = (List<Cas>) query.list();
+			dao.closeSession(session);
+			
+			return liste;
+
+		} catch (Exception e) {
+			System.out.println("ne recupere pas les cas::" + e.getMessage());
+			throw e;
+		}
+		
 	}
 	
 	

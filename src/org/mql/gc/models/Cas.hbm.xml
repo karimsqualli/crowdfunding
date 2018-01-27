@@ -27,5 +27,6 @@
 		<property name="fileName1" column="fileName1" type="string"/>
 		<property name="fileName2" column="fileName2" type="string"/>
 		<property name="fileName3" column="fileName3" type="string"/>
+		<property name="pending" column="pending" type="boolean"/>
 	</class>
 </hibernate-mapping>

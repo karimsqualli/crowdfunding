@@ -24,7 +24,9 @@ public class Cas {
 	private String fileName3;
 	private String fileContentI;
 	private String fileContentV;
-//toutes options 
+	private boolean pending;
+
+
 	public Cas() {
 	}
 
@@ -187,6 +189,14 @@ public class Cas {
 
 	public void setFileName3(String fileName3) {
 		this.fileName3 = fileName3;
+	}
+	
+	public boolean isPending() {
+		return pending;
+	}
+
+	public void setPending(boolean pending) {
+		this.pending = pending;
 	}
 
 	/*
