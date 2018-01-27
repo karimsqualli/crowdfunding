@@ -33,7 +33,7 @@ public class CaseDaoImpl implements CaseDao {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-
+			cas.setPending(true);
 			session.save(cas);
 
 			tx.commit();
@@ -149,6 +149,8 @@ public class CaseDaoImpl implements CaseDao {
 	
 	public List<Cas> findPending() {
 		List<Cas> liste = new ArrayList<Cas>();
+		System.out.println("well called list + " + liste.size());
+
 		
 		try {
 			Session session = dao.getSession();
@@ -156,6 +158,7 @@ public class CaseDaoImpl implements CaseDao {
 			liste = (List<Cas>) query.list();
 			dao.closeSession(session);
 			
+			System.out.println("well called list + " + liste.size());
 			return liste;
 
 		} catch (Exception e) {

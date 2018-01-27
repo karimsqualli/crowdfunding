@@ -8,14 +8,23 @@ import org.mql.gc.services.ServiceImpl;
 
 public class CaseValidation implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private List<Cas> cases;
-	private ServiceImpl service;
-	
+	private ServiceImpl service = new ServiceImpl();
+	private List<Cas> cas;
+
+
 	@PostConstruct
 	public void init(){
-		cases = service.getPendingCases();
+		cas = service.getPendingCases();
 	}
 	
+	public List<Cas> getCas() {
+		return cas;
+	}
+
+	public void setCas(List<Cas> cas) {
+		this.cas = cas;
+	}
+
 	public ServiceImpl getService() {
 		return service;
 	}
