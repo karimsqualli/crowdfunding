@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
   	 
 
-  <bean id="ServiceImp" class="org.mql.gc.services.ServiceImpl" autowire-candidate="true">
+  <bean id="ServiceImpl" class="org.mql.gc.services.ServiceImpl" autowire-candidate="true">
 	  	<property name="caseDao" ref="CaseDaoImp"></property>
 	  	<property name="associationDao" ref="AssociationDaoImp"></property>
 	  	<property name="donorDao" ref="DonorDaoImp"></property>
@@ -34,32 +34,32 @@
 
     <!-- les beans action  -->
     <bean id="showCase" class="org.mql.gc.actions.ShowCase">
-	  		<property name="service" ref="ServiceImp"></property>
+	  		<property name="service" ref="ServiceImpl"></property>
 	 </bean> 
     <bean id="donBean" class="org.mql.gc.actions.DonorBean">
-  		<property name="service" ref="ServiceImp"></property>
+  		<property name="service" ref="ServiceImpl"></property>
   		<property name="donor" ref="Donor"></property>
     </bean>
     <bean id="assBean" class="org.mql.gc.actions.AssociationBean">
-      	<property name="service" ref="ServiceImp"></property>
+      	<property name="service" ref="ServiceImpl"></property>
       	<property name="association" ref="Association"></property>
     </bean>
     <bean id="donAction" class="org.mql.gc.actions.DonationBean">
-		<property name="service" ref="ServiceImp"></property>
+		<property name="service" ref="ServiceImpl"></property>
 		<property name="donation" ref="Donation"></property>
 		
     </bean>
     <bean id="InsertCaseBean" class="org.mql.gc.actions.InsertCaseBean">
-		<property name="service" ref="ServiceImp"></property>
+		<property name="service" ref="ServiceImpl"></property>
 		<property name="cas" ref="Case"></property>
     </bean>
  	<bean id="validateAssBean" class="org.mql.gc.actions.validateAssociationBean">
- 		<property name="service" ref="ServiceImp"></property>
+ 		<property name="service" ref="ServiceImpl"></property>
  		<property name="association" ref="Association"></property>
  	</bean>
  	
  	<bean id="CaseValidation" class="org.mql.gc.actions.CaseValidation">
- 		 	<property name="service" ref="ServiceImp"></property>
+ 		 	<property name="service" ref="ServiceImpl"></property>
  	</bean>
 
  	<!-- les models  -->
