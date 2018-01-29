@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet"
+		type="text/css" />
+	<!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme"
+		type="text/css" />
+	<!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
+
+<h:body>
+	<ui:insert name="header">
+		<ui:include src="header.xhtml" />
+	</ui:insert>
+
+	<!-- Table start -->
+
+	<section class="content">
+		<!-- Donet section start -->
+		<div class="donet-section theme-section theme-section-ex-padding">
+			<div class="container">
+				
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="donate-feature-list navigation-style-1">
+							<article class="single-event">
+								<h:form id="qq">
+									<h:outputText value="Id de l'association:" />
+									<h:outputText value="#{AssociationBean.association.id}" /><br/><br/>
+
+									<h:outputText value="Nom de l'association:" />
+									<h:outputText value="#{AssociationBean.association.name}" /><br/><br/>
+
+									<h:outputText value="Pattente:" />
+									<h:outputText value="#{AssociationBean.association.pattente}" /><br/><br/>
+
+									<h:outputText value="Déscription:" />
+									<h:outputText value="#{AssociationBean.association.description}" /><br/><br/>
+										
+									<h:outputText value="Activité:" />
+									<h:outputText value="#{AssociationBean.association.activityArea}" /><br/><br/>
+
+									<h:outputText value="Forme juridique:" />
+									<h:outputText value="#{AssociationBean.association.legalForm}" /><br/><br/>
+									
+									<h:outputText value="Site web:" />
+									<h:outputText value="#{AssociationBean.association.website}" /><br/><br/>
+
+									<h:outputText value="Gsm:" />
+									<h:outputText value="#{AssociationBean.association.gsm}" /><br/><br/>
+
+									<h:outputText value="Fixe:" />
+									<h:outputText value="#{AssociationBean.association.fixe}" /><br/><br/>
+
+									<h:outputText value="Date d'ajout:" />
+									<h:outputText value="#{AssociationBean.association.addedDate}" /><br/><br/>
+									<p:commandButton value="accepter"
+												action="#{AssociationBean.validateAssociation(AssociationBean.association)}"
+												update="qq" process="qq"></p:commandButton>
+									<p:commandButton value="refuser"
+												action="#{AssociationBean.deleteAccount(AssociationBean.association.id)}"
+												update="qq" process="qq"></p:commandButton>
+								</h:form>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</section>
+	<!-- Table end -->
+
+	<!-- Footer section start -->
+	<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
+	<!-- Footer section end -->
+
+</h:body>
+</html>

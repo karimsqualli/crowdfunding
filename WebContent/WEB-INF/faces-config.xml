@@ -22,7 +22,7 @@
  		<managed-bean-scope>request</managed-bean-scope>
  	</managed-bean>	
 	
-<!-- added by hassan after adding configuring sprion ioc 7/01/2018 -->
+<!-- added by hassan after adding configuring spring ioc 7/01/2018 -->
 	<managed-bean>
 		<managed-bean-name>DonorBean</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.DonorBean</managed-bean-class>
@@ -56,6 +56,16 @@
 	</managed-bean>	
 	
 	<managed-bean>
+		<managed-bean-name>CaseValidation</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.CaseValidation</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
+	</managed-bean>	
+	
+	<managed-bean>
 		<managed-bean-name>InsertCaseBean</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.InsertCaseBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
@@ -83,7 +93,7 @@
 		</managed-property>
 	</managed-bean>	
 	
-	<managed-bean>
+ 	<managed-bean>
 		<managed-bean-name>AssociationBean</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.AssociationBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
@@ -96,9 +106,9 @@
 			<value>#{Association}</value>
 		</managed-property>
 	</managed-bean>	
+	 
 	
-	
-	<managed-bean>
+ 	<managed-bean>
 		<managed-bean-name>ShowCase</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.ShowCase</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>

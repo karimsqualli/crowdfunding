@@ -1,6 +1,8 @@
 package org.mql.gc.actions;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.mql.gc.models.Case;
@@ -14,13 +16,33 @@ public class ShowCase implements Serializable{
 	private List<Case> liste;
 	private List<Case> listUrgent;
 	private Service service;
+	private long resultat;
 	
 	@PostConstruct
 	public void init(){
+		System.out.println("iciccicicicici"+liste);
 		liste = service.getCases();
 		listUrgent = service.getCasesUrgent();
+		
+//		for (Case c : liste) {
+//			Date now = new Date();
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss"); 
+//			    resultat = 0; 
+//			    try { 
+//			    	Date d1= sdf.parse(now.toString());
+//			    	Date d2=sdf.parse(c.getEndDate().toString());
+//			        resultat = d2.getTime() - d1.getTime(); 
+//			    } catch (Exception e) { 
+//			    	System.out.println("erreur resultat"+e.getMessage());
+//			        e.printStackTrace(); 
+//			    } 
+//			    System.out.println("Il y a comme ecart :"+resultat); 
+//		}
+
 	}
 	
+
+
 	public void searchCas() {
 	}
 
@@ -76,5 +98,16 @@ public class ShowCase implements Serializable{
 	public void setService(Service service) {
 		this.service = service;
 	}
+
+
+	public long getResultat() {
+		return resultat;
+	}
+
+
+	public void setResultat(long resultat) {
+		this.resultat = resultat;
+	}
+
 	
 }

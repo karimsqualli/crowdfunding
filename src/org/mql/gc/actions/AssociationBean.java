@@ -1,13 +1,15 @@
 package org.mql.gc.actions;
 
-
 import java.io.Serializable;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
-
 import org.mql.gc.models.ActivitySector;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.LegalForm;
@@ -19,9 +21,16 @@ public class AssociationBean  implements Serializable{
 	private SelectItem[] sectorActivities; 
 	private SelectItem[] legalForm;
 	private ServiceImpl service ;	
+	private List<Association> associations;
 
 	//added by hassan 09/01/2018
-	public  AssociationBean(){
+	@PostConstruct
+	public  void init(){
+		
+		associations=service.getAssociationsNotActivated();
+	}
+	public AssociationBean() {
+		service=new ServiceImpl();
 		System.out.println("$$  constructeur AssociationBean $$");
 		sectorActivities = new SelectItem[ActivitySector.values().length];
 		legalForm= new SelectItem[LegalForm.values().length];
@@ -30,12 +39,26 @@ public class AssociationBean  implements Serializable{
 	//???
 	public String createAccount() {
 		System.out.println("creating association");
+		association.setPending(false);
 		service.addAssociation(association);
 		HttpSession session = SessionUtils.getSession();
 		session.setAttribute("email", association.getEmail());
 		session.setAttribute("idAssociation", association.getId());
 		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription réussi"));
 		return "LoadCase?faces-redirect=true";
+	}
+	
+	public String deleteAccount(int id) {
+		service.deleteAssociation(id);
+		associations = service.getAssociationsNotActivated();
+	return "validateAssociation.xhtml?faces-redirect=true";
+	}
+	
+	public String validateAssociation(Association association) {
+		association.setPending(true);
+		service.updateAssociation(association);
+		associations = service.getAssociationsNotActivated();
+		return "validateAssociation.xhtml?faces-redirect=true";
 	}
 
 	public SelectItem[] getLowForms() {
@@ -87,6 +110,14 @@ public class AssociationBean  implements Serializable{
 
 	public void setSectorActivities(SelectItem[] sectorActivities) {
 		this.sectorActivities = sectorActivities;
+	}
+
+	public List<Association> getAssociations() {
+		return associations;
+	}
+
+	public void setAssociations(List<Association> associations) {
+		this.associations = associations;
 	}
 
 	

@@ -1,10 +1,6 @@
 package org.mql.gc.services;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-
-
 import org.mql.gc.models.Association;
 import org.mql.gc.models.Case;
 import org.mql.gc.models.Donation;
@@ -13,13 +9,14 @@ import org.mql.gc.models.Donor;
 public interface Service {
     //**********************************Association**********************************
 	public void addAssociation(Association association);
-	public void updateAssosiaction(int id);
+	public void updateAssociation(Association association);
 	public void deleteAssociation(int id);
 	public List<Association> getAssociations();
 	public Association getAssociationById(int id);
 	public Association getAssociationByEmail(String email);
 	public boolean associationNameExist(String name);//?
 	public boolean loginAssociation(String email,String password);
+	public List<Association> getAssociationsNotActivated() ;
 	//************************************Case**************************************
 	public void addCase(Case caseObject);
 	public List<Case> getCases();

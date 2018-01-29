@@ -20,6 +20,7 @@
 	<property name="fixe" column="fixe" type="string"/>
 	<property name="gsm" column="gsm" type="string"/>
 	<property name="addedDate" column="AddedDate" type="timestamp"/>
+	<property name="pending" column="pending" type="boolean" />
 </class>
 
 

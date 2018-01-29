@@ -126,7 +126,7 @@
 											</div>
 											<div class="form-group">
 											<p:outputLabel styleClasse="hide"/>
-				<p:inputText id="pattente" value="#{AssociationBean.association.pattente}" placeholder="Pattente" styleClass="form-control input-lg c-square"  maxlength="40" required="false" validatorMessage="pattente non valide" >
+				<p:inputText id="pattente" value="#{AssociationBean.association.pattente}" placeholder="Pattente" styleClass="form-control input-lg c-square"  maxlength="9" required="false" validatorMessage="pattente non valide" >
 					<f:validator validatorId="org.mql.gc.actions.validators.PattenteValidator" />
 				</p:inputText>	
 				<p:message  for="pattente"/>
@@ -140,14 +140,14 @@
 											</div>
 											<div class="form-group">
 											<p:outputLabel styleClasse="hide"/>
-				<p:inputText id="fixe"  value="#{AssociationBean.association.fixe}" placeholder="Fixe" styleClass="form-control input-lg c-square" maxlength="40" required="false" validatorMessage="fixe non valide"  >
+				<p:inputText id="fixe"  value="#{AssociationBean.association.fixe}" placeholder="Numéro fixe : 05XXXXXXXX" styleClass="form-control input-lg c-square" maxlength="10" required="false" validatorMessage="fixe non valide"  >
 					<f:validator validatorId="org.mql.gc.actions.validators.PhoneValidator" />				
 				</p:inputText>	
 				<p:message for="fixe"/>
 											</div>
 											<div class="form-group">
 											<p:outputLabel styleClasse="hide"/>
-				<p:inputText requiredMessage="gsm obligatoire" id="gsm" placeholder="Numéro GSM" styleClass="form-control input-lg c-square" value="#{AssociationBean.association.gsm}"  maxlength="40" required="true" validatorMessage="gsm non valide"  >
+				<p:inputText requiredMessage="gsm obligatoire" id="gsm" placeholder="Numéro GSM : 06XXXXXXXX " styleClass="form-control input-lg c-square" value="#{AssociationBean.association.gsm}"  maxlength="10" required="true" validatorMessage="gsm non valide"  >
 					<f:validator validatorId="org.mql.gc.actions.validators.GSMValidator" />				
 				</p:inputText>	
 				<p:message  for="gsm"  />

@@ -416,15 +416,18 @@
 											<p:commandLink value="#{cas.title}"
 												action="detailCase.xhtml?faces-redirect=true">
 												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.cas}" />
+													target="#{DetailCase.caseObject}" />
 											</p:commandLink>
 										</h5>
 										<ul class="event-meta">
 											<li><i class="fa fa-map-marker"></i>
 											<h:outputText value="#{cas.city}" style="margin-left:5px;" /></li>
 											<li><i class="fa fa-calendar"></i>
-											<h:outputText value="#{cas.endDate} Jours"
-													style="margin-left:5px;" /></li>
+											<h:outputText value="#{cas.endDate}"
+													style="margin-left:5px;" >
+													<f:convertDateTime type="date" dateStyle="medium"/></h:outputText>
+													</li>
+													
 										</ul>
 
 										<h:outputText value="#{cas.slogan}" />

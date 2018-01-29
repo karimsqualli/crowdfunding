@@ -23,7 +23,7 @@
   </filter-mapping>
   
   	   <!-- Spring listeners -->
-
+  
   <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
@@ -39,7 +39,7 @@
   <param-name>contextConfigLocation</param-name>
   <param-value>/WEB-INF/springIOC.xml</param-value>
 </context-param>
-  
+ 
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

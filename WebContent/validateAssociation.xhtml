@@ -35,7 +35,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="area-heading text-center">
-							<h3 class="area-title">Cas en Attente de Validation</h3>
+							<h3 class="area-title">Associations en Attente de Validation</h3>
 						</div>
 					</div>
 				</div>
@@ -45,30 +45,60 @@
 						<div class="donate-feature-list navigation-style-1">
 							<article class="single-event">
 								<h:form id="upd">
-									<p:dataTable var="cas" id="aa"
-										value="#{CaseValidation.caseObjects}" stickyHeader="true">
+									<p:dataTable var="association" id="aa"
+										value="#{AssociationBean.associations}" stickyHeader="true">
 
 										<p:column headerText="Id">
-											<p:commandLink value="#{cas.id}"
-												update=":upd"
-												action="detailCase.xhtml?faces-redirect=true">
+											<p:commandLink value="#{association.id}" update=":upd:apd"
+												action="detailAssociation.xhtml?faces-redirect=true">
 												<!-- onclick="PF('dlg2').show('#{component.clientId}')" -->
-												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.caseObject}" />
+												<f:setPropertyActionListener value="#{association}"
+													target="#{AssociationBean.association}" />
 											</p:commandLink>
 										</p:column>
 										<p:column headerText="name">
-											<h:outputText value="#{cas.title}" />
+											<h:outputText value="#{association.name}" />
 										</p:column>
 										<p:column>
 											<p:commandButton value="valider"
-												actionListener="#{CaseValidation.validateCase(cas)}"
+												actionListener="#{AssociationBean.validateAssociation(association)}"
 												update="aa"></p:commandButton>
 											<p:commandButton value="refuser"
-												actionListener="#{CaseValidation.deleteCase(cas.id)}"
+												actionListener="#{AssociationBean.deleteAccount(association.id)}"
 												update="aa"></p:commandButton>
 										</p:column>
+
 									</p:dataTable>
+								
+	<p:overlayPanel widgetVar="dlg2" styleClass="single-event" showEffect="fade"
+			hideEffect="fade" dismissable="false" showCloseIcon="true" >
+			<p:outputPanel id="apd" style="height:100%;width:100%;text-align:center;" >
+					<h:outputText value="Id:" />
+					<h:outputText value="#{asso.id}" />
+					
+					<h:outputText value="Name:" />
+					<h:outputText value="#{asso.name}" />
+					
+					<h:outputText value="Pattente:" />
+					<h:outputText value="#{asso.pattente}" />
+					
+					<h:outputText value="Activité:" />
+					<h:outputText value="#{asso.activityArea}" />
+					
+					<h:outputText value="Forme juridique:" />
+					<h:outputText value="#{asso.legalForm}" />
+					
+					<h:outputText value="Gsm:" />
+					<h:outputText value="#{asso.gsm}" />
+					
+					<h:outputText value="Fixe:" />
+					<h:outputText value="#{asso.fixe}" />
+					
+					<h:outputText value="Date d'ajout:" />
+					<h:outputText value="#{asso.addedDate}" />
+					
+			</p:outputPanel>
+		</p:overlayPanel>
 								</h:form>
 							</article>
 						</div>
@@ -76,6 +106,8 @@
 				</div>
 			</div>
 		</div>
+
+	
 
 
 	</section>

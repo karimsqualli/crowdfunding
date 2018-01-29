@@ -24,6 +24,7 @@
 	  <bean id="AssociationDaoImp" class="org.mql.gc.dao.AssociationDaoImp">
 	    	<property name="dao" ref="BaseDAO"></property>
 	  </bean>
+	  
 	  <bean id="DonorDaoImp" class="org.mql.gc.dao.DonorDaoImp">
 	      	<property name="dao" ref="BaseDAO"></property>
 	  </bean>
@@ -33,18 +34,19 @@
 	  </bean>
 
     <!-- les beans action  -->
-    <bean id="showCase" class="org.mql.gc.actions.ShowCase">
+    <!-- je comprend pas showCase avec s miniscule katkhdam w S majuscule ma kat afficher walou w li khassou ykoun how ShowCase -->
+     <bean id="showCase" class="org.mql.gc.actions.ShowCase">
 	  		<property name="service" ref="ServiceImpl"></property>
-	 </bean> 
-    <bean id="donBean" class="org.mql.gc.actions.DonorBean">
+	 </bean>  
+    <bean id="DonorBean" class="org.mql.gc.actions.DonorBean">
   		<property name="service" ref="ServiceImpl"></property>
   		<property name="donor" ref="Donor"></property>
     </bean>
-    <bean id="assBean" class="org.mql.gc.actions.AssociationBean">
+    <bean id="associationBean" class="org.mql.gc.actions.AssociationBean">
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="association" ref="Association"></property>
     </bean>
-    <bean id="donAction" class="org.mql.gc.actions.DonationBean">
+    <bean id="DonationBean" class="org.mql.gc.actions.DonationBean">
 		<property name="service" ref="ServiceImpl"></property>
 		<property name="donation" ref="Donation"></property>
 		
@@ -53,12 +55,12 @@
 		<property name="service" ref="ServiceImpl"></property>
 		<property name="cas" ref="Case"></property>
     </bean>
- 	<bean id="validateAssBean" class="org.mql.gc.actions.validateAssociationBean">
+ 	<bean id="validateAssociationBean" class="org.mql.gc.actions.validateAssociationBean">
  		<property name="service" ref="ServiceImpl"></property>
  		<property name="association" ref="Association"></property>
  	</bean>
  	
- 	<bean id="CaseValidation" class="org.mql.gc.actions.CaseValidation">
+ 	<bean id="caseValidation" class="org.mql.gc.actions.CaseValidation">
  		 	<property name="service" ref="ServiceImpl"></property>
  	</bean>
 
