@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<body>
+<ui:composition>
+   <div id="humanity-preloader-wrapper">
+        <div class="preloader-wave-effect"></div>
+    </div>
+    <!-- theme preloader area end -->
+    <!-- Main wrapper start -->
+    <div class="wrapper">
+        <!-- Header area start -->
+        <header class="header-area header-style-2" id="sticky-header">
+            <div id="sticky-header" class="main-header-area transparent-header color">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-6 col-xs-6">
+                            <div class="logo-wrapper">
+                                <a class="logo" href="index.xhtml">3awni</a>
+                            </div>
+                        </div>
+                        <div class="col-md-7 hidden-xs hidden-sm">
+                            <div class="menu-area">
+                                <nav class="template-menu">
+                                    <ul class="main-menu">
+                                        <li><a href="validateCase.xhtml">Valider les cas</a></li>
+                                		<li><a href="validateAssociation.xhtml">Valider les association</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- Mobile menu area start -->
+                        <div class="mobile-menu-area clearfix hidden-md">
+                            <nav class="mobile-menu">
+                                <ul class="mobile-menu-nav">
+                                	 <li><a href="validateCase.xhtml">Valider les cas</a></li>
+                                	 <li><a href="validateAssociation.xhtml">Valider les association</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Mobile menu area end -->
+                        <div class="col-md-3 hidden-sm hidden-xs">
+                            <div class="header-btn">
+                                <ul class="header-action">
+								  <li>
+                                <h:form>
+									<p:commandLink action="#{AdminBean.logOut}" value="Deconnexion" styleClass="btn btn-default"/>
+								</h:form>
+								 </li>
+                               </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+           <div class="theme-section breadcrumb-area"></div> <!-- Image sous menu -->
+        <!-- Header area end -->
+            <!-- Header area end -->
+     		<div id="donateurConn">
+        	  <ui:insert name="donateurConn">
+			   <ui:include src="donateur.xhtml" />
+		      </ui:insert>
+		    </div>
+            </div>
+            <!-- Header area end -->
+    <!-- Main wrapper end -->
+
+ </ui:composition>   	
+</body>
+</html>

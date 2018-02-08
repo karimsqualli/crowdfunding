@@ -7,7 +7,7 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Kaisahhh</title>
+	<title>3awni</title>
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="img/icons/favicon.png" />
@@ -50,20 +50,20 @@
                                             <ul class="event-meta">
            										<li><i class="fa fa-tag"></i><h:outputText  value="#{DetailCase.caseObject.category}" style="margin-left:5px;"/></li>
                                                	<li><i class="fa fa-map-marker"></i><h:outputText value="#{DetailCase.caseObject.city}" style="margin-left:5px;"/></li>
-									            <li><i class="fa fa-calendar"></i><h:outputText value="#{DetailCase.caseObject.endDate} Jours" style="margin-left:5px;"/></li>
+									            <li><i class="fa fa-calendar"></i><h:outputText value="Date limite : #{DetailCase.caseObject.endDate}" style="margin-left:5px;"/></li>
                                             </ul>
                                             <p><h:outputText value="#{DetailCase.caseObject.slogan}" /></p>
                                         </div>
                                         <div class="donet-bar">
-												<p>Collecté : <h:outputText value="#{Showcase.getRes(DetailCase.caseObject.id)}" >
+												<p>Collecté : <h:outputText value="#{ShowCase.getRes(DetailCase.caseObject.id)}" >
 												<f:convertNumber minFractionDigits="0" />
 												</h:outputText> DH<span class="project-goal">
                                                 Objectif : <h:outputText value="#{DetailCase.caseObject.cost}">	<f:convertNumber minFractionDigits="0" /></h:outputText> DH</span></p>
                                             <div class="progress-bar-area">
                                                 <div class="single-progress-bar">
                                                     <div class="progress ">
-                                                         <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="#{Showcase.getRes(DetailCase.caseObject.id)}" aria-valuemin="0" aria-valuemax="200" style="width: #{Showcase.getRes(DetailCase.caseObject.id)*100/DetailCase.caseObject.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
-                                                         <span><h:outputText value="#{Showcase.getRes(DetailCase.caseObject.id)/DetailCase.caseObject.cost}">
+                                                         <div class="progress-bar wow fadeInLeft" role="progressbar" aria-valuenow="#{ShowCase.getRes(DetailCase.caseObject.id)}" aria-valuemin="0" aria-valuemax="200" style="width: #{ShowCase.getRes(DetailCase.caseObject.id)*100/DetailCase.caseObject.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+                                                         <span><h:outputText value="#{ShowCase.getRes(DetailCase.caseObject.id)/DetailCase.caseObject.cost}">
 												         <f:convertNumber type="percent" />
 														 </h:outputText>
                                                          </span>   

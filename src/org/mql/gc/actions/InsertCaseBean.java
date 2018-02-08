@@ -39,6 +39,7 @@ public class InsertCaseBean implements Serializable{
 		int id =(int)session.getAttribute("idAssociation");
 		initialiserDateInscription();
 		caseObject.setIdAssociation(id);
+		caseObject.setPending(false);
 		service.addCase(caseObject);
 		return "index?faces-redirect=true";
 	}

@@ -29,6 +29,12 @@ public class Case {
 	
 	}
 
+	public Case(int id, String title) {
+		super();
+		this.id = id;
+		this.title = title;
+	}
+
 	public int getId() {
 		return id;
 	}

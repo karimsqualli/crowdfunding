@@ -1,10 +1,6 @@
-
 package org.mql.gc.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -96,7 +92,7 @@ public class CaseDaoImp implements CaseDao {
 	public List<Case> findPending() {
 		List<Case> liste = null;		
 			Session session = dao.getSession();
-			Query<Case> query = session.createQuery("FROM Case C where C.pending = 1",Case.class);
+			Query<Case> query = session.createQuery("FROM Case C where C.pending='0'",Case.class);
 			liste = query.list();
 			dao.closeSession(session);			
 		return liste;

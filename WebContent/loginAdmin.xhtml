@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet"
+		type="text/css" />
+	<!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme"
+		type="text/css" />
+	<!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
+<h:body>
+
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
+
+	<!-- Donor area starts -->
+	<div class="donor-section theme-section" style="  margin: auto;
+    width: 50%;
+    padding: 10px; ">
+		<div class="container" >
+			<div class="row">
+				<div class="col-md-12">
+						<div class="single-donor-info">
+							<div class="donor-information-wrapper">
+								<h2 class="donor-title">Connexion :</h2>
+								<div class="donor-information">
+									<h:form id="bb">
+										<p:messages showDetail="true" globalOnly="true"
+											autoUpdate="true"></p:messages>
+										<div class="form-group">
+											<p:outputLabel value="Email :" for="email1" />
+											<p:inputText id="email1" placeholder="Email" required="true"
+												requiredMessage="Veuillez saisir votre email !"
+												styleClass="form-control input-lg c-square"
+												value="#{AdminBean.admin.email}" />
+											<p:message for="email1" />
+									
+											<p:outputLabel styleClasse="hide" />
+											<p:password id="passw" placeholder="Mot de passe"
+												styleClass="form-control input-lg c-square" required="true"
+												requiredMessage="Veuillez saisir votre mot de passe !"
+												value="#{AdminBean.admin.password}" />
+											<p:message for="passw" />
+										</div>
+										<div class="form-group">
+											<br />
+
+											<p:commandButton value="Se connecter"
+												styleClass="btn btn-default" update="@form" process="@form"
+												action="#{AdminBean.validateAdmin}" />
+										</div>
+									</h:form>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- donor area end -->
+
+
+	<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
+</h:body>
+</html>

@@ -2,6 +2,7 @@ package org.mql.gc.dao;
 
 import java.util.List;
 
+import org.mql.gc.models.Association;
 import org.mql.gc.models.Case;
 
 public interface CaseDao {
