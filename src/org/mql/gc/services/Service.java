@@ -35,4 +35,6 @@ public interface Service {
 	public double getCostDonor(int id);
 	//***********************************Donation****************************************
 	public void addDonation(Donation donation);
+	//***********************************Admin****************************************
+	public boolean loginAdmin(String email, String password);
 }

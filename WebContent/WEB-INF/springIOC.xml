@@ -11,6 +11,7 @@
 	  	<property name="associationDao" ref="AssociationDaoImp"></property>
 	  	<property name="donorDao" ref="DonorDaoImp"></property>
 	  <property name="donationDao" ref="DonationDaoImp"></property>
+	  <property name="adminDao" ref="AdminDaoImp"></property>
   </bean>
 
 	  <bean id="CaseDaoImp" class="org.mql.gc.dao.CaseDaoImp">
@@ -28,13 +29,16 @@
 	  <bean id="DonorDaoImp" class="org.mql.gc.dao.DonorDaoImp">
 	      	<property name="dao" ref="BaseDAO"></property>
 	  </bean>
-	  
+
+	  <bean id="AdminDaoImp" class="org.mql.gc.dao.AdminDaoImp">
+	    	<property name="dao" ref="BaseDAO"></property>
+	  </bean>	  
 	  <!-- je demande à karim de réaliser ce bean ... : hassan / 07/01/2018  -->
 	  <bean id="BaseDAO" class="org.mql.gc.dao.BaseDAO">
 	  </bean>
 
     <!-- les beans action  -->
-    <!-- je comprend pas showCase avec s miniscule katkhdam w S majuscule ma kat afficher walou w li khassou ykoun how ShowCase -->
+    <!-- je comprend pas showCase avec s miniscule katkhdam w S majuscule ma kat afficher walou w li khassou ykoun howa 'S'howCase -->
      <bean id="showCase" class="org.mql.gc.actions.ShowCase">
 	  		<property name="service" ref="ServiceImpl"></property>
 	 </bean>  
@@ -45,6 +49,10 @@
     <bean id="associationBean" class="org.mql.gc.actions.AssociationBean">
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="association" ref="Association"></property>
+    </bean>
+    <bean id="AdminBean" class="org.mql.gc.actions.AdminBean">
+      	<property name="service" ref="ServiceImpl"></property>
+      	<property name="admin" ref="Admin"></property>
     </bean>
     <bean id="DonationBean" class="org.mql.gc.actions.DonationBean">
 		<property name="service" ref="ServiceImpl"></property>
@@ -69,6 +77,7 @@
  	<bean id="Donation" class="org.mql.gc.models.Donation"/>
  	<bean id="Association" class="org.mql.gc.models.Association"/>
  	<bean id="Case" class="org.mql.gc.models.Case"/>
+ 	<bean id="Admin" class="org.mql.gc.models.Admin"/>
  	
  	
  

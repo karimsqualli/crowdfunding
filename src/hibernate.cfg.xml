@@ -19,5 +19,6 @@
         <mapping resource="org/mql/gc/models/Case.hbm.xml" />
         <mapping resource="org/mql/gc/models/Donation.hbm.xml" />
         <mapping resource="org/mql/gc/models/Donor.hbm.xml" />
+        <mapping resource="org/mql/gc/models/Admin.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

@@ -92,7 +92,7 @@ public class CaseDaoImp implements CaseDao {
 	public List<Case> findPending() {
 		List<Case> liste = null;		
 			Session session = dao.getSession();
-			Query<Case> query = session.createQuery("FROM Case C where C.pending = 0",Case.class);
+			Query<Case> query = session.createQuery("FROM Case C where C.pending='0'",Case.class);
 			liste = query.list();
 			dao.closeSession(session);			
 		return liste;

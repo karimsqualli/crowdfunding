@@ -23,7 +23,7 @@
 
 <h:body>
 	<ui:insert name="header">
-		<ui:include src="header.xhtml" />
+		<ui:include src="headerAdmin.xhtml" />
 	</ui:insert>
 
 	<!-- Table start -->
@@ -35,7 +35,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="area-heading text-center">
-							<h3 class="area-title">Associations en Attente de Validation</h3>
+							<h3 class="area-title">Les associations en attente de validation</h3>
 						</div>
 					</div>
 				</div>
@@ -48,7 +48,7 @@
 									<p:dataTable var="association" id="aa"
 										value="#{AssociationBean.associations}" stickyHeader="true">
 
-										<p:column headerText="Id">
+										<p:column headerText="Id de l'association">
 											<p:commandLink value="#{association.id}" update=":upd:apd"
 												action="detailAssociation.xhtml?faces-redirect=true">
 												<!-- onclick="PF('dlg2').show('#{component.clientId}')" -->

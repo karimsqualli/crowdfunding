@@ -1,6 +1,8 @@
 package org.mql.gc.services;
 
 import java.util.List;
+
+import org.mql.gc.dao.AdminDao;
 import org.mql.gc.dao.AssociationDao;
 import org.mql.gc.dao.AssociationDaoImp;
 import org.mql.gc.dao.DonationDao;
@@ -21,6 +23,7 @@ public class ServiceImpl implements Service {
 	private AssociationDao associationDao;
 	private DonorDao donorDao;
 	private DonationDao donationDao;
+	private AdminDao adminDao;
 
 	
 	public ServiceImpl() {
@@ -28,6 +31,7 @@ public class ServiceImpl implements Service {
 //		associationDao = new AssociationDaoImp();
 //		donorDao = new DonorDaoImp();
 //		donationDao = new DonationDaoImp();
+//      adminDao = new AdminDaoImp();
 	}
 	
 //******************************Association************************	
@@ -153,30 +157,26 @@ public class ServiceImpl implements Service {
 //			donorDao.(email, key);
 		
 		}
+//***************************************Admin********************************************		
+		
+		public boolean loginAdmin(String email, String password) {	
+			return adminDao.login(email, password);
+		}
+		
 //*********************************test for spring*****************************************
 		public void sayTest(){
 			System.out.println("§§§ test setvice §§§");
 		}
-
-
-
-
 		
 		@Override
 		public void deleteAssociation(int id) {
 			associationDao.delete(id);
 		}
 
-
-
-
 		@Override
 		public boolean associationNameExist(String name) {
 			return false;
 		}
-
-
-
 
 		public List<Case> getAssociations(String nom, String category) {			
 			return null;
@@ -225,5 +225,14 @@ public class ServiceImpl implements Service {
 		public void setDonationDao(DonationDao donationDao) {
 			this.donationDao = donationDao;
 		}
+
+		public AdminDao getAdminDao() {
+			return adminDao;
+		}
+
+		public void setAdminDao(AdminDao adminDao) {
+			this.adminDao = adminDao;
+		}
+		
 
 }

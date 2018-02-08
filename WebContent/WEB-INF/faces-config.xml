@@ -8,8 +8,8 @@
 		<el-resolver>
     		    org.springframework.web.jsf.el.SpringBeanFacesELResolver
 		</el-resolver>
-  	</application> 
-	
+  	</application>
+  	
 	<managed-bean>
 		<managed-bean-name>DetailCase</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.DetailCase</managed-bean-class>
@@ -107,6 +107,19 @@
 		</managed-property>
 	</managed-bean>	
 	 
+	 <managed-bean>
+		<managed-bean-name>AdminBean</managed-bean-name>
+		<managed-bean-class>org.mql.gc.actions.AdminBean</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>admin</property-name>
+			<value>#{Admin}</value>
+		</managed-property>
+	</managed-bean>	 
 	
  	<managed-bean>
 		<managed-bean-name>ShowCase</managed-bean-name>
