@@ -89,6 +89,39 @@ public class CaseDaoImp implements CaseDao {
 		return list;
 	}
 	
+	public void update(Case caseObject) {
+		Session session = dao.getSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.saveOrUpdate(caseObject);
+			tx.commit();
+		} catch (RuntimeException e1) {
+			if (tx != null)
+				tx.rollback();
+			throw e1;
+		} finally {
+			dao.closeSession(session);
+		}
+	}
+
+	public void deleteCase(int id) {
+		Session session = dao.getSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Case caseObject = session.get(Case.class, id);
+			session.delete(caseObject);
+			tx.commit();
+		} catch (RuntimeException e1) {
+			if (tx != null)
+				tx.rollback();
+			throw e1; 
+		} finally {
+			dao.closeSession(session);
+		}
+	}
+	
 	public List<Case> findPending() {
 		List<Case> liste = null;		
 			Session session = dao.getSession();
@@ -96,6 +129,6 @@ public class CaseDaoImp implements CaseDao {
 			liste = query.list();
 			dao.closeSession(session);			
 		return liste;
-
 	}
+	
 }

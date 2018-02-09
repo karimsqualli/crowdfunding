@@ -107,6 +107,17 @@ public class ServiceImpl implements Service {
 		return caseDao.findPending();
 	}
 	
+	public void updateCase(Case caseObject) {
+		caseDao.update(caseObject);
+	}
+
+	public void deleteCase(int id) {
+		caseDao.deleteCase(id);
+	}
+	public List<Case> getCasesNotActivated() {
+		return caseDao.findPending();
+	}
+	
 	//********************************Donnateur*********************************************	
 		public void addDonor(Donor donor) {
 			System.out.println("service");
@@ -118,7 +129,6 @@ public class ServiceImpl implements Service {
 		public void updateDonor(int id) {
 			donorDao.update(id);
 		}
-
 		
 		public void deleteDonator(int id) {
 			donorDao.delete(id);
@@ -127,7 +137,9 @@ public class ServiceImpl implements Service {
 		public List<Donor> getDonors() {
 			return donorDao.select();
 		}
-		
+		public static void main(String[] args) {
+			new ServiceImpl();
+		}
 		public Donor getDonorById(int id) {
 			return donorDao.selectById(id);
 		}

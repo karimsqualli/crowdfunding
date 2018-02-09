@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.mql.gc.models.Donation;
 import org.mql.gc.models.Donor;
 
 public class DonorDaoImp implements DonorDao {
@@ -22,7 +21,7 @@ public class DonorDaoImp implements DonorDao {
 	public DonorDaoImp() {
 		dao = BaseDAO.getINSTANCE();
 	}
-
+	
 	public void create(Donor donor) {
 		Session session = dao.getSession();
 		Transaction tx = null;
@@ -72,16 +71,15 @@ public class DonorDaoImp implements DonorDao {
 			dao.closeSession(session);
 		}
 	}
-
-	public List<Donor> select() {
+	
+	public List<Donor> select(){
+		List<Donor> list=null;
 		Session session = dao.getSession();
-		session.beginTransaction();
-		Query<Donor> query = session.createQuery("from Donor", Donor.class); 
-		List<Donor> list = query.list(); 
-		session.getTransaction().commit();
+		Query<Donor> query = session.createQuery("from Donor DS",Donor.class);
+		list = query.list();
 		dao.closeSession(session);
-		return list;
-	}
+		return list;		
+}
 
 	public Donor selectById(int id) {
 		Session session = dao.getSession();
@@ -156,7 +154,7 @@ public class DonorDaoImp implements DonorDao {
 		return don;
 	}
 	
-	public void activeAccount(String email , String key) {
+	public Donor activeAccount(String email , String key) {
 		Session session = dao.getSession();
 		session.beginTransaction();
 		String hql = "FROM Donor E WHERE E.keyActive = :keyActive and E.email= :Emaila";
@@ -167,6 +165,7 @@ public class DonorDaoImp implements DonorDao {
 		don.setKeyActive("active");
 		session.getTransaction().commit();
 		dao.closeSession(session);
+		return don;
 	}
 	
 }

@@ -40,7 +40,7 @@
 									<h2 class="donor-title">Connexion :</h2>
 									<div class="donor-information">
 										<h:form id="bb">
-										<p:messages showDetail="true" globalOnly="true" autoUpdate="true"></p:messages>
+										<p:messages for="bb"  globalOnly="true" autoUpdate="true"></p:messages>
 											<div class="form-group">
 											<p:outputLabel for="email1" styleClasse="hide"/>
 												<p:inputText id="email1" placeholder="Email" required="true" requiredMessage="Veuillez saisir votre email !"
@@ -67,102 +67,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="single-donor-info">
-								<div class="donor-information-wrapper">
-									<h2 class="donor-title">Inscription de l'association :</h2>
-									<div class="donor-information">
-										<h:form id="aa">
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-													<p:inputText id="email" placeholder="Email" value="#{AssociationBean.association.email}"  styleClass="form-control input-lg c-square"
-														requiredMessage="email obligatoire" required="true"
-														validatorMessage="email non valide">
-														<f:validator
-															validatorId="org.mql.gc.actions.validators.EmailValidator" />
-													</p:inputText>
-													<p:message for="email" />
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:password id="confpasswordd" binding="#{passwordComp55}" placeholder="Mot de passe" styleClass="form-control input-lg c-square" value="#{AssociationBean.association.password}" requiredMessage="Mot de passe obligatoire" required="true" validatorMessage="mot de passe non valide">
-				<f:validator validatorId="org.mql.gc.actions.validators.PasswordValidator"/>
-				</p:password>
-				<p:message for="confpasswordd"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:password id="confirmPasswordd" styleClass="form-control input-lg c-square" placeholder="Confirmer le mot de passe" required="true" requiredMessage="veuillez verifier votre mot de passe ">
-				    <f:validator validatorId="org.mql.gc.actions.validators.ConfirmPasswordValidator" />
-				    <f:attribute name="XXX" value="#{passwordComp55}" />
-				</p:password>
-				<p:message for="confirmPasswordd" />
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:inputText id="name" value="#{AssociationBean.association.name}" placeholder="Nom de l'association" styleClass="form-control input-lg c-square"  maxlength="40" required="true" requiredMessage="nom obligatoire" validatorMessage="nom non valide" >
-					<f:validator validatorId="org.mql.gc.actions.validators.NameValidator"/>
-				</p:inputText>
-				<p:message for="name"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:selectOneMenu  id="activity" value="#{AssociationBean.association.activityArea}" placeholder="Secteur d'activité" styleClass="form-control input-lg c-square"  required="true" requiredMessage="selectionner votre secteur d'activité">
-					<f:selectItem itemValue="" itemLabel="selctionner une catégorie" />
-					<f:selectItems value="#{AssociationBean.sectorActivities}"  var="act" itemLabel="#{act}"  itemValue="#{act}" />
-				</p:selectOneMenu>
-				<p:message  for="activity"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:inputTextarea id="description" value="#{AssociationBean.association.description}" placeholder="Description" styleClass="form-control input-lg c-square" autoResize="true" maxlength="150" required="true" requiredMessage="description obligatoire "/>
-				<p:message  for="description"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-					<p:selectOneMenu id="LowForm" value="#{AssociationBean.association.legalForm}" placeholder="Forme juridique" styleClass="form-control input-lg c-square"  required="true" requiredMessage="selectionner votre forme juridique">
-						<f:selectItem itemValue="" itemLabel="selectionner forme juridique" />
-						<f:selectItems value="#{AssociationBean.lowForms}"  var="lwf" itemLabel="#{lwf}"  itemValue="#{lwf}" />
-					</p:selectOneMenu>
-				<p:message for="LowForm"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:inputText id="pattente" value="#{AssociationBean.association.pattente}" placeholder="Pattente" styleClass="form-control input-lg c-square"  maxlength="9" required="false" validatorMessage="pattente non valide" >
-					<f:validator validatorId="org.mql.gc.actions.validators.PattenteValidator" />
-				</p:inputText>	
-				<p:message  for="pattente"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:inputText id="website" value="#{AssociationBean.association.website}" placeholder="Site web" styleClass="form-control input-lg c-square"  maxlength="40" required="false" validatorMessage="site web non valide"  >
-					<f:validator validatorId="org.mql.gc.actions.validators.WebSiteValidator" />
-				</p:inputText>	
-				<p:message  for="website"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:inputText id="fixe"  value="#{AssociationBean.association.fixe}" placeholder="Numéro fixe : 05XXXXXXXX" styleClass="form-control input-lg c-square" maxlength="10" required="false" validatorMessage="fixe non valide"  >
-					<f:validator validatorId="org.mql.gc.actions.validators.PhoneValidator" />				
-				</p:inputText>	
-				<p:message for="fixe"/>
-											</div>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-				<p:inputText requiredMessage="gsm obligatoire" id="gsm" placeholder="Numéro GSM : 06XXXXXXXX " styleClass="form-control input-lg c-square" value="#{AssociationBean.association.gsm}"  maxlength="10" required="true" validatorMessage="gsm non valide"  >
-					<f:validator validatorId="org.mql.gc.actions.validators.GSMValidator" />				
-				</p:inputText>	
-				<p:message  for="gsm"  />
-				
-											</div><br/>
-											<div class="form-group">
-											<p:outputLabel styleClasse="hide"/>
-											<p:commandButton style="width:100%;" value="s'inscrire" styleClass="btn btn-default"
-											action="#{AssociationBean.createAccount}" process="@form" update="@form"  />
-			
-											</div>
-										</h:form>
-									</div>
-								</div>
+							<div id="inscription">
+								<ui:insert name="inscription">
+									<ui:include src="inscriptionAssociation.xhtml" />
+								</ui:insert>
 							</div>
 						</div>
 					</div>
