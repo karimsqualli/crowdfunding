@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.mql.gc.models.ActivitySector;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.LegalForm;
+import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 
@@ -20,13 +21,15 @@ public class AssociationBean  implements Serializable{
 	private Association association;
 	private SelectItem[] sectorActivities; 
 	private SelectItem[] legalForm;
-	private ServiceImpl service ;	
+	private Service service ;	
 	private List<Association> associations;
+	private int listeLength;
+	
 
 	//added by hassan 09/01/2018
 	@PostConstruct
 	public  void init(){
-		
+		listeLength=service.getAssociations().size();
 		associations=service.getAssociationsNotActivated();
 	}
 	public AssociationBean() {
@@ -38,14 +41,27 @@ public class AssociationBean  implements Serializable{
 
 	//???
 	public String createAccount() {
-		System.out.println("creating association");
-		association.setPending(false);
-		service.addAssociation(association);
-		HttpSession session = SessionUtils.getSession();
-		session.setAttribute("email", association.getEmail());
-		session.setAttribute("idAssociation", association.getId());
-		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription réussi"));
-		return "LoadCase?faces-redirect=true";
+		try {
+		String gRecaptchaResponse = FacesContext.getCurrentInstance().
+		getExternalContext().getRequestParameterMap().get("g-recaptcha-response");
+		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+		if(verify){
+			System.out.println("creating association");
+			association.setPending(false);
+			service.addAssociation(association);
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("email", association.getEmail());
+			session.setAttribute("idAssociation", association.getId());
+			return "LoadCase?faces-redirect=true";
+		 }
+				        
+		else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Veuillez cocher le Re-Captcha ",""));
+			return "login";
+					          }
+		} catch (Exception e) {return null;}		
+			         
 	}
 	
 	public String deleteAccount(int id) {
@@ -98,12 +114,12 @@ public class AssociationBean  implements Serializable{
 	}
 
 
-	public ServiceImpl getService() {
+	public Service getService() {
 		return service;
 	}
 
 
-	public void setService(ServiceImpl service) {
+	public void setService(Service service) {
 		this.service = service;
 	}
 
@@ -119,8 +135,12 @@ public class AssociationBean  implements Serializable{
 	public void setAssociations(List<Association> associations) {
 		this.associations = associations;
 	}
+	public int getListeLength() {
+		return listeLength;
+	}
+	public void setListeLength(int listeLength) {
+		this.listeLength = listeLength;
+	}
 
-	
-	
 
 }

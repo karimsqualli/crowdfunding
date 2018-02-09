@@ -56,11 +56,10 @@
 								</h5>
 								<ul class="event-meta">
 									<li><i class="fa fa-map-marker"></i><h:outputText value="#{cas.city}" style="margin-left:5px;"/></li>
-									<li><i class="fa fa-calendar"></i><h:outputText value="#{cas.endDate} Jours" style="margin-left:5px;"/></li>
+									<li><i class="fa fa-calendar"></i><h:outputText rendered="#{not empty cas.endDate}" value="#{ShowCase.daysBetween(cas.endDate)} J" style="margin-left:5px;"/></li>
 								</ul>
-
+								
 								<h:outputText value="#{cas.slogan}" /><br/>
-
 
 								   <div class="donet-bar">
                                         <p>Col: <h:outputText value="#{ShowCase.getRes(cas.id)}" >

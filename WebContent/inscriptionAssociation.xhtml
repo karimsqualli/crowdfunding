@@ -1,0 +1,125 @@
+	<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</h:head>
+<h:body>
+<ui:composition>
+		<div class="single-donor-info">
+								<div class="donor-information-wrapper">
+									<h2 class="donor-title">Inscription de l'association :</h2>
+									<div class="donor-information">
+										<h:form id="aa">
+										
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+													<p:inputText id="email" placeholder="Email" value="#{AssociationBean.association.email}"  styleClass="form-control input-lg c-square"
+														requiredMessage="email obligatoire" required="true"
+														validatorMessage="email non valide">
+														<f:validator
+															validatorId="org.mql.gc.actions.validators.EmailValidator" />
+													</p:inputText>
+													<p:message for="email" />
+											</div>
+											<div class="form-group">
+											
+											<p:outputLabel styleClasse="hide"/>
+											<p:message for="confpasswordd" />
+				<p:password id="confpasswordd" match="confirmPasswordd" placeholder="Mot de passe" styleClass="form-control input-lg c-square" value="#{AssociationBean.association.password}" requiredMessage="Le mot de passe de confirmation n'est pas adéquat" required="true" validatorMessage="Le mot de passe ou mot de passe de confirmation non adéquat">
+				<f:validator validatorId="org.mql.gc.actions.validators.PasswordValidator"/>
+				</p:password>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:password id="confirmPasswordd" styleClass="form-control input-lg c-square" placeholder="Confirmer le mot de passe" required="true" >
+				</p:password>
+				
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="name" value="#{AssociationBean.association.name}" placeholder="Nom de l'association" styleClass="form-control input-lg c-square"  maxlength="40" required="true" requiredMessage="nom obligatoire" validatorMessage="nom non valide" >
+					<f:validator validatorId="org.mql.gc.actions.validators.NameValidator"/>
+				</p:inputText>
+				<p:message for="name"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:selectOneMenu  id="activity" value="#{AssociationBean.association.activityArea}" placeholder="Secteur d'activité" styleClass="form-control input-lg c-square"  required="true" requiredMessage="selectionner votre secteur d'activité">
+					<f:selectItem itemValue="" itemLabel="selctionner une catégorie" />
+					<f:selectItems value="#{AssociationBean.sectorActivities}"  var="act" itemLabel="#{act}"  itemValue="#{act}" />
+				</p:selectOneMenu>
+				<p:message  for="activity"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputTextarea id="description" value="#{AssociationBean.association.description}" placeholder="Description" styleClass="form-control input-lg c-square" autoResize="true" maxlength="150" required="true" requiredMessage="description obligatoire "/>
+				<p:message  for="description"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+					<p:selectOneMenu id="LowForm" value="#{AssociationBean.association.legalForm}" placeholder="Forme juridique" styleClass="form-control input-lg c-square"  required="true" requiredMessage="selectionner votre forme juridique">
+						<f:selectItem itemValue="" itemLabel="selectionner forme juridique" />
+						<f:selectItems value="#{AssociationBean.lowForms}"  var="lwf" itemLabel="#{lwf}"  itemValue="#{lwf}" />
+					</p:selectOneMenu>
+				<p:message for="LowForm"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="pattente" value="#{AssociationBean.association.pattente}" placeholder="Pattente" styleClass="form-control input-lg c-square"  maxlength="9" required="false" validatorMessage="pattente non valide" >
+					<f:validator validatorId="org.mql.gc.actions.validators.PattenteValidator" />
+				</p:inputText>	
+				<p:message  for="pattente"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="website" value="#{AssociationBean.association.website}" placeholder="Site web" styleClass="form-control input-lg c-square"  maxlength="40" required="false" validatorMessage="site web non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.WebSiteValidator" />
+				</p:inputText>	
+				<p:message  for="website"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText id="fixe"  value="#{AssociationBean.association.fixe}" placeholder="Numéro fixe : 05XXXXXXXX" styleClass="form-control input-lg c-square" maxlength="10" required="false" validatorMessage="fixe non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.PhoneValidator" />				
+				</p:inputText>	
+				<p:message for="fixe"/>
+											</div>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+				<p:inputText requiredMessage="gsm obligatoire" id="gsm" placeholder="Numéro GSM : 06XXXXXXXX " styleClass="form-control input-lg c-square" value="#{AssociationBean.association.gsm}"  maxlength="10" required="true" validatorMessage="gsm non valide"  >
+					<f:validator validatorId="org.mql.gc.actions.validators.GSMValidator" />				
+				</p:inputText>	
+				<p:message  for="gsm"  />
+				
+			<br/>
+				<div class="g-recaptcha" data-sitekey="6LdTWUUUAAAAANqeYu8UsxGTjVbrVjWIqUjQ15cE"></div>
+				<p:messages id="aaa" showDetail="true" globalOnly="true" autoUpdate="true"></p:messages>
+				
+											</div><br/>
+											<div class="form-group">
+											<p:outputLabel styleClasse="hide"/>
+											<p:commandButton id="but" style="width:100%;" value="s'inscrire" styleClass="btn btn-default"
+											action="#{AssociationBean.createAccount}" process="@form" update="@form:aaa" ajax="false" />
+											</div>
+										</h:form>
+									</div>
+								</div>
+							</div>
+</ui:composition>
+</h:body>
+</html>

@@ -37,8 +37,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2 col-sm-6 col-xs-6">
-							<div class="logo-wrapper">
-								<a class="logo" href="index.xhtml"><img src="imgs/logos/logo-3.png" ></img></a>
+							<div class="logo-wrapper" >
+								<a class="logo" href="index.xhtml" ><img style=" height:40px;width:160px; " src="imgs/logos/logo5.png" ></img></a>
 							</div>
 						</div>
 						<div class="col-md-7 hidden-xs hidden-sm">
@@ -79,13 +79,8 @@
 									</h:form>
 									</li>
 							   </ul>
-
-
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
 			</div>
@@ -102,30 +97,53 @@
 								<div class="slider-content text-left">
 									<div class="slider-content-wrapper">
 										<p>
-											<span>Education en Afrique</span>
+											<span><h:outputText value="#{ShowCase.listUrgent[2].slogan}"
+																style="margin-left:5px;" /></span>
 										</p>
 										<h1>
-											<a href="#">Bonté et Humanité.</a>
+										<p:commandLink value="#{ShowCase.listUrgent[2].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.listUrgent[2]}"
+													target="#{DetailCase.caseObject}" />
+										</p:commandLink>
 										</h1>
 
 										<div class="progress-bar-area">
 											<div class="single-progress-bar">
 												<p>
-													Collecté: 9000 DH <span class="project-goal">Objectif:
-														15000 DH</span>
+													Collecté:<h:outputText value="#{ShowCase.getRes(ShowCase.listUrgent[2].id)}">
+															<f:convertNumber minFractionDigits="0" />
+														</h:outputText> DH <span class="project-goal">Objectif:
+														<h:outputText value="#{ShowCase.listUrgent[2].cost}"
+																style="margin-left:5px;" /> DH</span>
 												</p>
-												<div class="progress ">
-													<div class="progress-bar wow fadeInLeft" role="progressbar"
-														aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
-														style="width: 65%; visibility: visible; animation-duration: 3s; animation-delay: .3s;">
-														<span>65%</span>
+												<div class="progress-bar-area">
+														<div class="single-progress-bar">
+															<div class="progress ">
+																<div class="progress-bar wow fadeInLeft"
+																	role="progressbar"
+																	aria-valuenow="#{ShowCase.getRes(ShowCase.listUrgent[2].id)}"
+																	aria-valuemin="0" aria-valuemax="200"
+																	style="width: #{ShowCase.getRes(ShowCase.listUrgent[2].id)*100/ShowCase.listUrgent[2].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+																	<span> <h:outputText
+																			value="#{ShowCase.getRes(ShowCase.listUrgent[2].id)/ShowCase.listUrgent[2].cost}">
+																			<f:convertNumber type="percent" />
+																		</h:outputText>
+																	</span>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
 											</div>
 										</div>
-										<div class="slider-btn">
-											<a class="btn btn-default" href="#">Participer</a>
-										</div>
+											<h:form>
+												<p:commandButton
+														action="detailCase.xhtml?faces-redirect=true"
+														value="voir plus" styleClass="btn btn-default">
+														<f:setPropertyActionListener value="#{ShowCase.listUrgent[2]}"
+															target="#{DetailCase.caseObject}" />
+												</p:commandButton>
+											</h:form>
 									</div>
 								</div>
 							</div>
@@ -139,30 +157,53 @@
 								<div class="slider-content text-left">
 									<div class="slider-content-wrapper">
 										<p>
-											<span>Education en Afrique</span>
+											<span><h:outputText value="#{ShowCase.listUrgent[3].slogan}"
+																style="margin-left:5px;" /></span>
 										</p>
 										<h1>
-											<a href="#">Bonté et Humanité.</a>
+										<p:commandLink value="#{ShowCase.listUrgent[3].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.listUrgent[3]}"
+													target="#{DetailCase.caseObject}" />
+										</p:commandLink>
 										</h1>
 
 										<div class="progress-bar-area">
 											<div class="single-progress-bar">
 												<p>
-													Collecté: 500 DH<span class="project-goal">Objectif:
-														800 DH</span>
+													Collecté:<h:outputText value="#{ShowCase.getRes(ShowCase.listUrgent[3].id)}">
+															<f:convertNumber minFractionDigits="0" />
+														</h:outputText> DH <span class="project-goal">Objectif:
+														<h:outputText value="#{ShowCase.listUrgent[3].cost}"
+																style="margin-left:5px;" /> DH</span>
 												</p>
-												<div class="progress ">
-													<div class="progress-bar wow fadeInLeft" role="progressbar"
-														aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
-														style="width: 65%; visibility: visible; animation-duration: 3s; animation-delay: .5s;">
-														<span>65%</span>
+												<div class="progress-bar-area">
+														<div class="single-progress-bar">
+															<div class="progress ">
+																<div class="progress-bar wow fadeInLeft"
+																	role="progressbar"
+																	aria-valuenow="#{ShowCase.getRes(ShowCase.listUrgent[3].id)}"
+																	aria-valuemin="0" aria-valuemax="200"
+																	style="width: #{ShowCase.getRes(ShowCase.listUrgent[3].id)*100/ShowCase.listUrgent[3].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+																	<span> <h:outputText
+																			value="#{ShowCase.getRes(ShowCase.listUrgent[3].id)/ShowCase.listUrgent[3].cost}">
+																			<f:convertNumber type="percent" />
+																		</h:outputText>
+																	</span>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
 											</div>
 										</div>
-										<div class="slider-btn">
-											<a class="btn btn-default" href="#">participer</a>
-										</div>
+											<h:form>
+												<p:commandButton
+														action="detailCase.xhtml?faces-redirect=true"
+														value="voir plus" styleClass="btn btn-default">
+														<f:setPropertyActionListener value="#{ShowCase.listUrgent[3]}"
+															target="#{DetailCase.caseObject}" />
+												</p:commandButton>
+											</h:form>
 									</div>
 								</div>
 							</div>
@@ -176,30 +217,53 @@
 								<div class="slider-content text-left">
 									<div class="slider-content-wrapper">
 										<p>
-											<span>Education en Afrique</span>
+											<span><h:outputText value="#{ShowCase.listUrgent[4].slogan}"
+																style="margin-left:5px;" /></span>
 										</p>
 										<h1>
-											<a href="#">Bonté et Humanité.</a>
+										<p:commandLink value="#{ShowCase.listUrgent[4].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.listUrgent[4]}"
+													target="#{DetailCase.caseObject}" />
+										</p:commandLink>
 										</h1>
 
 										<div class="progress-bar-area">
 											<div class="single-progress-bar">
 												<p>
-													Collecté: 900 DH<span class="project-goal">Objectif:
-														5000 DH</span>
+													Collecté:<h:outputText value="#{ShowCase.getRes(ShowCase.listUrgent[4].id)}">
+															<f:convertNumber minFractionDigits="0" />
+														</h:outputText> DH <span class="project-goal">Objectif:
+														<h:outputText value="#{ShowCase.listUrgent[4].cost}"
+																style="margin-left:5px;" /> DH</span>
 												</p>
-												<div class="progress ">
-													<div class="progress-bar wow fadeInLeft" role="progressbar"
-														aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"
-														style="width: 18%; visibility: visible; animation-duration: 3s; animation-delay: .3s;">
-														<span>18%</span>
+												<div class="progress-bar-area">
+														<div class="single-progress-bar">
+															<div class="progress ">
+																<div class="progress-bar wow fadeInLeft"
+																	role="progressbar"
+																	aria-valuenow="#{ShowCase.getRes(ShowCase.listUrgent[4].id)}"
+																	aria-valuemin="0" aria-valuemax="200"
+																	style="width: #{ShowCase.getRes(ShowCase.listUrgent[4].id)*100/ShowCase.listUrgent[4].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+																	<span> <h:outputText
+																			value="#{ShowCase.getRes(ShowCase.listUrgent[4].id)/ShowCase.listUrgent[4].cost}">
+																			<f:convertNumber type="percent" />
+																		</h:outputText>
+																	</span>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
 											</div>
 										</div>
-										<div class="slider-btn">
-											<a class="btn btn-default" href="#">participer</a>
-										</div>
+											<h:form>
+												<p:commandButton
+														action="detailCase.xhtml?faces-redirect=true"
+														value="voir plus" styleClass="btn btn-default">
+														<f:setPropertyActionListener value="#{ShowCase.listUrgent[4]}"
+															target="#{DetailCase.caseObject}" />
+												</p:commandButton>
+											</h:form>
 									</div>
 								</div>
 							</div>
@@ -233,7 +297,7 @@
 								<article class="single-event">
 
 
-									<p:dataGrid var="urg" value="#{ShowCase.listUrgent[1]}" columns="1"
+									<p:dataGrid var="urg" value="#{ShowCase.listUrgent[0]}" columns="1"
 										layout="grid" rows="1" paginator="false" id="urg"
 										paginatorTemplate=" {PreviousPageLink} {NextPageLink}"
 										>
@@ -256,8 +320,9 @@
 														<h:outputText value="#{urg.city}"
 																style="margin-left:5px;" /></li>
 														<li><i class="fa fa-calendar"></i>
-														<h:outputText value="#{urg.endDate} Jours"
-																style="margin-left:5px;" /></li>
+														<h:outputText rendered="#{not empty ShowCase.listUrgent[0].endDate}" value="#{ShowCase.daysBetween(ShowCase.listUrgent[0].endDate)} J"
+													style="margin-left:5px;" ></h:outputText>
+														</li>
 													</ul>
 													<p>
 														<h:outputText value="#{urg.description}"
@@ -307,7 +372,7 @@
 									</p:dataGrid>
 								</article>
 								<article class="single-event">
-									<p:dataGrid var="urg1" value="#{ShowCase.listUrgent[2]}" columns="1"
+									<p:dataGrid var="urg1" value="#{ShowCase.listUrgent[1]}" columns="1"
 										layout="grid" rows="1" paginator="false" id="urg1"
 										paginatorTemplate=" {PreviousPageLink} {NextPageLink}"
 										>
@@ -330,8 +395,9 @@
 														<h:outputText value="#{urg1.city}"
 																style="margin-left:5px;" /></li>
 														<li><i class="fa fa-calendar"></i>
-														<h:outputText value="#{urg1.endDate} Jours"
-																style="margin-left:5px;" /></li>
+														<h:outputText rendered="#{not empty ShowCase.listUrgent[1].endDate}" value="#{ShowCase.daysBetween(ShowCase.listUrgent[1].endDate)} J"
+													style="margin-left:5px;" ></h:outputText>
+														</li>
 													</ul>
 													<p>
 														<h:outputText value="#{urg1.description}"
@@ -386,102 +452,15 @@
 				</div>
 			</div>
 			<!-- Donet section end -->
-
-			<!-- Event section start  -->
-			<div class="event-section theme-section gray-bg">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="area-heading text-center">
-								<h2 class="area-title">Tous les cas</h2>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<article class="single-event">
-
-
-								<p:dataGrid var="cas" value="#{ShowCase.liste}" columns="4"
-									layout="grid" rows="8" paginator="false" id="cas"
-									paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="4,8,12">
-
-									<div class="event-thumb">
-										<p:graphicImage value="#{cas.fileContentI}" />
-									</div>
-
-									<div class="event-content event-content-2">
-										<h5 class="single-event-title">
-											<p:commandLink value="#{cas.title}"
-												action="detailCase.xhtml?faces-redirect=true">
-												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.caseObject}" />
-											</p:commandLink>
-										</h5>
-										<ul class="event-meta">
-											<li><i class="fa fa-map-marker"></i>
-											<h:outputText value="#{cas.city}" style="margin-left:5px;" /></li>
-											<li><i class="fa fa-calendar"></i>
-											<h:outputText value="#{cas.endDate}"
-													style="margin-left:5px;" >
-													<f:convertDateTime type="date" dateStyle="medium"/></h:outputText>
-													</li>
-													
-										</ul>
-
-										<h:outputText value="#{cas.slogan}" />
-										<br />
-
-
-										<div class="donet-bar">
-											<p>
-												Col:
-												<h:outputText value="#{ShowCase.getRes(cas.id)}">
-													<f:convertNumber minFractionDigits="0" />
-												</h:outputText>
-												DH<span class="project-goal"> Obj: <h:outputText
-														value="#{cas.cost}">
-														<f:convertNumber minFractionDigits="0" />
-													</h:outputText> DH
-												</span>
-											</p>
-											<div class="progress-bar-area">
-												<div class="single-progress-bar">
-													<div class="progress ">
-														<div class="progress-bar wow fadeInLeft"
-															role="progressbar"
-															aria-valuenow="#{ShowCase.getRes(cas.id)}"
-															aria-valuemin="0" aria-valuemax="200"
-															style="width: #{ShowCase.getRes(cas.id)*100/cas.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
-															<span> <h:outputText
-																	value="#{ShowCase.getRes(cas.id)/cas.cost}">
-																	<f:convertNumber type="percent" />
-																</h:outputText>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<h:form>
-											<p:commandButton
-												action="detailCase.xhtml?faces-redirect=true"
-												value="voir plus" styleClass="btn btn-default">
-												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.caseObject}" />
-											</p:commandButton>
-										</h:form>
-									</div>
-
-								</p:dataGrid>
-							</article>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Event section end  -->
-
+			
+			<!-- La selection start-->
+	<div id="caseSelection">
+		<ui:insert name="caseSelection">
+			<ui:include src="caseSelection.xhtml" />
+		</ui:insert>
+	</div>
+			<!-- La selection end-->
+			
 			<!-- Counter section start -->
 			<div class="counter-section theme-section-2">
 				<div class="container">
@@ -492,7 +471,7 @@
 									<i class="bi bi-love"></i>
 								</div>
 								<div class="counter-content ">
-									<p class="counter ">485</p>
+									<p class="counter "><h:outputText value="#{ShowCase.listeLength}"/></p>
 									<h3>cas résolus</h3>
 								</div>
 							</div>
@@ -503,7 +482,7 @@
 									<i class="bi bi-group"></i>
 								</div>
 								<div class="counter-content ">
-									<p class="counter ">866</p>
+									<p class="counter "><h:outputText value="#{DonorBean.listeLength+2}"/></p>
 									<h3>Les honorables donateurs</h3>
 								</div>
 							</div>
@@ -514,7 +493,7 @@
 									<i class="bi bi-like"></i>
 								</div>
 								<div class="counter-content ">
-									<p class="counter">897</p>
+									<p class="counter "><h:outputText value="#{AssociationBean.listeLength+1}"/></p>
 									<h3>Associations</h3>
 								</div>
 							</div>
@@ -525,7 +504,7 @@
 									<i class="bi bi-emo-smile"></i>
 								</div>
 								<div class="counter-content ">
-									<p class="counter ">2050</p>
+									<p class="counter ">20</p>
 									<h3>Enfants sauvés</h3>
 								</div>
 							</div>
@@ -579,7 +558,7 @@
 							<div class="call-to-action-content text-center">
 								<h3>Donner peu, change beaucoup</h3>
 								<h2>Collaborons tous pour un avenir meilleur</h2>
-								<a href="#" class="btn btn-default">Joignez-nous</a>
+								<a href="LoadCase.xhtml" class="btn btn-default">Joignez-nous</a>
 							</div>
 						</div>
 					</div>
