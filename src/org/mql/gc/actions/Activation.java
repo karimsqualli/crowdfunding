@@ -20,8 +20,8 @@ public class Activation {
     public void init() {
     	System.out.println("post constructeur---------------");
     	if(service.checkAccountStatus(email,key)){
-    		valid=true; 
     		service.activeAccount(email, key);
+    		valid=true; 
     	}
     	else {
     		valid=false ; 

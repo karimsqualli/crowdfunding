@@ -10,28 +10,34 @@ import javax.faces.bean.ViewScoped;
 import org.mql.gc.models.Case;
 import org.mql.gc.services.Service;
 
-@ManagedBean
-@ViewScoped
 public class CaseValidation {
-	@ManagedProperty(value="#{ServiceImp}")
 	private Service service ;
-	private List<Case> zmorixa;
+	private List<Case> caseObjects;
 	
 	@PostConstruct
-	public void innit(){
+	public void init(){
 		System.out.println("&& post contruct caseValidation &&");
-		zmorixa = service.getPendingCases();
-		System.out.println("cette liste : " + zmorixa);
+		caseObjects = service.getPendingCases();
+		System.out.println("cette liste : " + caseObjects);
 	}
-
+	
+	//A faire : Mr karim
+	public String deleteCase(int id) {
+		return "validateCase.xhtml?faces-redirect=true";
+	}
+	
+	//A faire : Mr karim
+	public String validateCase(Case caseObject) {
+		return "validateCase.xhtml?faces-redirect=true";
+	}
 	
 	
-	public List<Case> getZmorixa() {
-		return zmorixa;
+	public List<Case> getCaseObjects() {
+		return caseObjects;
 	}
 
-	public void setZmorixa(List<Case> zmorixa) {
-		this.zmorixa = zmorixa;
+	public void setCaseObjects(List<Case> caseObjects) {
+		this.caseObjects = caseObjects;
 	}
 
 

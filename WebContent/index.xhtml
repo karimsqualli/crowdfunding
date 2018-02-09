@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Kaisahhh</title>
+	<title>3awni</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="img/icons/favicon.png" />
 	<link rel="stylesheet" href="css/elements.css" />
@@ -38,7 +38,7 @@
 					<div class="row">
 						<div class="col-md-2 col-sm-6 col-xs-6">
 							<div class="logo-wrapper">
-								<a class="logo" href="index.xhtml">Crowdy</a>
+								<a class="logo" href="index.xhtml"><img src="imgs/logos/logo-3.png" ></img></a>
 							</div>
 						</div>
 						<div class="col-md-7 hidden-xs hidden-sm">
@@ -47,8 +47,8 @@
 									<ul class="main-menu">
 										<li><a href="projects.xhtml">Voir les cas</a></li>
 										<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
-										<li><a href="volunteer.xhtml">Associations</a></li>
-										<li><a href="about.xhtml">Comment ça marche</a></li>
+										<li><a href="associations.xhtml">Associations</a></li>
+										<li><a href="commentCaMarche.xhtml">Comment ça marche</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -60,7 +60,7 @@
 									<li><a href="projects.xhtml">Voir les cas</a></li>
 									<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
 									<li><a href="volunteer.xhtml">Associations</a></li>
-									<li><a href="about.xhtml">Comment ça marche</a></li>
+									<li><a href="commentCaMarche.xhtml">Comment ça marche</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -416,15 +416,18 @@
 											<p:commandLink value="#{cas.title}"
 												action="detailCase.xhtml?faces-redirect=true">
 												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.cas}" />
+													target="#{DetailCase.caseObject}" />
 											</p:commandLink>
 										</h5>
 										<ul class="event-meta">
 											<li><i class="fa fa-map-marker"></i>
 											<h:outputText value="#{cas.city}" style="margin-left:5px;" /></li>
 											<li><i class="fa fa-calendar"></i>
-											<h:outputText value="#{cas.endDate} Jours"
-													style="margin-left:5px;" /></li>
+											<h:outputText value="#{cas.endDate}"
+													style="margin-left:5px;" >
+													<f:convertDateTime type="date" dateStyle="medium"/></h:outputText>
+													</li>
+													
 										</ul>
 
 										<h:outputText value="#{cas.slogan}" />

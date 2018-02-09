@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>3awni</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet"
+		type="text/css" />
+	<!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme"
+		type="text/css" />
+	<!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
+
+	<body>
+		<p:dataTable var="ass" value="#{associationBean.liste}">
+    <p:column headerText="Nom">
+        <h:outputText value="#{ass.name}" />
+    </p:column>
+ 
+    <p:column headerText="Email">
+        <h:outputText value="#{ass.email}" />
+    </p:column>
+ 
+    <p:column headerText="Site Web">
+        <h:outputText value="#{ass.website}" />
+    </p:column>
+ 
+    <p:column headerText="Fixe">
+        <h:outputText value="#{ass.fixe}" />
+    </p:column>
+    
+    <p:column headerText="GSM">
+        <h:outputText value="#{ass.gsm}" />
+    </p:column>
+</p:dataTable>	
+	</body>
+</html>

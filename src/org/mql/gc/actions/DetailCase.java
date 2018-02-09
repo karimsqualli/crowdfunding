@@ -7,7 +7,6 @@ public class DetailCase {
 	private String association;
 	
 		public DetailCase() {}
-
 		public Case getCaseObject() {
 			return caseObject;
 		}
