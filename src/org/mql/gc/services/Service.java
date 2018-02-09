@@ -37,4 +37,7 @@ public interface Service {
 	public void addDonation(Donation donation);
 	//***********************************Admin****************************************
 	public boolean loginAdmin(String email, String password);
+	void deleteCase(int id);
+	void updateCase(Case caseObject);
+	List<Case> getCasesNotActivated();
 }

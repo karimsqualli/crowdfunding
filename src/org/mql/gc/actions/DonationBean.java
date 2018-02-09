@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import org.mql.gc.models.Donation;
 import org.mql.gc.services.Service;
-import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 
 public class DonationBean implements Serializable {
@@ -37,7 +36,7 @@ public class DonationBean implements Serializable {
 		return service;
 	}
 
-	public void setService(ServiceImpl service) {
+	public void setService(Service service) {
 		this.service = service;
 	}
 }
