@@ -57,6 +57,27 @@
     <param-name>primefaces.THEME</param-name>
     <param-value>omega</param-value>
   </context-param>
+  
+  <context-param>
+  	<param-name>authtoken</param-name>
+  	<param-value>access_token$sandbox$p83xhsx25d3y4pjx$9b5be770f7c05ff4e9927e0ba3b9da71</param-value>
+  </context-param>
+  
+   <context-param>
+  	<param-name>posturl</param-name>
+  	<param-value>https://www.sandbox.paypal.com/cgi-bin/webscr</param-value>
+  </context-param>
+  
+   <context-param>
+  	<param-name>business</param-name>
+  	<param-value>karimsqualli96-facilitator@gmail.com</param-value>
+  </context-param>
+  
+   <context-param>
+  	<param-name>returnurl</param-name>
+  	<param-value></param-value>
+  </context-param>
+  
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
