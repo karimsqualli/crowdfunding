@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.mql.gc.models.Association;
 import org.mql.gc.models.Donation;
 import org.mql.gc.models.Donor;
 
@@ -106,11 +107,10 @@ public class DonorDaoImp implements DonorDao {
 	public boolean login(String email, String password) {
 		Session session = dao.getSession();
 		session.beginTransaction();
-		String s = "FROM Donor E WHERE E.email = :email and E.password = :password and E.keyActive = :keyActiva";
+		String s = "FROM Donor E WHERE E.email = :email and E.password = :password";
 		Query<Donor> query = session.createQuery(s, Donor.class);
 		query.setParameter("email", email);
 		query.setParameter("password", password);
-		query.setParameter("keyActiva", "active");
 		List<Donor> list = query.list();
 		session.getTransaction().commit();
 		dao.closeSession(session);
@@ -168,5 +168,18 @@ public class DonorDaoImp implements DonorDao {
 		session.getTransaction().commit();
 		dao.closeSession(session);
 	}
+	
+	public boolean isActivated(String email){
+		Session session = dao.getSession();
+		String s = "FROM Donor E WHERE E.email = :email and E.keyActive = :keyActiva";
+		Query<Donor> query = session.createQuery(s, Donor.class);
+		query.setParameter("email", email);
+		query.setParameter("keyActiva", "active");
+		List<Donor> list = query.list();
+		dao.closeSession(session);
+		if (list.size() > 0) return true;
+		else return false;	
+	}
+
 	
 }

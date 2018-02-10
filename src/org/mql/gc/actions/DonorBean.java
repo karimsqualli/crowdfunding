@@ -61,21 +61,24 @@ public class DonorBean {
 	}
 
 	public String validateDonor() {
-		System.out.println("********");
-        boolean loggedIn = false;
 		if (service.loginDonor(donor.getEmail(), donor.getPassword())) {
-            loggedIn = true;
-            connected = true;
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("userid", donor.getId());
-			session.setAttribute("email", donor.getEmail());
-			return "index.xhtml?faces-redirect=true";
+			if(service.isActivatedDonor(donor.getEmail())){
+	            connected = true;
+				HttpSession session = SessionUtils.getSession();
+				session.setAttribute("userid", donor.getId());
+				session.setAttribute("email", donor.getEmail());
+				return "index.xhtml?faces-redirect=true";
+			}
+			else{
+				FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Veuillez activer votre email ! ", ""));
+				return "index";
+			}
 		}
 		else {
-            loggedIn = false;
-			System.out.println("Else");
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email ou mot de passe invalide", ""));
-		    return null;
+			FacesContext.getCurrentInstance().addMessage("donor", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Email ou password incorrecte", ""));
+			return "index";
 		}
 	}
 

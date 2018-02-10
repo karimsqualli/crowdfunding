@@ -29,22 +29,20 @@ public class AssociationBean  implements Serializable{
 	private int listeLength;
 	private EmailManager emailManager;
 	
-
 	//added by hassan 09/01/2018
 	@PostConstruct
 	public  void init(){
 		listeLength=service.getAssociations().size();
 		associations=service.getAssociationsNotActivated();
 	}
+	
 	public AssociationBean() {
 		service=new ServiceImpl();
 		emailManager=new EmailManager();
-		System.out.println("$$  constructeur AssociationBean $$");
 		sectorActivities = new SelectItem[ActivitySector.values().length];
 		legalForm= new SelectItem[LegalForm.values().length];
 	}
 
-	//???
 	public String createAccount() {
 		try {
 		String gRecaptchaResponse = FacesContext.getCurrentInstance().
@@ -52,23 +50,17 @@ public class AssociationBean  implements Serializable{
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
 		if(verify){
-			System.out.println(association.getEmail() + "Heree");
-			System.out.println(service.associationEmailExist(association.getEmail()));
 			if(!service.associationEmailExist(association.getEmail())) {
-				 String key = UUID.randomUUID().toString() ; 
-				 association.setKeyActive(key);
-				 service.addAssociation(association);
-				 emailManager.sendEmailAssociation(key, association);
+				String key = UUID.randomUUID().toString() ; 
+				association.setKeyActive(key);
+				emailManager.sendEmailAssociation(key, association);
+				 
 				initialiserDateInscription();
 				association.setPending(false);
 				service.addAssociation(association);
-//				HttpSession session = SessionUtils.getSession();
-//				session.setAttribute("email", association.getEmail());
-//				session.setAttribute("idAssociation", association.getId());
 				return "LoadCase?faces-redirect=true";
 			}
 			else {
-				System.out.println("existe");
 				FacesContext.getCurrentInstance().addMessage("inscri", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Email existe dèja",""));
 				return "login";
@@ -117,21 +109,17 @@ public class AssociationBean  implements Serializable{
 	    return sectorActivities;
 	}
 
-
 	public Association getAssociation() {
 		return association;
 	}
-
 
 	public void setAssociation(Association association) {
 		this.association = association;
 	}
 
-
 	public SelectItem[] getLegalForm() {
 		return legalForm;
 	}
-
 
 	public void setLegalForm(SelectItem[] legalForm) {
 		this.legalForm = legalForm;
@@ -142,11 +130,9 @@ public class AssociationBean  implements Serializable{
 		return service;
 	}
 
-
 	public void setService(Service service) {
 		this.service = service;
 	}
-
 
 	public void setSectorActivities(SelectItem[] sectorActivities) {
 		this.sectorActivities = sectorActivities;
@@ -159,12 +145,13 @@ public class AssociationBean  implements Serializable{
 	public void setAssociations(List<Association> associations) {
 		this.associations = associations;
 	}
+	
 	public int getListeLength() {
 		return listeLength;
 	}
+	
 	public void setListeLength(int listeLength) {
 		this.listeLength = listeLength;
 	}
-
 
 }

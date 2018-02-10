@@ -14,4 +14,5 @@ public interface DonorDao {
 	public Donor selectByEmail(String email);
 	public Donor select(String email,String key);
 	public void activeAccount(String email,String key);
+	public boolean isActivated(String email);
 }

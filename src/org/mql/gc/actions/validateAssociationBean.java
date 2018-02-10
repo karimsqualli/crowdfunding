@@ -13,14 +13,20 @@ public class validateAssociationBean {
 	
 	public String validateAssociation() {
 		if (service.loginAssociation(association.getEmail(), association.getPassword())) {
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("email", association.getEmail());
-			session.setAttribute("idAssociation", association.getId());
-			return "LoadCase?faces-redirect=true";
+			if(service.isActivated(association.getEmail())){
+				HttpSession session = SessionUtils.getSession();
+				session.setAttribute("email", association.getEmail());
+				session.setAttribute("idAssociation", association.getId());
+				return "LoadCase?faces-redirect=true";
+			}
+			else{
+				FacesContext.getCurrentInstance().addMessage("conne", new FacesMessage(FacesMessage.SEVERITY_WARN,
+						"Veuillez activer votre email ! ", ""));
+				return "login";
+			}
 		}
-		
 		else {
-			FacesContext.getCurrentInstance().addMessage("conne", new FacesMessage(FacesMessage.SEVERITY_WARN,
+			FacesContext.getCurrentInstance().addMessage("conne", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Email ou password incorrecte", ""));
 			return "login";
 		}

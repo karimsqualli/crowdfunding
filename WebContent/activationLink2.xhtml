@@ -44,5 +44,32 @@
 		</h:form>
 		
 	</h:panelGroup>
+	
+<h:panelGroup layout="block" rendered="#{activationAssociation.valid}">
+		
+		<div class="alert alert-success alert-block">
+			<h1>Compte association activé</h1>
+		    <br/>
+		</div>	
+        
+        <div class="alert alert-info alert-block">
+			<h2>vous êtes le bienvenue sur notre plateforme</h2>
+			<br/>
+			<h3>vous pouvez maintenant être un donnateur</h3>
+        </div> 
+             <br/>
+		<h:form id="form2">
+			<div class="alert alert-danger">
+				<h2>Vous allez être redirigé vers la page d'acceuil après  
+			 		<h:outputText  value="#{counterBean.count}" style="font-size: 30px;color:red;" id="txt_count2" />
+	    	 		secondes 
+	    	 	</h2>
+	    	 	<p:poll  interval="1" listener="#{counterBean.increment}" update="txt_count2" />  
+			</div>
+		</h:form>
+		
+	</h:panelGroup>
+	
+	
 </h:body>
 </html>

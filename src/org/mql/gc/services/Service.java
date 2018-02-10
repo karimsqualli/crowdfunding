@@ -18,6 +18,9 @@ public interface Service {
 	public boolean loginAssociation(String email,String password);
 	public List<Association> getAssociationsNotActivated() ;
 	public boolean associationEmailExist(String email);
+	public boolean isActivated(String email);
+	public boolean checkAccountStatusAss(String email,String key);
+	public void activeAssAccount(String email,String key);
 	//************************************Case**************************************
 	public void addCase(Case caseObject);
 	public List<Case> getCases();
@@ -34,6 +37,7 @@ public interface Service {
 	public boolean donorEmailExist(String email);
 	public boolean loginDonor(String email, String password);
 	public double getCostDonor(int id);
+	public boolean isActivatedDonor(String email);
 	//***********************************Donation****************************************
 	public void addDonation(Donation donation);
 	//***********************************Admin****************************************

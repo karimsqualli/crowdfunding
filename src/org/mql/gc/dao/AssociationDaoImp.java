@@ -5,6 +5,7 @@ import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.mql.gc.models.Association;
+import org.mql.gc.models.Donor;
 
 public class AssociationDaoImp implements AssociationDao {
 	private BaseDAO dao;
@@ -119,12 +120,53 @@ public class AssociationDaoImp implements AssociationDao {
 
 	public boolean login(String email, String password) {
 		Session session = dao.getSession();
-		String s = "from Association where email='" + email + "' and password='" + password + "' ";
+		String s = "FROM Association E WHERE E.email = :email and E.password = :password";
 		Query<Association> query = session.createQuery(s, Association.class);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
 		List<Association> list = query.list();
 		dao.closeSession(session);
 		
 		if (list.size() > 0) return true;
 		else return false;
 	}
+	
+	public boolean isActivated(String email){
+		Session session = dao.getSession();
+		String s = "FROM Association E WHERE E.email = :email and E.keyActive = :keyActiva";
+		Query<Association> query = session.createQuery(s, Association.class);
+		query.setParameter("email", email);
+		query.setParameter("keyActiva", "active");
+		List<Association> list = query.list();
+		dao.closeSession(session);
+		if (list.size() > 0) return true;
+		else return false;	
+	}
+
+	public Association select(String email, String key) {
+		Session session = dao.getSession();
+		String s = "FROM Association E WHERE E.email = :email and E.keyActive = :KeyActiva";
+		Query<?> query = session.createQuery(s);
+		query.setParameter("email", email);
+		query.setParameter("KeyActiva", key);
+
+		Association association = (Association)query.uniqueResult();
+		dao.closeSession(session);
+		return association;
+	}
+
+	public void active(String email, String key) {
+		Session session = dao.getSession();
+		session.beginTransaction();
+		String hql = "FROM Association E WHERE E.keyActive = :keyActive and E.email= :Emaila";
+		Query<Association> query = (Query<Association>) session.createQuery(hql);
+		query.setParameter("keyActive", key);
+		query.setParameter("Emaila", email);
+		Association don = (Association) query.uniqueResult();
+		don.setKeyActive("active");
+		session.getTransaction().commit();
+		dao.closeSession(session);
+	}
+	
+	
 }

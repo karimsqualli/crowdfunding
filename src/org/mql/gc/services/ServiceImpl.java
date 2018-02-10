@@ -27,15 +27,30 @@ public class ServiceImpl implements Service {
 
 	
 	public ServiceImpl() {
-//		caseDao = new CaseDaoImp();
-//		associationDao = new AssociationDaoImp();
-//		donorDao = new DonorDaoImp();
-//		donationDao = new DonationDaoImp();
+		caseDao = new CaseDaoImp();
+		associationDao = new AssociationDaoImp();
+		donorDao = new DonorDaoImp();
+		donationDao = new DonationDaoImp();
 //      adminDao = new AdminDaoImp();
 	}
 	
 //******************************Association************************	
+	
+	public boolean checkAccountStatusAss(String email, String key) {
+		if(associationDao.select(email, key)!=null){
+			return true;
+		}
+		return false;
+	}
 
+	public void activeAssAccount(String email, String key) {
+		associationDao.active(email, key);
+	}
+	
+	public boolean isActivated(String email){
+		return associationDao.isActivated(email);
+	}
+	
 	public void addAssociation(Association association) {
 		if(nameExist(association.getName()))
 			System.out.println("association existe deja ");
@@ -108,6 +123,14 @@ public class ServiceImpl implements Service {
 	}
 	
 	//********************************Donnateur*********************************************	
+	
+	
+
+		public boolean isActivatedDonor(String email) {
+			return donorDao.isActivated(email);
+
+		}
+
 		public void addDonor(Donor donor) {
 			System.out.println("service");
 			if(!donorEmailExist(donor.getEmail())){
@@ -148,7 +171,6 @@ public class ServiceImpl implements Service {
 			return donorDao.login(email, password);
 			
 		}
-		
 		
 		public boolean checkAccountStatus(String email,String key){
 			donorDao = new DonorDaoImp();
@@ -238,6 +260,5 @@ public class ServiceImpl implements Service {
 		public void setAdminDao(AdminDao adminDao) {
 			this.adminDao = adminDao;
 		}
-		
 
 }

@@ -3,22 +3,25 @@ package org.mql.gc.actions;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
 import org.mql.gc.services.ServiceImpl;
 
-public class Activation {
+@ManagedBean
+@RequestScoped
+public class ActivationAssociation {
 
 	Map<String, String> params =FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 	String key = params.get("key");
 	String email = params.get("email"); 
 	private ServiceImpl service ;
-    private boolean valid=false;//for donator
+    private boolean valid=false;//
     
     @PostConstruct
     public void init() {
-    	if(service.checkAccountStatus(email,key)){
-    		service.activeAccount(email, key);
+    	if(service.checkAccountStatusAss(email, key)){
+    		service.activeAssAccount(email, key);
     		valid=true; 
     	}
     	else {
@@ -26,7 +29,7 @@ public class Activation {
     	}
     }
     
-    public Activation(){
+    public ActivationAssociation(){
     	service = new ServiceImpl(); 
     }
     

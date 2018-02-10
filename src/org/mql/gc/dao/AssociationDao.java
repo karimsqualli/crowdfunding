@@ -15,4 +15,7 @@ public interface AssociationDao {
 	public boolean login(String email,String password);
 	public Association selectByEmail(String email);
 	public List<Association> selectNotActivated(); 
+	public boolean isActivated(String email);
+	public Association select(String email,String key);
+	public void active(String email,String key);
 }
