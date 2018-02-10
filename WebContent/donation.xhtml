@@ -43,39 +43,7 @@
                                             <h2 class="donor-title">Entrer le montant de votre contribution :</h2>
                                             <div class="donor-information">
                                                 <form action="${initParam['posturl']}" method="post">
-                                                
                                                 <div class="form-group">
-<<<<<<< HEAD
-												<p:outputLabel for="montant" value="Montant" /><br/>
-												<p:spinner id="montant"  value="#{DonationBean.donation.cost}" placeholder="Montant (DH)" min="100" stepFactor="100"
-													required="true" requiredMessage="Veuillez saisir le montant de votre participation"  />
-												<p:message for="montant" />
-                                                </div><br/>
-                                                <div class="form-group">
-                                                <p:outputLabel for="numCartePaiment" value="Numéro de carte de paiement" styleClass="hide"/>
-												<p:inputText styleClass="form-control input-lg c-square" id="numCartePaiment" placeholder="Numéro de carte de paiement" 
-													value="#{DonationBean.donation.numBC}" required="true" maxlength="16"
-													validatorMessage="Veuillez entrer un numero de carte valide" >
-													<f:validateRegex pattern="^[a-zA-Z0-9]{16}+$" />
-												</p:inputText>
-												<p:message for="numCartePaiment" />
-                                                </div><br/>
-                                                <div class="form-group">
-                                                 <p:outputLabel for="ccv" value="CCV" styleClass="hide" />
-												<p:inputText styleClass="form-control input-lg c-square"  id="ccv" placeholder="CCV"  maxlength="3"
-													value="#{DonationBean.donation.ccv}" required="true"  />
-												<p:message for="ccv" />
-                                                </div>
-                                                <div class="form-group">
-                                               <p:outputLabel for="dateExpiration" value="Date d'expiration" styleClass="hide"/><br/>
-												<p:calendar id="dateExpiration" placeholder="Date d'expiration" 
-													value="#{DonationBean.donation.expirationDate}" required="true" requiredMessage="Veuillez indiquer la date d'expriration de votre carte banquaire" />
-												<p:message for="dateExpiration" />
-                                                </div><br/>
-                                                <p:commandButton value="Valider" ajax="true" styleClass="btn-default btn"
-												action="#{DonationBean.createDonnation}" update="@form" process="@form" icon="ui-icon-check" validateClient="true"> </p:commandButton>
-                                            	</h:form>
-=======
                                                     <h:outputFormat> Montant </h:outputFormat>
                                               
 													<input type="text" id="ammount" name="amount_1" required="required" />
@@ -84,7 +52,6 @@
                                                
                                                 <div id="paypal-button-container"></div>
                                             	</form>
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
                                             </div>
                                                             </div>
                                 </div>
@@ -92,7 +59,7 @@
                                 
                                     <div class="donor-thumb-wrapper">
                                         <h2 class="donor-title">Citation du jour !</h2>
-                                        <img src="img/bg/about.png" alt="" />
+                                        
                                         <div class="donor-message">
                                             <h3></h3>
                                             <span>Aide et ALLAH sera en votre aide !</span>

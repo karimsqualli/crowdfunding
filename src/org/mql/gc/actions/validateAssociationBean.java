@@ -14,10 +14,19 @@ public class validateAssociationBean {
 	public String validateAssociation() {
 		if (service.loginAssociation(association.getEmail(), association.getPassword())) {
 			if(service.isActivated(association.getEmail())){
-				HttpSession session = SessionUtils.getSession();
-				session.setAttribute("email", association.getEmail());
-				session.setAttribute("idAssociation", association.getId());
-				return "LoadCase?faces-redirect=true";
+				if(service.isPending(association.getEmail())) {
+					HttpSession session = SessionUtils.getSession();
+					session.setAttribute("email", association.getEmail());
+					session.setAttribute("idAssociation", association.getId());
+					return "LoadCase?faces-redirect=true";
+				}
+				else{
+					System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+					FacesContext.getCurrentInstance().addMessage("conne", new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Votre compte est en cours de traitement, votre compte sera vérifier dans un délai max 7 jours ", ""));
+					return "login";
+				}
+				
 			}
 			else{
 				FacesContext.getCurrentInstance().addMessage("conne", new FacesMessage(FacesMessage.SEVERITY_WARN,

@@ -26,7 +26,6 @@ public class CaseDaoImp implements CaseDao {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			caseObject.setPending(true);
 			session.save(caseObject);
 			tx.commit();
 		} catch (RuntimeException e) {
@@ -41,7 +40,7 @@ public class CaseDaoImp implements CaseDao {
 	public List<Case> select() {
 			List<Case> list=null;
 			Session session = dao.getSession();
-			Query<Case> query = session.createQuery("from Case CS",Case.class);
+			Query<Case> query = session.createQuery("from Case WHERE pending='1'",Case.class);
 			list = query.list();
 			dao.closeSession(session);
 			return list;		
@@ -49,7 +48,7 @@ public class CaseDaoImp implements CaseDao {
 	
 	public List<Case> selectUrgent() {
 			Session session = dao.getSession();
-			Query<Case> query = session.createQuery("from Case C order by cost asc, endDate asc", Case.class);
+			Query<Case> query = session.createQuery("from Case WHERE pending='1' order by cost asc, endDate asc", Case.class);
 			List<Case> list = query.list();
 			dao.closeSession(session);			
 			return list;

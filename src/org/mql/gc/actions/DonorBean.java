@@ -43,14 +43,15 @@ public class DonorBean {
 		RequestContext context = RequestContext.getCurrentInstance();
 		if(!service.donorEmailExist(donor.getEmail())) {
 			service.addDonor(donor);
-	        message = new FacesMessage(FacesMessage.SEVERITY_INFO,"votre inscription a ete effectue avec succee", "");
-	        subscribe = true; 
+			FacesContext.getCurrentInstance().addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Votre compte a été crée avec succés, pour pouvoir se connecter veuillez valider le compte sur votre boite email",""));	        
+			subscribe = true; 
 			sendEmail(key);
 		}
 		else{
-			message = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Email exite déjà", "");
+			FacesContext.getCurrentInstance().addMessage("growl", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"L'email existe dèja",""));	
 		}
-        FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("sign_in", subscribe);
         return "index.xhtml?faces-redirect=true";
 	}
@@ -67,13 +68,13 @@ public class DonorBean {
 			else{
 				FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_WARN,
 						"Veuillez activer votre email ! ", ""));
-				return "index";
+				return null;
 			}
 		}
 		else {
-			FacesContext.getCurrentInstance().addMessage("donor", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			FacesContext.getCurrentInstance().addMessage("", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Email ou password incorrecte", ""));
-			return "index";
+			return null;
 		}
 	}
 

@@ -72,8 +72,9 @@ public class AssociationDaoImp implements AssociationDao {
 	}
 
 	public List<Association> select() {
+		System.out.println("ffffffffffffffffffffffff");
 		Session session = dao.getSession();
-		Query<Association> query = session.createQuery("from Association where pending = 'true'", Association.class);
+		Query<Association> query = session.createQuery("from Association where pending='1' and keyActive ='active'", Association.class);
 		List<Association> list = query.list();
 		dao.closeSession(session);
 		return list;
@@ -81,7 +82,7 @@ public class AssociationDaoImp implements AssociationDao {
 	
 	public List<Association> selectNotActivated() {
 		Session session = dao.getSession();
-		Query<Association> query = session.createQuery("from Association where pending='0'", Association.class);
+		Query<Association> query = session.createQuery("from Association where pending='0' and keyActive = 'active'", Association.class);
 		List<Association> list = query.list();
 		dao.closeSession(session);
 		System.out.println("here");
@@ -166,6 +167,18 @@ public class AssociationDaoImp implements AssociationDao {
 		don.setKeyActive("active");
 		session.getTransaction().commit();
 		dao.closeSession(session);
+	}
+
+	public boolean isPending(String email) {
+		Session session = dao.getSession();
+		String s = "FROM Association E WHERE E.email = :email and pending='1'";
+		Query<Association> query = session.createQuery(s, Association.class);
+		query.setParameter("email", email);
+		List<Association> list = query.list();
+		dao.closeSession(session);
+		
+		if (list.size() > 0) return true;
+		else return false;
 	}
 	
 	

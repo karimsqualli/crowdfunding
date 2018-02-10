@@ -21,6 +21,7 @@ public interface Service {
 	public boolean isActivated(String email);
 	public boolean checkAccountStatusAss(String email,String key);
 	public void activeAssAccount(String email,String key);
+	public boolean isPending(String email);
 	//************************************Case**************************************
 	public void addCase(Case caseObject);
 	public List<Case> getCases();

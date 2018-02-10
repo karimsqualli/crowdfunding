@@ -93,6 +93,7 @@
 					<div class="modal-body">
 						<h3 class="c-font-24 c-font-sbold">Créer un compte</h3>
 						<h:form>
+						    <p:growl id="growl" for="growl" showDetail="true" sticky="true" />  
 							<div class="form-group">
 								<label for="signup-email" class="hide">Email</label>
 								<p:inputText id="email" value="#{DonorBean.donor.email}"
@@ -160,7 +161,7 @@
 							<div class="form-group">
 
 								<p:commandButton value="s'inscrire" process="@form"
-									update="@form" action="#{DonorBean.createAccount}"
+									update="@form:growl" action="#{DonorBean.createAccount}"
 									styleClass="btn btn-default" />
 								<a href="javascript:;" class="c-btn-forgot" data-toggle="modal"
 									data-target="#login-form" data-dismiss="modal">Retour à la

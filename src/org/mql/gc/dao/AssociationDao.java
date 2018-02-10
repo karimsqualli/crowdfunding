@@ -18,4 +18,5 @@ public interface AssociationDao {
 	public boolean isActivated(String email);
 	public Association select(String email,String key);
 	public void active(String email,String key);
+	public boolean isPending(String email);
 }

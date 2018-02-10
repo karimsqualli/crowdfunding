@@ -3,6 +3,7 @@ package org.mql.gc.services;
 import java.util.List;
 
 import org.mql.gc.dao.AdminDao;
+import org.mql.gc.dao.AdminDaoImp;
 import org.mql.gc.dao.AssociationDao;
 import org.mql.gc.dao.AssociationDaoImp;
 import org.mql.gc.dao.DonationDao;
@@ -31,6 +32,7 @@ public class ServiceImpl implements Service {
 		associationDao = new AssociationDaoImp();
 		donorDao = new DonorDaoImp();
 		donationDao = new DonationDaoImp();
+		adminDao = new AdminDaoImp();
 //		caseDao = new CaseDaoImp();
 //		associationDao = new AssociationDaoImp();
 //		donorDao = new DonorDaoImp();
@@ -39,6 +41,9 @@ public class ServiceImpl implements Service {
 	}
 	
 //******************************Association************************	
+	public boolean isPending(String email) {
+		return associationDao.isPending(email);
+	}
 	
 	public boolean checkAccountStatusAss(String email, String key) {
 		if(associationDao.select(email, key)!=null){
@@ -278,5 +283,7 @@ public class ServiceImpl implements Service {
 		public void setAdminDao(AdminDao adminDao) {
 			this.adminDao = adminDao;
 		}
+
+		
 
 }
