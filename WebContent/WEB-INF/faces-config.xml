@@ -28,6 +28,10 @@
 		<managed-bean-name>ValidateDonation</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.ValidateDonation</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>service</property-name>
+			<value>#{ServiceImpl}</value>
+		</managed-property>
 	</managed-bean>	
 	
 <!-- added by hassan after adding configuring spring ioc 7/01/2018 -->

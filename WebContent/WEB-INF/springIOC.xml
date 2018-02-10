@@ -50,14 +50,11 @@
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="association" ref="Association"></property>
     </bean>
-<<<<<<< HEAD
-=======
     
     <bean id="ValidateDonation" class="org.mql.gc.actions.ValidateDonation">
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="donation" ref="Donation"></property>
     </bean>
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
     <bean id="AdminBean" class="org.mql.gc.actions.AdminBean">
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="admin" ref="Admin"></property>
@@ -86,27 +83,5 @@
  	<bean id="Association" class="org.mql.gc.models.Association"/>
  	<bean id="Case" class="org.mql.gc.models.Case"/>
  	<bean id="Admin" class="org.mql.gc.models.Admin"/>
- 	
- 	
- 
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
     
 </beans>

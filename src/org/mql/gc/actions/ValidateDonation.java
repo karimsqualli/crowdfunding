@@ -11,6 +11,8 @@ import org.mql.gc.models.Donation;
 import org.mql.gc.services.Service;
 import org.mql.gc.utils.SessionUtils;
 
+
+
 public class ValidateDonation {
 
 	private Donation donation;
