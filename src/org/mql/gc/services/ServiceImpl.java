@@ -45,6 +45,12 @@ public class ServiceImpl implements Service {
 		}
 	}
 	
+	public boolean associationEmailExist(String email){
+		if(associationDao.selectByEmail(email) != null) 
+			return true ; 
+		return false;
+	}
+	
 	public void updateAssociation(Association association) {
 		associationDao.update(association);
 	}
@@ -77,6 +83,8 @@ public class ServiceImpl implements Service {
 	public List<Association> getAssociationsNotActivated() {
 		return associationDao.selectNotActivated();
 	}
+	
+	
 
 //*********************************Cas*****************************************
 	
@@ -123,7 +131,6 @@ public class ServiceImpl implements Service {
 		public void updateDonor(int id) {
 			donorDao.update(id);
 		}
-
 		
 		public void deleteDonator(int id) {
 			donorDao.delete(id);
@@ -167,8 +174,7 @@ public class ServiceImpl implements Service {
 		
 		public void activeAccount(String email,String key){
 			donorDao =new DonorDaoImp();
-//			donorDao.(email, key);
-		
+			donorDao.activeAccount(email, key);
 		}
 //***************************************Admin********************************************		
 		

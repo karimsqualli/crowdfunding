@@ -1,6 +1,7 @@
 package org.mql.gc.actions;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -46,17 +47,28 @@ public class AssociationBean  implements Serializable{
 		getExternalContext().getRequestParameterMap().get("g-recaptcha-response");
 		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 		if(verify){
-			System.out.println("creating association");
-			association.setPending(false);
-			service.addAssociation(association);
-			HttpSession session = SessionUtils.getSession();
-			session.setAttribute("email", association.getEmail());
-			session.setAttribute("idAssociation", association.getId());
-			return "LoadCase?faces-redirect=true";
+			System.out.println(association.getEmail() + "Heree");
+			System.out.println(service.associationEmailExist(association.getEmail()));
+			if(!service.associationEmailExist(association.getEmail())) {
+				initialiserDateInscription();
+				association.setPending(false);
+				service.addAssociation(association);
+//				HttpSession session = SessionUtils.getSession();
+//				session.setAttribute("email", association.getEmail());
+//				session.setAttribute("idAssociation", association.getId());
+				return "LoadCase?faces-redirect=true";
+			}
+			else {
+				System.out.println("existe");
+				FacesContext.getCurrentInstance().addMessage("inscri", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Email existe dèja",""));
+
+				return "login";
+			}
 		 }
 				        
 		else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			FacesContext.getCurrentInstance().addMessage("inscri", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Veuillez cocher le Re-Captcha ",""));
 			return "login";
 					          }
@@ -76,6 +88,10 @@ public class AssociationBean  implements Serializable{
 		associations = service.getAssociationsNotActivated();
 		return "validateAssociation.xhtml?faces-redirect=true";
 	}
+	private void initialiserDateInscription() {
+        Timestamp date = new Timestamp( System.currentTimeMillis() );
+        association.setAddedDate(date);
+    }
 
 	public SelectItem[] getLowForms() {
 	    int i = 0;
