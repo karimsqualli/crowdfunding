@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/4999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>3awni</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet"
+		type="text/css" />
+	<!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme"
+		type="text/css" />
+	<!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
+<h:body>
+<ui:composition>
+ <!-- Event section start  -->
+            <div class="event-section theme-section gray-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="area-heading text-center">
+                                <h2 class="area-title">La selection</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[0].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[0].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[0]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[0].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[0].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[0].endDate)} J"
+													style="margin-left:5px;" >
+													</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[0].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[0].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[0].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[0].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[0].id)*100/ShowCase.liste[0].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[0].id)/ShowCase.liste[0].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[0]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6" >
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[1].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[1].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[1]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[1].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[1].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[1].endDate)} J"
+													style="margin-left:5px;" ></h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[1].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[1].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[1].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[1].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[1].id)*100/ShowCase.liste[1].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[1].id)/ShowCase.liste[1].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[1]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                    </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6" >
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[2].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[2].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[2]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[2].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[2].endDate}"  value="#{ShowCase.daysBetween(ShowCase.liste[2].endDate)} J" style="margin-left:5px;" >
+													</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[2].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[2].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[2].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[2].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[2].id)*100/ShowCase.liste[2].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[2].id)/ShowCase.liste[2].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[2]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[3].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[3].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[3]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[3].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[3].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[3].endDate)} J"
+													style="margin-left:5px;" >
+													</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[3].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[3].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[3].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[3].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[3].id)*100/ShowCase.liste[3].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[3].id)/ShowCase.liste[3].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[3]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[4].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[4].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[4]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[4].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[4].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[4].endDate)} J"
+													style="margin-left:5px;" >
+												</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[4].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[4].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[4].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[4].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[4].id)*100/ShowCase.liste[4].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[4].id)/ShowCase.liste[4].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[4]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[5].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[5].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[5]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[5].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[5].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[5].endDate)} J"
+													style="margin-left:5px;" >
+													</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[5].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[5].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[5].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[5].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[5].id)*100/ShowCase.liste[5].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[5].id)/ShowCase.liste[5].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[5]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[6].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[6].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[6]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[6].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[6].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[6].endDate)} J"
+													style="margin-left:5px;" >
+													</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[6].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[6].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[6].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[6].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[6].id)*100/ShowCase.liste[6].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[6].id)/ShowCase.liste[6].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[6]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="single-event">
+                               <div class="event-thumb">
+										<p:graphicImage value="#{ShowCase.liste[7].fileContentI}" />
+									</div>
+                                <div class="event-content event-content-2">
+                                    <h5 class="single-event-title"><p:commandLink value="#{ShowCase.liste[7].title}"
+												action="detailCase.xhtml?faces-redirect=true">
+												<f:setPropertyActionListener value="#{ShowCase.liste[7]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandLink></h5>
+                                   <ul class="event-meta">
+											<li><i class="fa fa-map-marker"></i>
+											<h:outputText value="#{ShowCase.liste[7].city}" style="margin-left:5px;" /></li>
+											<li><i class="fa fa-calendar"></i>
+											<h:outputText rendered="#{not empty ShowCase.liste[7].endDate}" value="#{ShowCase.daysBetween(ShowCase.liste[7].endDate)} J"
+													style="margin-left:5px;" >
+											</h:outputText>
+													</li>
+									</ul>
+									<h:outputText value="#{ShowCase.liste[7].slogan}" />
+										<br />
+
+
+										<div class="donet-bar">
+											<p>
+												Col:
+												<h:outputText value="#{ShowCase.getRes(ShowCase.liste[7].id)}">
+													<f:convertNumber minFractionDigits="0" />
+												</h:outputText>
+												DH<span class="project-goal"> Obj: <h:outputText
+														value="#{ShowCase.liste[7].cost}">
+														<f:convertNumber minFractionDigits="0" />
+													</h:outputText> DH
+												</span>
+											</p>
+											<div class="progress-bar-area">
+												<div class="single-progress-bar">
+													<div class="progress ">
+														<div class="progress-bar wow fadeInLeft"
+															role="progressbar"
+															aria-valuenow="#{ShowCase.getRes(ShowCase.liste[7].id)}"
+															aria-valuemin="0" aria-valuemax="200"
+															style="width: #{ShowCase.getRes(ShowCase.liste[7].id)*100/ShowCase.liste[7].cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
+															<span> <h:outputText
+																	value="#{ShowCase.getRes(ShowCase.liste[7].id)/ShowCase.liste[7].cost}">
+																	<f:convertNumber type="percent" />
+																</h:outputText>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<h:form>
+											<p:commandButton
+												action="detailCase.xhtml?faces-redirect=true"
+												value="voir plus" styleClass="btn btn-default">
+												<f:setPropertyActionListener value="#{ShowCase.liste[7]}"
+													target="#{DetailCase.caseObject}" />
+											</p:commandButton>
+										</h:form>
+									</div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Event section end  -->        
+</ui:composition>
+</h:body>
+</html>
+

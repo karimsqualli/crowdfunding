@@ -20,9 +20,8 @@ public class validateAssociationBean {
 		}
 		
 		else {
-			System.out.println("Else");
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Incorrect Username and Passowrd", "Please enter correct username and Password"));
+			FacesContext.getCurrentInstance().addMessage("conne", new FacesMessage(FacesMessage.SEVERITY_WARN,
+					"Email ou password incorrecte", ""));
 			return "login";
 		}
 	}

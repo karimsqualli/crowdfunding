@@ -1,27 +1,44 @@
 package org.mql.gc.actions;
 
-
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.UUID;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
-
 import org.mql.gc.models.ActivitySector;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.LegalForm;
+import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
+import org.primefaces.context.RequestContext;
 
 public class AssociationBean  implements Serializable{
 	private Association association;
 	private SelectItem[] sectorActivities; 
 	private SelectItem[] legalForm;
-	private ServiceImpl service ;	
+	private Service service ;	
+	private List<Association> associations;
+	private int listeLength;
+	private EmailManager emailManager;
+	
 
 	//added by hassan 09/01/2018
-	public  AssociationBean(){
+	@PostConstruct
+	public  void init(){
+		listeLength=service.getAssociations().size();
+		associations=service.getAssociationsNotActivated();
+	}
+	public AssociationBean() {
+		service=new ServiceImpl();
+		emailManager=new EmailManager();
 		System.out.println("$$  constructeur AssociationBean $$");
 		sectorActivities = new SelectItem[ActivitySector.values().length];
 		legalForm= new SelectItem[LegalForm.values().length];
@@ -29,14 +46,60 @@ public class AssociationBean  implements Serializable{
 
 	//???
 	public String createAccount() {
-		System.out.println("creating association");
-		service.addAssociation(association);
-		HttpSession session = SessionUtils.getSession();
-		session.setAttribute("email", association.getEmail());
-		session.setAttribute("idAssociation", association.getId());
-		FacesContext.getCurrentInstance().addMessage("terminate", new FacesMessage("Inscription réussi"));
-		return "LoadCase?faces-redirect=true";
+		try {
+		String gRecaptchaResponse = FacesContext.getCurrentInstance().
+		getExternalContext().getRequestParameterMap().get("g-recaptcha-response");
+		boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
+		if(verify){
+			System.out.println(association.getEmail() + "Heree");
+			System.out.println(service.associationEmailExist(association.getEmail()));
+			if(!service.associationEmailExist(association.getEmail())) {
+				 String key = UUID.randomUUID().toString() ; 
+				 association.setKeyActive(key);
+				 service.addAssociation(association);
+				 emailManager.sendEmailAssociation(key, association);
+				initialiserDateInscription();
+				association.setPending(false);
+				service.addAssociation(association);
+//				HttpSession session = SessionUtils.getSession();
+//				session.setAttribute("email", association.getEmail());
+//				session.setAttribute("idAssociation", association.getId());
+				return "LoadCase?faces-redirect=true";
+			}
+			else {
+				System.out.println("existe");
+				FacesContext.getCurrentInstance().addMessage("inscri", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Email existe dèja",""));
+				return "login";
+			}
+		 }
+				        
+		else{
+			FacesContext.getCurrentInstance().addMessage("inscri", new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Veuillez cocher le Re-Captcha ",""));
+			return "login";
+					          }
+		} catch (Exception e) {return null;}		
+			         
 	}
+	
+	public String deleteAccount(int id) {
+		service.deleteAssociation(id);
+		associations = service.getAssociationsNotActivated();
+	return "validateAssociation.xhtml?faces-redirect=true";
+	}
+	
+	public String validateAssociation(Association association) {
+		association.setPending(true);
+		service.updateAssociation(association);
+		associations = service.getAssociationsNotActivated();
+		return "validateAssociation.xhtml?faces-redirect=true";
+	}
+	private void initialiserDateInscription() {
+        Timestamp date = new Timestamp( System.currentTimeMillis() );
+        association.setAddedDate(date);
+    }
 
 	public SelectItem[] getLowForms() {
 	    int i = 0;
@@ -75,12 +138,12 @@ public class AssociationBean  implements Serializable{
 	}
 
 
-	public ServiceImpl getService() {
+	public Service getService() {
 		return service;
 	}
 
 
-	public void setService(ServiceImpl service) {
+	public void setService(Service service) {
 		this.service = service;
 	}
 
@@ -89,7 +152,19 @@ public class AssociationBean  implements Serializable{
 		this.sectorActivities = sectorActivities;
 	}
 
-	
-	
+	public List<Association> getAssociations() {
+		return associations;
+	}
+
+	public void setAssociations(List<Association> associations) {
+		this.associations = associations;
+	}
+	public int getListeLength() {
+		return listeLength;
+	}
+	public void setListeLength(int listeLength) {
+		this.listeLength = listeLength;
+	}
+
 
 }

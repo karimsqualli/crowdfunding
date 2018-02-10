@@ -156,7 +156,7 @@ public class DonorDaoImp implements DonorDao {
 		return don;
 	}
 	
-	public Donor activeAccount(String email , String key) {
+	public void activeAccount(String email , String key) {
 		Session session = dao.getSession();
 		session.beginTransaction();
 		String hql = "FROM Donor E WHERE E.keyActive = :keyActive and E.email= :Emaila";
@@ -167,7 +167,6 @@ public class DonorDaoImp implements DonorDao {
 		don.setKeyActive("active");
 		session.getTransaction().commit();
 		dao.closeSession(session);
-		return don;
 	}
 	
 }

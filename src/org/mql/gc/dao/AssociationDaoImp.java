@@ -37,13 +37,12 @@ public class AssociationDaoImp implements AssociationDao {
 		}
 	}
 
-	public void update(int id) {
+	public void update(Association association) {
 		Session session = dao.getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			Association association = (Association)session.get(Association.class, id);
-			session.update(association);
+			session.saveOrUpdate(association);
 			tx.commit();
 		} catch (RuntimeException e1) {
 			if (tx != null)
@@ -73,9 +72,21 @@ public class AssociationDaoImp implements AssociationDao {
 
 	public List<Association> select() {
 		Session session = dao.getSession();
-		Query<Association> query = session.createQuery("from Association", Association.class);
+		Query<Association> query = session.createQuery("from Association where pending = 'true'", Association.class);
 		List<Association> list = query.list();
 		dao.closeSession(session);
+		return list;
+	}
+	
+	public List<Association> selectNotActivated() {
+		Session session = dao.getSession();
+		Query<Association> query = session.createQuery("from Association where pending='0'", Association.class);
+		List<Association> list = query.list();
+		dao.closeSession(session);
+		System.out.println("here");
+		for (Association association : list) {
+			System.out.println(association);
+		}
 		return list;
 	}
 
@@ -108,7 +119,7 @@ public class AssociationDaoImp implements AssociationDao {
 
 	public boolean login(String email, String password) {
 		Session session = dao.getSession();
-		String s = "from Association where email='" + email + "' and password='" + password + "'";
+		String s = "from Association where email='" + email + "' and password='" + password + "' ";
 		Query<Association> query = session.createQuery(s, Association.class);
 		List<Association> list = query.list();
 		dao.closeSession(session);

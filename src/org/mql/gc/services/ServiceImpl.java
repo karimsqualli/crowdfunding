@@ -1,8 +1,12 @@
 package org.mql.gc.services;
 
 import java.util.List;
+
+import org.mql.gc.dao.AdminDao;
 import org.mql.gc.dao.AssociationDao;
+import org.mql.gc.dao.AssociationDaoImp;
 import org.mql.gc.dao.DonationDao;
+import org.mql.gc.dao.DonationDaoImp;
 import org.mql.gc.dao.DonorDao;
 import org.mql.gc.dao.DonorDaoImp;
 import org.mql.gc.dao.CaseDao;
@@ -19,10 +23,15 @@ public class ServiceImpl implements Service {
 	private AssociationDao associationDao;
 	private DonorDao donorDao;
 	private DonationDao donationDao;
+	private AdminDao adminDao;
 
 	
 	public ServiceImpl() {
-		
+//		caseDao = new CaseDaoImp();
+//		associationDao = new AssociationDaoImp();
+//		donorDao = new DonorDaoImp();
+//		donationDao = new DonationDaoImp();
+//      adminDao = new AdminDaoImp();
 	}
 	
 //******************************Association************************	
@@ -36,8 +45,14 @@ public class ServiceImpl implements Service {
 		}
 	}
 	
-	public void updateAssociation(int id) {
-		associationDao.update(id);
+	public boolean associationEmailExist(String email){
+		if(associationDao.selectByEmail(email) != null) 
+			return true ; 
+		return false;
+	}
+	
+	public void updateAssociation(Association association) {
+		associationDao.update(association);
 	}
 
 	public void delete(int id) {
@@ -64,6 +79,9 @@ public class ServiceImpl implements Service {
 
 	public boolean loginAssociation(String email, String password) {	
 		return associationDao.login(email, password);
+	}
+	public List<Association> getAssociationsNotActivated() {
+		return associationDao.selectNotActivated();
 	}
 
 //*********************************Cas*****************************************
@@ -142,36 +160,28 @@ public class ServiceImpl implements Service {
 		
 		public void activeAccount(String email,String key){
 			donorDao =new DonorDaoImp();
-//			donorDao.(email, key);
-		
+			donorDao.activeAccount(email, key);
 		}
+//***************************************Admin********************************************		
+		
+		public boolean loginAdmin(String email, String password) {	
+			return adminDao.login(email, password);
+		}
+		
 //*********************************test for spring*****************************************
 		public void sayTest(){
 			System.out.println("§§§ test setvice §§§");
 		}
-
-
-
-
-		public void updateAssosiaction(int id) {
-			associationDao.update(id);
-		}
-
+		
 		@Override
 		public void deleteAssociation(int id) {
 			associationDao.delete(id);
 		}
 
-
-
-
 		@Override
 		public boolean associationNameExist(String name) {
 			return false;
 		}
-
-
-
 
 		public List<Case> getAssociations(String nom, String category) {			
 			return null;
@@ -220,5 +230,14 @@ public class ServiceImpl implements Service {
 		public void setDonationDao(DonationDao donationDao) {
 			this.donationDao = donationDao;
 		}
+
+		public AdminDao getAdminDao() {
+			return adminDao;
+		}
+
+		public void setAdminDao(AdminDao adminDao) {
+			this.adminDao = adminDao;
+		}
+		
 
 }

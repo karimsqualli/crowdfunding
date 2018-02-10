@@ -28,7 +28,7 @@ public class FilterForAll implements Filter{
 			 * this call the index.xhtml page but it save the URL of request 
 			 */
 				request.setAttribute("logDon", "notIn");
-		        RequestDispatcher rd= ((HttpServletRequest)request).getRequestDispatcher("/index.xhtml");
+		        RequestDispatcher rd= ((HttpServletRequest)request).getRequestDispatcher("/detailCase.xhtml");
 		        rd.forward(request, response);
 		}	
 		else if(ida==null && uri.indexOf("/LoadCase.xhtml")>=0){

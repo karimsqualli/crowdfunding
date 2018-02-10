@@ -26,8 +26,8 @@ import org.apache.commons.io.IOUtils;
 public class InsertCaseBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Case caseObject;
-	private Service service;
-	private static final String BASE_STATIC_PATH = "D:/ProjetGL3/WebContent/static/";
+	private Service service;						//D:/ProjetGL3/WebContent/static/
+	private static final String BASE_STATIC_PATH = "C:/Users/SALAM/workspace/CrowdFunding`/crowdfunding/repoGit/WebContent/static/";
 	private static final String BASE_SERVER_STATIC_PATH = "./static/";
 	private static final String IMAGE_DIR = "images";
 	private static final String VIDEO_DIR = "videos";
@@ -39,6 +39,7 @@ public class InsertCaseBean implements Serializable{
 		int id =(int)session.getAttribute("idAssociation");
 		initialiserDateInscription();
 		caseObject.setIdAssociation(id);
+		caseObject.setPending(false);
 		service.addCase(caseObject);
 		return "index?faces-redirect=true";
 	}

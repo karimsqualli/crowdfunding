@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Kaisahhh</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="img/icons/favicon.png" />
+	<link rel="stylesheet" href="css/elements.css" />
+	<link rel="stylesheet" href="css/styleT.css" />
+	<link rel="stylesheet" href="css/responsive.css" />
+	<link href="css/components.css" id="style_components" rel="stylesheet"
+		type="text/css" />
+	<!-- affichage horizontale -->
+	<link href="css/default.css" rel="stylesheet" id="style_theme"
+		type="text/css" />
+	<!-- button -->
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</h:head>
+
+<h:body>
+	<ui:insert name="header">
+		<ui:include src="headerAdmin.xhtml" />
+	</ui:insert>
+
+	<!-- Table start -->
+
+	<section class="content">
+		<!-- Donet section start -->
+		<div class="donet-section theme-section theme-section-ex-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="area-heading text-center">
+							<h3 class="area-title">Les associations en attente de validation</h3>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+
+						<div class="donate-feature-list navigation-style-1">
+							<article class="single-event">
+								<h:form id="upd">
+									<p:dataTable var="association" id="aa"
+										value="#{AssociationBean.associations}" stickyHeader="true">
+
+										<p:column headerText="Id de l'association">
+											<p:commandLink value="#{association.id}" update=":upd:apd"
+												action="detailAssociation.xhtml?faces-redirect=true">
+												<!-- onclick="PF('dlg2').show('#{component.clientId}')" -->
+												<f:setPropertyActionListener value="#{association}"
+													target="#{AssociationBean.association}" />
+											</p:commandLink>
+										</p:column>
+										<p:column headerText="name">
+											<h:outputText value="#{association.name}" />
+										</p:column>
+										<p:column>
+											<p:commandButton value="valider"
+												actionListener="#{AssociationBean.validateAssociation(association)}"
+												update="aa"></p:commandButton>
+											<p:commandButton value="refuser"
+												actionListener="#{AssociationBean.deleteAccount(association.id)}"
+												update="aa"></p:commandButton>
+										</p:column>
+
+									</p:dataTable>
+								
+	<p:overlayPanel widgetVar="dlg2" styleClass="single-event" showEffect="fade"
+			hideEffect="fade" dismissable="false" showCloseIcon="true" >
+			<p:outputPanel id="apd" style="height:100%;width:100%;text-align:center;" >
+					<h:outputText value="Id:" />
+					<h:outputText value="#{asso.id}" />
+					
+					<h:outputText value="Name:" />
+					<h:outputText value="#{asso.name}" />
+					
+					<h:outputText value="Pattente:" />
+					<h:outputText value="#{asso.pattente}" />
+					
+					<h:outputText value="Activité:" />
+					<h:outputText value="#{asso.activityArea}" />
+					
+					<h:outputText value="Forme juridique:" />
+					<h:outputText value="#{asso.legalForm}" />
+					
+					<h:outputText value="Gsm:" />
+					<h:outputText value="#{asso.gsm}" />
+					
+					<h:outputText value="Fixe:" />
+					<h:outputText value="#{asso.fixe}" />
+					
+					<h:outputText value="Date d'ajout:" />
+					<h:outputText value="#{asso.addedDate}" />
+					
+			</p:outputPanel>
+		</p:overlayPanel>
+								</h:form>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	
+
+
+	</section>
+	<!-- Table end -->
+
+	<!-- Footer section start -->
+	<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
+	<!-- Footer section end -->
+
+</h:body>
+</html>

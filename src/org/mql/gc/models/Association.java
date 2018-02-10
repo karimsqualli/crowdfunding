@@ -16,6 +16,16 @@ public class Association{
 	private String fixe; 
 	private String gsm; 
 	private Timestamp addedDate;
+	private boolean pending;
+	private String keyActive ; 
+	
+	public String getKeyActive() {
+		return keyActive;
+	}
+
+	public void setKeyActive(String keyActive) {
+		this.keyActive = keyActive;
+	}
 
 	public Association() {
 
@@ -116,5 +126,19 @@ public class Association{
 	public void setAddedDate(Timestamp addedDate) {
 		this.addedDate = addedDate;
 	}
+
+	public boolean isPending() {
+		return pending;
+	}
+
+	public void setPending(boolean pending) {
+		this.pending = pending;
+	}
+
+	@Override
+	public String toString() {
+		return "Association [id=" + id + " pending=" + pending + "]";
+	}
+	
 
 }

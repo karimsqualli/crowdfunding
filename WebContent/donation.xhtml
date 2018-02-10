@@ -20,7 +20,7 @@
 </h:head>
 <h:body>
 <f:metadata>
-		<f:viewParam name="id" value="#{DonAction.donation.idCas}">
+		<f:viewParam name="id" value="#{DonationBean.donation.idCase}">
 		</f:viewParam>
 </f:metadata>
 
@@ -44,33 +44,33 @@
                                                 <h:form>
                                                 <div class="form-group">
 												<p:outputLabel for="montant" value="Montant" /><br/>
-												<p:spinner id="montant"  value="#{DonAction.donation.cout}" placeholder="Montant (DH)" min="100" stepFactor="100"
-													required="true" requiredMessage="Ce champ est requis"  />
+												<p:spinner id="montant"  value="#{DonationBean.donation.cost}" placeholder="Montant (DH)" min="100" stepFactor="100"
+													required="true" requiredMessage="Veuillez saisir le montant de votre participation"  />
 												<p:message for="montant" />
                                                 </div><br/>
                                                 <div class="form-group">
                                                 <p:outputLabel for="numCartePaiment" value="Numéro de carte de paiement" styleClass="hide"/>
 												<p:inputText styleClass="form-control input-lg c-square" id="numCartePaiment" placeholder="Numéro de carte de paiement" 
-													value="#{DonAction.donation.numCb}" required="true"
-													validatorMessage="Entrez un numero de carte valide" >
+													value="#{DonationBean.donation.numBC}" required="true" maxlength="16"
+													validatorMessage="Veuillez entrer un numero de carte valide" >
 													<f:validateRegex pattern="^[a-zA-Z0-9]{16}+$" />
 												</p:inputText>
 												<p:message for="numCartePaiment" />
                                                 </div><br/>
                                                 <div class="form-group">
                                                  <p:outputLabel for="ccv" value="CCV" styleClass="hide" />
-												<p:inputText styleClass="form-control input-lg c-square"  id="ccv" placeholder="CCV" 
-													value="#{DonAction.donation.ccv}" required="true"  />
+												<p:inputText styleClass="form-control input-lg c-square"  id="ccv" placeholder="CCV"  maxlength="3"
+													value="#{DonationBean.donation.ccv}" required="true"  />
 												<p:message for="ccv" />
                                                 </div>
                                                 <div class="form-group">
                                                <p:outputLabel for="dateExpiration" value="Date d'expiration" styleClass="hide"/><br/>
 												<p:calendar id="dateExpiration" placeholder="Date d'expiration" 
-													value="#{DonAction.donation.dateExpiration}" />
+													value="#{DonationBean.donation.expirationDate}" required="true" requiredMessage="Veuillez indiquer la date d'expriration de votre carte banquaire" />
 												<p:message for="dateExpiration" />
                                                 </div><br/>
                                                 <p:commandButton value="Valider" ajax="true" styleClass="btn-default btn"
-												action="#{DonAction.createDonnation}" update="@form" process="@form" icon="ui-icon-check" validateClient="true"> </p:commandButton>
+												action="#{DonationBean.createDonnation}" update="@form" process="@form" icon="ui-icon-check" validateClient="true"> </p:commandButton>
                                             	</h:form>
                                             </div>
                                         </div>
