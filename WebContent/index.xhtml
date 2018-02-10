@@ -7,10 +7,7 @@
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>3awni</title>
-<<<<<<< HEAD
-=======
 	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
@@ -40,13 +37,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2 col-sm-6 col-xs-6">
-<<<<<<< HEAD
-							<div class="logo-wrapper">
-								<a class="logo" href="index.xhtml"><img src="imgs/logos/logo-3.png" ></img></a>
-=======
+
 							<div class="logo-wrapper" >
 								<a class="logo" href="index.xhtml" ><img style="margin-top:-20px;height:40px;width:160px; " src="imgs/logos/logo5.png" ></img></a>
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 							</div>
 						</div>
 						<div class="col-md-7 hidden-xs hidden-sm">
@@ -67,11 +60,7 @@
 								<ul class="mobile-menu-nav">
 									<li><a href="projects.xhtml">Voir les cas</a></li>
 									<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
-<<<<<<< HEAD
-									<li><a href="volunteer.xhtml">Associations</a></li>
-=======
 									<li><a href="associations.xhtml">Associations</a></li>
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 									<li><a href="commentCaMarche.xhtml">Comment ça marche</a></li>
 								</ul>
 							</nav>
@@ -464,104 +453,6 @@
 				</div>
 			</div>
 			<!-- Donet section end -->
-<<<<<<< HEAD
-
-			<!-- Event section start  -->
-			<div class="event-section theme-section gray-bg">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="area-heading text-center">
-								<h2 class="area-title">Tous les cas</h2>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<article class="single-event">
-
-
-								<p:dataGrid var="cas" value="#{ShowCase.liste}" columns="4"
-									layout="grid" rows="8" paginator="false" id="cas"
-									paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
-									rowsPerPageTemplate="4,8,12">
-
-									<div class="event-thumb">
-										<p:graphicImage value="#{cas.fileContentI}" />
-									</div>
-
-									<div class="event-content event-content-2">
-										<h5 class="single-event-title">
-											<p:commandLink value="#{cas.title}"
-												action="detailCase.xhtml?faces-redirect=true">
-												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.caseObject}" />
-											</p:commandLink>
-										</h5>
-										<ul class="event-meta">
-											<li><i class="fa fa-map-marker"></i>
-											<h:outputText value="#{cas.city}" style="margin-left:5px;" /></li>
-											<li><i class="fa fa-calendar"></i>
-											<h:outputText value="#{cas.endDate}"
-													style="margin-left:5px;" >
-													<f:convertDateTime type="date" dateStyle="medium"/></h:outputText>
-													</li>
-													
-										</ul>
-
-										<h:outputText value="#{cas.slogan}" />
-										<br />
-
-
-										<div class="donet-bar">
-											<p>
-												Col:
-												<h:outputText value="#{ShowCase.getRes(cas.id)}">
-													<f:convertNumber minFractionDigits="0" />
-												</h:outputText>
-												DH<span class="project-goal"> Obj: <h:outputText
-														value="#{cas.cost}">
-														<f:convertNumber minFractionDigits="0" />
-													</h:outputText> DH
-												</span>
-											</p>
-											<div class="progress-bar-area">
-												<div class="single-progress-bar">
-													<div class="progress ">
-														<div class="progress-bar wow fadeInLeft"
-															role="progressbar"
-															aria-valuenow="#{ShowCase.getRes(cas.id)}"
-															aria-valuemin="0" aria-valuemax="200"
-															style="width: #{ShowCase.getRes(cas.id)*100/cas.cost}%; visibility: visible; animation-duration: 3s; animation-delay: .5s; ">
-															<span> <h:outputText
-																	value="#{ShowCase.getRes(cas.id)/cas.cost}">
-																	<f:convertNumber type="percent" />
-																</h:outputText>
-															</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<h:form>
-											<p:commandButton
-												action="detailCase.xhtml?faces-redirect=true"
-												value="voir plus" styleClass="btn btn-default">
-												<f:setPropertyActionListener value="#{cas}"
-													target="#{DetailCase.caseObject}" />
-											</p:commandButton>
-										</h:form>
-									</div>
-
-								</p:dataGrid>
-							</article>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Event section end  -->
-
-=======
 			
 			<!-- La selection start-->
 	<div id="caseSelection">
@@ -571,7 +462,6 @@
 	</div>
 			<!-- La selection end-->
 			
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 			<!-- Counter section start -->
 			<div class="counter-section theme-section-2">
 				<div class="container">

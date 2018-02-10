@@ -21,7 +21,6 @@ public class ShowCase implements Serializable{
 	private Service service;
 	private long resultat;
 	private int listeLength;
->>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 	
 	@PostConstruct
 	public void init(){
