@@ -22,10 +22,8 @@
 <body>
 
 <f:metadata>
-    <f:viewParam name="cas_id" value="#{ValidateDonation.donation.idCase}" />
-    <f:viewParam name="montant" value="#{ValidateDonation.donation.cost}" />
-    <f:event type="preRenderView" listener="#{ValidateDonation.innit}" />
-    
+    <f:viewParam name="cas_id" value="#{ValidateDonation.donation.cas_id}" />
+    <f:viewParam name="montant" value="#{ValidateDonation.donation.montant}" />
 </f:metadata>
 
 </body>

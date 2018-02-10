@@ -50,6 +50,11 @@
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="association" ref="Association"></property>
     </bean>
+    
+    <bean id="ValidateDonation" class="org.mql.gc.actions.ValidateDonation">
+      	<property name="service" ref="ServiceImpl"></property>
+      	<property name="donation" ref="Donation"></property>
+    </bean>
     <bean id="AdminBean" class="org.mql.gc.actions.AdminBean">
       	<property name="service" ref="ServiceImpl"></property>
       	<property name="admin" ref="Admin"></property>

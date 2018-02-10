@@ -72,6 +72,8 @@
                                             
 
     <script>
+    
+    	var ammount = 0;
         paypal.Button.render({
 
             env: 'sandbox', // sandbox | production
@@ -88,15 +90,14 @@
             // payment() is called when the button is clicked
             payment: function(data, actions) {
   				
-            	var ammount = $('#ammount').val()
-            	console.log(ammount)
+            	ammount = $('#ammount').val()
             	
                 // Make a call to the REST api to create the payment
                 return actions.payment.create({
                     payment: {
                         transactions: [
                             {
-                                amount: { total: ammount, currency: 'Dh' }
+                                amount: { total: ammount / 10, currency: 'USD' }
                             }
                         ]
                     }
@@ -108,7 +109,8 @@
 
                 // Make a call to the REST api to execute the payment
                 return actions.payment.execute().then(function() {
-                    window.alert('Payment Complete!');
+                	window.location.replace("/Crowdf/index1.xhtml?cas_id=#{DonationBean.donation.idCase}"
+                			+ '&amp;montant=' + ammount);
                 });
             }
 
