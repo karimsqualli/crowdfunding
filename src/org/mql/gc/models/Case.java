@@ -3,6 +3,8 @@ package org.mql.gc.models;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.joda.time.LocalDate;
+
 public class Case {
 	private int id;
 	private int idAssociation;
@@ -82,7 +84,7 @@ public class Case {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
+	
 	public Date getEndDate() {
 		return endDate;
 	}

@@ -1,36 +1,36 @@
 package org.mql.gc.actions;
 
 import java.util.List;
-
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-
 import org.mql.gc.models.Case;
 import org.mql.gc.services.Service;
 
 public class CaseValidation {
 	private Service service ;
 	private List<Case> caseObjects;
+	private Case caseObject;
 	
 	@PostConstruct
 	public void init(){
 		System.out.println("&& post contruct caseValidation &&");
 		caseObjects = service.getPendingCases();
 		System.out.println("cette liste : " + caseObjects);
+
 	}
 	
-	//A faire : Mr karim
 	public String deleteCase(int id) {
+		service.deleteCase(id);
+		caseObjects = service.getCasesNotActivated();
 		return "validateCase.xhtml?faces-redirect=true";
 	}
 	
-	//A faire : Mr karim
+
 	public String validateCase(Case caseObject) {
+		caseObject.setPending(true);
+		service.updateCase(caseObject);
+		caseObjects = service.getCasesNotActivated();
 		return "validateCase.xhtml?faces-redirect=true";
 	}
-	
 	
 	public List<Case> getCaseObjects() {
 		return caseObjects;
@@ -40,16 +40,20 @@ public class CaseValidation {
 		this.caseObjects = caseObjects;
 	}
 
-
-
 	public Service getService() {
 		return service;
 	}
 
-
-
 	public void setService(Service service) {
 		this.service = service;
+	}
+
+	public Case getCaseObject() {
+		return caseObject;
+	}
+
+	public void setCaseObject(Case caseObject) {
+		this.caseObject = caseObject;
 	}
 
 

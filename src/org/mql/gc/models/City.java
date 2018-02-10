@@ -3,6 +3,7 @@ package org.mql.gc.models;
 public enum City {
 	Arfoud,
 	Asilah,
+	Azro,
 	BabBerred,
 	BeniMellal,
 	BenSlimane,

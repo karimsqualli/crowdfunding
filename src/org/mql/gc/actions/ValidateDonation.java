@@ -1,22 +1,35 @@
 package org.mql.gc.actions;
 
-
-import java.io.Serializable;
 import java.sql.Timestamp;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
 import org.mql.gc.models.Donation;
 import org.mql.gc.services.Service;
 import org.mql.gc.utils.SessionUtils;
 
-public class DonationBean implements Serializable {
-	
+public class ValidateDonation {
+
 	private Donation donation;
 	private Service service;
 	
-	public String createDonnation() {
+	
+	public ValidateDonation() {
+		// TODO Auto-generated constructor stub
+		System.out.println("test");
+	}
+
+	public void innit() {
 		donation.setIdUser(SessionUtils.getUserId());
 		initialiserDateInscription();
 		service.addDonation(donation);
-		return "index?faces-redirect=true";
+		FacesContext.getCurrentInstance().getApplication()
+		.getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "index.xhtml");
+
+
 	}
 	
 	private void initialiserDateInscription() {
@@ -39,4 +52,5 @@ public class DonationBean implements Serializable {
 	public void setService(Service service) {
 		this.service = service;
 	}
+
 }

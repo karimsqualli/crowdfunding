@@ -1,24 +1,14 @@
 package org.mql.gc.actions;
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
 import java.util.UUID;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.mail.internet.MimeBodyPart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.mail.HtmlEmail;
-import org.apache.coyote.http11.filters.BufferedInputFilter;
 import org.apache.commons.mail.EmailException;
 import org.mql.gc.models.Donor;
 import org.mql.gc.services.Service;
-import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.context.RequestContext;
 
@@ -26,6 +16,7 @@ public class DonorBean {
 
 	private Service service;
 	private Donor donor;
+	private int nb;
 	static boolean connected = false;
 	
 	//for activing account by link 	
@@ -38,6 +29,10 @@ public class DonorBean {
 			RequestContext.getCurrentInstance().execute("PF('dlg').show();");
 			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
 		}
+	}
+	
+	public int nbDonors() {
+		return service.getDonors().size();
 	}
 
 	public String createAccount(){
@@ -149,4 +144,6 @@ public class DonorBean {
 	public void setDonor(Donor donor) {
 		this.donor = donor;
 	}
+
+
 }

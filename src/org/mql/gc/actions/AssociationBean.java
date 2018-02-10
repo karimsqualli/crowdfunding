@@ -7,18 +7,13 @@ import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.servlet.http.HttpSession;
 import org.mql.gc.models.ActivitySector;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.LegalForm;
 import org.mql.gc.services.Service;
 import org.mql.gc.services.ServiceImpl;
-import org.mql.gc.utils.SessionUtils;
-import org.primefaces.context.RequestContext;
 
 public class AssociationBean  implements Serializable{
 	private Association association;
@@ -29,11 +24,15 @@ public class AssociationBean  implements Serializable{
 	private int listeLength;
 	private EmailManager emailManager;
 	
+	private List<Association> listAssociations;
+	
+
 	//added by hassan 09/01/2018
 	@PostConstruct
 	public  void init(){
 		listeLength=service.getAssociations().size();
 		associations=service.getAssociationsNotActivated();
+		listAssociations=service.getAssociations();
 	}
 	
 	public AssociationBean() {
@@ -42,6 +41,7 @@ public class AssociationBean  implements Serializable{
 		sectorActivities = new SelectItem[ActivitySector.values().length];
 		legalForm= new SelectItem[LegalForm.values().length];
 	}
+		
 
 	public String createAccount() {
 		try {
@@ -63,6 +63,7 @@ public class AssociationBean  implements Serializable{
 			else {
 				FacesContext.getCurrentInstance().addMessage("inscri", new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Email existe dèja",""));
+
 				return "login";
 			}
 		 }
@@ -88,6 +89,7 @@ public class AssociationBean  implements Serializable{
 		associations = service.getAssociationsNotActivated();
 		return "validateAssociation.xhtml?faces-redirect=true";
 	}
+
 	private void initialiserDateInscription() {
         Timestamp date = new Timestamp( System.currentTimeMillis() );
         association.setAddedDate(date);
@@ -145,13 +147,20 @@ public class AssociationBean  implements Serializable{
 	public void setAssociations(List<Association> associations) {
 		this.associations = associations;
 	}
-	
+
 	public int getListeLength() {
 		return listeLength;
 	}
-	
 	public void setListeLength(int listeLength) {
 		this.listeLength = listeLength;
 	}
+	public List<Association> getListAssociations() {
+		return listAssociations;
+	}
+	public void setListAssociations(List<Association> listAssociations) {
+		this.listAssociations = listAssociations;
+	}
+	
+	
 
 }

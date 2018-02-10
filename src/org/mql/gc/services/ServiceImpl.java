@@ -31,6 +31,10 @@ public class ServiceImpl implements Service {
 		associationDao = new AssociationDaoImp();
 		donorDao = new DonorDaoImp();
 		donationDao = new DonationDaoImp();
+//		caseDao = new CaseDaoImp();
+//		associationDao = new AssociationDaoImp();
+//		donorDao = new DonorDaoImp();
+//		donationDao = new DonationDaoImp();
 //      adminDao = new AdminDaoImp();
 	}
 	
@@ -99,6 +103,7 @@ public class ServiceImpl implements Service {
 		return associationDao.selectNotActivated();
 	}
 
+
 //*********************************Cas*****************************************
 	
 	public void addCase(Case caseObject) {
@@ -122,6 +127,17 @@ public class ServiceImpl implements Service {
 		return caseDao.findPending();
 	}
 	
+	public void updateCase(Case caseObject) {
+		caseDao.update(caseObject);
+	}
+
+	public void deleteCase(int id) {
+		caseDao.deleteCase(id);
+	}
+	public List<Case> getCasesNotActivated() {
+		return caseDao.findPending();
+	}
+	
 	//********************************Donnateur*********************************************	
 	
 	
@@ -141,16 +157,18 @@ public class ServiceImpl implements Service {
 		public void updateDonor(int id) {
 			donorDao.update(id);
 		}
-
 		
 		public void deleteDonator(int id) {
 			donorDao.delete(id);
 		}
 
 		public List<Donor> getDonors() {
+			System.out.println("nb " + donorDao.select().size());
 			return donorDao.select();
 		}
-		
+		public static void main(String[] args) {
+			new ServiceImpl();
+		}
 		public Donor getDonorById(int id) {
 			return donorDao.selectById(id);
 		}

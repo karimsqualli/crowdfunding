@@ -6,10 +6,10 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Kaisahhh</title>
+	<title>3awni</title>
+	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/icons/favicon.png" />
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
@@ -56,11 +56,10 @@
 								</h5>
 								<ul class="event-meta">
 									<li><i class="fa fa-map-marker"></i><h:outputText value="#{cas.city}" style="margin-left:5px;"/></li>
-									<li><i class="fa fa-calendar"></i><h:outputText value="#{cas.endDate} Jours" style="margin-left:5px;"/></li>
+									<li><i class="fa fa-calendar"></i><h:outputText rendered="#{not empty cas.endDate}" value="#{ShowCase.daysBetween(cas.endDate)} J" style="margin-left:5px;"/></li>
 								</ul>
-
+								
 								<h:outputText value="#{cas.slogan}" /><br/>
-
 
 								   <div class="donet-bar">
                                         <p>Col: <h:outputText value="#{ShowCase.getRes(cas.id)}" >

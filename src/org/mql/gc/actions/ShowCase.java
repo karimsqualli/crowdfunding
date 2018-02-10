@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
 import org.mql.gc.models.Case;
 import org.mql.gc.services.Service;
 
@@ -17,31 +20,27 @@ public class ShowCase implements Serializable{
 	private List<Case> listUrgent;
 	private Service service;
 	private long resultat;
+	private int listeLength;
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 	
 	@PostConstruct
 	public void init(){
 		System.out.println("iciccicicicici"+liste);
 		liste = service.getCases();
 		listUrgent = service.getCasesUrgent();
-		
-//		for (Case c : liste) {
-//			Date now = new Date();
-//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd HH:mm:ss"); 
-//			    resultat = 0; 
-//			    try { 
-//			    	Date d1= sdf.parse(now.toString());
-//			    	Date d2=sdf.parse(c.getEndDate().toString());
-//			        resultat = d2.getTime() - d1.getTime(); 
-//			    } catch (Exception e) { 
-//			    	System.out.println("erreur resultat"+e.getMessage());
-//			        e.printStackTrace(); 
-//			    } 
-//			    System.out.println("Il y a comme ecart :"+resultat); 
-//		}
-
+		listeLength = liste.size();
 	}
 	
-
+	public int daysBetween(Date d) {
+		System.out.println("Le d: "+d);
+	
+		LocalDate l = new LocalDate(d.getTime());
+		System.out.println("le l :"+l);
+		int x = Days.daysBetween(LocalDate.now(),l).getDays();
+		System.out.println(LocalDate.now());
+		System.out.println(x);
+		return x;
+	}
 
 	public void searchCas() {
 	}
@@ -109,5 +108,12 @@ public class ShowCase implements Serializable{
 		this.resultat = resultat;
 	}
 
+	public int getListeLength() {
+		return listeLength;
+	}
+
+	public void setListeLength(int listeLength) {
+		this.listeLength = listeLength;
+	}
 	
 }

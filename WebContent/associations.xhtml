@@ -7,8 +7,12 @@
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>3awni</title>
+<<<<<<< HEAD
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="img/icons/favicon.png" />
+=======
+	<link rel="shortcut icon" href="imgs/logos/logo6.png" />	<meta name="viewport" content="width=device-width, initial-scale=1" />
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
@@ -20,6 +24,7 @@
 	<!-- button -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
+<<<<<<< HEAD
 
 	<body>
 		<p:dataTable var="ass" value="#{associationBean.liste}">
@@ -44,4 +49,72 @@
     </p:column>
 </p:dataTable>	
 	</body>
+=======
+<body>
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
+	<div class="donet-section theme-section theme-section-ex-padding">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="area-heading text-center">
+						<h2 class="area-title">Les associations </h2>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="donate-feature-list navigation-style-1">
+						<div class="single-donor-info">
+							<div class="donor-information-wrapper">
+								<div class="donor-information">
+									<h:form>
+										<p:dataScroller var="ass"
+											value="#{AssociationBean.listAssociations}" chunkSize="10">
+											<h:panelGrid columns="1" style="width:100%">
+												<br/><br/>
+												<p:outputPanel>
+													<h:panelGrid columns="2" cellpadding="5">
+														<h:outputText value="Nom : " />
+														<h:outputText value="#{ass.name}"
+															style="font-weight: bold" />
+
+														<h:outputText value="Email : " />
+														<h:outputText value="#{ass.email}"
+															style="font-weight: bold" />
+
+														<h:outputText value="Site Web : " />
+														<h:outputText value="#{ass.website}"
+															style="font-weight: bold" />
+
+														<h:outputText value="Fixe : " />
+														<h:outputText value="#{ass.fixe}"
+															style="font-weight: bold" />
+
+														<h:outputText value="GSM : " />
+														<h:outputText value="#{ass.gsm}" style="font-weight: bold" />
+													</h:panelGrid>
+												</p:outputPanel>
+												<br/><br/>
+												<p:separator style="width:100%" />
+											</h:panelGrid>
+										</p:dataScroller>
+									</h:form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
+</body>
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 </html>

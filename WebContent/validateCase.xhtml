@@ -6,19 +6,15 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Kaisahhh</title>
+<title>3awni</title>
+	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/icons/favicon.png" />
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
-	<link href="css/components.css" id="style_components" rel="stylesheet"
-		type="text/css" />
-	<!-- affichage horizontale -->
-	<link href="css/default.css" rel="stylesheet" id="style_theme"
-		type="text/css" />
+
 	<!-- button -->
-	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
 </h:head>
 
 <h:body>
@@ -41,6 +37,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
+<<<<<<< HEAD
 
 						<div class="donate-feature-list navigation-style-1">
 							<article class="single-event">
@@ -96,6 +93,71 @@
 								</h:form>
 							</article>
 						</div>
+=======
+						<article class="single-event">
+							<h:form id="upd">
+								<p:dataTable var="cas" id="aa"
+									value="#{CaseValidation.caseObjects}" stickyHeader="true">
+									<p:column headerText="Titre du cas">
+										<p:commandLink value="#{cas.title}" update=":upd"
+											oncomplete="PF('dlg2').show()">
+											<f:setPropertyActionListener value="#{cas}"
+												target="#{CaseValidation.caseObject}" />
+										</p:commandLink>
+									</p:column>
+									<p:column headerText="Date d'ajout">
+										<h:outputText value="#{cas.addedDate}" />
+									</p:column>
+									<p:column>
+										<p:commandButton value="valider"
+											actionListener="#{CaseValidation.validateCase(cas)}"
+											update="aa"></p:commandButton>
+										<p:commandButton value="refuser"
+											actionListener="#{CaseValidation.deleteCase(cas.id)}"
+											update="aa"></p:commandButton>
+									</p:column>
+								</p:dataTable>
+
+								<p:dialog header="Détail du cas" widgetVar="dlg2"
+									resizable="false" draggable="true" showEffect="fade"
+									hideEffect="fade" modal="true">
+									<p:outputPanel id="display" style="text-align:center">
+										<p:panelGrid columns="2" cellpadding="4">
+
+											<h:outputText value="Id" />
+											<h:outputText value="#{CaseValidation.caseObject.id}" />
+
+											<h:outputText value="Nom" />
+											<h:outputText value="#{CaseValidation.caseObject.title}" />
+
+											<h:outputText value="Slogan" />
+											<h:outputText value="#{CaseValidation.caseObject.slogan}" />
+
+											<h:outputText value="Catégorie" />
+											<h:outputText value="#{CaseValidation.caseObject.category}" />
+
+											<h:outputText value="Ville" />
+											<h:outputText value="#{CaseValidation.caseObject.city}" />
+
+											<h:outputText value="Coût" />
+											<h:outputText value="#{CaseValidation.caseObject.cost}" />
+
+											<h:outputText value="Délai du cas" />
+											<h:outputText value="#{CaseValidation.caseObject.endDate}" />
+
+											<h:outputText value="Description" />
+											<h:outputText
+												value="#{CaseValidation.caseObject.description}" />
+
+											<h:outputText value="Date d'ajout" />
+											<h:outputText value="#{CaseValidation.caseObject.addedDate}" />
+
+										</p:panelGrid>
+									</p:outputPanel>
+								</p:dialog>
+							</h:form>
+						</article>
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 					</div>
 				</div>
 			</div>

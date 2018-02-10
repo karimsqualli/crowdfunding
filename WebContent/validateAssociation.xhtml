@@ -6,9 +6,15 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<<<<<<< HEAD
 	<title>Kaisahhh</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="img/icons/favicon.png" />
+=======
+	<title>3awni</title>
+	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
@@ -42,22 +48,36 @@
 				<div class="row">
 					<div class="col-md-12">
 
+<<<<<<< HEAD
 						<div class="donate-feature-list navigation-style-1">
+=======
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 							<article class="single-event">
 								<h:form id="upd">
 									<p:dataTable var="association" id="aa"
 										value="#{AssociationBean.associations}" stickyHeader="true">
+<<<<<<< HEAD
 
 										<p:column headerText="Id de l'association">
 											<p:commandLink value="#{association.id}" update=":upd:apd"
 												action="detailAssociation.xhtml?faces-redirect=true">
 												<!-- onclick="PF('dlg2').show('#{component.clientId}')" -->
+=======
+										<p:column headerText="Titre de l'association">
+											<p:commandLink value="#{association.name}" update=":upd:apd"
+											 onclick="PF('dlg2').show()" >
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 												<f:setPropertyActionListener value="#{association}"
 													target="#{AssociationBean.association}" />
 											</p:commandLink>
 										</p:column>
+<<<<<<< HEAD
 										<p:column headerText="name">
 											<h:outputText value="#{association.name}" />
+=======
+										<p:column headerText="Date d'ajout">
+											<h:outputText value="#{association.addedDate}" />
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 										</p:column>
 										<p:column>
 											<p:commandButton value="valider"
@@ -67,6 +87,7 @@
 												actionListener="#{AssociationBean.deleteAccount(association.id)}"
 												update="aa"></p:commandButton>
 										</p:column>
+<<<<<<< HEAD
 
 									</p:dataTable>
 								
@@ -102,6 +123,42 @@
 								</h:form>
 							</article>
 						</div>
+=======
+									</p:dataTable>
+									
+									<p:dialog  header="Détail de l'association" widgetVar="dlg2" resizable="false" draggable="true"
+								                showEffect="fade" hideEffect="fade" modal="true">
+								        <p:outputPanel id="apd" style="text-align:center">
+								          <p:panelGrid columns="2" cellpadding="4" >
+													<h:outputText value="Id" />
+													<h:outputText value="#{AssociationBean.association.id}" />
+													
+													<h:outputText value="Name" />
+													<h:outputText value="#{AssociationBean.association.name}" />
+													
+													<h:outputText value="Pattente" />
+													<h:outputText value="#{AssociationBean.association.pattente}" />
+													
+													<h:outputText value="Activité" />
+													<h:outputText value="#{AssociationBean.association.activityArea}" />
+													
+													<h:outputText value="Forme juridique" />
+													<h:outputText value="#{AssociationBean.association.legalForm}" />
+													
+													<h:outputText value="Gsm" />
+													<h:outputText value="#{AssociationBean.association.gsm}" />
+													
+													<h:outputText value="Fixe" />
+													<h:outputText value="#{AssociationBean.association.fixe}" />
+													
+													<h:outputText value="Date d'ajout" />
+													<h:outputText value="#{AssociationBean.association.addedDate}" />
+													</p:panelGrid>
+											</p:outputPanel>
+										</p:dialog>
+								</h:form>
+							</article>
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
 					</div>
 				</div>
 			</div>

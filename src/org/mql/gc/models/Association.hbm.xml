@@ -22,7 +22,6 @@
 	<property name="addedDate" column="AddedDate" type="timestamp"/>
 	<property name="pending" column="pending" type="boolean" />
 	<property name="keyActive" column="keyActive" type="string"/>
-	
 </class>
 
 

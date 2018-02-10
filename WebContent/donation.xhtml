@@ -7,16 +7,17 @@
 
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Kaisahhh</title>
+	<title>3awni</title>
+	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/icons/favicon.png" />
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
 	<link href="css/components.css" id="style_components" rel="stylesheet" type="text/css"/><!-- affichage horizontale -->
 	<link href="css/default.css" rel="stylesheet" id="style_theme" type="text/css"/><!-- button -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 </h:head>
 <h:body>
 <f:metadata>
@@ -41,8 +42,10 @@
                                         <div class="donor-information-wrapper">
                                             <h2 class="donor-title">Entrer le montant de votre contribution :</h2>
                                             <div class="donor-information">
-                                                <h:form>
+                                                <form action="${initParam['posturl']}" method="post">
+                                                
                                                 <div class="form-group">
+<<<<<<< HEAD
 												<p:outputLabel for="montant" value="Montant" /><br/>
 												<p:spinner id="montant"  value="#{DonationBean.donation.cost}" placeholder="Montant (DH)" min="100" stepFactor="100"
 													required="true" requiredMessage="Veuillez saisir le montant de votre participation"  />
@@ -72,10 +75,21 @@
                                                 <p:commandButton value="Valider" ajax="true" styleClass="btn-default btn"
 												action="#{DonationBean.createDonnation}" update="@form" process="@form" icon="ui-icon-check" validateClient="true"> </p:commandButton>
                                             	</h:form>
+=======
+                                                    <h:outputFormat> Montant </h:outputFormat>
+                                              
+													<input type="text" id="ammount" name="amount_1" required="required" />
+													<h:outputFormat> Dh </h:outputFormat>
+                                                </div><br/>
+                                               
+                                                <div id="paypal-button-container"></div>
+                                            	</form>
+>>>>>>> d20d667eeedd7698a207cab95674c7919c39c1c7
                                             </div>
-                                        </div>
+                                                            </div>
                                 </div>
                                 <div class="donor-thumb single-donor-info">
+                                
                                     <div class="donor-thumb-wrapper">
                                         <h2 class="donor-title">Citation du jour !</h2>
                                         <img src="img/bg/about.png" alt="" />
@@ -85,6 +99,58 @@
                                         </div>
                                     </div>
                                 </div>
+                            
+                            
+                                            
+
+    <script>
+    
+    	var ammount = 0;
+        paypal.Button.render({
+
+            env: 'sandbox', // sandbox | production
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+            client: {
+                sandbox:    'AXCV8NWghCESX99FA1SXb_ADUZN55715sPqvEUI-VUYo25L2XiZ0AeOOW5qfJxdzU1VK8Gu2pzdqJdTX',
+            },
+
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
+
+            // payment() is called when the button is clicked
+            payment: function(data, actions) {
+  				
+            	ammount = $('#ammount').val()
+            	
+                // Make a call to the REST api to create the payment
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: ammount / 10, currency: 'USD' }
+                            }
+                        ]
+                    }
+                });
+            },
+
+            // onAuthorize() is called when the buyer approves the payment
+            onAuthorize: function(data, actions) {
+
+                // Make a call to the REST api to execute the payment
+                return actions.payment.execute().then(function() {
+                	window.location.replace("/Crowdf/index1.xhtml?cas_id=#{DonationBean.donation.idCase}"
+                			+ '&amp;montant=' + ammount);
+                });
+            }
+
+        }, '#paypal-button-container');
+
+    </script>
+                        
+                            
                             </div>
                         </div>
                     </div>
