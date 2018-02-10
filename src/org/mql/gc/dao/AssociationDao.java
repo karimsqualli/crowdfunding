@@ -3,6 +3,7 @@ package org.mql.gc.dao;
 import java.util.List;
 
 import org.mql.gc.models.Association;
+import org.mql.gc.models.Donor;
 
 public interface AssociationDao {
 	public void create(Association association);

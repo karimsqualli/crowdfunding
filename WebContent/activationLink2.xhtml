@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Matrix Admin</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="css/activationLink/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/activationLink/bootstrap-responsive.min.css" />
+	<link rel="stylesheet" href="css/activationLink/matrix-style.css" />
+	<link rel="stylesheet" href="css/activationLink/matrix-media.css" />
+	<link href="css/activationLink/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'/>
+    
+     <meta http-equiv="refresh" content="5;url=http://localhost:9085/Crowdf/index.xhtml" />
+
+</h:head>
+<h:body class="widget-box error_ex" >
+	  <h:panelGroup layout="block" rendered="#{Activation.valid}">
+		
+		<div class="alert alert-success alert-block">
+			<h1>Compte activé</h1>
+		    <br/>
+		</div>	
+        
+        <div class="alert alert-info alert-block">
+			<h2>vous êtes le bienvenue sur notre plateforme</h2>
+			<br/>
+			<h3>vous pouvez maintenant être un donnateur</h3>
+        </div> 
+             <br/>
+		<h:form id="form">
+			<div class="alert alert-danger">
+				<h2>Vous allez être redirigé vers la page d'acceuil après  
+			 		<h:outputText  value="#{counterBean.count}" style="font-size: 30px;color:red;" id="txt_count" />
+	    	 		secondes 
+	    	 	</h2>
+	    	 	<p:poll  interval="1" listener="#{counterBean.increment}" update="txt_count" />  
+			</div>
+		</h:form>
+		
+	</h:panelGroup>
+</h:body>
+</html>
