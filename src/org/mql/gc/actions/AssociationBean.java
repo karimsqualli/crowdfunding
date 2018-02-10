@@ -24,6 +24,7 @@ public class AssociationBean  implements Serializable{
 	private SelectItem[] legalForm;
 	private Service service ;	
 	private List<Association> associations;
+	private List<Association> listAssociations;
 	private int listeLength;
 	
 
@@ -32,6 +33,7 @@ public class AssociationBean  implements Serializable{
 	public  void init(){
 		listeLength=service.getAssociations().size();
 		associations=service.getAssociationsNotActivated();
+		listAssociations=service.getAssociations();
 	}
 	public AssociationBean() {
 		service=new ServiceImpl();
@@ -157,6 +159,12 @@ public class AssociationBean  implements Serializable{
 	public void setListeLength(int listeLength) {
 		this.listeLength = listeLength;
 	}
-
+	public List<Association> getListAssociations() {
+		return listAssociations;
+	}
+	public void setListAssociations(List<Association> listAssociations) {
+		this.listAssociations = listAssociations;
+	}
+	
 
 }

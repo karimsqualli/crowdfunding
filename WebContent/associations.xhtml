@@ -20,28 +20,46 @@
 	<!-- button -->
 	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </h:head>
+<body>
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="header.xhtml" />
+		</ui:insert>
+	</div>
 
-	<body>
-		<p:dataTable var="ass" value="#{associationBean.liste}">
-    <p:column headerText="Nom">
-        <h:outputText value="#{ass.name}" />
-    </p:column>
+	<h:form> 
+    <p:dataScroller var="ass" value="#{AssociationBean.listAssociations}" chunkSize="10">
+        <f:facet name="header">
+            Les associations
+        </f:facet>
  
-    <p:column headerText="Email">
-        <h:outputText value="#{ass.email}" />
-    </p:column>
+        <h:panelGrid columns="1" style="width:60%" >
+           
+ <p:separator />
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Nom :" />
+                    <h:outputText value="#{ass.name}" style="font-weight: bold"/>
  
-    <p:column headerText="Site Web">
-        <h:outputText value="#{ass.website}" />
-    </p:column>
- 
-    <p:column headerText="Fixe">
-        <h:outputText value="#{ass.fixe}" />
-    </p:column>
-    
-    <p:column headerText="GSM">
-        <h:outputText value="#{ass.gsm}" />
-    </p:column>
-</p:dataTable>	
+                    <h:outputText value="Email :" />
+                    <h:outputText value="#{ass.email}" style="font-weight: bold"/>
+
+                    <h:outputText value="Site Web :" />
+                    <h:outputText value="#{ass.website}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="Fixe :" />
+                    <h:outputText value="#{ass.fixe}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="GSM :" />
+                    <h:outputText value="#{ass.gsm}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
+</h:form>
+
+<ui:insert name="footer">
+	<ui:include src="footer.xhtml" />
+</ui:insert>		
 	</body>
 </html>
