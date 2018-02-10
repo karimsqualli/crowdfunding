@@ -137,6 +137,7 @@ public class ServiceImpl implements Service {
 		}
 
 		public List<Donor> getDonors() {
+			System.out.println("nb " + donorDao.select().size());
 			return donorDao.select();
 		}
 		public static void main(String[] args) {
@@ -252,6 +253,8 @@ public class ServiceImpl implements Service {
 		public void setAdminDao(AdminDao adminDao) {
 			this.adminDao = adminDao;
 		}
+		
+	
 		
 
 }

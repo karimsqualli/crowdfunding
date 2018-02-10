@@ -10,6 +10,7 @@ import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.EmailException;
 import org.mql.gc.models.Donor;
 import org.mql.gc.services.Service;
+import org.mql.gc.services.ServiceImpl;
 import org.mql.gc.utils.SessionUtils;
 import org.primefaces.context.RequestContext;
 
@@ -17,7 +18,7 @@ public class DonorBean {
 
 	private Service service;
 	private Donor donor;
-	private int listeLength=0;
+	private int nb;
 	static boolean connected = false;
 	
 	//for activing account by link 	
@@ -31,8 +32,10 @@ public class DonorBean {
 			RequestContext.getCurrentInstance().execute("PF('dlg').show();");
 			RequestContext.getCurrentInstance().showMessageInDialog(message2);	
 		}
-		List<Donor> listeDonors=service.getDonors();
-		listeLength=listeDonors.size();
+	}
+	
+	public int nbDonors() {
+		return service.getDonors().size();
 	}
 
 	public String createAccount(){
@@ -143,15 +146,14 @@ public class DonorBean {
 	public void setDonor(Donor donor) {
 		this.donor = donor;
 	}
-
-
-	public int getListeLength() {
-		return listeLength;
+	public int getNb() {
+		return nb;
 	}
 
-
-	public void setListeLength(int listeLength) {
-		this.listeLength = listeLength;
+	public void setNb(int nb) {
+		this.nb = nb;
 	}
+
+	
 
 }

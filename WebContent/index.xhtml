@@ -7,8 +7,8 @@
 <h:head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>3awni</title>
+	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="icon" href="img/icons/favicon.png" />
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
@@ -38,7 +38,7 @@
 					<div class="row">
 						<div class="col-md-2 col-sm-6 col-xs-6">
 							<div class="logo-wrapper" >
-								<a class="logo" href="index.xhtml" ><img style=" height:40px;width:160px; " src="imgs/logos/logo5.png" ></img></a>
+								<a class="logo" href="index.xhtml" ><img style="margin-top:-20px;height:40px;width:160px; " src="imgs/logos/logo5.png" ></img></a>
 							</div>
 						</div>
 						<div class="col-md-7 hidden-xs hidden-sm">
@@ -59,7 +59,7 @@
 								<ul class="mobile-menu-nav">
 									<li><a href="projects.xhtml">Voir les cas</a></li>
 									<li><a href="LoadCase.xhtml">Proposer un cas</a></li>
-									<li><a href="volunteer.xhtml">Associations</a></li>
+									<li><a href="associations.xhtml">Associations</a></li>
 									<li><a href="commentCaMarche.xhtml">Comment ça marche</a></li>
 								</ul>
 							</nav>
@@ -465,50 +465,40 @@
 			<div class="counter-section theme-section-2">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-3 col-sm-6 ">
+						<div class="col-md-4 col-sm-6 ">
 							<div class="single-counter text-center ">
 								<div class="counter-icon ">
 									<i class="bi bi-love"></i>
 								</div>
 								<div class="counter-content ">
 									<p class="counter "><h:outputText value="#{ShowCase.listeLength}"/></p>
-									<h3>cas résolus</h3>
+									<h3>Cas exposés</h3>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-6 ">
+						<div class="col-md-4 col-sm-6 ">
 							<div class="single-counter text-center ">
 								<div class="counter-icon ">
 									<i class="bi bi-group"></i>
 								</div>
 								<div class="counter-content ">
-									<p class="counter "><h:outputText value="#{DonorBean.listeLength+2}"/></p>
-									<h3>Les honorables donateurs</h3>
+									<p class="counter "><h:outputText value="#{DonorBean.nbDonors()}"/></p>
+									<h3>Honorables donateurs</h3>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-6 ">
+						<div class="col-md-4 col-sm-6 ">
 							<div class="single-counter text-center ">
 								<div class="counter-icon ">
 									<i class="bi bi-like"></i>
 								</div>
 								<div class="counter-content ">
-									<p class="counter "><h:outputText value="#{AssociationBean.listeLength+1}"/></p>
+									<p class="counter "><h:outputText value="#{AssociationBean.listeLength}"/></p>
 									<h3>Associations</h3>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 col-sm-6 ">
-							<div class="single-counter text-center ">
-								<div class="counter-icon">
-									<i class="bi bi-emo-smile"></i>
-								</div>
-								<div class="counter-content ">
-									<p class="counter ">20</p>
-									<h3>Enfants sauvés</h3>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -527,22 +517,31 @@
 						<div class="col-md-12">
 							<div class="sponsor-thumbnail-wrapper">
 								<div class="single-sponsor-thumb">
-									<img src="imgs/sponsor/1.png" alt="" />
+									<img src="imgs/sponsor/index6.png" alt="" />
 								</div>
 								<div class="single-sponsor-thumb">
-									<img src="imgs/sponsor/2.png" alt="" />
+									<img src="imgs/sponsor/index7.png" alt="" />
 								</div>
 								<div class="single-sponsor-thumb">
-									<img src="imgs/sponsor/3.png" alt="" />
+									<img src="imgs/sponsor/index1.png" alt="" />
 								</div>
 								<div class="single-sponsor-thumb">
-									<img src="imgs/sponsor/4.png" alt="" />
+									<img src="imgs/sponsor/index9.png" alt="" />
 								</div>
 								<div class="single-sponsor-thumb">
-									<img src="imgs/sponsor/5.png" alt="" />
+									<img src="imgs/sponsor/index10.png" alt="" />
 								</div>
 								<div class="single-sponsor-thumb">
-									<img src="imgs/sponsor/3.png" alt="" />
+									<img src="imgs/sponsor/index11.png" alt="" />
+								</div>
+								<div class="single-sponsor-thumb">
+									<img src="imgs/sponsor/index2.png" alt="" />
+								</div>
+								<div class="single-sponsor-thumb">
+									<img src="imgs/sponsor/index3.png" alt="" />
+								</div>
+								<div class="single-sponsor-thumb">
+									<img src="imgs/sponsor/index4.png" alt="" />
 								</div>
 							</div>
 						</div>
