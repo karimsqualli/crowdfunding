@@ -16,7 +16,8 @@ public interface Service {
 	public Association getAssociationByEmail(String email);
 	public boolean associationNameExist(String name);//?
 	public boolean loginAssociation(String email,String password);
-	public List<Association> getAssociationsNotActivated() ;
+	public List<Association> getAssociationsNotActivated();
+	public boolean associationEmailExist(String email);
 	//************************************Case**************************************
 	public void addCase(Case caseObject);
 	public List<Case> getCases();

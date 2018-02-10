@@ -77,6 +77,12 @@ public class ServiceImpl implements Service {
 	public List<Association> getAssociationsNotActivated() {
 		return associationDao.selectNotActivated();
 	}
+	
+	public boolean associationEmailExist(String email) {
+		if(associationDao.selectByEmail(email) != null) 
+			return true ; 
+		return false;
+	}
 
 //*********************************Cas*****************************************
 	
