@@ -71,11 +71,11 @@
 								<ul class="header-action">
 									<li>
 									<h:form>
-									<p:commandLink rendered="#{!DonorBean.connected}">
-										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">Connexion</a>
+									<p:commandLink rendered="#{!DonorBean.connected}" name ="connexion" id="connexion">
+										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default" >Connexion</a>
 									</p:commandLink>
 									<p:commandLink rendered="#{DonorBean.connected}"	action="#{DonorBean.logout()}" styleClass="btn btn-default"
-										value="Deconnexion" />
+										value="Deconnexion" id="deconnexion"/>
 									</h:form>
 									</li>
 							   </ul>

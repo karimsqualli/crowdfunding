@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>3awni</title>
 	<link rel="shortcut icon" href="imgs/logos/logo6.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="css/elements.css" />
 	<link rel="stylesheet" href="css/styleT.css" />
 	<link rel="stylesheet" href="css/responsive.css" />
@@ -37,8 +37,8 @@
 						<h3 class="c-font-24 c-font-sbold">Bienvenue !</h3>
 						<p>Collaborons tous pour un avenir meilleur !</p>
 						<h:form id="AAA">
-						<p:messages id="messages"  closable="true" autoUpdate="true">
-    					</p:messages>
+							<p:messages id="messages" closable="true" autoUpdate="true">
+							</p:messages>
 							<div class="form-group">
 								<h:outputLabel for="username" value="Email @ : "
 									styleClass="hide" />
@@ -50,7 +50,8 @@
 								<p:messages for="username" />
 							</div>
 							<div>
-								<h:outputText value="email invalide ! "  rendered="#{DonorBean.connected}" style="color:red;"/>
+								<h:outputText value="email invalide ! "
+									rendered="#{DonorBean.connected}" style="color:red;" />
 							</div>
 							<div class="form-group">
 								<p:password id="password1" value="#{DonorBean.donor.password}"
@@ -93,7 +94,7 @@
 					<div class="modal-body">
 						<h3 class="c-font-24 c-font-sbold">Créer un compte</h3>
 						<h:form>
-						    <p:growl id="growl" for="growl" showDetail="true" sticky="true" />  
+							<p:growl id="growl" for="growl" showDetail="true" sticky="true" />
 							<div class="form-group">
 								<label for="signup-email" class="hide">Email</label>
 								<p:inputText id="email" value="#{DonorBean.donor.email}"
@@ -103,7 +104,7 @@
 									<f:validator
 										validatorId="org.mql.gc.actions.validators.EmailValidator" />
 								</p:inputText>
-								<p:message for="email"/>
+								<p:message for="email" />
 							</div>
 							<div class="form-group">
 								<label for="password" class="hide">pass</label>
@@ -151,15 +152,24 @@
 								</p:inputText>
 								<p:message for="prenom" />
 							</div>
-							<div class="form-group">
+							<!-- 	<div class="form-group">
 								<p:inputText id="adresse" value="#{DonorBean.donor.address}"
 									styleClass="form-control input-lg c-square"
 									placeholder="Adresse" autoResize="true" maxlength="150"
 									required="true" requiredMessage="adresse obligatoire " />
 								<p:message for="adresse" />
-							</div>
+							</div> -->
 							<div class="form-group">
+								<label for="ville" class="hide">Ville : </label>
+								<p:autoComplete id="ville" dropdown="true" style="position:relative; z-index:99999; overflow:auto;"
+									value="#{DonorBean.donor.city}" required="true" forceSelection="true"
+									requiredMessage="Veuillez indiquer votre ville"
+									completeMethod="#{InsertCaseBean.completeVille}">
+								</p:autoComplete>
+								<p:message for="ville" />
+							</div>
 
+							<div class="form-group">
 								<p:commandButton value="s'inscrire" process="@form"
 									update="@form:growl" action="#{DonorBean.createAccount}"
 									styleClass="btn btn-default" />

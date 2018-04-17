@@ -19,7 +19,7 @@ public class TestLogin {
   @Test
   public void testLoginFalse() throws Exception {
         
-    driver.get("http://localhost:8080/Crowdf/index.xhtml");
+    driver.get("http://localhost:8083/Projet_KAISAHHH/index.xhtml");
     
     synchronized (driver) {
 		driver.wait(1000);
@@ -42,7 +42,7 @@ public class TestLogin {
   @Test
   public void testLoginTrue() throws Exception {	    
 	    
-	    driver.get("http://localhost:8080/Crowdf/index.xhtml");
+	    driver.get("http://localhost:8083/Projet_KAISAHHH/index.xhtml");
 	    
 	    synchronized (driver) {
 			driver.wait(1000);

@@ -28,16 +28,11 @@ public class ServiceImpl implements Service {
 
 	
 	public ServiceImpl() {
-		caseDao = new CaseDaoImp();
-		associationDao = new AssociationDaoImp();
-		donorDao = new DonorDaoImp();
-		donationDao = new DonationDaoImp();
-		adminDao = new AdminDaoImp();
 //		caseDao = new CaseDaoImp();
 //		associationDao = new AssociationDaoImp();
 //		donorDao = new DonorDaoImp();
 //		donationDao = new DonationDaoImp();
-//      adminDao = new AdminDaoImp();
+//		adminDao = new AdminDaoImp();
 	}
 	
 //******************************Association************************	

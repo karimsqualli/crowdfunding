@@ -8,9 +8,7 @@
 
 <body>
 <ui:composition>
-   <div id="humanity-preloader-wrapper">
-        <div class="preloader-wave-effect"></div>
-    </div>
+  
     <!-- theme preloader area end -->
     <!-- Main wrapper start -->
     <div class="wrapper">
@@ -57,7 +55,7 @@
 										<a href="javascript:;" data-toggle="modal" data-target="#login-form" class="btn btn-default">Connexion</a>
 									</p:commandLink>
 									<p:commandLink rendered="#{DonorBean.connected}"	action="#{DonorBean.logout()}" styleClass="btn btn-default"
-										value="Deconnexion" />
+										id="Deconnexion" value="Deconnexion" ></p:commandLink>
 									</h:form>
 								 </li>
                                </ul>

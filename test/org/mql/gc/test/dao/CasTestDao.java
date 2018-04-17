@@ -49,56 +49,56 @@ public class CasTestDao {
 		assertEquals(a.getDescription(), "karim");
 	}
 	
-	@Test
-	public void testFindAll() {
-		Case a = new Case();
-		dao.create(a);
-
-		List<Case> cas_list = dao.findAll();
-		
-		assertTrue(cas_list.contains(a));
-	}
-	
-	@Test
-	public void testFindByNameAndCategory() {
-		Case a = new Case();
-		Case b = new Case();
-		
-		a.setCategorie("1");
-		dao.create(a);
-		
-		b.setCategorie("0");
-		dao.create(a);
-		
-		List<Case> cas_list = dao.findByTitleAndCategory("", "1");
-		
-		assertTrue(cas_list.contains(a));
-		assertFalse(cas_list.contains(b));
-	}
-	
-	@Test
-	public void testFindByNameAndCategoryVoid() {
-		List<Case> cas_list = dao.findByTitleAndCategory("", "55555");
-		
-		assertEquals(cas_list.size(), 0);
-	}
-	
-	
 //	@Test
-//	public void testFindByIdDonator() {
-//		Cas a = new Cas();
-//		Cas b = new Cas();
-//		
-//		Donnateur d1 = new Donnateur();
-//		Donnateur d2 = new Donnateur();
-//		
-//		donDao.create(d1);
-//		donDao.create(d2);
-//		
+//	public void testFindAll() {
+//		Case a = new Case();
 //		dao.create(a);
+//
+//		List<Case> cas_list = dao.findAll();
 //		
-//		b.setCategorie("0");
-//		dao.create(a);
+//		assertTrue(cas_list.contains(a));
 //	}
+//	
+//	@Test
+//	public void testFindByNameAndCategory() {
+//		Case a = new Case();
+//		Case b = new Case();
+//		
+//		a.setCategory("1");
+//		dao.create(a);
+//		
+//		b.setCategory("0");
+//		dao.create(a);
+//		
+//		List<Case> cas_list = dao.findByTitleAndCategory("", "1");
+//		
+//		assertTrue(cas_list.contains(a));
+//		assertFalse(cas_list.contains(b));
+//	}
+//	
+//	@Test
+//	public void testFindByNameAndCategoryVoid() {
+//		List<Case> cas_list = dao.findByTitleAndCategory("", "55555");
+//		
+//		assertEquals(cas_list.size(), 0);
+//	}
+//	
+//	
+////	@Test
+////	public void testFindByIdDonator() {
+////		Cas a = new Cas();
+////		Cas b = new Cas();
+////		
+////		Donnateur d1 = new Donnateur();
+////		Donnateur d2 = new Donnateur();
+////		
+////		donDao.create(d1);
+////		donDao.create(d2);
+////		
+////		dao.create(a);
+////		
+////		b.setCategorie("0");
+////		dao.create(a);
+////	}
 	
 }
