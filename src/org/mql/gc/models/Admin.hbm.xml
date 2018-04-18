@@ -7,7 +7,7 @@
 
 	<class name="org.mql.gc.models.Admin" table="admin">
 		<id name="id" column="id" type="int" >
-			<generator class="native"></generator>
+			<generator class="increment"></generator>
 		</id>
 		<property name="email" column="email" type="string"/>
 		<property name="password" column="password" type="string"/>

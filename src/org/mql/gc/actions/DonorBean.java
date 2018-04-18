@@ -59,6 +59,7 @@ public class DonorBean {
 	public String validateDonor() {
 		if (service.loginDonor(donor.getEmail(), donor.getPassword())) {
 			if(service.isActivatedDonor(donor.getEmail())){
+				donor = service.getDonor(donor.getEmail());
 	            connected = true;
 				HttpSession session = SessionUtils.getSession();
 				session.setAttribute("userid", donor.getId());

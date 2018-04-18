@@ -20,7 +20,6 @@
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 
-
 	<managed-bean>
 		<managed-bean-name>ValidateDonation</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.ValidateDonation</managed-bean-class>
@@ -30,12 +29,14 @@
 			<value>#{ServiceImpl}</value>
 		</managed-property>
 	</managed-bean>
+	
+	
 
 	<!-- added by hassan after adding configuring spring ioc 7/01/2018 -->
 	<managed-bean>
 		<managed-bean-name>DonorBean</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.DonorBean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>
@@ -129,7 +130,7 @@
 	<managed-bean>
 		<managed-bean-name>ShowCase</managed-bean-name>
 		<managed-bean-class>org.mql.gc.actions.ShowCase</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
 		<managed-property>
 			<property-name>service</property-name>
 			<value>#{ServiceImpl}</value>

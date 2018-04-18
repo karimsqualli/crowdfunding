@@ -6,8 +6,8 @@
 <hibernate-mapping>
 
 	<class name="org.mql.gc.models.Donor" table="donor">
-		<id name="id" column="id" type="int" >
-			<generator class="native"></generator>
+		<id name="id" column="id" type="int">
+			<generator class="increment"></generator>
 		</id>
 		<property name="email" column="email" type="string"/>
 		<property name="firstName" column="firstName" type="string"/>

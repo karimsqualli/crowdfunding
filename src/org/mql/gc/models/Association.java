@@ -135,10 +135,10 @@ public class Association{
 		this.pending = pending;
 	}
 
-	@Override
 	public String toString() {
-		return "Association [id=" + id + " pending=" + pending + "]";
+		return name;
 	}
+	
 	
 
 }

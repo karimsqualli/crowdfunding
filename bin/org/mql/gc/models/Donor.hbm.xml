@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="org.mql.gc.models.Donor" table="donor">
+		<id name="id" column="id" type="int" >
+			<generator class="native"></generator>
+		</id>
+		<property name="email" column="email" type="string"/>
+		<property name="firstName" column="firstName" type="string"/>
+		<property name="lastName" column="lastName" type="string"/>
+		<property name="address" column="address" type="string"/>
+		<property name="city" column="city" type="string"/>
+		<property name="password" column="password" type="string"/>
+		<property name="keyActive" column="keyActive" type="string"/>
+	</class>
+
+</hibernate-mapping>

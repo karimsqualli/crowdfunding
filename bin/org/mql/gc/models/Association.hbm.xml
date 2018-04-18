@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="org.mql.gc.models.Association" table="association" >
+	<id name="id" column="id" type="int" >
+		<generator class="native"></generator>
+	</id>
+	<property name="name" column="name" type="string"/>
+	<property name="description" column="description" type="string"/>
+	<property name="email" column="email" type="string"/>
+	<property name="password" column="password" type="string"/>
+	<property name="pattente" column="pattente" type="string"/>
+	<property name="activityArea" column="activityArea" type="string"/>
+	<property name="legalForm" column="legalForm" type="string"/>
+	<property name="website" column="website" type="string"/>
+	<property name="fixe" column="fixe" type="string"/>
+	<property name="gsm" column="gsm" type="string"/>
+	<property name="addedDate" column="AddedDate" type="timestamp"/>
+	<property name="pending" column="pending" type="boolean" />
+</class>
+
+
+  
+</hibernate-mapping>

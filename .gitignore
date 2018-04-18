@@ -3,4 +3,4 @@ crowdfunding.iml
 .crowdfunding.iml
 .idea
 *.log
-/bin/
+/target/

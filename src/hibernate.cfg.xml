@@ -10,7 +10,7 @@
         <property name="hibernate.connection.password"></property>
       
         <!-- afficher le SQL dans le stdout -->
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
         
         <!-- create the database schema on startup // create-drop -->  
 		<property name="hbm2ddl.auto">update</property>

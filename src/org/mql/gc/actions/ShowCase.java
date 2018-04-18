@@ -5,11 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 import org.mql.gc.models.Case;
 import org.mql.gc.services.Service;
+import org.mql.gc.utils.SessionUtils;
 
 public class ShowCase implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -18,9 +20,11 @@ public class ShowCase implements Serializable{
 	private Case cas;
 	private List<Case> liste;
 	private List<Case> listUrgent;
+	private List<Case> listProximite;
 	private Service service;
 	private long resultat;
 	private int listeLength;
+	private boolean rendered;
 	
 	@PostConstruct
 	public void init(){
@@ -28,6 +32,17 @@ public class ShowCase implements Serializable{
 		liste = service.getCases();
 		listUrgent = service.getCasesUrgent();
 		listeLength = liste.size();
+		
+		if(SessionUtils.getUserId() != null) {
+			setRendered(true);
+			int id = SessionUtils.getUserId();
+			listProximite = service.getCases(service.getDonorById(id).getCity());
+		System.out.println("session");
+		}
+		else {
+			setRendered(false);
+		listProximite = service.getCasesUrgent();
+		}
 	}
 	
 	public int daysBetween(Date d) {
@@ -84,7 +99,7 @@ public class ShowCase implements Serializable{
 	public List<Case> getListUrgent() {
 		return listUrgent;
 	}
-
+	
 	public void setListUrgent(List<Case> listUrgent) {
 		this.listUrgent = listUrgent;
 	}
@@ -113,6 +128,22 @@ public class ShowCase implements Serializable{
 
 	public void setListeLength(int listeLength) {
 		this.listeLength = listeLength;
+	}
+
+	public List<Case> getListProximite() {
+		return listProximite;
+	}
+
+	public void setListProximite(List<Case> listProximite) {
+		this.listProximite = listProximite;
+	}
+
+	public boolean isRendered() {
+		return rendered;
+	}
+
+	public void setRendered(boolean rendered) {
+		this.rendered = rendered;
 	}
 	
 }

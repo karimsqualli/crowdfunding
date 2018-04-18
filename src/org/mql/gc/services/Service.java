@@ -1,5 +1,6 @@
 package org.mql.gc.services;
 
+import java.util.Date;
 import java.util.List;
 import org.mql.gc.models.Association;
 import org.mql.gc.models.Case;
@@ -25,7 +26,9 @@ public interface Service {
 	//************************************Case**************************************
 	public void addCase(Case caseObject);
 	public List<Case> getCases();
+	public List<Case> getCases(String key,String category,String association,String ville,String title,Date date,double cost);
 	public List<Case> getCasesUrgent();
+	public List<Case> getCases(String city);
 	public List<Case> getAssociations(String nom, String category);
 	public List<Case> getPendingCases();
 	//************************************Donateur**************************************
@@ -34,6 +37,7 @@ public interface Service {
 	public void deleteDonor(int id) ;
 	public List<Donor> getDonors() ;
 	public Donor getDonorById(int id) ;
+	public Donor getDonor(String email) ;
 	public boolean donorNameExist(String name);
 	public boolean donorEmailExist(String email);
 	public boolean loginDonor(String email, String password);

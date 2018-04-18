@@ -32,16 +32,64 @@
 				</div>
 			</div>
 			<div class="row">
+			<h:form>
+				<p:toolbar>
+            		<f:facet name="left">
+            			<p:panelGrid columns="3" rows="1"  >
+            					<p:column>
+		            				<p:selectOneListbox   value="#{SearchController.association}"  var="a" filter="true" >
+			            				<p:ajax event="change" listener="#{SearchController.searchCase}" update="cas"></p:ajax>
+			            				<f:selectItems value="#{SearchController.service.associations}" var="ass" itemLabel="#{ass.name}"
+			            				itemValue="#{ass}"  
+			            				/>
+										<p:column>#{a.name}</p:column>
+	            					</p:selectOneListbox>
+            					</p:column>
+	            				<p:column>
+	            					<p:selectOneMenu value="#{SearchController.category}" var="cat">
+	            						<p:ajax event="change" listener="#{SearchController.searchCase}" update="cas"></p:ajax>
+	            						<f:selectItems value="#{SearchController.liste}" var="category" itemLabel="#{category}"
+	            						itemValue="#{category}"
+	            						/>
+	            					</p:selectOneMenu>
+	            				</p:column>
+	            				
+	            				<p:column>
+	            					<p:selectOneMenu value="#{SearchController.ville}" var="v">
+	            						<p:ajax event="change" listener="#{SearchController.searchCase}" update="cas"></p:ajax>
+	            						<f:selectItems value="#{SearchController.cities}"  var="ville" itemLabel="#{ville}"
+	            						itemValue="#{ville}"
+	            						/>
+	            					</p:selectOneMenu>
+	            				</p:column>
+            			</p:panelGrid>
+            		</f:facet>
+            		<f:facet name="right" >
+            			<p:panelGrid>
+            				<p:column>
+            					<p:inputText  value="#{SearchController.key}"  label="Text 1" placeholder="search ... ">
+            						<p:ajax event="keyup" listener="#{SearchController.searchCase}" update="cas"/>
+            					</p:inputText>
+            				</p:column>
+            			</p:panelGrid>
+            		</f:facet>
+            	</p:toolbar>
+            	</h:form>
+			</div>
+			
+			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<article class="single-event">
 
 
-						<p:dataGrid var="cas" value="#{ShowCase.liste}" columns="4"
+						<p:dataGrid var="cas" value="#{SearchController.data}" columns="4"
 							layout="grid" rows="12"
 							paginator="true" id="cas" 
 							paginatorTemplate=" {PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
 							rowsPerPageTemplate="4,8,12">
-
+							<p:row>
+								<p:messages id="errorSearch"  showDetail="true" closable="true" autoUpdate="true" ></p:messages>
+							</p:row>
 							<div class="event-thumb">
 								<p:graphicImage value="#{cas.fileContentI}" height="180" width="600" />
 							</div>
@@ -80,11 +128,11 @@
                                         </div>
                                     </div>
                                 <h:form>    
-								<p:commandButton action="detailCase.xhtml?faces-redirect=true" value="voir plus" styleClass="btn btn-default" >
-									<f:setPropertyActionListener value="#{cas}"
-											target="#{DetailCase.caseObject}" />
-								</p:commandButton>
-					</h:form>
+									<p:commandButton action="detailCase.xhtml?faces-redirect=true" value="voir plus" styleClass="btn btn-default" >
+										<f:setPropertyActionListener value="#{cas}"
+												target="#{DetailCase.caseObject}" />
+									</p:commandButton>
+								</h:form>
 						 </div>
 
 						</p:dataGrid>

@@ -33,6 +33,7 @@
 	  <bean id="AdminDaoImp" class="org.mql.gc.dao.AdminDaoImp">
 	    	<property name="dao" ref="BaseDAO"></property>
 	  </bean>	  
+	  
 	  <!-- je demande à karim de réaliser ce bean ... : hassan / 07/01/2018  -->
 	  <bean id="BaseDAO" class="org.mql.gc.dao.BaseDAO">
 	  </bean>

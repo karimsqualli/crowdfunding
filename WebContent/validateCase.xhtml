@@ -63,37 +63,36 @@
 
 								<p:dialog header="Détail du cas" widgetVar="dlg2"
 									resizable="false" draggable="true" showEffect="fade"
-									hideEffect="fade" modal="true">
+									hideEffect="fade" modal="true" >
 									<p:outputPanel id="display" style="text-align:center">
-										<p:panelGrid columns="2" cellpadding="4">
+										<p:panelGrid columns="1" cellpadding="2" style="overflow:auto;max-height: 70%;">
+										
+											<h:graphicImage library="images" value="#{CaseValidation.caseObject.fileContentI}" height="50%"/>
+									
+											<video src="#{CaseValidation.caseObject.fileContentV}" autoplay="autoplay" controls="controls" height="50%"/>
+										
+											<p:button value="afficher les documents" 
+   											 onclick="window.open('pdfViewer.xhtml?faces-redirect=true');return false;"  styleClass="btn btn-default"/>
 
-											<h:outputText value="Id" />
-											<h:outputText value="#{CaseValidation.caseObject.id}" />
+											
+											<h:outputText value="Nom : #{CaseValidation.caseObject.title}" />
 
-											<h:outputText value="Nom" />
-											<h:outputText value="#{CaseValidation.caseObject.title}" />
+											<h:outputText value="Slogan : #{CaseValidation.caseObject.slogan}" />
 
-											<h:outputText value="Slogan" />
-											<h:outputText value="#{CaseValidation.caseObject.slogan}" />
+										
+											<h:outputText value="Categorie : #{CaseValidation.caseObject.category}" />
 
-											<h:outputText value="Catégorie" />
-											<h:outputText value="#{CaseValidation.caseObject.category}" />
+										
+											<h:outputText value="Ville : #{CaseValidation.caseObject.city}" />
 
-											<h:outputText value="Ville" />
-											<h:outputText value="#{CaseValidation.caseObject.city}" />
+										
+											<h:outputText value="Coût : #{CaseValidation.caseObject.cost}" />
 
-											<h:outputText value="Coût" />
-											<h:outputText value="#{CaseValidation.caseObject.cost}" />
+											<h:outputText value="Délai du cas :  #{CaseValidation.caseObject.endDate}" />
+											
+	
+											<h:outputText value="Description : #{CaseValidation.caseObject.description}" />
 
-											<h:outputText value="Délai du cas" />
-											<h:outputText value="#{CaseValidation.caseObject.endDate}" />
-
-											<h:outputText value="Description" />
-											<h:outputText
-												value="#{CaseValidation.caseObject.description}" />
-
-											<h:outputText value="Date d'ajout" />
-											<h:outputText value="#{CaseValidation.caseObject.addedDate}" />
 
 										</p:panelGrid>
 									</p:outputPanel>

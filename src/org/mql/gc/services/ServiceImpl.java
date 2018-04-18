@@ -1,5 +1,6 @@
 package org.mql.gc.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.mql.gc.dao.AdminDao;
@@ -116,6 +117,12 @@ public class ServiceImpl implements Service {
 		return caseDao.select();
 	}
 	
+	public List<Case> getCases(String key,String category, String association, String ville, String title, Date date,
+			double cost) {
+		this.caseDao=new CaseDaoImp();
+		return caseDao.getCases(key,category, association, ville, title, date, cost);
+	}
+	
 	public List<Case> getCasesUrgent() {
 		return caseDao.selectUrgent();
 	}
@@ -123,6 +130,11 @@ public class ServiceImpl implements Service {
 	public List<Case> getCases(String title, String category) {
 		return caseDao.select(title, category);
 	}
+	
+	public List<Case> getCases(String city) {
+		return caseDao.select(city);
+	}
+	
 	public List<Case> getPendingCases() {
 		return caseDao.findPending();
 	}
@@ -134,10 +146,11 @@ public class ServiceImpl implements Service {
 	public void deleteCase(int id) {
 		caseDao.deleteCase(id);
 	}
+	
 	public List<Case> getCasesNotActivated() {
 		return caseDao.findPending();
 	}
-	
+
 	//********************************Donnateur*********************************************	
 	
 	
@@ -166,11 +179,14 @@ public class ServiceImpl implements Service {
 			System.out.println("nb " + donorDao.select().size());
 			return donorDao.select();
 		}
-		public static void main(String[] args) {
-			new ServiceImpl();
-		}
+		
+		
 		public Donor getDonorById(int id) {
 			return donorDao.selectById(id);
+		}
+		
+		public Donor getDonor(String email) {
+			return donorDao.selectByEmail(email);
 		}
 
 		public boolean donorNameExist(String name) {
@@ -278,6 +294,7 @@ public class ServiceImpl implements Service {
 		public void setAdminDao(AdminDao adminDao) {
 			this.adminDao = adminDao;
 		}
+
 
 		
 

@@ -77,5 +77,12 @@ public class Donor {
 	public void setKeyActive(String keyActive) {
 		this.keyActive = keyActive;
 	}
+
+	@Override
+	public String toString() {
+		return "Donor [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", address=" + address + ", city=" + city + ", password=" + password + ", keyActive=" + keyActive
+				+ "]";
+	}
 	
 }

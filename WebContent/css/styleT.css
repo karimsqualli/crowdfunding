@@ -950,11 +950,19 @@ label {
 7. Slider area style
 -------------------------------- */
 
+.sliderImg{
+	width : 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+}
+
+
 .slide-1 {
     background: rgba(0, 0, 0, 0) url("../imgs/slider/1.jpg") no-repeat scroll center center / cover;
 }
 .slide-2 {
-    background: rgba(0, 0, 0, 0) url("../imgs/slider/14.jpg") no-repeat scroll center center / cover;
+    background: rgba(0, 0, 0, 0) url("") no-repeat scroll center center / cover;
 }
 .slide-3 {
     background: rgba(0, 0, 0, 0) url("../imgs/slider/3.jpg") no-repeat scroll center center / cover;
@@ -990,6 +998,8 @@ label {
 .slider-content-wrapper {
   background: rgba(255, 255, 255, 0.8) none repeat scroll 0 0;
   padding: 30px;
+  position:relative !important;
+  z-index: 999 !important;
 }
 .slider-content-wrapper .single-progress-bar p {
   font-weight: 800;
@@ -1113,7 +1123,7 @@ label {
 -------------------------------- */
 
 .breadcrumb-area {
-  background: rgba(0, 0, 0, 0) url("../imgs/bg/2.jpg") repeat scroll center 40% / cover ;
+  background: rgba(0, 0, 0, 0) url("../imgs/bg/img3.jpg") repeat scroll center 40% / cover ;
   position: relative;
 }
 .theme-section.breadcrumb-area::before {
@@ -1605,7 +1615,7 @@ label {
 -------------------------------- */
 
 .call-to-action-section {
-  background: rgba(0, 0, 0, 0) url("../imgs/bg/1.jpg") no-repeat scroll center center / cover ;
+  background: rgba(0, 0, 0, 0) url("../imgs/bg/img4.jpg") no-repeat scroll center center / cover ;
   padding: 180px 0;
   position: relative;
 }
@@ -1818,7 +1828,7 @@ label {
 17. Counter area style
 -------------------------------- */
 .counter-section {
-  background: rgba(0, 0, 0, 0) url("../imgs/bg/2.jpg") repeat scroll center center;
+  background: rgba(0, 0, 0, 0) url("../imgs/bg/img5.jpg") repeat scroll center center;
   padding: 150px 0;
   position: relative;
 }

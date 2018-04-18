@@ -1,5 +1,6 @@
 package org.mql.gc.dao;
 
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,6 +20,7 @@ public class CaseDaoImp implements CaseDao {
 
 	public CaseDaoImp() {
 		dao = BaseDAO.getINSTANCE();
+		System.out.println(select());
 	}
 
 	public void create(Case caseObject) {
@@ -38,13 +40,13 @@ public class CaseDaoImp implements CaseDao {
 	}
 
 	public List<Case> select() {
-			List<Case> list=null;
-			Session session = dao.getSession();
-			Query<Case> query = session.createQuery("from Case WHERE pending='1'",Case.class);
-			list = query.list();
-			dao.closeSession(session);
-			return list;		
-	}
+		List<Case> list=null;
+		Session session = dao.getSession();
+		Query<Case> query = session.createQuery("from Case WHERE pending='1'",Case.class);
+		list = query.list();
+		dao.closeSession(session);
+		return list;		
+}
 	
 	public List<Case> selectUrgent() {
 			Session session = dao.getSession();
@@ -129,5 +131,44 @@ public class CaseDaoImp implements CaseDao {
 			dao.closeSession(session);			
 		return liste;
 	}
+
+	public List<Case> select(String city) {
+		Session session = dao.getSession();
+		Query<Case> query = session.createQuery("from Case WHERE city ='" + city + "'", Case.class);
+		List<Case> list = query.list();
+		dao.closeSession(session);			
+		return list;
+	}
+
+	public List<Case> getCases(String key,String category, String association, String ville, String title, Date date,double cost) {
+		String HQLStatement = "From Case c where c.pending="+true;//here the pending should added
+		if(category != null )
+			HQLStatement+=" and c.category like '%"+category+"%'"; 
+		if(association !=  null) {
+			AssociationDao associationDao=new AssociationDaoImp(); 
+			int idAsso = associationDao.selectByName(association).getId();
+			HQLStatement+=" and c.idAssociation="+idAsso; 
+		}
+		if(key!=null && !key.equals("") && !key.isEmpty()) {
+			HQLStatement+=" and c.title like '%"+key+"%' OR c.slogan like '"+key+"'"; 
+		}
+		if (ville != null) 
+			HQLStatement+=" and c.city like '%"+ville+"%'";
+		if(title!=null)
+			HQLStatement+=" and c.title="+title;
+		if(date!=null)
+			HQLStatement+=" and c.endDate="+date;
+		if(cost != 0)
+			HQLStatement+=" and c.cost="+cost;
+		System.out.println(HQLStatement);
+		List<Case> liste = null;		
+		Session session = dao.getSession();
+		Query<Case> query = session.createQuery(HQLStatement,Case.class);
+		liste = query.list();
+		dao.closeSession(session);			
+		return liste;
+	}
+	
+	
 	
 }

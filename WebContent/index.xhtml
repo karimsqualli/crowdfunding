@@ -90,7 +90,8 @@
 		<!-- Slider area start -->
 		<div class="template-slider-area">
 			<div class="slider-wrapper full-screen-slider">
-				<div class="single-slider slide-5">
+				<div class="single-slider">
+				  <p:graphicImage value="#{ShowCase.listUrgent[2].fileContentI}" styleClass="sliderImg" />
 					<div class="container">
 						<div class="row">
 							<div class="col-md-9 col-lg-8 col-sm-9">
@@ -150,7 +151,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="single-slider slide-7">
+				<div class="single-slider">
+				  <p:graphicImage value="#{ShowCase.listUrgent[3].fileContentI}" styleClass="sliderImg" />
 					<div class="container">
 						<div class="row">
 							<div class="col-md-9 col-lg-8 col-sm-9">
@@ -210,8 +212,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="single-slider slide-2">
-					<div class="container">
+				<div class="single-slider">
+				  <p:graphicImage value="#{ShowCase.listUrgent[4].fileContentI}" styleClass="sliderImg" />
+					<div class="container" >
 						<div class="row">
 							<div class="col-md-9 col-lg-8 col-sm-9">
 								<div class="slider-content text-left">
@@ -286,7 +289,8 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="area-heading text-center">
-								<h3 class="area-title">Cas urgents</h3>
+								<p:outputLabel styleClass="area-title" rendered="#{!ShowCase.rendered}">Cas Urgents</p:outputLabel>
+								<p:outputLabel styleClass="area-title" rendered="#{ShowCase.rendered}">Cas près de vous</p:outputLabel>
 							</div>
 						</div>
 					</div>
@@ -297,7 +301,7 @@
 								<article class="single-event">
 
 
-									<p:dataGrid var="urg" value="#{ShowCase.listUrgent[0]}" columns="1"
+									<p:dataGrid var="urg" value="#{ShowCase.listProximite[0]}" columns="1"
 										layout="grid" rows="1" paginator="false" id="urg"
 										paginatorTemplate=" {PreviousPageLink} {NextPageLink}"
 										>
@@ -320,7 +324,7 @@
 														<h:outputText value="#{urg.city}"
 																style="margin-left:5px;" /></li>
 														<li><i class="fa fa-calendar"></i>
-														<h:outputText rendered="#{not empty ShowCase.listUrgent[0].endDate}" value="#{ShowCase.daysBetween(ShowCase.listUrgent[0].endDate)} J"
+														<h:outputText rendered="#{not empty ShowCase.listProximite[0].endDate}" value="#{ShowCase.daysBetween(ShowCase.listProximite[0].endDate)} J"
 													style="margin-left:5px;" ></h:outputText>
 														</li>
 													</ul>
@@ -372,7 +376,7 @@
 									</p:dataGrid>
 								</article>
 								<article class="single-event">
-									<p:dataGrid var="urg1" value="#{ShowCase.listUrgent[1]}" columns="1"
+									<p:dataGrid var="urg1" value="#{ShowCase.listProximite[1]}" columns="1"
 										layout="grid" rows="1" paginator="false" id="urg1"
 										paginatorTemplate=" {PreviousPageLink} {NextPageLink}"
 										>
@@ -395,7 +399,7 @@
 														<h:outputText value="#{urg1.city}"
 																style="margin-left:5px;" /></li>
 														<li><i class="fa fa-calendar"></i>
-														<h:outputText rendered="#{not empty ShowCase.listUrgent[1].endDate}" value="#{ShowCase.daysBetween(ShowCase.listUrgent[1].endDate)} J"
+														<h:outputText rendered="#{not empty ShowCase.listProximite[1].endDate}" value="#{ShowCase.daysBetween(ShowCase.listProximite[1].endDate)} J"
 													style="margin-left:5px;" ></h:outputText>
 														</li>
 													</ul>
@@ -555,7 +559,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="call-to-action-content text-center">
-								<h3>Donner peu, change beaucoup</h3>
+								<h3 style="color:black">'</h3>
 								<h2>Collaborons tous pour un avenir meilleur</h2>
 								<a href="LoadCase.xhtml" class="btn btn-default">Joignez-nous</a>
 							</div>
